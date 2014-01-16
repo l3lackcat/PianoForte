@@ -1,0 +1,47 @@
+﻿@widgetBoxPaddingLeft: 17px;
+
+.widget-box {
+	font-family: inherit;
+	padding-left: @widgetBoxPaddingLeft;
+	width: inherit;
+
+	.wrapper {
+		font-family: inherit;				
+		width: auto;
+
+		.box-header {
+			background-color: #FFF;
+			font-family: inherit;
+			margin-bottom: 2px;
+			padding: 9px 10px;
+			position: relative;
+			width: auto;
+
+			button {
+				border: 0;
+				color: #FEFEFE;
+				font-family: inherit;
+				font-size: 10px;
+				margin: 0;
+				padding: 0 5px;
+
+				&:hover {
+					cursor: pointer;
+				}
+
+				&.btn-edit {
+					bottom: 0;
+					position: absolute;
+					right: 4px;
+				}
+			}
+		}
+
+		.box-content {
+			background-color: #FFF;
+			font-family: inherit;
+			padding: 9px 10px;
+			width: auto;
+		}
+	}
+}

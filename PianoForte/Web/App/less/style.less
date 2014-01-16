@@ -1,0 +1,28 @@
+﻿@import 'config';
+@import 'font';
+@import 'mixins';
+@import 'reset';
+
+@import 'layouts/content-col';
+@import 'layouts/content';
+@import 'layouts/header';
+@import 'layouts/left-col';
+
+@import 'teachers/teacher';
+@import 'teachers/teacher-main';
+
+@import 'widgets/my-box';
+@import 'widgets/my-breadcrumbs';
+@import 'widgets/my-tabs';
+
+body, html {
+	height: 100%;	
+}
+
+#container {
+	width: @containerWidth;
+	height: 100%;
+	margin: 0 auto;	
+	background-color: #4E4C48;	
+	font-family: @baseFontFamily;		
+}

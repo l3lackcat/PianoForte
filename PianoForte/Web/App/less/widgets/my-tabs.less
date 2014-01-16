@@ -1,0 +1,40 @@
+﻿@navTabsVerticalPadding: 18px;
+@navTabsHeight: 34px;
+
+.widget-tabs {
+	height: inherit;
+
+	ul.nav-tabs {
+		display: block;
+
+		li {
+			background-color: #F8F7F4;
+			display: inline-block;		
+			opacity: 0.9;
+			.border-top-left-radius(6px);
+			.border-top-right-radius(6px);
+
+			a {
+				display: block;
+				color: #4D4C48;
+				font-family: inherit;
+				font-size: 16px;
+				padding: (@navTabsVerticalPadding/2) 0;								
+				text-align: center;
+				text-decoration: none;
+				width: 217px;
+			}
+
+			&.active {
+				opacity: 1.0;
+			}
+		}		
+	}
+
+	.tab-content {
+		background-color: #F8F7F4;
+		height: calc(~'100% - @{navTabsVerticalPadding} - @{navTabsHeight}');
+		padding: 16px;
+		overflow-y: auto;
+	}
+}
