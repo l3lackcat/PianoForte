@@ -1,0 +1,122 @@
+﻿<div id="teacher" ng-controller="TeacherController" ng-init="init()">
+    <my-tabs>
+        <my-pane data-title="about">
+            <div class="tube">
+                <my-box data-title="ข้อมูลทั่วไป" data-editable="false">
+                    <div class="rows">
+                        <div class="row">
+                            <div class="col col-label">
+                                <input type="text" value="{{teacher.id.label}}" ng-disabled="true" />
+                            </div>
+                            <div class="col col-colon">
+                                <input type="text" value=":" ng-disabled="true" />
+                            </div>
+                            <div class="col col-value">
+                                <input type="text" value="{{teacher.id.value}}" ng-disabled="!isEditMode" />
+                            </div>
+                            <div class="clear-fix"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-label">
+                                <input type="text" value="{{teacher.firstname.label}}" ng-disabled="true" />
+                            </div>
+                            <div class="col col-colon">
+                                <input type="text" value=":" ng-disabled="true" />
+                            </div>
+                            <div class="col col-value">
+                                <input type="text" value="{{teacher.firstname.value}}" ng-disabled="!isEditMode" />
+                            </div>
+                            <div class="clear-fix"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-label">
+                                <input type="text" value="{{teacher.lastname.label}}" ng-disabled="true" />
+                            </div>
+                            <div class="col col-colon">
+                                <input type="text" value=":" ng-disabled="true" />
+                            </div>
+                            <div class="col col-value">
+                                <input type="text" value="{{teacher.lastname.value}}" ng-disabled="!isEditMode" />
+                            </div>
+                            <div class="clear-fix"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-label">
+                                <input type="text" value="{{teacher.nickname.label}}" ng-disabled="true" />
+                            </div>
+                            <div class="col col-colon">
+                                <input type="text" value=":" ng-disabled="true" />
+                            </div>
+                            <div class="col col-value">
+                                <input type="text" value="{{teacher.nickname.value}}" ng-disabled="!isEditMode" />
+                            </div>
+                            <div class="clear-fix"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-label">
+                                <input type="text" value="{{teacher.status.label}}" ng-disabled="true" />
+                            </div>
+                            <div class="col col-colon">
+                                <input type="text" value=":" ng-disabled="true" />
+                            </div>
+                            <div class="col col-value">
+                                <input type="hidden" />
+                                <input type="text" value="{{teacher.status.value.displayString}}" class="status-{{teacher.status.value.key}}" ng-disabled="!isEditMode" />
+                            </div>
+                            <div class="clear-fix"></div>
+                        </div>
+                    </div>            
+                </my-box>
+                <my-box data-title="ข้อมูลการติดต่อ" data-editable="false">
+                    <div class="rows">
+                        <div class="row" ng-repeat="contact in teacher.contacts.phones" ng-hide="teacher.contacts.phones.length == 0">
+                            <input type="hidden" value="{{contact.id}}" />
+                            <input type="hidden" value="{{contact.type}}" />
+                            <div class="col col-label">
+                                <input type="text" value="{{contact.label}}" ng-disabled="!isEditMode" />                                
+                            </div>
+                            <div class="col col-colon">
+                                <input type="text" value=":" ng-disabled="true" />
+                            </div>
+                            <div class="col col-value">
+                                <input type="text" value="{{contact.value}}" ng-disabled="!isEditMode" />                                
+                            </div>
+                            <div class="clear-fix"></div>
+                        </div>
+                        <div class="row" ng-repeat="contact in teacher.contacts.emails" ng-hide="teacher.contacts.emails.length == 0">
+                            <input type="hidden" value="{{contact.id}}" />
+                            <input type="hidden" value="{{contact.type}}" />
+                            <div class="col col-label">
+                                <input type="text" value="{{contact.label}}" ng-disabled="!isEditMode" />                                
+                            </div>
+                            <div class="col col-colon">
+                                <input type="text" value=":" ng-disabled="true" />
+                            </div>
+                            <div class="col col-value">
+                                <input type="text" value="{{contact.value}}" ng-disabled="!isEditMode" />                                
+                            </div>
+                            <div class="clear-fix"></div>
+                        </div>
+                        <div class="row" ng-show="teacher.contacts.phones.length == 0 && teacher.contacts.emails.length == 0">
+                            <input type="text" value="*** ไม่มีข้อมูล ***" class="no-data" ng-disabled="true" />                            
+                        </div>
+                    </div>
+                </my-box>
+            </div>
+            <div class="tube">
+                <my-box data-title="วิชาที่สอน" data-editable="false">
+                    <div class="rows">
+                        <div class="row" ng-repeat="teachCourse in teacher.teachedCourses" ng-hide="teacher.teachedCourses.length == 0">
+                            <input type="text" value="{{teachCourse}}" ng-disabled="true" />
+                        </div>
+                        <div class="row" ng-show="teacher.teachedCourses.length == 0">
+                            <input type="text" value="*** ไม่มีข้อมูล ***" class="no-data" ng-disabled="true" />                            
+                        </div>
+                    </div>    
+                </my-box>
+            </div>
+            <div class="clear-fix"></div>
+        </my-pane>
+        <my-pane data-title="calendar"></my-pane>
+    </my-tabs>
+</div>
