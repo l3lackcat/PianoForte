@@ -1,0 +1,106 @@
+﻿#left-col {
+	float: left;
+	width: @leftColWidth;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	font-family: inherit;	
+
+	input#txt-search-all {
+		width: 117px;
+		height: 19px;
+		padding: 4px 12px;
+		margin: 1px 6px 6px 5px;
+		background-color: #706E6C;
+		border: 0;
+		.border-radius(6px);
+		font-family: inherit;
+		font-size: 14px;
+		color: #BAB8B5;
+
+		&::-webkit-input-placeholder {
+			font-style: italic;
+		}
+	}
+		
+	.left-menu {
+		width: 100%;
+		height: calc(~'100% - 32px');
+		background-color: #F1F0EF;
+		font-family: inherit;
+
+		ul {
+			font-family: inherit;
+
+			li {																
+				font-family: inherit;
+				
+				a {
+					display: block;
+					padding-bottom: 2px;
+					font-family: inherit;
+					font-size: 16px;
+					color: #4D4C48;
+					text-decoration: none;
+
+					div {	
+						background-color: #F1F0EF;
+									
+						.icon {
+							float: left;
+							width: 32px;
+							height: 32px;						
+							margin: 6px 20px;
+						}
+
+						.text {
+							padding: 14px 0;
+						}														
+					}
+
+					&:hover {
+						cursor: pointer;
+					}
+				}					
+
+				&.teacher {
+					a {
+						background-color: #53AC9C;
+					}					
+				}
+					
+				&.student {
+					a {
+						background-color: #E36D64;
+					}
+				}
+					
+				&.course {
+					a {
+						background-color: #53A5C7;
+					}
+				}
+					
+				&.book {
+					a {
+						background-color: #F8E0A1;
+					}
+				}
+					
+				&.cd {
+					a {
+						background-color: #4D626F;
+					}
+				}
+
+				&.active {
+					a {
+						div {
+							background-color: #F8F7F4;
+						}	
+					}					
+				}
+			}
+		}
+	}
+}

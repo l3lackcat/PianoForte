@@ -1,0 +1,14 @@
+﻿#header {
+	width: @containerWidth;
+	height: @headerHeight;
+	padding: 0;
+	margin: 0;	
+	
+	> .wrapper {		
+		@padding: 10px;
+
+		width: calc(~'100%' - (@padding * 2));
+		height: calc(~'100%' - (@padding * 2));	
+		padding: @padding;	
+	}	
+}
