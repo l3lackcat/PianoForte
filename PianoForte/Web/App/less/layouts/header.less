@@ -1,14 +1,14 @@
-﻿#header {
-	width: @containerWidth;
-	height: @headerHeight;
-	padding: 0;
+﻿#header {	
+	width: calc(~'100%' - 30px);
+	height: @headerHeight - 30px;
+	padding: 15px;
 	margin: 0;	
 	
-	> .wrapper {		
-		@padding: 10px;
+	.logo {
+		background-image: url('../images/logo/logo.png');
+		background-repeat: no-repeat;
+		height: 57px;
+		width: 179px;
 
-		width: calc(~'100%' - (@padding * 2));
-		height: calc(~'100%' - (@padding * 2));	
-		padding: @padding;	
 	}	
 }

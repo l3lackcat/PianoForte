@@ -1,4 +1,7 @@
-﻿body 
+﻿body
 {
     font-style: italic;
+    background-image: 'url(' ../images/icons/left_menu_teachers_bw.png ')';
+    background-repeat: no-repeat;
+    background-color: transparent;
 }

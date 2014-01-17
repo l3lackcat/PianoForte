@@ -65,6 +65,17 @@
     <Content Include="Web\App\fonts\thaisansneue\thaisansneue-semibold-webfont.svg" />
     <Content Include="Web\App\fonts\thaisansneue\thaisansneue-ultrabold-webfont.svg" />
     <Content Include="Web\App\fonts\thaisansneue\thaisansneue-ultralight-webfont.svg" />
+    <Content Include="Web\App\images\icons\left_menu_books.png" />
+    <Content Include="Web\App\images\icons\left_menu_books_bw.png" />
+    <Content Include="Web\App\images\icons\left_menu_cds.png" />
+    <Content Include="Web\App\images\icons\left_menu_cds_bw.png" />
+    <Content Include="Web\App\images\icons\left_menu_courses.png" />
+    <Content Include="Web\App\images\icons\left_menu_courses_bw.png" />
+    <Content Include="Web\App\images\icons\left_menu_students.png" />
+    <Content Include="Web\App\images\icons\left_menu_students_bw.png" />
+    <Content Include="Web\App\images\icons\left_menu_teachers.png" />
+    <Content Include="Web\App\images\icons\left_menu_teachers_bw.png" />
+    <Content Include="Web\App\images\logo\logo.png" />
     <Content Include="Web\App\index.htm" />
     <Content Include="Web\App\js\app.js" />
     <Content Include="Web\App\js\controllers\teachers\TeacherMainController.js" />
@@ -2150,7 +2161,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Web\App\images\" />
     <Folder Include="Web\App\libs\closure-library\.git\objects\info\" />
     <Folder Include="Web\App\libs\closure-library\.git\refs\tags\" />
     <Folder Include="Web\App\partials\widgets\my-breadcrumbs\" />

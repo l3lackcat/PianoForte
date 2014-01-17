@@ -24,10 +24,10 @@
 	}
 		
 	.left-menu {
-		width: 100%;
-		height: calc(~'100% - 32px');
-		background-color: #F1F0EF;
+		background-color: transparent;
 		font-family: inherit;
+		height: calc(~'100% - 32px');
+		width: 100%;
 
 		ul {
 			font-family: inherit;
@@ -39,14 +39,13 @@
 					display: block;
 					padding-bottom: 2px;
 					font-family: inherit;
-					font-size: 16px;
-					color: #4D4C48;
+					font-size: 16px;					
+					color: #A3A3A1;
 					text-decoration: none;
 
 					div {	
-						background-color: #F1F0EF;
-									
 						.icon {
+							background-repeat: no-repeat;
 							float: left;
 							width: 32px;
 							height: 32px;						
@@ -57,48 +56,44 @@
 							padding: 14px 0;
 						}														
 					}
-
-					&:hover {
-						cursor: pointer;
-					}
 				}					
 
-				&.teacher {
-					a {
-						background-color: #53AC9C;
-					}					
-				}
-					
-				&.student {
-					a {
-						background-color: #E36D64;
-					}
-				}
-					
-				&.course {
-					a {
-						background-color: #53A5C7;
-					}
-				}
-					
-				&.book {
-					a {
-						background-color: #F8E0A1;
-					}
-				}
-					
-				&.cd {
-					a {
-						background-color: #4D626F;
-					}
-				}
+				&.teacher .icon { background-image: url('../images/icons/left_menu_teachers_bw.png'); }
+				&.student .icon { background-image: url('../images/icons/left_menu_students_bw.png'); }
+				&.course .icon { background-image: url('../images/icons/left_menu_courses_bw.png'); }
+				&.book .icon { background-image: url('../images/icons/left_menu_books_bw.png'); }
+				&.cd .icon { background-image: url('../images/icons/left_menu_cds_bw.png'); }
 
 				&.active {
 					a {
+						color: #4D4C48;
+
 						div {
 							background-color: #F8F7F4;
-						}	
-					}					
+						}
+					}
+
+					&.teacher a { background-color: #53AC9C; }
+					&.student a { background-color: #E36D64; }
+					&.course a { background-color: #53A5C7; }
+					&.book a { background-color: #F8E0A1; }
+					&.cd a { background-color: #4D626F; }
+
+					&.teacher .icon { background-image: url('../images/icons/left_menu_teachers.png'); }
+					&.student .icon { background-image: url('../images/icons/left_menu_students.png'); }
+					&.course .icon { background-image: url('../images/icons/left_menu_courses.png'); }
+					&.book .icon { background-image: url('../images/icons/left_menu_books.png'); }
+					&.cd .icon { background-image: url('../images/icons/left_menu_cds.png'); }
+				}
+
+				&:hover {
+					cursor: pointer;
+
+					&.teacher .icon { background-image: url('../images/icons/left_menu_teachers.png'); }
+					&.student .icon { background-image: url('../images/icons/left_menu_students.png'); }
+					&.course .icon { background-image: url('../images/icons/left_menu_courses.png'); }
+					&.book .icon { background-image: url('../images/icons/left_menu_books.png'); }
+					&.cd .icon { background-image: url('../images/icons/left_menu_cds.png'); }
 				}
 			}
 		}
