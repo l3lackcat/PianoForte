@@ -8,22 +8,10 @@ PianoForte.Directives.Widgets.MyBox.MyBoxDirective = function () {
         transclude: true,
         scope: {
             title: '@',
-            editable: '@'
+            editable: '@',
+            edit: '&'
         },
         controller: 'MyBoxController',
         templateUrl: 'partials/widgets/my-box/my-box.htm'
     };
 }
-
-//PianoForteApp.directive('myBox', function () {
-//    return {
-//        restrict: 'E',
-//        transclude: true,
-//        scope: {
-//            title: '@',
-//            editable: '@'
-//        },
-//        controller: 'MyBoxController',
-//        templateUrl: 'partials/widgets/my-box/my-box.htm'
-//    };
-//});

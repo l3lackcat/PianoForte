@@ -65,6 +65,7 @@
     <Content Include="Web\App\fonts\thaisansneue\thaisansneue-semibold-webfont.svg" />
     <Content Include="Web\App\fonts\thaisansneue\thaisansneue-ultrabold-webfont.svg" />
     <Content Include="Web\App\fonts\thaisansneue\thaisansneue-ultralight-webfont.svg" />
+    <Content Include="Web\App\images\icons\close_dialogbox.png" />
     <Content Include="Web\App\images\icons\left_menu_books.png" />
     <Content Include="Web\App\images\icons\left_menu_books_bw.png" />
     <Content Include="Web\App\images\icons\left_menu_cds.png" />
@@ -80,9 +81,11 @@
     <Content Include="Web\App\js\app.js" />
     <Content Include="Web\App\js\controllers\teachers\TeacherMainController.js" />
     <Content Include="Web\App\js\controllers\teachers\TeacherController.js" />
+    <Content Include="Web\App\js\controllers\widgets\my-dialog-box\MyDialogBoxController.js" />
     <Content Include="Web\App\js\controllers\widgets\my-box\MyBoxController.js" />
     <Content Include="Web\App\js\controllers\widgets\my-tabs\MyTabsController.js" />
     <Content Include="Web\App\js\directives\widgets\my-box\MyBoxDirective.js" />
+    <Content Include="Web\App\js\directives\widgets\my-dialog-box\MyDialogBoxDirective.js" />
     <Content Include="Web\App\js\directives\widgets\my-tabs\MyPaneDirective.js" />
     <Content Include="Web\App\js\directives\widgets\my-tabs\MyTabsDirective.js" />
     <Content Include="Web\App\js\enum.js" />
@@ -2013,6 +2016,7 @@
     </Content>
     <Content Include="Web\App\partials\teachers\teacher.htm" />
     <Content Include="Web\App\partials\widgets\my-box\my-box.htm" />
+    <Content Include="Web\App\partials\widgets\my-dialog-box\my-dialog-box.htm" />
     <Content Include="Web\App\partials\widgets\my-tabs\my-pane.htm" />
     <Content Include="Web\App\partials\widgets\my-tabs\my-tabs.htm" />
   </ItemGroup>
@@ -2163,7 +2167,6 @@
   <ItemGroup>
     <Folder Include="Web\App\libs\closure-library\.git\objects\info\" />
     <Folder Include="Web\App\libs\closure-library\.git\refs\tags\" />
-    <Folder Include="Web\App\partials\widgets\my-breadcrumbs\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\Absences.resx" />
@@ -2234,6 +2237,7 @@
     <None Include="Web\App\less\font.less" />
     <None Include="Web\App\less\mixins.less" />
     <None Include="Web\App\less\reset.less" />
+    <None Include="Web\App\less\widgets\my-dialog-box.less" />
     <None Include="Web\App\less\widgets\my-breadcrumbs.less" />
     <None Include="Web\App\less\widgets\my-box.less" />
     <None Include="Web\App\less\widgets\my-tabs.less" />

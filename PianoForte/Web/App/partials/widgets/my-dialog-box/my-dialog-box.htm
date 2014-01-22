@@ -1,0 +1,13 @@
+﻿<div class="widget-dialog-box">
+    <div class="wrapper">
+        <div class="dialog-box-header">
+            <span>{{title}}</span>
+            <button class="btn-close" ng-click="onCancel()"></button>
+        </div>
+        <div class="dialog-box-content" ng-transclude></div>
+        <div class="dialog-box-footer">
+            <button class="btn btn-submit" ng-click="onSubmit">save</button>
+            <button class="btn btn-cancel" ng-click="onCancel">cancel</button>
+        </div>
+    </div>
+</div>

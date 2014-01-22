@@ -1,8 +1,13 @@
 ﻿<div id="teacher" ng-controller="TeacherController" ng-init="init()">
-    <my-tabs>
+    <my-tabs ng-show="!isReady">
+        <my-pane data-title="Loading">
+            Now Loading...
+        </my-pane>
+    </my-tabs>
+    <my-tabs ng-show="isReady">        
         <my-pane data-title="about">
             <div class="tube">
-                <my-box data-title="ข้อมูลทั่วไป" data-editable="false">
+                <my-box data-title="ข้อมูลทั่วไป" data-editable="true" data-edit="onStartEditGeneralInfo()">                    
                     <div class="rows">
                         <div class="row">
                             <div class="col col-label">
@@ -67,7 +72,7 @@
                         </div>
                     </div>            
                 </my-box>
-                <my-box data-title="ข้อมูลการติดต่อ" data-editable="false">
+                <my-box data-title="ข้อมูลการติดต่อ" data-editable="true" data-edit="onEditContactInfo()">
                     <div class="rows">
                         <div class="row" ng-repeat="contact in teacher.contacts.phones" ng-hide="teacher.contacts.phones.length == 0">
                             <input type="hidden" value="{{contact.id}}" />
@@ -119,4 +124,7 @@
         </my-pane>
         <my-pane data-title="calendar"></my-pane>
     </my-tabs>
+    <my-dialog-box data-title="teacher > edit > ข้อมูลทั่วไป" data-close="onFinishEditGeneralInfo()" ng-show="isOnEditGeneralInfo">
+        Test
+    </my-dialog-box>
 </div>

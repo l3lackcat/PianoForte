@@ -7,7 +7,8 @@ goog.require('PianoForte.Utilities.EnumConverter');
 goog.require('PianoForte.Services.Teachers.TeacherService');
 
 PianoForte.Controllers.Teachers.TeacherController = function ($scope, $routeParams, Enum, EnumConverter, TeacherService) {
-    $scope['isEditMode'] = false;
+    $scope['isReady'] = false;
+    $scope['isOnEditGeneralInfo'] = false;
     $scope['teacher'] = {
         id: {
             label: 'รหัสประจำตัว',
@@ -40,6 +41,7 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $routePara
     };
 
     $scope.init = function () {
+        $scope['isReady'] = false;
         $scope.requestTeacherInfoById($routeParams.teacherId);
     };
 
@@ -50,41 +52,53 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $routePara
     $scope.onSuccessReceiveTeacherInfoById = function (data, status, headers, config) {
         var tempTeacher = data.d;
 
-        console.log(tempTeacher);
+        if (tempTeacher !== null) {
+            $scope['teacher']['id']['value'] = tempTeacher.Id;
+            $scope['teacher']['firstname']['value'] = tempTeacher.Firstname;
+            $scope['teacher']['lastname']['value'] = tempTeacher.Lastname;
+            $scope['teacher']['nickname']['value'] = tempTeacher.Nickname;
 
-        $scope['teacher']['id']['value'] = tempTeacher.Id;
-        $scope['teacher']['firstname']['value'] = tempTeacher.Firstname;
-        $scope['teacher']['lastname']['value'] = tempTeacher.Lastname;
-        $scope['teacher']['nickname']['value'] = tempTeacher.Nickname;
+            $scope['teacher']['status']['value']['key'] = tempTeacher.Status;
+            $scope['teacher']['status']['value']['displayString'] = EnumConverter.Status.toString(tempTeacher.Status);
+            $scope['teacher']['teachedCourses'] = tempTeacher.TeachedCourseList;
 
-        $scope['teacher']['status']['value']['key'] = tempTeacher.Status;
-        $scope['teacher']['status']['value']['displayString'] = EnumConverter.Status.toString(tempTeacher.Status);
-        $scope['teacher']['teachedCourses'] = tempTeacher.TeachedCourseList;
+            for (var i = 0; i < tempTeacher.ContactList.length; i++) {
+                var contact = tempTeacher.ContactList[i];
 
-        for (var i = 0; i < tempTeacher.ContactList.length; i++) {
-            var contact = tempTeacher.ContactList[i];
+                if (contact.Type === Enum.ContactType.Phone) {
+                    $scope['teacher']['contacts']['phones'].push({
+                        id: contact.Id,
+                        label: contact.Label,
+                        value: contact.Content
+                    });
+                }
 
-            if (contact.Type === Enum.ContactType.Phone) {
-                $scope['teacher']['contacts']['phones'].push({
-                    id: contact.Id,
-                    label: contact.Label,
-                    value: contact.Content
-                });
+                if (contact.Type === Enum.ContactType.Email) {
+                    $scope['teacher']['contacts']['emails'].push({
+                        id: contact.Id,
+                        label: contact.Label,
+                        value: contact.Content
+                    });
+                }
             }
 
-            if (contact.Type === Enum.ContactType.Email) {
-                $scope['teacher']['contacts']['emails'].push({
-                    id: contact.Id,
-                    label: contact.Label,
-                    value: contact.Content
-                });
-            }
+            $scope['isReady'] = true;
         }
-
-        console.log($scope['teacher']);
     };
 
     $scope.onErrorReceiveTeacherInfoById = function (data, status, headers, config) {
         console.log('onErrorReceiveTeacherInfoById');
+    };
+
+    $scope.onStartEditGeneralInfo = function () {
+        $scope['isOnEditGeneralInfo'] = true;
+    };
+
+    $scope.onFinishEditGeneralInfo = function () {
+        $scope['isOnEditGeneralInfo'] = false;
+    };
+
+    $scope.onEditContactInfo = function () {
+        alert('onEditContactInfo');
     };
 }
