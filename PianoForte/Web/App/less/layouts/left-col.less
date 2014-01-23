@@ -62,7 +62,29 @@
 				&.student .icon { background-image: url('../images/icons/left_menu_students_bw.png'); }
 				&.course .icon { background-image: url('../images/icons/left_menu_courses_bw.png'); }
 				&.book .icon { background-image: url('../images/icons/left_menu_books_bw.png'); }
-				&.cd .icon { background-image: url('../images/icons/left_menu_cds_bw.png'); }
+				&.cd .icon { background-image: url('../images/icons/left_menu_cds_bw.png'); }				
+
+				&:hover {
+					cursor: pointer;
+
+					a {
+						div {
+							background-color: #4E4C48;
+						}
+					}
+
+					&.teacher a { background-color: @teachersThemeColor; }
+					&.student a { background-color: @studentsThemeColor; }
+					&.course a { background-color: @coursesThemeColor; }
+					&.book a { background-color: @booksThemeColor; }
+					&.cd a { background-color: @cdsThemeColor; }
+
+					&.teacher .icon { background-image: url('../images/icons/left_menu_teachers.png'); }
+					&.student .icon { background-image: url('../images/icons/left_menu_students.png'); }
+					&.course .icon { background-image: url('../images/icons/left_menu_courses.png'); }
+					&.book .icon { background-image: url('../images/icons/left_menu_books.png'); }
+					&.cd .icon { background-image: url('../images/icons/left_menu_cds.png'); }
+				}
 
 				&.active {
 					a {
@@ -73,21 +95,11 @@
 						}
 					}
 
-					&.teacher a { background-color: #53AC9C; }
-					&.student a { background-color: #E36D64; }
-					&.course a { background-color: #53A5C7; }
-					&.book a { background-color: #F8E0A1; }
-					&.cd a { background-color: #4D626F; }
-
-					&.teacher .icon { background-image: url('../images/icons/left_menu_teachers.png'); }
-					&.student .icon { background-image: url('../images/icons/left_menu_students.png'); }
-					&.course .icon { background-image: url('../images/icons/left_menu_courses.png'); }
-					&.book .icon { background-image: url('../images/icons/left_menu_books.png'); }
-					&.cd .icon { background-image: url('../images/icons/left_menu_cds.png'); }
-				}
-
-				&:hover {
-					cursor: pointer;
+					&.teacher a { background-color: @teachersThemeColor; }
+					&.student a { background-color: @studentsThemeColor; }
+					&.course a { background-color: @coursesThemeColor; }
+					&.book a { background-color: @booksThemeColor; }
+					&.cd a { background-color: @cdsThemeColor; }
 
 					&.teacher .icon { background-image: url('../images/icons/left_menu_teachers.png'); }
 					&.student .icon { background-image: url('../images/icons/left_menu_students.png'); }

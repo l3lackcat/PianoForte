@@ -79,11 +79,13 @@
     <Content Include="Web\App\images\logo\logo.png" />
     <Content Include="Web\App\index.htm" />
     <Content Include="Web\App\js\app.js" />
+    <Content Include="Web\App\js\controllers\layouts\LeftMenuController.js" />
     <Content Include="Web\App\js\controllers\teachers\TeacherMainController.js" />
     <Content Include="Web\App\js\controllers\teachers\TeacherController.js" />
     <Content Include="Web\App\js\controllers\widgets\my-dialog-box\MyDialogBoxController.js" />
     <Content Include="Web\App\js\controllers\widgets\my-box\MyBoxController.js" />
     <Content Include="Web\App\js\controllers\widgets\my-tabs\MyTabsController.js" />
+    <Content Include="Web\App\js\directives\layouts\LeftMenuDirective.js" />
     <Content Include="Web\App\js\directives\widgets\my-box\MyBoxDirective.js" />
     <Content Include="Web\App\js\directives\widgets\my-dialog-box\MyDialogBoxDirective.js" />
     <Content Include="Web\App\js\directives\widgets\my-tabs\MyPaneDirective.js" />
