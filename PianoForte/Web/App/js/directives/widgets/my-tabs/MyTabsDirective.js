@@ -11,13 +11,3 @@ PianoForte.Directives.Widgets.MyTabs.MyTabsDirective = function () {
         templateUrl: 'partials/widgets/my-tabs/my-tabs.htm'
     };
 }
-
-//PianoForteApp.directive('myTabs', function () {
-//    return {
-//        restrict: 'E',
-//        transclude: true,
-//        scope: {},
-//        controller: 'MyTabsController',
-//        templateUrl: 'partials/widgets/my-tabs/my-tabs.htm'
-//    };
-//});
