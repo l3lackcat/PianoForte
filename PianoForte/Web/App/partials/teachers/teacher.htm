@@ -17,7 +17,7 @@
                                 <input type="text" value=":" ng-disabled="true" />
                             </div>
                             <div class="col col-value">
-                                <input type="text" value="{{teacher.id.value}}" ng-disabled="!isEditMode" />
+                                <input type="text" value="{{teacher.id.value}}" ng-disabled="true" />
                             </div>
                             <div class="clear-fix"></div>
                         </div>
@@ -29,7 +29,7 @@
                                 <input type="text" value=":" ng-disabled="true" />
                             </div>
                             <div class="col col-value">
-                                <input type="text" value="{{teacher.firstname.value}}" ng-disabled="!isEditMode" />
+                                <input type="text" value="{{teacher.firstname.value}}" ng-disabled="true" />
                             </div>
                             <div class="clear-fix"></div>
                         </div>
@@ -41,7 +41,7 @@
                                 <input type="text" value=":" ng-disabled="true" />
                             </div>
                             <div class="col col-value">
-                                <input type="text" value="{{teacher.lastname.value}}" ng-disabled="!isEditMode" />
+                                <input type="text" value="{{teacher.lastname.value}}" ng-disabled="true" />
                             </div>
                             <div class="clear-fix"></div>
                         </div>
@@ -53,7 +53,7 @@
                                 <input type="text" value=":" ng-disabled="true" />
                             </div>
                             <div class="col col-value">
-                                <input type="text" value="{{teacher.nickname.value}}" ng-disabled="!isEditMode" />
+                                <input type="text" value="{{teacher.nickname.value}}" ng-disabled="true" />
                             </div>
                             <div class="clear-fix"></div>
                         </div>
@@ -66,7 +66,7 @@
                             </div>
                             <div class="col col-value">
                                 <input type="hidden" />
-                                <input type="text" value="{{teacher.status.value.displayString}}" class="status-{{teacher.status.value.key}}" ng-disabled="!isEditMode" />
+                                <input type="text" value="{{teacher.status.value.displayString}}" class="status-{{teacher.status.value.key}}" ng-disabled="true" />
                             </div>
                             <div class="clear-fix"></div>
                         </div>
@@ -78,13 +78,13 @@
                             <input type="hidden" value="{{contact.id}}" />
                             <input type="hidden" value="{{contact.type}}" />
                             <div class="col col-label">
-                                <input type="text" value="{{contact.label}}" ng-disabled="!isEditMode" />                                
+                                <input type="text" value="{{contact.label}}" ng-disabled="true" />                                
                             </div>
                             <div class="col col-colon">
                                 <input type="text" value=":" ng-disabled="true" />
                             </div>
                             <div class="col col-value">
-                                <input type="text" value="{{contact.value}}" ng-disabled="!isEditMode" />                                
+                                <input type="text" value="{{contact.value}}" ng-disabled="true" />                                
                             </div>
                             <div class="clear-fix"></div>
                         </div>
@@ -92,13 +92,13 @@
                             <input type="hidden" value="{{contact.id}}" />
                             <input type="hidden" value="{{contact.type}}" />
                             <div class="col col-label">
-                                <input type="text" value="{{contact.label}}" ng-disabled="!isEditMode" />                                
+                                <input type="text" value="{{contact.label}}" ng-disabled="true" />                                
                             </div>
                             <div class="col col-colon">
                                 <input type="text" value=":" ng-disabled="true" />
                             </div>
                             <div class="col col-value">
-                                <input type="text" value="{{contact.value}}" ng-disabled="!isEditMode" />                                
+                                <input type="text" value="{{contact.value}}" ng-disabled="true" />                                
                             </div>
                             <div class="clear-fix"></div>
                         </div>
@@ -125,6 +125,55 @@
         <my-pane data-title="calendar"></my-pane>
     </my-tabs>
     <my-dialog-box data-title="teacher > edit > ข้อมูลทั่วไป" data-close="onFinishEditGeneralInfo()" ng-show="isOnEditGeneralInfo">
-        Test
+        <div class="wrapper">
+            <div class="rows">
+                <div class="row">
+                    <div class="col col-label">
+                        <input type="text" value="{{tempTeacher.id.label}}" ng-disabled="true" />
+                    </div>
+                    <div class="col col-value">
+                        <input type="text" value="{{tempTeacher.id.value}}" ng-disabled="true" />
+                    </div>
+                    <div class="clear-fix"></div>
+                </div>
+                <div class="row">
+                    <div class="col col-label">
+                        <input type="text" value="{{tempTeacher.firstname.label}}" ng-disabled="true" />
+                    </div>
+                    <div class="col col-value">
+                        <input type="text" value="{{tempTeacher.firstname.value}}" />
+                    </div>
+                    <div class="clear-fix"></div>
+                </div>
+                <div class="row">
+                    <div class="col col-label">
+                        <input type="text" value="{{tempTeacher.lastname.label}}" ng-disabled="true" />
+                    </div>
+                    <div class="col col-value">
+                        <input type="text" value="{{tempTeacher.lastname.value}}" />
+                    </div>
+                    <div class="clear-fix"></div>
+                </div>
+                <div class="row">
+                    <div class="col col-label">
+                        <input type="text" value="{{tempTeacher.nickname.label}}" ng-disabled="true" />
+                    </div>
+                    <div class="col col-value">
+                        <input type="text" value="{{tempTeacher.nickname.value}}" />
+                    </div>
+                    <div class="clear-fix"></div>
+                </div>
+                <div class="row">
+                    <div class="col col-label">
+                        <input type="text" value="{{tempTeacher.status.label}}" ng-disabled="true" />
+                    </div>
+                    <div class="col col-value">
+                        <input type="hidden" />
+                        <input type="text" value="{{tempTeacher.status.value.displayString}}" class="status-{{tempTeacher.status.value.key}}" ng-disabled="true" />
+                    </div>
+                    <div class="clear-fix"></div>
+                </div>
+            </div>        
+        </div>        
     </my-dialog-box>
 </div>

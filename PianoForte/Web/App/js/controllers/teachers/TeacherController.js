@@ -9,39 +9,42 @@ goog.require('PianoForte.Services.Teachers.TeacherService');
 PianoForte.Controllers.Teachers.TeacherController = function ($scope, $routeParams, Enum, EnumConverter, TeacherService) {
     $scope['isReady'] = false;
     $scope['isOnEditGeneralInfo'] = false;
-    $scope['teacher'] = {
-        id: {
-            label: 'รหัสประจำตัว',
-            value: ''
-        },
-        firstname: {
-            label: 'ชื่อ',
-            value: ''
-        },
-        lastname: {
-            label: 'นามสกุล',
-            value: ''
-        },
-        nickname: {
-            label: 'ชื่อเล่น',
-            value: ''
-        },
-        status: {
-            label: 'สถานะ',
-            value: {
-                key: '',
-                displayString: ''
-            }
-        },
-        contacts: {
-            phones: [],
-            emails: []
-        },
-        teachedCourses: []
-    };
+    $scope['teacher'] = {};
+    $scope['tempTeacher'] = null;
 
     $scope.init = function () {
         $scope['isReady'] = false;
+        $scope['teacher'] = {
+            id: {
+                label: 'รหัสประจำตัว',
+                value: ''
+            },
+            firstname: {
+                label: 'ชื่อ',
+                value: ''
+            },
+            lastname: {
+                label: 'นามสกุล',
+                value: ''
+            },
+            nickname: {
+                label: 'ชื่อเล่น',
+                value: ''
+            },
+            status: {
+                label: 'สถานะ',
+                value: {
+                    key: '',
+                    displayString: ''
+                }
+            },
+            contacts: {
+                phones: [],
+                emails: []
+            },
+            teachedCourses: []
+        };
+
         $scope.requestTeacherInfoById($routeParams.teacherId);
     };
 
@@ -91,10 +94,12 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $routePara
     };
 
     $scope.onStartEditGeneralInfo = function () {
-        $scope['isOnEditGeneralInfo'] = true;
+        $scope['tempTeacher'] = $scope['teacher'];
+        $scope['isOnEditGeneralInfo'] = true;        
     };
 
     $scope.onFinishEditGeneralInfo = function () {
+        $scope['tempTeacher'] = null;
         $scope['isOnEditGeneralInfo'] = false;
     };
 

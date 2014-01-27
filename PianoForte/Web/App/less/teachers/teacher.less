@@ -107,8 +107,88 @@
 				background-color: @teachersThemeColor; 
 			}
 
-			.dialog-box-content {
-				
+			.dialog-box-content {				
+				> .wrapper {
+					margin: 0 auto;
+					width: 380px;
+
+					.rows {					
+						.row {
+							margin-bottom: 3px;
+
+							&:last-child {
+								margin-bottom: 0;	
+							}
+
+							input[type="text"] {								
+								border: 0;
+								border-bottom: 1px solid #EBEAE8;
+								color: #636363;
+								font-family: @baseFontFamily;
+								font-size: 14px;
+								margin: 0;
+								padding: 0;
+								width: 100%;
+
+								&.no-data {
+									font-style: italic;
+									text-align: center;
+								}
+
+								&:disabled {
+									background-color: #FFF;
+								}
+							}
+
+							.col {
+								float: left;							
+
+								&.col-label {
+									margin-right: 20px;
+									width: 100px;									
+
+									input[type="text"] {
+										background-color: #EBEAE8;									
+										text-align: right;
+									}
+								}
+
+								&.col-value {
+									width: calc(~'100% - 146px');
+
+									input[type="text"] {	
+										background-color: #FFF;	
+										border-bottom-color: @teachersThemeColor;
+										padding: 0 5px; 							
+										text-align: left;
+										width: calc(~'100% - 10px');
+										
+										&:disabled {
+											background-color: #EBEAE8;
+											border-bottom: #EBEAE8;
+										}
+
+										&.status-1 {
+											color: #0F0;
+										}
+
+										&.status-2 {
+											color: 0FF;
+										}
+
+										&.status-4 {
+											color: #F00;
+										}
+									}
+								}
+
+								&.col-delete-button {
+									width: 26px;
+								}
+							}
+						}
+					}
+				}
 			}
 
 			.dialog-box-footer {

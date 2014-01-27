@@ -2262,7 +2262,6 @@
     <None Include="Web\App\less\mixins.less" />
     <None Include="Web\App\less\reset.less" />
     <None Include="Web\App\less\widgets\my-dialog-box.less" />
-    <None Include="Web\App\less\widgets\my-breadcrumbs.less" />
     <None Include="Web\App\less\widgets\my-box.less" />
     <None Include="Web\App\less\widgets\my-tabs.less" />
     <None Include="Web\App\libs\closure-library\.git\config" />
