@@ -14,4 +14,4 @@ PianoForte.Directives.Widgets.MyBox.MyBoxDirective = function () {
         controller: 'MyBoxController',
         templateUrl: 'partials/widgets/my-box/my-box.htm'
     };
-}
+};

@@ -14,4 +14,4 @@ PianoForte.Directives.Widgets.MyDialogBox.MyDialogBoxDirective = function () {
         controller: 'MyDialogBoxController',
         templateUrl: 'partials/widgets/my-dialog-box/my-dialog-box.htm'
     };
-}
+};

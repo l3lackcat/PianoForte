@@ -31,4 +31,4 @@ PianoForte.Enum = function () {
         'Phone': 1,
         'Email': 2
     };
-}
+};

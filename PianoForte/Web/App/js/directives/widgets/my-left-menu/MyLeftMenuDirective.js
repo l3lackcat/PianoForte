@@ -15,4 +15,4 @@ PianoForte.Directives.Widgets.MyLeftMenu.MyLeftMenuDirective = function () {
         controller: 'MyLeftMenuController',
         templateUrl: 'partials/widgets/my-left-menu/my-left-menu.htm'
     };
-}
+};

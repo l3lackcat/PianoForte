@@ -13,4 +13,4 @@ PianoForte.Services.Teachers.TeacherService = function ($http) {
             $http.post('/WebServices/TeacherWebService.asmx/getTeacherById', data).success(onSuccess).error(onError);
         }
     }
-}
+};

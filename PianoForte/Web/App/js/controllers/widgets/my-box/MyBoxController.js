@@ -16,4 +16,4 @@ PianoForte.Controllers.Widgets.MyBox.MyBoxController = function ($scope) {
     $scope.onEdit = function () {
         $scope.edit();
     };
-}
+};

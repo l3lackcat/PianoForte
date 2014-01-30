@@ -71,12 +71,12 @@ PianoForte.App.config(['$routeProvider', function ($routeProvider) {
         });
 }]);
 
-PianoForte.App.controller('BookMainController', ['$scope', PianoForte.Controllers.Books.BookMainController]);
-PianoForte.App.controller('CdMainController', ['$scope', PianoForte.Controllers.Cds.CdMainController]);
-PianoForte.App.controller('CourseMainController', ['$scope', PianoForte.Controllers.Courses.CourseMainController]);    
-PianoForte.App.controller('StudentMainController', ['$scope', PianoForte.Controllers.Students.StudentMainController]);
-PianoForte.App.controller('TeacherController', ['$scope', '$routeParams', 'Enum', 'EnumConverter', 'TeacherService', PianoForte.Controllers.Teachers.TeacherController]);
-PianoForte.App.controller('TeacherMainController', ['$scope', PianoForte.Controllers.Teachers.TeacherMainController]);
+PianoForte.App.controller('BookMainController', ['$scope', '$rootScope', PianoForte.Controllers.Books.BookMainController]);
+PianoForte.App.controller('CdMainController', ['$scope', '$rootScope', PianoForte.Controllers.Cds.CdMainController]);
+PianoForte.App.controller('CourseMainController', ['$scope', '$rootScope', PianoForte.Controllers.Courses.CourseMainController]);
+PianoForte.App.controller('StudentMainController', ['$scope', '$rootScope', PianoForte.Controllers.Students.StudentMainController]);
+PianoForte.App.controller('TeacherController', ['$scope', '$rootScope', '$routeParams', 'Enum', 'EnumConverter', 'TeacherService', PianoForte.Controllers.Teachers.TeacherController]);
+PianoForte.App.controller('TeacherMainController', ['$scope', '$rootScope', PianoForte.Controllers.Teachers.TeacherMainController]);
 PianoForte.App.controller('MyBoxController', ['$scope', PianoForte.Controllers.Widgets.MyBox.MyBoxController]);
 PianoForte.App.controller('MyDialogBoxController', ['$scope', PianoForte.Controllers.Widgets.MyDialogBox.MyDialogBoxController]);
 PianoForte.App.controller('MyLeftMenuController', ['$scope', PianoForte.Controllers.Widgets.MyLeftMenu.MyLeftMenuController]);

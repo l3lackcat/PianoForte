@@ -10,4 +10,4 @@ PianoForte.Directives.Widgets.MyTabs.MyTabsDirective = function () {
         controller: 'MyTabsController',
         templateUrl: 'partials/widgets/my-tabs/my-tabs.htm'
     };
-}
+};

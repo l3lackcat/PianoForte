@@ -36,6 +36,10 @@ PianoForte.Controllers.Widgets.MyLeftMenu.MyLeftMenuController = function ($scop
         }
     ];
 
+    $scope.$on('SelectMenuItem', function (scope, itemName) {
+        $scope.select(itemName);
+    } .bind(this), true);
+
     $scope.init = function () {
         for (var i = 0; i < $scope['menuItems'].length; i++) {
             $scope['menuItems'][i].className = $scope['menuItems'][i].name;
@@ -43,15 +47,17 @@ PianoForte.Controllers.Widgets.MyLeftMenu.MyLeftMenuController = function ($scop
 
             if ($scope.defaultMenu === $scope['menuItems'][i].name) {
                 $scope['menuItems'][i].className += ' active';
-            }            
+            }
         }
     };
 
-    $scope.select = function (item) {
+    $scope.select = function (itemName) {
         for (var i = 0; i < $scope['menuItems'].length; i++) {
             $scope['menuItems'][i].className = $scope['menuItems'][i].name;
-        }
 
-        item.className += ' active';
+            if ($scope['menuItems'][i].name === itemName) {
+                $scope['menuItems'][i].className += ' active';
+            }
+        }
     };
-}
+};

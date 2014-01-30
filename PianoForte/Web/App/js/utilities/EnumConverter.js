@@ -44,4 +44,4 @@ PianoForte.Utilities.EnumConverter = function (Enum) {
             }
         }
     };
-}
+};

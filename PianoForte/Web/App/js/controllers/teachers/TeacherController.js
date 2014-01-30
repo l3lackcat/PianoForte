@@ -6,13 +6,15 @@ goog.require('PianoForte.Enum');
 goog.require('PianoForte.Utilities.EnumConverter');
 goog.require('PianoForte.Services.Teachers.TeacherService');
 
-PianoForte.Controllers.Teachers.TeacherController = function ($scope, $routeParams, Enum, EnumConverter, TeacherService) {
+PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope, $routeParams, Enum, EnumConverter, TeacherService) {
     $scope['isReady'] = false;
     $scope['isOnEditGeneralInfo'] = false;
     $scope['teacher'] = {};
     $scope['tempTeacher'] = null;
 
     $scope.init = function () {
+        $rootScope.$broadcast('SelectMenuItem', 'teachers');
+
         $scope['isReady'] = false;
         $scope['teacher'] = {
             id: {
@@ -95,7 +97,7 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $routePara
 
     $scope.onStartEditGeneralInfo = function () {
         $scope['tempTeacher'] = $scope['teacher'];
-        $scope['isOnEditGeneralInfo'] = true;        
+        $scope['isOnEditGeneralInfo'] = true;
     };
 
     $scope.onFinishEditGeneralInfo = function () {
@@ -106,4 +108,4 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $routePara
     $scope.onEditContactInfo = function () {
         alert('onEditContactInfo');
     };
-}
+};
