@@ -7,66 +7,51 @@
     <my-tabs ng-show="isReady">        
         <my-pane data-title="about">
             <div class="tube">
-                <my-box data-title="ข้อมูลทั่วไป" data-editable="true" data-edit="onStartEditGeneralInfo()">                    
+                <my-box data-title="ข้อมูลทั่วไป" data-editable="true" data-edit="onEditGeneralInfo()">                    
                     <div class="rows">
                         <div class="row">
                             <div class="col col-label">
-                                <input type="text" value="{{teacher.id.label}}" ng-disabled="true" />
-                            </div>
-                            <div class="col col-colon">
-                                <input type="text" value=":" ng-disabled="true" />
+                                <label>{{teacher.id.label}} :</label>
                             </div>
                             <div class="col col-value">
-                                <input type="text" value="{{teacher.id.value}}" ng-disabled="true" />
+                                <input type="text" ng-model="teacher.id.value" ng-disabled="true" />
                             </div>
                             <div class="clear-fix"></div>
                         </div>
                         <div class="row">
                             <div class="col col-label">
-                                <input type="text" value="{{teacher.firstname.label}}" ng-disabled="true" />
-                            </div>
-                            <div class="col col-colon">
-                                <input type="text" value=":" ng-disabled="true" />
+                                <label>{{teacher.firstname.label}} :</label>
                             </div>
                             <div class="col col-value">
-                                <input type="text" value="{{teacher.firstname.value}}" ng-disabled="true" />
+                                <input type="text" ng-model="teacher.firstname.value" ng-disabled="true" />
                             </div>
                             <div class="clear-fix"></div>
                         </div>
                         <div class="row">
                             <div class="col col-label">
-                                <input type="text" value="{{teacher.lastname.label}}" ng-disabled="true" />
-                            </div>
-                            <div class="col col-colon">
-                                <input type="text" value=":" ng-disabled="true" />
+                                <label>{{teacher.lastname.label}} :</label>
                             </div>
                             <div class="col col-value">
-                                <input type="text" value="{{teacher.lastname.value}}" ng-disabled="true" />
+                                <input type="text" ng-model="teacher.lastname.value" ng-disabled="true" />
                             </div>
                             <div class="clear-fix"></div>
                         </div>
                         <div class="row">
                             <div class="col col-label">
-                                <input type="text" value="{{teacher.nickname.label}}" ng-disabled="true" />
-                            </div>
-                            <div class="col col-colon">
-                                <input type="text" value=":" ng-disabled="true" />
+                                <label>{{teacher.nickname.label}} :</label>
                             </div>
                             <div class="col col-value">
-                                <input type="text" value="{{teacher.nickname.value}}" ng-disabled="true" />
+                                <input type="text" ng-model="teacher.nickname.value" ng-disabled="true" />
                             </div>
                             <div class="clear-fix"></div>
                         </div>
                         <div class="row">
                             <div class="col col-label">
-                                <input type="text" value="{{teacher.status.label}}" ng-disabled="true" />
-                            </div>
-                            <div class="col col-colon">
-                                <input type="text" value=":" ng-disabled="true" />
+                                <label>{{teacher.status.label}} :</label>
                             </div>
                             <div class="col col-value">
                                 <input type="hidden" />
-                                <input type="text" value="{{teacher.status.value.displayString}}" class="status-{{teacher.status.value.key}}" ng-disabled="true" />
+                                <input type="text" ng-model="teacher.status.value.displayString" class="status-{{teacher.status.value.key}}" ng-disabled="true" />
                             </div>
                             <div class="clear-fix"></div>
                         </div>
@@ -74,31 +59,25 @@
                 </my-box>
                 <my-box data-title="ข้อมูลการติดต่อ" data-editable="true" data-edit="onEditContactInfo()">
                     <div class="rows">
-                        <div class="row" ng-repeat="contact in teacher.contacts.phones" ng-hide="teacher.contacts.phones.length == 0">
-                            <input type="hidden" value="{{contact.id}}" />
-                            <input type="hidden" value="{{contact.type}}" />
-                            <div class="col col-label">
-                                <input type="text" value="{{contact.label}}" ng-disabled="true" />                                
-                            </div>
-                            <div class="col col-colon">
-                                <input type="text" value=":" ng-disabled="true" />
+                        <div class="row" ng-repeat="contact in teacher.contacts.phones">
+                            <input type="hidden" ng-model="contact.id" />
+                            <input type="hidden" ng-model="contact.type" />
+                            <div class="col col-label"> 
+                                <label>{{contact.label}} :</label>
                             </div>
                             <div class="col col-value">
-                                <input type="text" value="{{contact.value}}" ng-disabled="true" />                                
+                                <input type="text" ng-model="contact.value" ng-disabled="true" />                                
                             </div>
                             <div class="clear-fix"></div>
                         </div>
-                        <div class="row" ng-repeat="contact in teacher.contacts.emails" ng-hide="teacher.contacts.emails.length == 0">
-                            <input type="hidden" value="{{contact.id}}" />
-                            <input type="hidden" value="{{contact.type}}" />
+                        <div class="row" ng-repeat="contact in teacher.contacts.emails">
+                            <input type="hidden" ng-model="contact.id" />
+                            <input type="hidden" ng-model="contact.type" />
                             <div class="col col-label">
-                                <input type="text" value="{{contact.label}}" ng-disabled="true" />                                
-                            </div>
-                            <div class="col col-colon">
-                                <input type="text" value=":" ng-disabled="true" />
+                                <label>{{contact.label}} :</label>
                             </div>
                             <div class="col col-value">
-                                <input type="text" value="{{contact.value}}" ng-disabled="true" />                                
+                                <input type="text" ng-model="contact.value" ng-disabled="true" />                                
                             </div>
                             <div class="clear-fix"></div>
                         </div>
@@ -111,8 +90,8 @@
             <div class="tube">
                 <my-box data-title="วิชาที่สอน" data-editable="false">
                     <div class="rows">
-                        <div class="row" ng-repeat="teachCourse in teacher.teachedCourses" ng-hide="teacher.teachedCourses.length == 0">
-                            <input type="text" value="{{teachCourse}}" ng-disabled="true" />
+                        <div class="row" ng-repeat="teachCourse in teacher.teachedCourses">
+                            <input type="text" ng-model="teachCourse" ng-disabled="true" />
                         </div>
                         <div class="row" ng-show="teacher.teachedCourses.length == 0">
                             <input type="text" value="*** ไม่มีข้อมูล ***" class="no-data" ng-disabled="true" />                            
@@ -124,54 +103,54 @@
         </my-pane>
         <my-pane data-title="calendar"></my-pane>
     </my-tabs>
-    <my-dialog-box data-title="teacher > edit > ข้อมูลทั่วไป" data-close="onFinishEditGeneralInfo()" ng-show="isOnEditGeneralInfo">
+    <my-dialog-box data-title="teacher > edit > ข้อมูลทั่วไป" data-submit="onSubmitEditGeneralInfo()" data-close="onCancelEditGeneralInfo()" ng-show="isOnEditGeneralInfo">
         <div class="wrapper">
             <div class="rows">
                 <div class="row">
                     <div class="col col-label">
-                        <input type="text" value="{{tempTeacher.id.label}}" ng-disabled="true" />
+                        <label><span ng-show="edittedGeneralInfo.id.isRequired" class="required">*</span>{{edittedGeneralInfo.id.label}}</label>
                     </div>
                     <div class="col col-value">
-                        <input type="text" value="{{tempTeacher.id.value}}" ng-disabled="true" />
+                        <input type="text" ng-model="edittedGeneralInfo.id.value" ng-disabled="true" />
                     </div>
                     <div class="clear-fix"></div>
                 </div>
                 <div class="row">
                     <div class="col col-label">
-                        <input type="text" value="{{tempTeacher.firstname.label}}" ng-disabled="true" />
+                        <label><span ng-show="edittedGeneralInfo.firstname.isRequired" class="required">*</span>{{edittedGeneralInfo.firstname.label}}</label>
                     </div>
                     <div class="col col-value">
-                        <input type="text" value="{{tempTeacher.firstname.value}}" />
-                        <label>*กรุณากรอกชื่อจริง</label>
+                        <input type="text" ng-model="edittedGeneralInfo.firstname.value" ng-disabled="isOnSaveEdittedGeneralInfo" />
+                        <label ng-hide="edittedGeneralInfo.firstname.isValid">*กรุณากรอกชื่อจริง</label>
                     </div>
                     <div class="clear-fix"></div>
                 </div>
                 <div class="row">
                     <div class="col col-label">
-                        <input type="text" value="{{tempTeacher.lastname.label}}" ng-disabled="true" />
+                        <label><span ng-show="edittedGeneralInfo.lastname.isRequired" class="required">*</span>{{edittedGeneralInfo.lastname.label}}</label>
                     </div>
                     <div class="col col-value">
-                        <input type="text" value="{{tempTeacher.lastname.value}}" />
-                        <label>*กรุณากรอกนามสกุล</label>
+                        <input type="text" ng-model="edittedGeneralInfo.lastname.value" ng-disabled="isOnSaveEdittedGeneralInfo" />
+                        <label ng-hide="edittedGeneralInfo.lastname.isValid">*กรุณากรอกนามสกุล</label>
                     </div>
                     <div class="clear-fix"></div>
                 </div>
                 <div class="row">
                     <div class="col col-label">
-                        <input type="text" value="{{tempTeacher.nickname.label}}" ng-disabled="true" />
+                        <label><span ng-show="edittedGeneralInfo.nickname.isRequired" class="required">*</span>{{edittedGeneralInfo.nickname.label}}</label>
                     </div>
                     <div class="col col-value">
-                        <input type="text" value="{{tempTeacher.nickname.value}}" />
+                        <input type="text" ng-model="edittedGeneralInfo.nickname.value" ng-disabled="isOnSaveEdittedGeneralInfo" />
                     </div>
                     <div class="clear-fix"></div>
                 </div>
                 <div class="row">
                     <div class="col col-label">
-                        <input type="text" value="{{tempTeacher.status.label}}" ng-disabled="true" />
+                        <label><span ng-show="edittedGeneralInfo.status.isRequired" class="required">*</span>{{edittedGeneralInfo.status.label}}</label>
                     </div>
                     <div class="col col-value">
                         <input type="hidden" />
-                        <input type="text" value="{{tempTeacher.status.value.displayString}}" class="status-{{tempTeacher.status.value.key}}" ng-disabled="true" />
+                        <input type="text" ng-model="edittedGeneralInfo.status.value.displayString" class="status-{{edittedGeneralInfo.status.value.key}}" ng-disabled="true" />
                     </div>
                     <div class="clear-fix"></div>
                 </div>

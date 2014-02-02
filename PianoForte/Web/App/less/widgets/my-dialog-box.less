@@ -27,6 +27,12 @@
 			font-size: 14px;
 			padding: 15px;
 
+			span {
+				&:hover {
+					cursor: default;
+				}
+			}
+
 			.dialog-close {
 				background-color: transparent;
 				background-image: url('../images/icons/dialog_close.png');
@@ -39,6 +45,10 @@
 				right: 17px;
 				top: 13px;
 				width: 10px;
+
+				&:hover {
+					cursor: pointer;
+				}
 			}
 		}
 
@@ -49,7 +59,7 @@
 
 		.dialog-box-footer {
 			font-family: inherit;
-			padding: 20px;
+			padding: 0 20px 20px 20px;
 			text-align: right;
 
 			.btn {
@@ -64,6 +74,10 @@
 				&.btn-cancel {
 					background-color: #F8F7F4;
 					color: #AAA9A8;
+				}
+
+				&:hover {
+					cursor: pointer;
 				}
 			}
 		}

@@ -44,5 +44,12 @@ namespace PianoForte.WebServices
 
             return teacher;
         }
+
+        [WebMethod]
+        public bool saveTeacherGeneralInfo(string databaseName, Teacher teacher)
+        {
+            System.Threading.Thread.Sleep(3000);
+            return TeacherService.updateTeacher(databaseName, teacher);
+        }
     }
 }
