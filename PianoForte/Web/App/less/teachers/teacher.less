@@ -37,54 +37,24 @@
 						color: inherit;
 						font-family: inherit;
 						font-size: inherit;
-						margin-bottom: 3px;
-
-						input[type="text"] {	
-							background-color: #FFF;	
-							border: 0;
-							color: inherit;
-							font-family: inherit;
-							font-size: inherit;
-							margin: 0;
-							padding: 0 5px; 							
-							text-align: left;
-							width: calc(~'100% - 10px');
-										
-							&:disabled { 
-								background-color: #FFF; 
-							}
-
-							&.no-data { 
-								text-align: center; 
-							}
-						}						
+						padding: 6px 0;					
 
 						.col {							
-							float: left;						
-							width: inherit;
+							float: left;													
 
 							&.col-label {									
 								margin-right: 5px;
-								padding: 6px 0;
 								text-align: right;
 								width: 100px;
-
-								label {										
-									.required {
-										color: @teachersThemeColor;
-									}
-								}
 							}
 
 							&.col-value {
 								width: calc(~'100% - 105px');
-
-								input[type="text"] {	
-									&.status-1 { color: #0F0; }
-									&.status-2 { color: #0FF; }
-									&.status-4 { color: #F00; }									
-								}
 							}
+						}
+
+						&.no-data { 
+							text-align: center; 
 						}
 
 						&:last-child {
@@ -117,26 +87,8 @@
 							color: inherit;
 							font-family: inherit;
 							font-size: inherit;
-							margin-bottom: 3px;
+							margin-bottom: 5px;
 							width: inherit;							
-
-							input[type="text"] {	
-								background-color: #FFF;	
-								border: 0;
-								border-bottom: 1px solid @teachersThemeColor;
-								color: inherit;
-								font-family: inherit;
-								font-size: inherit;
-								margin: 0;
-								padding: 0 5px; 							
-								text-align: left;
-								width: calc(~'100% - 10px');
-										
-								&:disabled {
-									background-color: #EBEAE8;
-									border-bottom: #EBEAE8;
-								}
-							}
 
 							.col {
 								color: inherit;
@@ -160,12 +112,6 @@
 
 								&.col-value {
 									width: calc(~'100% - 146px');
-
-									input[type="text"] {	
-										&.status-1 { color: #0F0; }
-										&.status-2 { color: #0FF; }
-										&.status-4 { color: #F00; }
-									}
 
 									label {
 										display: block;

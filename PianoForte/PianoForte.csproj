@@ -87,12 +87,14 @@
     <Content Include="Web\App\js\controllers\courses\CourseController.js" />
     <Content Include="Web\App\js\controllers\students\StudentMainController.js" />
     <Content Include="Web\App\js\controllers\students\StudentController.js" />
+    <Content Include="Web\App\js\controllers\widgets\my-textbox\MyTextboxController.js" />
     <Content Include="Web\App\js\controllers\widgets\my-left-menu\MyLeftMenuController.js" />
     <Content Include="Web\App\js\controllers\teachers\TeacherMainController.js" />
     <Content Include="Web\App\js\controllers\teachers\TeacherController.js" />
     <Content Include="Web\App\js\controllers\widgets\my-dialog-box\MyDialogBoxController.js" />
     <Content Include="Web\App\js\controllers\widgets\my-box\MyBoxController.js" />
     <Content Include="Web\App\js\controllers\widgets\my-tabs\MyTabsController.js" />
+    <Content Include="Web\App\js\directives\widgets\my-textbox\MyTextboxDirective.js" />
     <Content Include="Web\App\js\directives\widgets\my-left-menu\MyLeftMenuDirective.js" />
     <Content Include="Web\App\js\directives\widgets\my-box\MyBoxDirective.js" />
     <Content Include="Web\App\js\directives\widgets\my-dialog-box\MyDialogBoxDirective.js" />
@@ -2019,6 +2021,7 @@
     <Content Include="Web\App\partials\cds\cd-main.htm" />
     <Content Include="Web\App\partials\courses\course-main.htm" />
     <Content Include="Web\App\partials\students\student-main.htm" />
+    <Content Include="Web\App\partials\widgets\my-textbox\my-textbox.htm" />
     <Content Include="Web\App\partials\widgets\my-left-menu\my-left-menu.htm" />
     <Content Include="Web\App\partials\main.htm" />
     <Content Include="Web\App\partials\teachers\teacher-main.htm" />
@@ -2252,6 +2255,7 @@
     <None Include="Web\App\less\students\student.less" />
     <None Include="Web\App\less\layouts\content.less" />
     <None Include="Web\App\less\layouts\content-col.less" />
+    <None Include="Web\App\less\widgets\my-textbox.less" />
     <None Include="Web\App\less\widgets\my-left-menu.less" />
     <None Include="Web\App\less\layouts\left-col.less" />
     <None Include="Web\App\less\layouts\header.less" />

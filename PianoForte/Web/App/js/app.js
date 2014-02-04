@@ -21,12 +21,14 @@ goog.require('PianoForte.Controllers.Widgets.MyBox.MyBoxController');
 goog.require('PianoForte.Controllers.Widgets.MyDialogBox.MyDialogBoxController');
 goog.require('PianoForte.Controllers.Widgets.MyLeftMenu.MyLeftMenuController');
 goog.require('PianoForte.Controllers.Widgets.MyTabs.MyTabsController');
+goog.require('PianoForte.Controllers.Widgets.MyTextbox.MyTextboxController');
 
 goog.require('PianoForte.Directives.Widgets.MyBox.MyBoxDirective');
 goog.require('PianoForte.Directives.Widgets.MyDialogBox.MyDialogBoxDirective');
 goog.require('PianoForte.Directives.Widgets.MyLeftMenu.MyLeftMenuDirective');
 goog.require('PianoForte.Directives.Widgets.MyTabs.MyPaneDirective');
 goog.require('PianoForte.Directives.Widgets.MyTabs.MyTabsDirective');
+goog.require('PianoForte.Directives.Widgets.MyTextbox.MyTextboxDirective');
 
 goog.require('PianoForte.Enum');
 
@@ -81,12 +83,14 @@ PianoForte.App.controller('MyBoxController', ['$scope', PianoForte.Controllers.W
 PianoForte.App.controller('MyDialogBoxController', ['$scope', PianoForte.Controllers.Widgets.MyDialogBox.MyDialogBoxController]);
 PianoForte.App.controller('MyLeftMenuController', ['$scope', PianoForte.Controllers.Widgets.MyLeftMenu.MyLeftMenuController]);
 PianoForte.App.controller('MyTabsController', ['$scope', PianoForte.Controllers.Widgets.MyTabs.MyTabsController]);
+PianoForte.App.controller('MyTextboxController', ['$scope', PianoForte.Controllers.Widgets.MyTextbox.MyTextboxController]);
 
 PianoForte.App.directive('myBox', PianoForte.Directives.Widgets.MyBox.MyBoxDirective);
 PianoForte.App.directive('myDialogBox', PianoForte.Directives.Widgets.MyDialogBox.MyDialogBoxDirective);
 PianoForte.App.directive('myLeftMenu', PianoForte.Directives.Widgets.MyLeftMenu.MyLeftMenuDirective);
 PianoForte.App.directive('myPane', PianoForte.Directives.Widgets.MyTabs.MyPaneDirective);
 PianoForte.App.directive('myTabs', PianoForte.Directives.Widgets.MyTabs.MyTabsDirective);
+PianoForte.App.directive('myTextbox', PianoForte.Directives.Widgets.MyTextbox.MyTextboxDirective);
 
 PianoForte.App.service('Enum', [PianoForte.Enum]);
 PianoForte.App.service('EnumConverter', ['Enum', PianoForte.Utilities.EnumConverter]);
