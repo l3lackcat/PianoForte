@@ -65,7 +65,12 @@
     <Content Include="Web\App\fonts\thaisansneue\thaisansneue-semibold-webfont.svg" />
     <Content Include="Web\App\fonts\thaisansneue\thaisansneue-ultrabold-webfont.svg" />
     <Content Include="Web\App\fonts\thaisansneue\thaisansneue-ultralight-webfont.svg" />
-    <Content Include="Web\App\images\icons\dialog_close.png" />
+    <Content Include="Web\App\images\icons\checked_10_gray.png" />
+    <Content Include="Web\App\images\icons\droptri_10_green.png" />
+    <Content Include="Web\App\images\icons\eyeglass_15_blue.png" />
+    <Content Include="Web\App\images\icons\eyeglass_15_green.png" />
+    <Content Include="Web\App\images\icons\eyeglass_15_red.png" />
+    <Content Include="Web\App\images\icons\eyeglass_15_yellow.png" />
     <Content Include="Web\App\images\icons\left_menu_books.png" />
     <Content Include="Web\App\images\icons\left_menu_books_bw.png" />
     <Content Include="Web\App\images\icons\left_menu_cds.png" />
@@ -76,6 +81,9 @@
     <Content Include="Web\App\images\icons\left_menu_students_bw.png" />
     <Content Include="Web\App\images\icons\left_menu_teachers.png" />
     <Content Include="Web\App\images\icons\left_menu_teachers_bw.png" />
+    <Content Include="Web\App\images\icons\trashcan_12_grey.png" />
+    <Content Include="Web\App\images\icons\x_close_10_gray.png" />
+    <Content Include="Web\App\images\icons\x_close_10_green.png" />
     <Content Include="Web\App\images\logo\logo.png" />
     <Content Include="Web\App\index.htm" />
     <Content Include="Web\App\js\app.js" />
