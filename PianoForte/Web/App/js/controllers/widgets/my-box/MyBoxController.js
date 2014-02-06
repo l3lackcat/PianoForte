@@ -1,8 +1,8 @@
 ﻿'use strict';
 
-goog.provide('PianoForte.Controllers.Widgets.MyBox.MyBoxController');
+goog.provide('PianoForte.Controllers.Widgets.MyBoxController');
 
-PianoForte.Controllers.Widgets.MyBox.MyBoxController = function ($scope) {
+PianoForte.Controllers.Widgets.MyBoxController = function ($scope) {
     $scope.getHeaderVisibility = function () {
         var isVisible = true;
 

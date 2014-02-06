@@ -1,8 +1,8 @@
 ﻿'use strict';
 
-goog.provide('PianoForte.Services.Teachers.TeacherService');
+goog.provide('PianoForte.Services.TeacherService');
 
-PianoForte.Services.Teachers.TeacherService = function ($http) {
+PianoForte.Services.TeacherService = function ($http) {
     return {
         getTeacherInfoById: function (teacherId, onSuccess, onError) {
             var data = {

@@ -1,8 +1,8 @@
 ﻿'use strict';
 
-goog.provide('PianoForte.Controllers.Widgets.MyTextbox.MyTextboxController');
+goog.provide('PianoForte.Controllers.Widgets.MyTextboxController');
 
-PianoForte.Controllers.Widgets.MyTextbox.MyTextboxController = function ($scope) {
+PianoForte.Controllers.Widgets.MyTextboxController = function ($scope) {
     var textboxElement = null;
     var buttonElement = null;
 

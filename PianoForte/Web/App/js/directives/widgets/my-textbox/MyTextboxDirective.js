@@ -1,8 +1,8 @@
 ﻿'use strict';
 
-goog.provide('PianoForte.Directives.Widgets.MyTextbox.MyTextboxDirective');
+goog.provide('PianoForte.Directives.Widgets.MyTextboxDirective');
 
-PianoForte.Directives.Widgets.MyTextbox.MyTextboxDirective = function () {
+PianoForte.Directives.Widgets.MyTextboxDirective = function () {
     return {
         restrict: 'E',
         replace: true,

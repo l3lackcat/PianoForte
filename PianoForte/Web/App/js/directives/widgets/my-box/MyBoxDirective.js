@@ -1,8 +1,8 @@
 ﻿'use strict';
 
-goog.provide('PianoForte.Directives.Widgets.MyBox.MyBoxDirective');
+goog.provide('PianoForte.Directives.Widgets.MyBoxDirective');
 
-PianoForte.Directives.Widgets.MyBox.MyBoxDirective = function () {
+PianoForte.Directives.Widgets.MyBoxDirective = function () {
     return {
         restrict: 'E',
         transclude: true,

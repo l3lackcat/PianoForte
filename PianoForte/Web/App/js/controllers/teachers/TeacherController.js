@@ -2,9 +2,9 @@
 
 goog.provide('PianoForte.Controllers.Teachers.TeacherController');
 
-goog.require('PianoForte.Enum');
-goog.require('PianoForte.Utilities.EnumConverter');
-goog.require('PianoForte.Services.Teachers.TeacherService');
+//goog.require('PianoForte.Enum');
+//goog.require('PianoForte.Utilities.EnumConverter');
+//goog.require('PianoForte.Services.Teachers.TeacherService');
 
 PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope, $routeParams, Enum, EnumConverter, TeacherService) {
     $scope['isReady'] = false;

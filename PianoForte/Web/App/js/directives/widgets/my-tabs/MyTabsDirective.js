@@ -1,8 +1,8 @@
 ﻿'use strict';
 
-goog.provide('PianoForte.Directives.Widgets.MyTabs.MyTabsDirective');
+goog.provide('PianoForte.Directives.Widgets.MyTabsDirective');
 
-PianoForte.Directives.Widgets.MyTabs.MyTabsDirective = function () {
+PianoForte.Directives.Widgets.MyTabsDirective = function () {
     return {
         restrict: 'E',
         transclude: true,

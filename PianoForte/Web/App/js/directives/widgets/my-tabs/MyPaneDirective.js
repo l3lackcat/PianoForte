@@ -1,8 +1,8 @@
 ﻿'use strict';
 
-goog.provide('PianoForte.Directives.Widgets.MyTabs.MyPaneDirective');
+goog.provide('PianoForte.Directives.Widgets.MyPaneDirective');
 
-PianoForte.Directives.Widgets.MyTabs.MyPaneDirective = function () {
+PianoForte.Directives.Widgets.MyPaneDirective = function () {
     return {
         require: '^myTabs',
         restrict: 'E',

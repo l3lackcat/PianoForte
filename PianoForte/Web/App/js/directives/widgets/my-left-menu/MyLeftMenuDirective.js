@@ -1,8 +1,8 @@
 ﻿'use strict';
 
-goog.provide('PianoForte.Directives.Widgets.MyLeftMenu.MyLeftMenuDirective');
+goog.provide('PianoForte.Directives.Widgets.MyLeftMenuDirective');
 
-PianoForte.Directives.Widgets.MyLeftMenu.MyLeftMenuDirective = function () {
+PianoForte.Directives.Widgets.MyLeftMenuDirective = function () {
     return {
         restrict: 'E',
         transclude: true,

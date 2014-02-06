@@ -1,8 +1,8 @@
 ﻿'use strict';
 
-goog.provide('PianoForte.Directives.Widgets.MyDialogBox.MyDialogBoxDirective');
+goog.provide('PianoForte.Directives.Widgets.MyDialogBoxDirective');
 
-PianoForte.Directives.Widgets.MyDialogBox.MyDialogBoxDirective = function () {
+PianoForte.Directives.Widgets.MyDialogBoxDirective = function () {
     return {
         restrict: 'E',
         transclude: true,

@@ -1,8 +1,8 @@
 ﻿'use strict';
 
-goog.provide('PianoForte.Controllers.Widgets.MyDialogBox.MyDialogBoxController');
+goog.provide('PianoForte.Controllers.Widgets.MyDialogBoxController');
 
-PianoForte.Controllers.Widgets.MyDialogBox.MyDialogBoxController = function ($scope) {
+PianoForte.Controllers.Widgets.MyDialogBoxController = function ($scope) {
     $scope.onSubmit = function () {
         $scope.submit();
     };

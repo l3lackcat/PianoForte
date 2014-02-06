@@ -1,8 +1,8 @@
 ﻿'use strict';
 
-goog.provide('PianoForte.Controllers.Widgets.MyLeftMenu.MyLeftMenuController');
+goog.provide('PianoForte.Controllers.Widgets.MyLeftMenuController');
 
-PianoForte.Controllers.Widgets.MyLeftMenu.MyLeftMenuController = function ($scope) {
+PianoForte.Controllers.Widgets.MyLeftMenuController = function ($scope) {
     $scope['menuItems'] = [
         {
             name: 'teachers',

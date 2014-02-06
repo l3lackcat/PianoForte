@@ -1,8 +1,8 @@
 ﻿'use strict';
 
-goog.provide('PianoForte.Controllers.Widgets.MyTabs.MyTabsController');
+goog.provide('PianoForte.Controllers.Widgets.MyTabsController');
 
-PianoForte.Controllers.Widgets.MyTabs.MyTabsController = function ($scope) {
+PianoForte.Controllers.Widgets.MyTabsController = function ($scope) {
     var panes = $scope.panes = [];
 
     $scope.select = function (pane) {

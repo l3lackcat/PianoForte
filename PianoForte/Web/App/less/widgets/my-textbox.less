@@ -10,19 +10,15 @@
 			font-family: inherit;
 			font-size: inherit;
 			margin: 0;
-			padding: 0 20px 0 5px;
+			padding: 2px 20px 2px 5px;
 			width: calc(~'100% - 25px');
-			
-			&:focus {
-				border-bottom-color: @teachersThemeColor;
-			}
 										
 			&:disabled { 
 				background-color: transparent; 
 			}
 		}
 
-		> button {	
+		> .btn-reset-text {	
 			background-color: transparent;					
 			background-image: url('../images/icons/x_close_10_green.png');
 			background-repeat: no-repeat;
@@ -39,17 +35,17 @@
 				cursor: pointer;
 			}
 		}
-	}
-	
-	&:hover {
+	}	
+}
+
+#teacher {
+	.widget-textbox {
 		> .wrapper {
 			> input[type="text"] {
-				border-bottom-color: @teachersThemeColor;
-
-				&:disabled {
-					border-bottom-color: transparent;
-				}
-			}				
+				&:focus { border-bottom-color: @teachersThemeColor; }
+				&:hover { border-bottom-color: @teachersThemeColor; }	
+				&:disabled { border-bottom-color: transparent; }	
+			}	
 		}
-	}		
+	}
 }
