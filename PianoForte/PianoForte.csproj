@@ -2025,6 +2025,11 @@
     <Content Include="Web\App\libs\closure-library\third_party\closure\goog\svgpan\svgpan.js" />
     <Content Include="Web\App\libs\closure\goog\base.js" />
     <Content Include="Web\App\libs\closure\goog\deps.js" />
+    <Content Include="Web\App\libs\jscrollpane\jquery.jscrollpane.css" />
+    <Content Include="Web\App\libs\jscrollpane\jquery.jscrollpane.js" />
+    <Content Include="Web\App\libs\jscrollpane\jquery.jscrollpane.min.js" />
+    <Content Include="Web\App\libs\jscrollpane\jquery.mousewheel.js" />
+    <Content Include="Web\App\libs\jscrollpane\mwheelIntent.js" />
     <Content Include="Web\App\libs\less\1.5.0\less-1.5.0.min.js" />
     <Content Include="Web\App\libs\underscore\1.5.2\underscore.min.js" />
     <Content Include="Web\App\partials\books\book-main.htm" />

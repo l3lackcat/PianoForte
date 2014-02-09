@@ -1,7 +1,7 @@
 ﻿<div id="teachers" ng-controller="TeacherMainController" ng-init="init()">
     <my-tabs>
         <my-pane data-title="dashboard">
-            <div class="tube-50-percent">
+            <div class="tube width-50-percent">
                 <my-box>                    
                     <ul class="widget-breadcrumb">
                         <li>teachers</li>
@@ -10,19 +10,19 @@
                     </ul>
                 </my-box>
             </div>
-            <div class="tube-50-percent">
-                <div class="tube-50-percent">
+            <div class="tube width-50-percent">
+                <div class="tube width-50-percent">
                     <select class="widget-dropdown" ng-model="currrentFilter" ng-options="tf.text for tf in teacherFilterList"></select>
                 </div>
-                <div class="tube-50-percent">
+                <div class="tube width-50-percent">
                     <my-search-box data-text="filterText" data-placeholder="'ค้นหาครู...'"></my-search-box>
                 </div>
             </div>
             <div class="clear-fix"></div>
-            <div class="tube-100-percent">
-                <my-box>
+            <div class="tube width-100-percent">
+                <my-box class="header">
                     <div class="rows">
-                        <div class="row header">
+                        <div class="row">
                             <div class="col col-name">ชื่อ - นามสกุล</div>
                             <div class="col col-nickname">ชื่อเล่น</div>
                             <div class="col col-phone">เบอร์โทรศัพท์</div>
@@ -32,10 +32,10 @@
                     </div>
                 </my-box>
             </div> 
-            <div class="tube-100-percent">
-                <my-box>
+            <div class="tube width-100-percent fix-height">
+                <my-box class="content">
                     <div class="rows">
-                        <div ng-repeat="teacher in teacherList" class="row content">
+                        <div ng-repeat="teacher in teacherList | orderBy:'name' | filter:filterText" class="row">
                             <div class="col col-name">{{teacher.name}}</div>
                             <div class="col col-nickname">{{teacher.nickname}}</div>
                             <div class="col col-phone">{{teacher.phoneNumber}}</div>
