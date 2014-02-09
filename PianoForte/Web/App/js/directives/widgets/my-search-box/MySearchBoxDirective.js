@@ -7,6 +7,7 @@ PianoForte.Directives.Widgets.MySearchBoxDirective = function () {
         restrict: 'E',
         replace: true,
         scope: {
+            text: '=',
             disabled: '=',
             width: '=',
             placeholder: '='

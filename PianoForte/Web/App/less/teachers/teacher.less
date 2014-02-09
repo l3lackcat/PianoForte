@@ -64,10 +64,21 @@
 
 	my-dialog-box {
 		.widget-dialog-box {
-			.dialog-box-content {				
+			.dialog-box-content {
+				> h4 {
+					color: @teachersThemeColor;
+					font-family: inherit;
+					font-size: 16px;
+					margin: 10px 0px 10px 100px;
+
+					&:first-child {
+						margin-top: 0;
+					}
+				}
+							
 				> .wrapper {
 					margin: 0 auto;
-					width: 380px;
+					width: 380px;				
 
 					.rows {
 						color: #636363;

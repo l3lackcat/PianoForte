@@ -15,7 +15,7 @@
                     <select class="widget-dropdown" ng-model="currrentFilter" ng-options="tf.text for tf in teacherFilterList"></select>
                 </div>
                 <div class="tube-50-percent">
-                    <my-search-box data-placeholder="'ค้นหาครู...'"></my-search-box>
+                    <my-search-box data-text="filterText" data-placeholder="'ค้นหาครู...'"></my-search-box>
                 </div>
             </div>
             <div class="clear-fix"></div>
@@ -23,7 +23,7 @@
                 <my-box>
                     <div class="rows">
                         <div class="row header">
-                            <div class="col col-name">ชื่อ-นามสกุล</div>
+                            <div class="col col-name">ชื่อ - นามสกุล</div>
                             <div class="col col-nickname">ชื่อเล่น</div>
                             <div class="col col-phone">เบอร์โทรศัพท์</div>
                             <div class="col col-view-icon">&nbsp;</div>
@@ -38,7 +38,7 @@
                         <div ng-repeat="teacher in teacherList" class="row content">
                             <div class="col col-name">{{teacher.name}}</div>
                             <div class="col col-nickname">{{teacher.nickname}}</div>
-                            <div class="col col-phone">{{teacher.phone}}</div>
+                            <div class="col col-phone">{{teacher.phoneNumber}}</div>
                             <div class="col col-view-icon"><a href="#/teachers/{{teacher.id}}">view</a></div>
                             <div class="clear-fix"></div>
                         </div>

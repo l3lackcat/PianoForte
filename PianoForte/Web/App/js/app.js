@@ -80,7 +80,7 @@ PianoForte.App.controller('CdMainController', ['$scope', '$rootScope', PianoFort
 PianoForte.App.controller('CourseMainController', ['$scope', '$rootScope', PianoForte.Controllers.Courses.CourseMainController]);
 PianoForte.App.controller('StudentMainController', ['$scope', '$rootScope', PianoForte.Controllers.Students.StudentMainController]);
 PianoForte.App.controller('TeacherController', ['$scope', '$rootScope', '$routeParams', 'Enum', 'EnumConverter', 'TeacherService', PianoForte.Controllers.Teachers.TeacherController]);
-PianoForte.App.controller('TeacherMainController', ['$scope', '$rootScope', PianoForte.Controllers.Teachers.TeacherMainController]);
+PianoForte.App.controller('TeacherMainController', ['$scope', '$rootScope', 'TeacherService', PianoForte.Controllers.Teachers.TeacherMainController]);
 PianoForte.App.controller('MyBoxController', ['$scope', PianoForte.Controllers.Widgets.MyBoxController]);
 PianoForte.App.controller('MyDialogBoxController', ['$scope', PianoForte.Controllers.Widgets.MyDialogBoxController]);
 PianoForte.App.controller('MyLeftMenuController', ['$scope', PianoForte.Controllers.Widgets.MyLeftMenuController]);

@@ -2,16 +2,17 @@
 
 goog.provide('PianoForte.Controllers.Teachers.TeacherController');
 
-//goog.require('PianoForte.Enum');
-//goog.require('PianoForte.Utilities.EnumConverter');
-//goog.require('PianoForte.Services.Teachers.TeacherService');
-
 PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope, $routeParams, Enum, EnumConverter, TeacherService) {
     $scope['isReady'] = false;
-    $scope['isOnEditGeneralInfo'] = false;
     $scope['teacher'] = null;
+
     $scope['edittedGeneralInfo'] = null;
+    $scope['isOnEditGeneralInfo'] = false;
     $scope['isOnSaveEdittedGeneralInfo'] = false;
+
+    $scope['edittedContactInfo'] = null;
+    $scope['isOnEditContactInfo'] = false;
+    $scope['isOnSaveEdittedContactInfo'] = false;
 
     $scope.init = function () {
         $rootScope.$broadcast('SelectMenuItem', 'teachers');
@@ -106,10 +107,6 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
         hideGeneralInfoDialogBox();
     };
 
-    $scope.onEditContactInfo = function () {
-        alert('onEditContactInfo');
-    };
-
     function hideGeneralInfoDialogBox() {
         $scope['edittedGeneralInfo'] = null;
         $scope['isOnEditGeneralInfo'] = false;
@@ -122,7 +119,7 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
             $scope['edittedGeneralInfo']['firstname']['isValid'] = false;
             isValid = false;
         } else {
-            $scope['edittedGeneralInfo']['firstname']['isValid'] = true;            
+            $scope['edittedGeneralInfo']['firstname']['isValid'] = true;
         }
 
         if ($scope['edittedGeneralInfo']['lastname']['value'] === '') {
@@ -147,39 +144,59 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
         return isChanged;
     };
 
+    $scope.onEditContactInfo = function () {
+        $scope['isOnEditContactInfo'] = true;
+    };
+
+    $scope.onSubmitEditContactInfo = function () {
+        //To do
+    };
+
+    $scope.onCancelEditContactInfo = function () {
+        hideContactInfoDialogBox();
+    };
+
+    function hideContactInfoDialogBox() {
+        $scope['edittedContactInfo'] = null;
+        $scope['isOnEditContactInfo'] = false;
+    };
+
     var onSuccessReceiveTeacherInfoById = function (data, status, headers, config) {
         var tempTeacher = data.d;
 
         if (tempTeacher !== null) {
-            $scope['teacher']['id']['value'] = tempTeacher['Id'];
-            $scope['teacher']['firstname']['value'] = tempTeacher['Firstname'];
-            $scope['teacher']['lastname']['value'] = tempTeacher['Lastname'];
-            $scope['teacher']['nickname']['value'] = tempTeacher['Nickname'];
+            $scope['teacher']['id']['value'] = tempTeacher['id'];
+            $scope['teacher']['firstname']['value'] = tempTeacher['firstname'];
+            $scope['teacher']['lastname']['value'] = tempTeacher['lastname'];
+            $scope['teacher']['nickname']['value'] = tempTeacher['nickname'];
+            $scope['teacher']['contacts']['phones'] = tempTeacher['phoneList'];
+            $scope['teacher']['contacts']['emails'] = tempTeacher['emailList'];
+            $scope['teacher']['teachedCourses'] = tempTeacher['teachedCourseList'];
 
-            $scope['teacher']['status']['value']['key'] = tempTeacher['Status'];
-            $scope['teacher']['status']['value']['displayString'] = EnumConverter['Status'].toString(tempTeacher['Status']);
-            $scope['teacher']['teachedCourses'] = tempTeacher['TeachedCourseList'];
+            $scope['teacher']['status']['value']['key'] = tempTeacher['status'];
+            $scope['teacher']['status']['value']['displayString'] = EnumConverter.Status.toString(tempTeacher['status']);
             
-            for (var i = 0; i < tempTeacher['ContactList'].length; i++) {
-                var contact = tempTeacher['ContactList'][i];
-                
-                if (contact['Type'] === Enum['ContactType']['Phone']) {
-                    $scope['teacher']['contacts']['phones'].push({
-                        'id': contact['Id'],
-                        'label': contact['Label'],
-                        'value': contact['Content']
-                    });
-                }
 
-                if (contact['Type'] === Enum['ContactType']['Email']) {
-                    $scope['teacher']['contacts']['emails'].push({
-                        'id': contact['Id'],
-                        'label': contact['Label'],
-                        'value': contact['Content']
-                    });
-                }
-            }
-            
+//            for (var i = 0; i < tempTeacher['ContactList'].length; i++) {
+//                var contact = tempTeacher['ContactList'][i];
+
+//                if (contact['Type'] === Enum['ContactType']['Phone']) {
+//                    $scope['teacher']['contacts']['phones'].push({
+//                        'id': contact['Id'],
+//                        'label': contact['Label'],
+//                        'value': contact['Content']
+//                    });
+//                }
+
+//                if (contact['Type'] === Enum['ContactType']['Email']) {
+//                    $scope['teacher']['contacts']['emails'].push({
+//                        'id': contact['Id'],
+//                        'label': contact['Label'],
+//                        'value': contact['Content']
+//                    });
+//                }
+//            }
+
             $scope['isReady'] = true;
         }
     };

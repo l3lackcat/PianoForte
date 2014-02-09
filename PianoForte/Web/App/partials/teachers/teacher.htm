@@ -111,4 +111,30 @@
             </div>        
         </div>        
     </my-dialog-box>
+    <my-dialog-box data-title="teacher > edit > ข้อมูลการติดต่อ" data-submit="onSubmitEditContactInfo()" data-close="onCancelEditContactInfo()" ng-show="isOnEditContactInfo">
+        <h4>เบอร์โทรศัพท์</h4>
+        <div class="wrapper">       
+            <div class="rows">
+                <div class="row" ng-repeat="contact in teacher.contacts.phones">
+                    <input type="hidden" ng-model="contact.id" />
+                    <input type="hidden" ng-model="contact.type" />
+                    <div class="col col-label">{{contact.label}} :</div>
+                    <div class="col col-value">{{contact.value}}</div>
+                    <div class="clear-fix"></div>
+                </div>
+            </div>
+        </div>
+        <h4>อีเมล์</h4>
+        <div class="wrapper">       
+            <div class="rows">
+                <div class="row" ng-repeat="contact in teacher.contacts.emails">
+                    <input type="hidden" ng-model="contact.id" />
+                    <input type="hidden" ng-model="contact.type" />
+                    <div class="col col-label">{{contact.label}} :</div>
+                    <div class="col col-value">{{contact.value}}</div>
+                    <div class="clear-fix"></div>
+                </div>
+            </div>
+        </div>
+    </my-dialog-box>
 </div>

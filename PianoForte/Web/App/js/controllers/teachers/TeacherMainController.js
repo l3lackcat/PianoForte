@@ -2,14 +2,9 @@
 
 goog.provide('PianoForte.Controllers.Teachers.TeacherMainController');
 
-PianoForte.Controllers.Teachers.TeacherMainController = function ($scope, $rootScope) {
-    $scope['teacherList'] = [
-        { id: '1001', name: 'AAA', nickname: 'AAA', phone: '089-999-9999' },
-        { id: '1002', name: 'AAA', nickname: 'AAA', phone: '089-999-9999' },
-        { id: '1003', name: 'AAA', nickname: 'AAA', phone: '089-999-9999' },
-        { id: '1004', name: 'AAA', nickname: 'AAA', phone: '089-999-9999' },
-        { id: '1005', name: 'AAA', nickname: 'AAA', phone: '089-999-9999' }
-    ];
+PianoForte.Controllers.Teachers.TeacherMainController = function ($scope, $rootScope, TeacherService) {
+    $scope['teacherList'] = [];
+    $scope['filterText'] = '';
     $scope['currrentFilter'] = null;
     $scope['teacherFilterList'] = [
         { text: 'ดูทั้งหมด' }
@@ -19,5 +14,21 @@ PianoForte.Controllers.Teachers.TeacherMainController = function ($scope, $rootS
         $rootScope.$broadcast('SelectMenuItem', 'teachers');
 
         $scope['currrentFilter'] = $scope['teacherFilterList'][0];
+
+        TeacherService.getTeacherList(onSuccessReceiveTeacherList, onErrorReceiveTeacherList);
+    };
+
+    $scope.$watch('filterText', function (newValue, oldValue) {
+        // To do
+    });
+
+    var onSuccessReceiveTeacherList = function (data, status, headers, config) {
+        if (data.d !== null) {
+            $scope['teacherList'] = data.d;
+        }
+    };
+
+    var onErrorReceiveTeacherList = function (data, status, headers, config) {
+        console.log(data);
     };
 };

@@ -4,6 +4,14 @@ goog.provide('PianoForte.Services.TeacherService');
 
 PianoForte.Services.TeacherService = function ($http) {
     return {
+        getTeacherList: function (onSuccess, onError) {
+            var data = {
+                'databaseName': 'pianoforte_b01'
+            };
+
+            $http.post('/WebServices/TeacherWebService.asmx/getTeacherList', data).success(onSuccess).error(onError);
+        },
+
         getTeacherInfoById: function (teacherId, onSuccess, onError) {
             var data = {
                 'databaseName': 'pianoforte_b01',

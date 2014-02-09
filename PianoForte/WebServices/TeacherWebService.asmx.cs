@@ -17,29 +17,93 @@ namespace PianoForte.WebServices
     public class TeacherWebService : System.Web.Services.WebService
     {
         [WebMethod]
-        public Teacher getTeacherById(string databaseName, int teacherId)
+        public List<Object> getTeacherList(string databaseName)
         {
+            List<Object> displayedTeacherList = new List<Object>();
+            List<Teacher> teacherList = TeacherService.getTeacherList(databaseName);
+            foreach(Teacher teacher in teacherList)
+            {
+                teacher.ContactList = TeacherContactService.getTeacherContactList(databaseName, teacher.Id, Status.ACTIVE);
+
+                string phoneNumber = "-";
+                foreach (TeacherContact contact in teacher.ContactList)
+                {
+                    if (contact.Type == ContactType.PHONE)
+                    {
+                        phoneNumber = contact.Content;
+                        break;
+                    }
+                }
+
+                displayedTeacherList.Add(new {
+                    id = teacher.Id,
+                    name = teacher.Firstname + " " + teacher.Lastname,
+                    nickname = teacher.Nickname,
+                    phoneNumber = phoneNumber
+                });
+            }
+
+            return displayedTeacherList;
+        }
+
+        [WebMethod]
+        public Object getTeacherById(string databaseName, int teacherId)
+        {
+            Object teacher = null;
+            List<Object> phoneList = new List<Object>();
+            List<Object> emailList = new List<Object>();
+
             //System.Threading.Thread.Sleep(3000);
 
-            Teacher teacher = TeacherService.getTeacher(databaseName, teacherId);
-            if (teacher != null)
-            {
+            Teacher tempTeacher = TeacherService.getTeacher(databaseName, teacherId);
+            if (tempTeacher != null)
+            {      
                 //Contact list
-                teacher.ContactList = TeacherContactService.getTeacherContactList(databaseName, teacherId, Status.ACTIVE);
+                tempTeacher.ContactList = TeacherContactService.getTeacherContactList(databaseName, tempTeacher.Id, Status.ACTIVE);
+                foreach(TeacherContact contact in tempTeacher.ContactList)
+                {
+                    if (contact.Type == ContactType.PHONE)
+                    {
+                        phoneList.Add(new { 
+                            id = contact.Id,
+                            label = contact.Label,
+                            value = contact.Content
+                        });
+                    }
+                    else if (contact.Type == ContactType.EMAIL)
+                    {
+                        emailList.Add(new {
+                            id = contact.Id,
+                            label = contact.Label,
+                            value = contact.Content
+                        });
+                    }
+                }
 
                 //Teached course list
-                List<int> teachedCourseIdList = TeachedCourseService.getTeachedCourseIdList(databaseName, teacherId);
+                List<int> teachedCourseIdList = TeachedCourseService.getTeachedCourseIdList(databaseName, tempTeacher.Id);
                 foreach (int teachedCourseId in teachedCourseIdList)
                 {
                     Course course = CourseService.getCourse(databaseName, teachedCourseId);
                     if (course != null)
                     {
-                        if (!teacher.TeachedCourseList.Contains(course.Name))
+                        if (tempTeacher.TeachedCourseList.Contains(course.Name) == false)
                         {
-                            teacher.TeachedCourseList.Add(course.Name);
+                            tempTeacher.TeachedCourseList.Add(course.Name);
                         }
                     }
                 }
+
+                teacher = new {
+                    id = tempTeacher.Id,
+                    firstname = tempTeacher.Firstname,
+                    lastname = tempTeacher.Lastname,
+                    nickname = tempTeacher.Nickname,
+                    status = tempTeacher.Status,
+                    phoneList = phoneList,
+                    emailList = emailList,
+                    teachedCourseList = tempTeacher.TeachedCourseList
+                };
             }
 
             return teacher;
