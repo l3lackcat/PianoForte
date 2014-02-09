@@ -1,9 +1,50 @@
 ﻿<div id="teachers" ng-controller="TeacherMainController" ng-init="init()">
     <my-tabs>
         <my-pane data-title="dashboard">
-            <a href="#/teachers/1001">Teacher_1001</a>
-            <a href="#/teachers/1002">Teacher_1002</a>
-            <a href="#/teachers/1003">Teacher_1003</a>
+            <div class="tube-50-percent">
+                <my-box>                    
+                    <ul class="widget-breadcrumb">
+                        <li>teachers</li>
+                        <li class="seperator">&gt;</li>
+                        <li>dashboard</li>
+                    </ul>
+                </my-box>
+            </div>
+            <div class="tube-50-percent">
+                <div class="tube-50-percent">
+                    <select class="widget-dropdown" ng-model="currrentFilter" ng-options="tf.text for tf in teacherFilterList"></select>
+                </div>
+                <div class="tube-50-percent">
+                    <my-search-box data-placeholder="'ค้นหาครู...'"></my-search-box>
+                </div>
+            </div>
+            <div class="clear-fix"></div>
+            <div class="tube-100-percent">
+                <my-box>
+                    <div class="rows">
+                        <div class="row header">
+                            <div class="col col-name">ชื่อ-นามสกุล</div>
+                            <div class="col col-nickname">ชื่อเล่น</div>
+                            <div class="col col-phone">เบอร์โทรศัพท์</div>
+                            <div class="col col-view-icon">&nbsp;</div>
+                            <div class="clear-fix"></div>
+                        </div>
+                    </div>
+                </my-box>
+            </div> 
+            <div class="tube-100-percent">
+                <my-box>
+                    <div class="rows">
+                        <div ng-repeat="teacher in teacherList" class="row content">
+                            <div class="col col-name">{{teacher.name}}</div>
+                            <div class="col col-nickname">{{teacher.nickname}}</div>
+                            <div class="col col-phone">{{teacher.phone}}</div>
+                            <div class="col col-view-icon"><a href="#/teachers/{{teacher.id}}">view</a></div>
+                            <div class="clear-fix"></div>
+                        </div>
+                    </div>
+                </my-box>
+            </div>            
         </my-pane>
     </my-tabs>
 </div>

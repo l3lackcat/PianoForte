@@ -20,15 +20,17 @@ goog.require('PianoForte.Controllers.Teachers.TeacherMainController');
 goog.require('PianoForte.Controllers.Widgets.MyBoxController');
 goog.require('PianoForte.Controllers.Widgets.MyDialogBoxController');
 goog.require('PianoForte.Controllers.Widgets.MyLeftMenuController');
+goog.require('PianoForte.Controllers.Widgets.MySearchBoxController');
 goog.require('PianoForte.Controllers.Widgets.MyTabsController');
-goog.require('PianoForte.Controllers.Widgets.MyTextboxController');
+goog.require('PianoForte.Controllers.Widgets.MyTextBoxController');
 
 goog.require('PianoForte.Directives.Widgets.MyBoxDirective');
 goog.require('PianoForte.Directives.Widgets.MyDialogBoxDirective');
 goog.require('PianoForte.Directives.Widgets.MyLeftMenuDirective');
 goog.require('PianoForte.Directives.Widgets.MyPaneDirective');
+goog.require('PianoForte.Directives.Widgets.MySearchBoxDirective');
 goog.require('PianoForte.Directives.Widgets.MyTabsDirective');
-goog.require('PianoForte.Directives.Widgets.MyTextboxDirective');
+goog.require('PianoForte.Directives.Widgets.MyTextBoxDirective');
 
 goog.require('PianoForte.Enum');
 
@@ -82,15 +84,17 @@ PianoForte.App.controller('TeacherMainController', ['$scope', '$rootScope', Pian
 PianoForte.App.controller('MyBoxController', ['$scope', PianoForte.Controllers.Widgets.MyBoxController]);
 PianoForte.App.controller('MyDialogBoxController', ['$scope', PianoForte.Controllers.Widgets.MyDialogBoxController]);
 PianoForte.App.controller('MyLeftMenuController', ['$scope', PianoForte.Controllers.Widgets.MyLeftMenuController]);
+PianoForte.App.controller('MySearchBoxController', ['$scope', PianoForte.Controllers.Widgets.MySearchBoxController]);
 PianoForte.App.controller('MyTabsController', ['$scope', PianoForte.Controllers.Widgets.MyTabsController]);
-PianoForte.App.controller('MyTextboxController', ['$scope', PianoForte.Controllers.Widgets.MyTextboxController]);
+PianoForte.App.controller('MyTextBoxController', ['$scope', PianoForte.Controllers.Widgets.MyTextBoxController]);
 
 PianoForte.App.directive('myBox', PianoForte.Directives.Widgets.MyBoxDirective);
 PianoForte.App.directive('myDialogBox', PianoForte.Directives.Widgets.MyDialogBoxDirective);
 PianoForte.App.directive('myLeftMenu', PianoForte.Directives.Widgets.MyLeftMenuDirective);
 PianoForte.App.directive('myPane', PianoForte.Directives.Widgets.MyPaneDirective);
+PianoForte.App.directive('mySearchBox', PianoForte.Directives.Widgets.MySearchBoxDirective);
 PianoForte.App.directive('myTabs', PianoForte.Directives.Widgets.MyTabsDirective);
-PianoForte.App.directive('myTextbox', PianoForte.Directives.Widgets.MyTextboxDirective);
+PianoForte.App.directive('myTextBox', PianoForte.Directives.Widgets.MyTextBoxDirective);
 
 PianoForte.App.service('Enum', [PianoForte.Enum]);
 PianoForte.App.service('EnumConverter', ['Enum', PianoForte.Utilities.EnumConverter]);

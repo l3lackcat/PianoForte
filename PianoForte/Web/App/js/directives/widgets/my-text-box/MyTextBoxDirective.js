@@ -1,8 +1,8 @@
 ﻿'use strict';
 
-goog.provide('PianoForte.Directives.Widgets.MyTextboxDirective');
+goog.provide('PianoForte.Directives.Widgets.MyTextBoxDirective');
 
-PianoForte.Directives.Widgets.MyTextboxDirective = function () {
+PianoForte.Directives.Widgets.MyTextBoxDirective = function () {
     return {
         restrict: 'E',
         replace: true,
@@ -11,8 +11,8 @@ PianoForte.Directives.Widgets.MyTextboxDirective = function () {
             disabled: '=',
             width: '='
         },
-        controller: 'MyTextboxController',
-        templateUrl: 'partials/widgets/my-textbox/my-textbox.htm',
+        controller: 'MyTextBoxController',
+        templateUrl: 'partials/widgets/my-text-box/my-text-box.htm',
         link: function (scope, element, attrs) {
             scope.initialize(scope, element, attrs);
         }

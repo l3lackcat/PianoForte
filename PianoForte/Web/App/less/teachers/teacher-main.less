@@ -1,20 +1,81 @@
 ﻿#teachers {
+	font-size: 14px;
 	height: inherit;
 
 	my-tabs {
 		height: inherit;		
 	}
-	/*
+
+	.tube-100-percent {
+		width: 100%;
+	}
+
+	.tube-50-percent {
+		float: left;
+		width: calc(~'50% - 6px');		
+
+		.widget-dropdown {
+			color: #636363;
+			padding-bottom: 3px;
+		}
+
+		.widget-search-box {
+			color: #636363;
+		}
+
+		&:first-child {
+			margin-right: 12px;
+		}
+	}
+
 	my-box {
 		.widget-box {
-			background-color: #53AC9C;
+			margin-bottom: 12px;
 
-			.box-header {
-				button {
-					background-color: #53AC9C;
+			.box-content {
+				color: #636363;
+
+				.rows {
+					.row {						
+						.col {
+							float: left;
+							margin-right: 5px;
+
+							&.col-name {
+								width: calc(~'100% - 300px');
+							}
+
+							&.col-nickname {
+								width: 125px
+							}
+
+							&.col-phone {
+								width: 125px
+							}
+
+							&.col-view-icon {
+								width: 30px
+							}
+
+							&:lat-child {
+								margin-right: 0px;
+							}
+
+							&:hover {
+								cursor: default;
+							}
+						}
+
+						&.header {
+							padding: 0 10px;
+						}
+
+						&.content {
+							padding: 8px 10px;
+						}
+					}
 				}
 			}
 		}			
 	}
-	*/
 }
