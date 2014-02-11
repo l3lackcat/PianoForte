@@ -115,11 +115,14 @@
         <h4>เบอร์โทรศัพท์</h4>
         <div class="wrapper">       
             <div class="rows">
-                <div class="row" ng-repeat="contact in teacher.contacts.phones">
-                    <input type="hidden" ng-model="contact.id" />
-                    <input type="hidden" ng-model="contact.type" />
-                    <div class="col col-label">{{contact.label}} :</div>
-                    <div class="col col-value">{{contact.value}}</div>
+                <div class="row" ng-repeat="contact in edittedContactInfo.phones">
+                    <div class="col col-label no-padding-top no-padding-bottom">
+                        <my-text-box data-text="contact.label" data-disabled="isOnSaveEdittedContactInfo"></my-text-box>
+                    </div>
+                    <div class="col col-value">
+                        <my-text-box data-text="contact.value" data-disabled="isOnSaveEdittedContactInfo"></my-text-box>
+                    </div>
+                    <div class="col col-trash" ng-click="removePhone(contact)"></div>
                     <div class="clear-fix"></div>
                 </div>
             </div>
@@ -127,11 +130,14 @@
         <h4>อีเมล์</h4>
         <div class="wrapper">       
             <div class="rows">
-                <div class="row" ng-repeat="contact in teacher.contacts.emails">
-                    <input type="hidden" ng-model="contact.id" />
-                    <input type="hidden" ng-model="contact.type" />
-                    <div class="col col-label">{{contact.label}} :</div>
-                    <div class="col col-value">{{contact.value}}</div>
+                <div class="row" ng-repeat="contact in edittedContactInfo.emails">
+                    <div class="col col-label no-padding-top no-padding-bottom">
+                        <my-text-box data-text="contact.label" data-disabled="isOnSaveEdittedContactInfo"></my-text-box>
+                    </div>
+                    <div class="col col-value">
+                        <my-text-box data-text="contact.value" data-disabled="isOnSaveEdittedContactInfo"></my-text-box>
+                    </div>
+                    <div class="col col-trash" ng-click="removeEmail(contact)"></div>
                     <div class="clear-fix"></div>
                 </div>
             </div>

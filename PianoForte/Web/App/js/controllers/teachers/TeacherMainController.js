@@ -4,7 +4,6 @@ goog.provide('PianoForte.Controllers.Teachers.TeacherMainController');
 
 PianoForte.Controllers.Teachers.TeacherMainController = function ($scope, $rootScope, TeacherService) {
     $scope['teacherList'] = [];
-    //$scope['filterText'] = '';
     $scope['currrentFilter'] = null;
     $scope['teacherFilterList'] = [
         { text: 'ดูทั้งหมด' }

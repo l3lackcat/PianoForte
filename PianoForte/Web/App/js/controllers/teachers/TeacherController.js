@@ -145,6 +145,28 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
     };
 
     $scope.onEditContactInfo = function () {
+        var phoneList = [];
+        var emailList = [];
+
+        var phoneLength = $scope['teacher']['contacts']['phones'].length;
+        for (var i = 0; i < phoneLength; i++) {
+            var phone = $scope['teacher']['contacts']['phones'][i];
+
+            phoneList.push(phone);
+        }
+
+        var emailLength = $scope['teacher']['contacts']['emails'].length;
+        for (var i = 0; i < emailLength; i++) {
+            var email = $scope['teacher']['contacts']['emails'][i];
+
+            emailList.push(email);
+        }
+
+        $scope['edittedContactInfo'] = {
+            'phones': phoneList,
+            'emails': emailList
+        }
+
         $scope['isOnEditContactInfo'] = true;
     };
 
@@ -154,6 +176,20 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
 
     $scope.onCancelEditContactInfo = function () {
         hideContactInfoDialogBox();
+    };
+
+    $scope.removePhone = function (phone) {
+        var index = $scope['edittedContactInfo']['phones'].indexOf(phone);
+        if (index >= 0) {
+            $scope['edittedContactInfo']['phones'].splice(index, 1);
+        }
+    };
+
+    $scope.removeEmail = function (email) {
+        var index = $scope['edittedContactInfo']['emails'].indexOf(email);
+        if (index >= 0) {
+            $scope['edittedContactInfo']['emails'].splice(index, 1);
+        }
     };
 
     function hideContactInfoDialogBox() {
@@ -175,27 +211,6 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
 
             $scope['teacher']['status']['value']['key'] = tempTeacher['status'];
             $scope['teacher']['status']['value']['displayString'] = EnumConverter.Status.toString(tempTeacher['status']);
-            
-
-//            for (var i = 0; i < tempTeacher['ContactList'].length; i++) {
-//                var contact = tempTeacher['ContactList'][i];
-
-//                if (contact['Type'] === Enum['ContactType']['Phone']) {
-//                    $scope['teacher']['contacts']['phones'].push({
-//                        'id': contact['Id'],
-//                        'label': contact['Label'],
-//                        'value': contact['Content']
-//                    });
-//                }
-
-//                if (contact['Type'] === Enum['ContactType']['Email']) {
-//                    $scope['teacher']['contacts']['emails'].push({
-//                        'id': contact['Id'],
-//                        'label': contact['Label'],
-//                        'value': contact['Content']
-//                    });
-//                }
-//            }
 
             $scope['isReady'] = true;
         }
