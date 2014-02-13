@@ -9,7 +9,8 @@ PianoForte.Directives.Widgets.MyTextBoxDirective = function () {
         scope: {
             text: '=',
             disabled: '=',
-            width: '='
+            width: '=',
+            placeholder: '='
         },
         controller: 'MyTextBoxController',
         templateUrl: 'partials/widgets/my-text-box/my-text-box.htm',

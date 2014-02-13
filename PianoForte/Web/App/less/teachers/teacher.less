@@ -74,6 +74,10 @@
 					&:first-child {
 						margin-top: 0;
 					}
+
+					&:hover {
+						cursor: default;
+					}
 				}
 							
 				> .wrapper {
@@ -113,6 +117,15 @@
 
 								&.col-value {
 									width: calc(~'100% - 146px');
+
+									label {
+										display: block;
+										color: @teachersThemeColor;
+										font-size: 12px;
+										font-style: italic;
+										margin: 7px 0;
+										padding: 0;
+									}
 								}
 
 								&.col-trash {

@@ -10,28 +10,28 @@
                 <my-box data-title="ข้อมูลทั่วไป" data-editable="true" data-edit="onEditGeneralInfo()">                    
                     <div class="rows">
                         <div class="row">
-                            <div class="col col-label">{{teacher.id.label}} :</div>
-                            <div class="col col-value">{{teacher.id.value}}</div>
+                            <div class="col col-label">รหัสประจำตัว :</div>
+                            <div class="col col-value">{{teacher.id}}</div>
                             <div class="clear-fix"></div>
                         </div>
                         <div class="row">
-                            <div class="col col-label">{{teacher.firstname.label}} :</div>
-                            <div class="col col-value">{{teacher.firstname.value}}</div>
+                            <div class="col col-label">ชื่อ :</div>
+                            <div class="col col-value">{{teacher.firstname}}</div>
                             <div class="clear-fix"></div>
                         </div>
                         <div class="row">
-                            <div class="col col-label">{{teacher.lastname.label}} :</div>
-                            <div class="col col-value">{{teacher.lastname.value}}</div>
+                            <div class="col col-label">นามสกุล :</div>
+                            <div class="col col-value">{{teacher.lastname}}</div>
                             <div class="clear-fix"></div>
                         </div>
                         <div class="row">
-                            <div class="col col-label">{{teacher.nickname.label}} :</div>
-                            <div class="col col-value">{{teacher.nickname.value}}</div>
+                            <div class="col col-label">ชื่อเล่น :</div>
+                            <div class="col col-value">{{teacher.nickname}}</div>
                             <div class="clear-fix"></div>
                         </div>
                         <div class="row">
-                            <div class="col col-label">{{teacher.status.label}} :</div>
-                            <div class="col col-value">{{teacher.status.value.displayString}}</div>
+                            <div class="col col-label">สถานะ :</div>
+                            <div class="col col-value">{{teacher.status.text}}</div>
                             <div class="clear-fix"></div>
                         </div>
                     </div>            
@@ -72,14 +72,14 @@
         <div class="wrapper">
             <div class="rows">
                 <div class="row">
-                    <div class="col col-label"><span ng-show="edittedGeneralInfo.id.isRequired" class="required">*</span>{{edittedGeneralInfo.id.label}}</div>
+                    <div class="col col-label"><span ng-show="edittedGeneralInfo.id.isRequired" class="required">*</span>รหัสประจำตัว</div>
                     <div class="col col-value">     
                         <my-text-box data-text="edittedGeneralInfo.id.value" data-disabled="true"></my-text-box>
                     </div>
                     <div class="clear-fix"></div>
                 </div>
                 <div class="row">
-                    <div class="col col-label"><span ng-show="edittedGeneralInfo.firstname.isRequired" class="required">*</span>{{edittedGeneralInfo.firstname.label}}</div>
+                    <div class="col col-label"><span ng-show="edittedGeneralInfo.firstname.isRequired" class="required">*</span>ชื่อ</div>
                     <div class="col col-value">
                         <my-text-box data-text="edittedGeneralInfo.firstname.value" data-disabled="isOnSaveEdittedGeneralInfo"></my-text-box>
                         <label ng-hide="edittedGeneralInfo.firstname.isValid">*กรุณากรอกชื่อจริง</label>
@@ -87,7 +87,7 @@
                     <div class="clear-fix"></div>
                 </div>
                 <div class="row">
-                    <div class="col col-label"><span ng-show="edittedGeneralInfo.lastname.isRequired" class="required">*</span>{{edittedGeneralInfo.lastname.label}}</div>
+                    <div class="col col-label"><span ng-show="edittedGeneralInfo.lastname.isRequired" class="required">*</span>นามสกุล</div>
                     <div class="col col-value">
                         <my-text-box data-text="edittedGeneralInfo.lastname.value" data-disabled="isOnSaveEdittedGeneralInfo"></my-text-box>
                         <label ng-hide="edittedGeneralInfo.lastname.isValid">*กรุณากรอกนามสกุล</label>
@@ -95,16 +95,16 @@
                     <div class="clear-fix"></div>
                 </div>
                 <div class="row">
-                    <div class="col col-label"><span ng-show="edittedGeneralInfo.nickname.isRequired" class="required">*</span>{{edittedGeneralInfo.nickname.label}}</div>
+                    <div class="col col-label"><span ng-show="edittedGeneralInfo.nickname.isRequired" class="required">*</span>ชื่อเล่น</div>
                     <div class="col col-value">
                         <my-text-box data-text="edittedGeneralInfo.nickname.value" data-disabled="isOnSaveEdittedGeneralInfo"></my-text-box>
                     </div>
                     <div class="clear-fix"></div>
                 </div>
                 <div class="row">
-                    <div class="col col-label"><span ng-show="edittedGeneralInfo.status.isRequired" class="required">*</span>{{edittedGeneralInfo.status.label}}</div>
+                    <div class="col col-label"><span ng-show="edittedGeneralInfo.status.isRequired" class="required">*</span>สถานะ</div>
                     <div class="col col-value">
-                        <my-text-box data-text="edittedGeneralInfo.status.value.displayString" data-disabled="true"></my-text-box>
+                        <my-text-box data-text="edittedGeneralInfo.status.value.text" data-disabled="true"></my-text-box>
                     </div>
                     <div class="clear-fix"></div>
                 </div>
@@ -115,16 +115,18 @@
         <h4>เบอร์โทรศัพท์</h4>
         <div class="wrapper">       
             <div class="rows">
-                <div class="row" ng-repeat="contact in edittedContactInfo.phones">
+                <div class="row" ng-hide="contact.status == 19" ng-repeat="contact in edittedContactInfo.phones">
                     <div class="col col-label no-padding-top no-padding-bottom">
-                        <my-text-box data-text="contact.label" data-disabled="isOnSaveEdittedContactInfo"></my-text-box>
+                        <my-text-box data-text="contact.label" data-disabled="isOnUpdateEdittedContactInfo"></my-text-box>
                     </div>
                     <div class="col col-value">
-                        <my-text-box data-text="contact.value" data-disabled="isOnSaveEdittedContactInfo"></my-text-box>
+                        <my-text-box data-text="contact.value" data-placeholder="'Example: 089-999-9999'" data-disabled="isOnUpdateEdittedContactInfo"></my-text-box>
+                        <label ng-hide="contact.isValid">*กรุณากรอกหมายเลขโทรศัพท์ให้ถูกต้อง</label>
                     </div>
-                    <div class="col col-trash" ng-click="removePhone(contact)"></div>
+                    <div class="col col-trash" ng-hide="isOnUpdateEdittedContactInfo" ng-click="removePhone(contact)"></div>
                     <div class="clear-fix"></div>
                 </div>
+                <button class="btn-add-phone" ng-hide="isOnUpdateEdittedContactInfo" ng-click="addPhone()">เพิ่มเบอร์โทรศัพท์</button>
             </div>
         </div>
         <h4>อีเมล์</h4>
@@ -132,14 +134,16 @@
             <div class="rows">
                 <div class="row" ng-repeat="contact in edittedContactInfo.emails">
                     <div class="col col-label no-padding-top no-padding-bottom">
-                        <my-text-box data-text="contact.label" data-disabled="isOnSaveEdittedContactInfo"></my-text-box>
+                        <my-text-box data-text="contact.label" data-disabled="isOnUpdateEdittedContactInfo"></my-text-box>
                     </div>
                     <div class="col col-value">
-                        <my-text-box data-text="contact.value" data-disabled="isOnSaveEdittedContactInfo"></my-text-box>
+                        <my-text-box data-text="contact.value" data-placeholder="'Example: email@pianoforte.com'" data-disabled="isOnUpdateEdittedContactInfo"></my-text-box>
+                        <label ng-hide="contact.isValid">*กรุณากรอกอีเมล์ให้ถูกต้อง</label>
                     </div>
-                    <div class="col col-trash" ng-click="removeEmail(contact)"></div>
+                    <div class="col col-trash" ng-hide="isOnUpdateEdittedContactInfo" ng-click="removeEmail(contact)"></div>
                     <div class="clear-fix"></div>
                 </div>
+                <button class="btn-add-email" ng-hide="isOnUpdateEdittedContactInfo" ng-click="addEmail()">เพิ่มอีเมล์</button>
             </div>
         </div>
     </my-dialog-box>

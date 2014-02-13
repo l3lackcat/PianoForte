@@ -64,10 +64,11 @@ namespace PianoForte.WebServices
                 {
                     if (contact.Type == ContactType.PHONE)
                     {
-                        phoneList.Add(new { 
+                        phoneList.Add(new {
                             id = contact.Id,
                             label = contact.Label,
-                            value = contact.Content
+                            value = contact.Content,
+                            status = contact.Status
                         });
                     }
                     else if (contact.Type == ContactType.EMAIL)
@@ -75,7 +76,8 @@ namespace PianoForte.WebServices
                         emailList.Add(new {
                             id = contact.Id,
                             label = contact.Label,
-                            value = contact.Content
+                            value = contact.Content,
+                            status = contact.Status
                         });
                     }
                 }
@@ -110,10 +112,51 @@ namespace PianoForte.WebServices
         }
 
         [WebMethod]
-        public bool saveTeacherGeneralInfo(string databaseName, Teacher teacher)
+        public bool updateTeacherGeneralInfo(string databaseName, Teacher teacher)
         {
             System.Threading.Thread.Sleep(3000);
             return TeacherService.updateTeacher(databaseName, teacher);
+        }
+
+        [WebMethod]
+        public Object insertTeacherContactInfo(string databaseName, TeacherContact teacherContact)
+        {
+            //System.Threading.Thread.Sleep(3000);
+
+            Object insertedContact = null;
+
+            bool isSuccess = TeacherContactService.insertTeacherContact(databaseName, teacherContact);
+            if (isSuccess)
+            {
+                TeacherContact tempTeacherContact = TeacherContactService.getTeacherContact(databaseName, teacherContact.Id, teacherContact.Type, teacherContact.Label, teacherContact.Content);
+                if (tempTeacherContact != null)
+                {
+                    insertedContact = new {
+                        id = tempTeacherContact.Id,
+                        label = tempTeacherContact.Label,
+                        value = tempTeacherContact.Content,
+                        status = tempTeacherContact.Status
+                    };
+                }                
+            }
+
+            return insertedContact;
+        }
+
+        [WebMethod]
+        public bool updateTeacherContactInfo(string databaseName, TeacherContact teacherContact)
+        {
+            //System.Threading.Thread.Sleep(3000);
+
+            return TeacherContactService.updateTeacherContact(databaseName, teacherContact);
+        }
+
+        [WebMethod]
+        public bool deleteTeacherContactInfo(string databaseName, int contactId)
+        {
+            //System.Threading.Thread.Sleep(3000);
+
+            return TeacherContactService.deleteTeacherContact(databaseName, contactId);
         }
     }
 }
