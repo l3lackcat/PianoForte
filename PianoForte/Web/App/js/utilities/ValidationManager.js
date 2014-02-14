@@ -1,8 +1,8 @@
 ﻿'use strict';
 
-goog.provide('PianoForte.Utilities.ValidationService');
+goog.provide('PianoForte.Utilities.ValidationManager');
 
-PianoForte.Utilities.ValidationService = function () {
+PianoForte.Utilities.ValidationManager = function () {
     return {
         isPhoneNumber: function (input) {
             var isValid = false;

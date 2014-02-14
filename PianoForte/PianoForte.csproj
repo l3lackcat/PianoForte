@@ -112,7 +112,8 @@
     <Content Include="Web\App\js\directives\widgets\my-tabs\MyTabsDirective.js" />
     <Content Include="Web\App\js\enum.js" />
     <Content Include="Web\App\js\services\teachers\TeacherService.js" />
-    <Content Include="Web\App\js\utilities\ValidationService.js" />
+    <Content Include="Web\App\js\utilities\FormatManager.js" />
+    <Content Include="Web\App\js\utilities\ValidationManager.js" />
     <Content Include="Web\App\js\utilities\EnumConverter.js" />
     <Content Include="Web\App\libs\angular\angular-route.min.js" />
     <Content Include="Web\App\libs\angular\1.2.5\angular.js" />

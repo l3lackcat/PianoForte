@@ -68,13 +68,20 @@ PianoForte.Services.TeacherService = function ($http) {
             $http.post('/WebServices/TeacherWebService.asmx/updateTeacherContactInfo', data).success(onSuccess).error(onError);
         },
 
-        deleteTeacherContactInfo: function (contactId, onSuccess, onError) {
+        deleteTeacherContactInfo: function (contact, onSuccess, onError) {
             var data = {
                 databaseName: 'pianoforte_b01',
-                contactId: contactId
+                teacherContact: {
+                    Id: contact.id,
+                    Type: contact.type,
+                    Label: contact.label,
+                    Content: contact.value,
+                    Status: contact.status,
+                    TeacherId: contact.teacherId
+                }
             };
 
-            $http.post('/WebServices/TeacherWebService.asmx/deleteTeacherContactInfo', data).success(onSuccess).error(onError);
+            $http.post('/WebServices/TeacherWebService.asmx/updateTeacherContactInfo', data).success(onSuccess).error(onError);
         }
     }
 };

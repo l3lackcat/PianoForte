@@ -37,7 +37,8 @@ goog.require('PianoForte.Enum');
 goog.require('PianoForte.Services.TeacherService');
 
 goog.require('PianoForte.Utilities.EnumConverter');
-goog.require('PianoForte.Utilities.ValidationService');
+goog.require('PianoForte.Utilities.FormatManager');
+goog.require('PianoForte.Utilities.ValidationManager');
 
 PianoForte.App = angular.module('PianoForteApplication', ['ngRoute']);
 
@@ -80,7 +81,7 @@ PianoForte.App.controller('BookMainController', ['$scope', '$rootScope', PianoFo
 PianoForte.App.controller('CdMainController', ['$scope', '$rootScope', PianoForte.Controllers.Cds.CdMainController]);
 PianoForte.App.controller('CourseMainController', ['$scope', '$rootScope', PianoForte.Controllers.Courses.CourseMainController]);
 PianoForte.App.controller('StudentMainController', ['$scope', '$rootScope', PianoForte.Controllers.Students.StudentMainController]);
-PianoForte.App.controller('TeacherController', ['$scope', '$rootScope', '$routeParams', 'TeacherService', 'Enum', 'EnumConverter', 'ValidationService', PianoForte.Controllers.Teachers.TeacherController]);
+PianoForte.App.controller('TeacherController', ['$scope', '$rootScope', '$routeParams', 'TeacherService', 'Enum', 'EnumConverter', 'ValidationManager', 'FormatManager', PianoForte.Controllers.Teachers.TeacherController]);
 PianoForte.App.controller('TeacherMainController', ['$scope', '$rootScope', 'TeacherService', PianoForte.Controllers.Teachers.TeacherMainController]);
 PianoForte.App.controller('MyBoxController', ['$scope', PianoForte.Controllers.Widgets.MyBoxController]);
 PianoForte.App.controller('MyDialogBoxController', ['$scope', PianoForte.Controllers.Widgets.MyDialogBoxController]);
@@ -99,5 +100,6 @@ PianoForte.App.directive('myTextBox', PianoForte.Directives.Widgets.MyTextBoxDir
 
 PianoForte.App.service('Enum', [PianoForte.Enum]);
 PianoForte.App.service('EnumConverter', ['Enum', PianoForte.Utilities.EnumConverter]);
-PianoForte.App.service('ValidationService', [PianoForte.Utilities.ValidationService]);
+PianoForte.App.service('FormatManager', [PianoForte.Utilities.FormatManager]);
+PianoForte.App.service('ValidationManager', [PianoForte.Utilities.ValidationManager]);
 PianoForte.App.service('TeacherService', ['$http', PianoForte.Services.TeacherService]);

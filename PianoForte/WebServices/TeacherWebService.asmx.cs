@@ -19,6 +19,8 @@ namespace PianoForte.WebServices
         [WebMethod]
         public List<Object> getTeacherList(string databaseName)
         {
+            System.Threading.Thread.Sleep(3000);
+
             List<Object> displayedTeacherList = new List<Object>();
             List<Teacher> teacherList = TeacherService.getTeacherList(databaseName);
             foreach(Teacher teacher in teacherList)
@@ -49,11 +51,11 @@ namespace PianoForte.WebServices
         [WebMethod]
         public Object getTeacherById(string databaseName, int teacherId)
         {
+            System.Threading.Thread.Sleep(3000);
+
             Object teacher = null;
             List<Object> phoneList = new List<Object>();
-            List<Object> emailList = new List<Object>();
-
-            //System.Threading.Thread.Sleep(3000);
+            List<Object> emailList = new List<Object>();            
 
             Teacher tempTeacher = TeacherService.getTeacher(databaseName, teacherId);
             if (tempTeacher != null)
@@ -119,44 +121,37 @@ namespace PianoForte.WebServices
         }
 
         [WebMethod]
-        public Object insertTeacherContactInfo(string databaseName, TeacherContact teacherContact)
+        public int insertTeacherContactInfo(string databaseName, TeacherContact teacherContact)
         {
-            //System.Threading.Thread.Sleep(3000);
+            System.Threading.Thread.Sleep(3000);
 
-            Object insertedContact = null;
+            int contactId = 0;
 
             bool isSuccess = TeacherContactService.insertTeacherContact(databaseName, teacherContact);
             if (isSuccess)
             {
-                TeacherContact tempTeacherContact = TeacherContactService.getTeacherContact(databaseName, teacherContact.Id, teacherContact.Type, teacherContact.Label, teacherContact.Content);
+                TeacherContact tempTeacherContact = TeacherContactService.getTeacherContact(databaseName, teacherContact.TeacherId, teacherContact.Type, teacherContact.Label, teacherContact.Content);
                 if (tempTeacherContact != null)
                 {
-                    insertedContact = new {
-                        id = tempTeacherContact.Id,
-                        label = tempTeacherContact.Label,
-                        value = tempTeacherContact.Content,
-                        status = tempTeacherContact.Status
-                    };
+                    contactId = tempTeacherContact.Id;
                 }                
             }
 
-            return insertedContact;
+            return contactId;
         }
 
         [WebMethod]
         public bool updateTeacherContactInfo(string databaseName, TeacherContact teacherContact)
         {
-            //System.Threading.Thread.Sleep(3000);
-
+            System.Threading.Thread.Sleep(3000);
             return TeacherContactService.updateTeacherContact(databaseName, teacherContact);
         }
 
         [WebMethod]
-        public bool deleteTeacherContactInfo(string databaseName, int contactId)
+        public bool deleteTeacherContactInfo(string databaseName, TeacherContact teacherContact)
         {
-            //System.Threading.Thread.Sleep(3000);
-
-            return TeacherContactService.deleteTeacherContact(databaseName, contactId);
+            System.Threading.Thread.Sleep(3000);
+            return TeacherContactService.updateTeacherContact(databaseName, teacherContact);
         }
     }
 }

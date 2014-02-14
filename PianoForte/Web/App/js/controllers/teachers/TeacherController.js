@@ -2,7 +2,7 @@
 
 goog.provide('PianoForte.Controllers.Teachers.TeacherController');
 
-PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope, $routeParams, TeacherService, Enum, EnumConverter, ValidationService) {
+PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope, $routeParams, TeacherService, Enum, EnumConverter, ValidationManager) {
     $scope.isReady = false;
     $scope.teacher = null;
 
@@ -13,6 +13,10 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
     $scope.edittedContactInfo = null;
     $scope.isOnEditContactInfo = false;
     $scope.isOnUpdateEdittedContactInfo = false;
+
+    var requestInsertContactList = [];
+    var requestUpdateContactList = [];
+    var requestDeleteContactList = [];
 
     $scope.init = function () {
         $rootScope.$broadcast('SelectMenuItem', 'teachers');
@@ -126,38 +130,40 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
     };
 
     $scope.onEditContactInfo = function () {
-        $scope.edittedContactInfo = {
-            phones: [],
-            emails: []
-        };
+        if ($scope.edittedContactInfo === null) {
+            $scope.edittedContactInfo = {
+                phones: [],
+                emails: []
+            };
 
-        var phoneLength = $scope.teacher.contacts.phones.length;
-        for (var i = 0; i < phoneLength; i++) {
-            var phone = $scope.teacher.contacts.phones[i];
+            var phoneLength = $scope.teacher.contacts.phones.length;
+            for (var i = 0; i < phoneLength; i++) {
+                var phone = $scope.teacher.contacts.phones[i];
 
-            $scope.edittedContactInfo.phones.push({
-                id: phone.id,
-                label: phone.label,
-                value: phone.value.replace(/-/g, ''),
-                status: phone.status,
-                isValid: true
-            });
-        }
+                $scope.edittedContactInfo.phones.push({
+                    id: phone.id,
+                    label: phone.label,
+                    value: phone.value.replace(/-/g, ''),
+                    status: phone.status,
+                    isValid: true
+                });
+            }
 
-        var emailLength = $scope.teacher.contacts.emails.length;
-        for (var i = 0; i < emailLength; i++) {
-            var email = $scope.teacher.contacts.emails[i];
+            var emailLength = $scope.teacher.contacts.emails.length;
+            for (var i = 0; i < emailLength; i++) {
+                var email = $scope.teacher.contacts.emails[i];
 
-            $scope.edittedContactInfo.emails.push({
-                id: email.id,
-                label: email.label,
-                value: email.value,
-                status: email.status,
-                isValid: true
-            });
-        }
+                $scope.edittedContactInfo.emails.push({
+                    id: email.id,
+                    label: email.label,
+                    value: email.value,
+                    status: email.status,
+                    isValid: true
+                });
+            }
 
-        $scope.isOnEditContactInfo = true;
+            $scope.isOnEditContactInfo = true;
+        }            
     };
 
     $scope.onSubmitEditContactInfo = function () {
@@ -165,63 +171,65 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
             $scope.isOnUpdateEdittedContactInfo = true;
 
             for (var i = $scope.edittedContactInfo.phones.length - 1; i >= 0; i--) {
-                var newPhone = $scope.edittedContactInfo.phones[i];
-                newPhone.type = Enum.ContactType.Phone;
+                var newPhone = $scope.edittedContactInfo.phones[i];                
+                newPhone.type = Enum.ContactType.Phone;                
                 newPhone.teacherId = $scope.teacher.id;
+                newPhone.value = newPhone.value.replace(/-/g, '');
+                if (newPhone.label === '') {
+                    newPhone.label = 'เบอร์โทร'
+                }
 
                 if (newPhone.id === 0) {
                     if (newPhone.value !== '') {
-                        // Insert new phone                        
+                        // Insert new phone                    
+                        requestInsertContactList.push(newPhone);                    
                         TeacherService.insertTeacherContactInfo(newPhone, onSuccessInsertTeacherContactInfo, onErrorInsertTeacherContactInfo);
                     }                        
                 } else {
                     if (newPhone.status === Enum.Status.Deleted) {
                         // Delete new phone
-                        TeacherService.deleteTeacherContactInfo(newPhone.id, onSuccessDeleteTeacherContactInfo, onErrorDeleteTeacherContactInfo);
+                        requestDeleteContactList.push(newPhone);
+                        TeacherService.deleteTeacherContactInfo(newPhone, onSuccessDeleteTeacherContactInfo, onErrorDeleteTeacherContactInfo);
                     } else {
-                        var isEditted = false;
-
                         for (var j = $scope.teacher.contacts.phones.length - 1; j >= 0; j--) {
                             var oldPhone = $scope.teacher.contacts.phones[j];                        
 
                             if ((oldPhone.id === newPhone.id)) {
-                                var newPhoneValue = newPhone.value.replace(/-/g, '');
                                 var oldPhoneValue = oldPhone.value.replace(/-/g, '');
 
-                                if ((oldPhone.label !== newPhone.label) || (oldPhoneValue !== newPhoneValue)) {
+                                if ((oldPhone.label !== newPhone.label) || (oldPhoneValue !== newPhone.value)) {
                                     // Update phone
-                                    isEditted = true;
+                                    requestUpdateContactList.push(newPhone);
                                     TeacherService.updateTeacherContactInfo(newPhone, onSuccessUpdateTeacherContactInfo, onErrorUpdateTeacherContactInfo);
                                 }
 
                                 break;
                             }
                         }
-
-                        if (isEditted === false) {
-                            $scope.edittedContactInfo.phones.splice(i, 1);
-                        }
                     }                        
                 }                    
-            }; 
+            }
 
             for (var i = $scope.edittedContactInfo.emails.length - 1; i >= 0; i--) {
                 var newEmail = $scope.edittedContactInfo.emails[i];
                 newEmail.type = Enum.ContactType.Email;
                 newEmail.teacherId = $scope.teacher.id;
+                if (newEmail.label === '') {
+                    newEmail.label = 'อีเมล์'
+                }
 
                 if (newEmail.id === 0) {
                     if (newEmail.value !== '') {
-                        // Insert new phone                        
+                        // Insert new phone   
+                        requestInsertContactList.push(newEmail);                      
                         TeacherService.insertTeacherContactInfo(newEmail, onSuccessInsertTeacherContactInfo, onErrorInsertTeacherContactInfo);
                     }                        
                 } else {
                     if (newEmail.status === Enum.Status.Deleted) {
                         // Delete new phone
-                        TeacherService.deleteTeacherContactInfo(newEmail.id, onSuccessDeleteTeacherContactInfo, onErrorDeleteTeacherContactInfo);
+                        requestDeleteContactList.push(newEmail);
+                        TeacherService.deleteTeacherContactInfo(newEmail, onSuccessDeleteTeacherContactInfo, onErrorDeleteTeacherContactInfo);
                     } else {
-                        var isEditted = false;
-
                         for (var j = $scope.teacher.contacts.emails.length - 1; j >= 0; j--) {
                             var oldEmail = $scope.teacher.contacts.emails[j];
 
@@ -231,27 +239,24 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
 
                                 if ((oldEmail.label !== newEmail.label) || (oldEmailValue !== newEmailValue)) {
                                     // Update phone
-                                    isEditted = true;
+                                    requestUpdateContactList.push(newEmail);
                                     TeacherService.updateTeacherContactInfo(newEmail, onSuccessUpdateTeacherContactInfo, onErrorUpdateTeacherContactInfo);
                                 }
 
                                 break;
                             }
                         }
-
-                        if (isEditted === false) {
-                            $scope.edittedContactInfo.emails.splice(i, 1);
-                        }
                     }                        
                 }                    
-            };                      
-        }
+            }
 
-        if (($scope.edittedContactInfo.phones.length === 0) &&
-            ($scope.edittedContactInfo.emails.length === 0)) {                
+            if ((requestInsertContactList.length === 0) &&
+                (requestUpdateContactList.length === 0) &&
+                (requestDeleteContactList.length === 0)) {                
 
-            hideContactInfoDialogBox();
-        }
+                hideContactInfoDialogBox();
+            }
+        }        
     };
 
     $scope.onCancelEditContactInfo = function () {
@@ -301,14 +306,14 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
 
             if (phone.id > 0) {
                 if (phone.status === Enum.Status.Active) {
-                    if (ValidationService.isPhoneNumber(phone.value) === false) {
+                    if (ValidationManager.isPhoneNumber(phone.value) === false) {
                         phone.isValid = false;
                         isValid = false;
                     }
                 }                                
             } else {
                 if (phone.value !== '') {
-                    if (ValidationService.isPhoneNumber(phone.value) === false) {
+                    if (ValidationManager.isPhoneNumber(phone.value) === false) {
                         phone.isValid = false;
                         isValid = false;
                     }
@@ -322,14 +327,14 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
 
             if (email.id > 0) {
                 if (email.status === Enum.Status.Active) {
-                    if (ValidationService.isEmail(email.value) === false) {
+                    if (ValidationManager.isEmail(email.value) === false) {
                         email.isValid = false;
                         isValid = false;
                     } 
                 }
             } else {
                 if (email.value !== '') {
-                    if (ValidationService.isEmail(email.value) === false) {
+                    if (ValidationManager.isEmail(email.value) === false) {
                         email.isValid = false;
                         isValid = false;
                     }
@@ -383,7 +388,60 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
     };
 
     var onSuccessInsertTeacherContactInfo = function (data, status, headers, config) {
-        console.log('onSuccessInsertTeacherContactInfo');
+        var insertedContactId = data.d;
+        if (insertedContactId > 0) {
+            var insertedContact = config.data.teacherContact;
+            if (insertedContact !== null) {
+                if (insertedContact.Type === Enum.ContactType.Phone) {
+                    for (var i = $scope.teacher.contacts.phones.length - 1; i >= 0; i--) {
+                        $scope.teacher.contacts.phones.push({
+                            id: insertedContactId,
+                            label: insertedContact.Label,
+                            value: insertedContact.Content,
+                            status: insertedContact.Status
+                        });                        
+                        break;
+                    }
+
+                    for (var i = requestInsertContactList.length - 1; i >= 0; i--) {
+                        var phone = requestInsertContactList[i];
+
+                        if ((phone.label === insertedContact.Label) && (phone.value === insertedContact.Content) && (phone.status === insertedContact.Status)) {
+                            requestInsertContactList.splice(i, 1);
+                            break;
+                        }
+                    }
+                } else if (insertedContact.Type === Enum.ContactType.Email) {
+                    for (var i = $scope.teacher.contacts.emails.length - 1; i >= 0; i--) {
+                        $scope.teacher.contacts.emails.push({
+                            id: insertedContactId,
+                            label: insertedContact.Label,
+                            value: insertedContact.Content,
+                            status: insertedContact.Status
+                        });                        
+                        break;
+                    }
+
+                    for (var i = requestInsertContactList.length - 1; i >= 0; i--) {
+                        var email = requestInsertContactList[i];
+
+                        if ((email.label === insertedContact.Label) && (email.value === insertedContact.Content) && (email.status === insertedContact.Status)) {
+                            requestInsertContactList.splice(i, 1);
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if ((requestInsertContactList.length === 0) &&
+                (requestUpdateContactList.length === 0) &&
+                (requestDeleteContactList.length === 0)) {
+
+                hideContactInfoDialogBox();
+            }
+        } else {
+            onErrorInsertTeacherContactInfo(data, status, headers, config);
+        }
     };
 
     var onErrorInsertTeacherContactInfo = function (data, status, headers, config) {
@@ -403,17 +461,15 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
                             phone.label = updatedContact.Label;
                             phone.value = updatedContact.Content;
                             phone.status = updatedContact.Status;
-
                             break;
                         }
                     }
 
-                    for (var i = $scope.edittedContactInfo.phones.length - 1; i >= 0; i--) {
-                        var phone = $scope.edittedContactInfo.phones[i];
+                    for (var i = requestUpdateContactList.length - 1; i >= 0; i--) {
+                        var phone = requestUpdateContactList[i];
 
                         if (phone.id === updatedContact.Id) {
-                            $scope.edittedContactInfo.phones.splice(i, 1);
-
+                            requestUpdateContactList.splice(i, 1);
                             break;
                         }
                     }
@@ -425,25 +481,24 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
                             email.label = updatedContact.Label;
                             email.value = updatedContact.Content;
                             email.status = updatedContact.Status;
-
                             break;
                         }
                     }
 
-                    for (var i = $scope.edittedContactInfo.emails.length - 1; i >= 0; i--) {
-                        var email = $scope.edittedContactInfo.emails[i];
+                    for (var i = requestUpdateContactList.length - 1; i >= 0; i--) {
+                        var email = requestUpdateContactList[i];
 
                         if (email.id === updatedContact.Id) {
-                            $scope.edittedContactInfo.emails.splice(i, 1);
-
+                            requestUpdateContactList.splice(i, 1);
                             break;
                         }
                     }
                 }
             } 
 
-            if (($scope.edittedContactInfo.phones.length === 0) &&
-                ($scope.edittedContactInfo.emails.length === 0)) {                
+            if ((requestInsertContactList.length === 0) &&
+                (requestUpdateContactList.length === 0) &&
+                (requestDeleteContactList.length === 0)) {
 
                 hideContactInfoDialogBox();
             }
@@ -458,7 +513,58 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
     };
 
     var onSuccessDeleteTeacherContactInfo = function (data, status, headers, config) {
-        console.log('onSuccessDeleteTeacherContactInfo');
+        var isSuccess = data.d;
+        if (isSuccess === true) {
+            var deletedContact = config.data.teacherContact;
+            if (deletedContact !== null) {
+                if (deletedContact.Type === Enum.ContactType.Phone) {
+                    for (var i = $scope.teacher.contacts.phones.length - 1; i >= 0; i--) {
+                        var phone = $scope.teacher.contacts.phones[i];
+
+                        if (phone.id === deletedContact.Id) {
+                            $scope.teacher.contacts.phones.splice(i, 1);
+                            break;
+                        }
+                    }
+
+                    for (var i = requestDeleteContactList.length - 1; i >= 0; i--) {
+                        var phone = requestDeleteContactList[i];
+
+                        if (phone.id === deletedContact.Id) {
+                            requestDeleteContactList.splice(i, 1);
+                            break;
+                        }
+                    }
+                } else if (deletedContact.Type === Enum.ContactType.Email) {
+                    for (var i = $scope.teacher.contacts.emails.length - 1; i >= 0; i--) {
+                        var email = $scope.teacher.contacts.emails[i];
+
+                        if (email.id === deletedContact.Id) {
+                            $scope.teacher.contacts.emails.splice(i, 1);
+                            break;
+                        }
+                    }
+
+                    for (var i = requestDeleteContactList.length - 1; i >= 0; i--) {
+                        var email = requestDeleteContactList[i];
+
+                        if (email.id === deletedContact.Id) {
+                            requestDeleteContactList.splice(i, 1);
+                            break;
+                        }
+                    }
+                }
+            } 
+
+            if ((requestInsertContactList.length === 0) &&
+                (requestUpdateContactList.length === 0) &&
+                (requestDeleteContactList.length === 0)) {
+
+                hideContactInfoDialogBox();
+            }
+        } else {
+            onErrorDeleteTeacherContactInfo(data, status, headers, config);
+        }
     };
 
     var onErrorDeleteTeacherContactInfo = function (data, status, headers, config) {
