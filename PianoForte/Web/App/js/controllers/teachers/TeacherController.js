@@ -2,7 +2,7 @@
 
 goog.provide('PianoForte.Controllers.Teachers.TeacherController');
 
-PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope, $routeParams, TeacherService, Enum, EnumConverter, ValidationManager) {
+PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope, $routeParams, TeacherService, Enum, EnumConverter, ValidationManager, FormatManager) {
     $scope.isReady = false;
     $scope.teacher = null;
 
@@ -356,9 +356,13 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
             $scope.teacher.contacts.phones = tempTeacher.phoneList;
             $scope.teacher.contacts.emails = tempTeacher.emailList;
             $scope.teacher.teachedCourses = tempTeacher.teachedCourseList;
-
             $scope.teacher.status.key = tempTeacher.status;
             $scope.teacher.status.text = EnumConverter.Status.toString(tempTeacher.status);
+
+            for (var i = $scope.teacher.contacts.phones.length - 1; i >= 0; i--) {
+                var phone = $scope.teacher.contacts.phones[i];
+                phone.value = FormatManager.toDisplayedPhoneNumber(phone.value);
+            };
 
             $scope.isReady = true;
         }
@@ -397,7 +401,7 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
                         $scope.teacher.contacts.phones.push({
                             id: insertedContactId,
                             label: insertedContact.Label,
-                            value: insertedContact.Content,
+                            value: FormatManager.toDisplayedPhoneNumber(insertedContact.Content),
                             status: insertedContact.Status
                         });                        
                         break;
@@ -416,7 +420,7 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
                         $scope.teacher.contacts.emails.push({
                             id: insertedContactId,
                             label: insertedContact.Label,
-                            value: insertedContact.Content,
+                            value: FormatManager.toDisplayedPhoneNumber(insertedContact.Content),
                             status: insertedContact.Status
                         });                        
                         break;
@@ -459,7 +463,7 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
 
                         if (phone.id === updatedContact.Id) {
                             phone.label = updatedContact.Label;
-                            phone.value = updatedContact.Content;
+                            phone.value = FormatManager.toDisplayedPhoneNumber(updatedContact.Content);
                             phone.status = updatedContact.Status;
                             break;
                         }
@@ -479,7 +483,7 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
 
                         if (email.id === updatedContact.Id) {
                             email.label = updatedContact.Label;
-                            email.value = updatedContact.Content;
+                            email.value = FormatManager.toDisplayedPhoneNumber(updatedContact.Content);
                             email.status = updatedContact.Status;
                             break;
                         }

@@ -28,5 +28,4 @@ goog.addDependency('../../../js/enum.js', ['PianoForte.Enum'], []);
 goog.addDependency('../../../js/services/teachers/TeacherService.js', ['PianoForte.Services.TeacherService'], []);
 goog.addDependency('../../../js/utilities/EnumConverter.js', ['PianoForte.Utilities.EnumConverter'], []);
 goog.addDependency('../../../js/utilities/FormatManager.js', ['PianoForte.Utilities.FormatManager'], []);
-goog.addDependency('../../../js/utilities/FormattingService.js', ['PianoForte.Utilities.FormatManager'], []);
 goog.addDependency('../../../js/utilities/ValidationManager.js', ['PianoForte.Utilities.ValidationManager'], []);

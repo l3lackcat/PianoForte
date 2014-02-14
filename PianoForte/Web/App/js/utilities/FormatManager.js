@@ -7,36 +7,24 @@ PianoForte.Utilities.FormatManager = function () {
         toDisplayedPhoneNumber: function (input) {
             var displayedPhoneNumber = false;
 
-            if (phoneNumber != "") {
-                string part1;
-                string part2;
-                string part3;
+            if (input !== '') {
+                var part1;
+                var part2;
+                var part3;
 
-                int phoneNumberLength = phoneNumber.Length;
-                if (phoneNumberLength == 9)
-                {
-                    if (phoneNumber.Substring(0, 2) == "02")
-                    {
-                        part1 = phoneNumber.Substring(0, 2);
-                        part2 = phoneNumber.Substring(2, 3);
-                        part3 = phoneNumber.Substring(5, phoneNumberLength - 5);
-                    }
-                    else
-                    {
-                        part1 = phoneNumber.Substring(0, 3);
-                        part2 = phoneNumber.Substring(3, 3);
-                        part3 = phoneNumber.Substring(6, phoneNumberLength - 6);
-                    }
-
-                    displayPhoneNumber = part1 + "-" + part2 + "-" + part3;
+                var inputLength = input.length;
+                if ((inputLength === 9) && (input.substring(0, 2) === '02')) {
+                    part1 = input.substring(0, 2);
+                    part2 = input.substring(2, 5);
+                    part3 = input.substring(5, inputLength);
+                } else {
+                    part1 = input.substring(0, 3);
+                    part2 = input.substring(3, 6);
+                    part3 = input.substring(6, inputLength);                    
                 }
-                else if (phoneNumberLength == 10)
-                {
-                    part1 = phoneNumber.Substring(0, 3);
-                    part2 = phoneNumber.Substring(3, 3);
-                    part3 = phoneNumber.Substring(6, phoneNumberLength - 6);
 
-                    displayPhoneNumber = part1 + "-" + part2 + "-" + part3;
+                if ((part1 !== '') && (part1 !== '') && (part1 !== '')) {
+                    displayedPhoneNumber = part1 + '-' + part2 + '-' + part3;
                 }
             }
 
