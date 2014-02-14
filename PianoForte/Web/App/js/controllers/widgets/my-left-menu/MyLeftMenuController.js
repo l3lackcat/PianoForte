@@ -2,7 +2,7 @@
 
 goog.provide('PianoForte.Controllers.Widgets.MyLeftMenuController');
 
-PianoForte.Controllers.Widgets.MyLeftMenuController = function ($scope) {
+PianoForte.Controllers.Widgets.MyLeftMenuController = function ($scope, $attrs, $element) {
     $scope['menuItems'] = [
         {
             name: 'teachers',

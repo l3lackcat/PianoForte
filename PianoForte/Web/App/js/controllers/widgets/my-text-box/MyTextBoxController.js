@@ -2,19 +2,28 @@
 
 goog.provide('PianoForte.Controllers.Widgets.MyTextBoxController');
 
-PianoForte.Controllers.Widgets.MyTextBoxController = function ($scope) {
-    $scope.initialize = function (scope, element, attrs) {
-        if ($scope.width !== undefined) {
-            element[0].style.width = $scope.width + 'px';
-        }
-
-        var inputTextElement = element[0].children[0].children[0];
-        var btnRemoveElement = element[0].children[0].children[1];
-
-        btnRemoveElement.style.top = ((inputTextElement.clientHeight - btnRemoveElement.clientHeight) / 2) + 'px';
+PianoForte.Controllers.Widgets.MyTextBoxController = function ($scope, $attrs, $element) {
+    $scope.initialize = function () {
+        adjustWidth();
+        adjustRemoveIconPosition();
     };
 
     $scope.removeText = function () {
         $scope.text = '';
+    };
+
+    function adjustWidth () {
+        if ($scope.width !== undefined) {
+            $element.css('width', $scope.width + 'px');
+        }
+    };
+
+    function adjustRemoveIconPosition () {
+        var inputElement = $element[0].children[0].children[0];
+        var removeIconElement = $element[0].children[0].children[1];        
+        
+        if ((inputElement !== undefined) && (removeIconElement !== undefined)) {
+            removeIconElement.style.top = ((inputElement.clientHeight - removeIconElement.clientHeight) / 2) + 'px';        
+        }
     };
 };

@@ -6,7 +6,9 @@ PianoForte.Controllers.Teachers.TeacherMainController = function ($scope, $rootS
     $scope['teacherList'] = [];
     $scope['currrentFilter'] = null;
     $scope['teacherFilterList'] = [
-        { text: 'ดูทั้งหมด' }
+        { id: 1, text: 'ดูทั้งหมด' },
+        { id: 2, text: 'Item 2' },
+        { id: 3, text: 'Item 3' }
     ];
 
     $scope.init = function () {

@@ -15,7 +15,7 @@ PianoForte.Directives.Widgets.MyTextBoxDirective = function () {
         controller: 'MyTextBoxController',
         templateUrl: 'partials/widgets/my-text-box/my-text-box.htm',
         link: function (scope, element, attrs) {
-            scope.initialize(scope, element, attrs);
+            scope.initialize();
         }
     };
 };

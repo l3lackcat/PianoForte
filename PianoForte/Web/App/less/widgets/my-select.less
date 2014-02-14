@@ -1,0 +1,75 @@
+﻿.widget-select {
+	position: relative;
+	width: 100%;
+
+	> input[type="text"] {	
+		background-color: #FFF;			
+		border: 0;
+		border-bottom: 1px solid transparent;
+		color: inherit;
+		font-family: inherit;
+		font-size: inherit;
+		margin: 0;
+		padding: 3px 20px 3px 5px;
+		width: calc(~'100% - 25px');
+
+		&::-webkit-input-placeholder {
+			font-style: italic;
+		}
+									
+		&:disabled { 
+			background-color: transparent; 
+		}
+	}
+
+	> .btn-toggle {	
+		background-color: transparent;							
+		border: 0;
+		display: inline-block;
+		height: 10px;
+		margin: 0;
+		padding: 0;
+		position: absolute;
+		right: 5px;
+		width: 10px;
+
+		&.caret {
+			background-image: url('../images/icons/droptri_10_green.png');
+			background-repeat: no-repeat;
+		}
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	> .dropdown-menu {
+		background-color: #6DB7A9;
+		padding: 5px;
+		position: absolute;	
+		width: calc(~'100% - 10px');
+		z-index: 1;	
+	}	
+}
+
+#teacher,
+#teacher-main {
+	.widget-select {
+		> input[type="text"] {
+			&:focus { border-bottom-color: @teachersThemeColor; }
+			&:hover { border-bottom-color: @teachersThemeColor; }	
+			&:disabled { border-bottom-color: transparent; }	
+		}
+	}
+}
+
+#student,
+#student-main {
+	.widget-select {
+		> input[type="text"] {
+			&:focus { border-bottom-color: @studentsThemeColor; }
+			&:hover { border-bottom-color: @studentsThemeColor; }	
+			&:disabled { border-bottom-color: transparent; }	
+		}
+	}
+}

@@ -12,7 +12,8 @@
             </div>
             <div class="tube width-50-percent">
                 <div class="tube width-50-percent">
-                    <select class="widget-dropdown" ng-model="currrentFilter" ng-options="tf.text for tf in teacherFilterList"></select>
+                    <!-- <select class="widget-dropdown" ng-model="currrentFilter" ng-options="tf.text for tf in teacherFilterList"></select> -->
+                    <my-select data-items="teacherFilterList" selectedItemIndex="1"></my-select>                    
                 </div>
                 <div class="tube width-50-percent">
                     <my-search-box data-text="filterText" data-placeholder="'ค้นหาครู...'"></my-search-box>

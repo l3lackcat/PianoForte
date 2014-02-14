@@ -2,19 +2,28 @@
 
 goog.provide('PianoForte.Controllers.Widgets.MySearchBoxController');
 
-PianoForte.Controllers.Widgets.MySearchBoxController = function ($scope) {
-    $scope.initialize = function (scope, element, attrs) {
-        if ($scope.width !== undefined) {
-            element[0].style.width = $scope.width + 'px';
-        }
-
-        var inputTextElement = element[0].children[0].children[0];
-        var btnSearchElement = element[0].children[0].children[1];
-
-        btnSearchElement.style.top = ((inputTextElement.clientHeight - btnSearchElement.clientHeight) / 2) + 'px';
+PianoForte.Controllers.Widgets.MySearchBoxController = function ($scope, $attrs, $element) {
+    $scope.initialize = function () {
+        adjustWidth();
+        adjustSearchIconPosition();
     };
 
     $scope.search = function () {
         // To do
+    };
+
+    function adjustWidth () {
+        if ($scope.width !== undefined) {
+            $element.css('width', $scope.width + 'px');
+        }
+    };
+
+    function adjustSearchIconPosition () {
+        var inputElement = $element[0].children[0].children[0];
+        var searchIconElement = $element[0].children[0].children[1];        
+        
+        if ((inputElement !== undefined) && (searchIconElement !== undefined)) {
+            searchIconElement.style.top = ((inputElement.clientHeight - searchIconElement.clientHeight) / 2) + 'px';        
+        }
     };
 };

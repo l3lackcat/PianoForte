@@ -2,7 +2,7 @@
 
 goog.provide('PianoForte.Controllers.Widgets.MyTabsController');
 
-PianoForte.Controllers.Widgets.MyTabsController = function ($scope) {
+PianoForte.Controllers.Widgets.MyTabsController = function ($scope, $attrs, $element) {
     var panes = $scope.panes = [];
 
     $scope.select = function (pane) {

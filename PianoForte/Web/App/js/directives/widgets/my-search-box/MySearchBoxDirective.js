@@ -15,7 +15,7 @@ PianoForte.Directives.Widgets.MySearchBoxDirective = function () {
         controller: 'MySearchBoxController',
         templateUrl: 'partials/widgets/my-search-box/my-search-box.htm',
         link: function (scope, element, attrs) {
-            scope.initialize(scope, element, attrs);
+            scope.initialize();
         }
     };
 };

@@ -2,7 +2,7 @@
 
 goog.provide('PianoForte.Controllers.Widgets.MyBoxController');
 
-PianoForte.Controllers.Widgets.MyBoxController = function ($scope) {
+PianoForte.Controllers.Widgets.MyBoxController = function ($scope, $attrs, $element) {
     $scope.getHeaderVisibility = function () {
         var isVisible = true;
 
