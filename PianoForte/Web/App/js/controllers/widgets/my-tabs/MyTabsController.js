@@ -20,7 +20,7 @@ PianoForte.Controllers.Widgets.MyTabsController = function ($scope, $attrs, $ele
 
         panes.push(pane);
     };
-
+    /*
     $scope.$on('changeTab', function (event, paneTitle) {
         var previousActivePane = null;
         var nextActivePane = null;
@@ -45,4 +45,5 @@ PianoForte.Controllers.Widgets.MyTabsController = function ($scope, $attrs, $ele
             nextActivePane.selected = true;
         }
     });
+    */
 };

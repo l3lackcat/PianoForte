@@ -3,13 +3,22 @@
 goog.provide('PianoForte.Controllers.Widgets.MySelectController');
 
 PianoForte.Controllers.Widgets.MySelectController = function ($scope, $attrs, $element, $document) {
-    $scope.textFilter = '';
+    $scope.selectedText = '';
     $scope.isMenuVisible = false;
 
+    var selectElement = null;
+    var textElement = null;
+    var caretElement = null;
+
     $scope.initialize = function () {
-        adjustWidth();
-        adjustCaretPosition();
-        addEventsListen();        
+        selectElement = $element[0];
+        textElement = $element[0].children[0].children[0];
+        caretElement = $element[0].children[0].children[1];
+
+        updateLayout();
+        addEventsListen();
+        resetSelectedItem();
+        setDefaultSelectedItem();
     };
 
     $scope.toggleMenu = function () {
@@ -17,47 +26,72 @@ PianoForte.Controllers.Widgets.MySelectController = function ($scope, $attrs, $e
     };
 
     $scope.select = function (selectedItem) {
-        for (var i = $scope.items.length - 1; i >= 0; i--) {
-            var item = $scope.items[i];
+        resetSelectedItem();
+        updateSelectedItemById(selectedItem.id);
+        
+        $scope.isMenuVisible = false;
+    }
 
-            if (item.id === selectedItem.id) {
-                updateSelectedItemByIndex(i);
-                $scope.isMenuVisible = false;
-                break;
-            }
-        };
+    function updateLayout () {
+        adjustWidth();
     }
 
     function adjustWidth () {
         if ($scope.width !== undefined) {
-            $element.css('width', $scope.width + 'px');
+            selectElement.style.width = $scope.width + 'px';
         }
+
+        textElement.style.width = (selectElement.clientWidth - caretElement.clientWidth - 12) + 'px';
     };    
-
-    function adjustCaretPosition () {
-        var inputElement = $element[0].children[0];
-        var caretElement = $element[0].children[1];        
-        
-        if ((inputElement !== undefined) && (caretElement !== undefined)) {
-            caretElement.style.top = ((inputElement.clientHeight - caretElement.clientHeight) / 2) + 'px';        
-        }
-    };
-
-    function updateSelectedItemByIndex (index) {
-        var selectedItem = $scope.items[index];
-        if (selectedItem !== undefined) {
-            $scope.textFilter = selectedItem.text;
-        }
-    };
 
     function addEventsListen () {
         $document.bind('click', onClick);
     };
 
     function onClick (e) {
-        if ($element[0].contains(e.target) === false) {
+        if (selectElement.contains(e.target) === false) {
             $scope.isMenuVisible = false;
             $scope.$apply();
         }  
     };
+
+    function resetSelectedItem () {
+        if ($scope.items !== null) {
+            for (var i = $scope.items.length - 1; i >= 0; i--) {
+                $scope.items[i].selected = false;
+            }
+        }            
+    }
+
+    function setDefaultSelectedItem () {
+        if ($scope.defaultSelectedItemId !== undefined) {
+            updateSelectedItemById($scope.defaultSelectedItemId);
+        } else if ($scope.defaultSelectedItemIndex !== undefined) {
+            updateSelectedItemByIndex($scope.defaultSelectedItemIndex);
+        } else {
+            updateSelectedItemByIndex(0);
+        }
+    }
+
+    function updateSelectedItemById (itemId) {
+        for (var i = $scope.items.length - 1; i >= 0; i--) {
+            if ($scope.items[i].id === itemId) {
+                updateSelectedItemByIndex(i);
+            }
+        };
+    }; 
+
+    function updateSelectedItemByIndex (index) {
+        var selectedItem = $scope.items[index];
+        if (selectedItem !== undefined) {
+            selectedItem.selected = true;
+            $scope.selectedText = selectedItem.text;
+            textElement.classList.remove('placeholder');
+        } else {
+            if ($scope.placeholder !== undefined) {
+                $scope.selectedText = $scope.placeholder;
+                textElement.classList.add('placeholder');
+            }            
+        }
+    };    
 };

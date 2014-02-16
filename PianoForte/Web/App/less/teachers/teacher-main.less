@@ -8,9 +8,7 @@
 		my-pane {
 			height: inherit;
 
-			.tab-pane {
-				height: 100%;
-			}
+			.tab-pane { height: 100%; }
 		}		
 	}
 
@@ -19,29 +17,71 @@
 			float: left;
 			width: calc(~'50% - 6px');		
 
-			.widget-dropdown {
+			.widget-select {
 				color: #636363;
-				padding-bottom: 3px;
+				font-size: inherit;
 			}
 
 			.widget-search-box {
 				color: #636363;
+				font-size: inherit;
 			}
 
-			&:first-child {
-				margin-right: 12px;
-			}
+			&:first-child { margin-right: 12px; }
 		}
 
-		&.width-100-percent {
-			width: 100%;
-		}	
-		
-		&.fix-height {
-			height: calc(~'100% - 88px');
-			//overflow-y: hidden;
-		}	
+		&.width-100-percent { width: 100%; }	
+
+		&.fix-height { height: calc(~'100% - 120px'); }	
 	}		
+
+	.pagination {
+		margin-bottom: 12px;
+		.user-select(none);
+
+		ul {
+			text-align: right;
+			
+
+			li {
+				color: #CCCBC9;
+				display: inline-block;
+				font-size: 16px;
+				margin-right: 5px;
+
+				span {
+					display: inline-block;
+					padding: 0 2px;
+
+					&.active { color: #989898; }
+
+					&:hover {
+						color: #989898;
+						cursor: pointer;
+					}
+
+					&.btn-prev, &.btn-next {
+						color: @teachersThemeColor;
+						padding: 0;
+
+						&:hover { color: @teachersThemeColor; }
+					}
+
+					&.seperator {
+						color: @teachersThemeColor;
+						font-size: 22px;
+
+						&:hover {
+							color: @teachersThemeColor;
+							cursor: default;
+						}
+					}
+				}											
+			}
+
+			&:hover { cursor: default; }
+		}
+	}
 
 	my-box {
 		height: inherit;
@@ -63,29 +103,17 @@
 							float: left;
 							margin-right: 5px;							
 
-							&.col-name {
-								width: calc(~'100% - 300px');
-							}
+							&.col-name { width: calc(~'100% - 300px'); }
 
-							&.col-nickname {
-								width: 125px
-							}
+							&.col-nickname { width: 125px; }
 
-							&.col-phone {
-								width: 125px
-							}
+							&.col-phone { width: 125px; }
 
-							&.col-view-icon {
-								width: 30px
-							}
+							&.col-view-icon { width: 30px; }
 
-							&:nth-child(4) {
-								margin-right: 0px;
-							}
+							&:nth-child(4) { margin-right: 0px; }
 
-							&:hover {
-								cursor: default;
-							}
+							&:hover { cursor: default; }
 						}
 		
 					}						

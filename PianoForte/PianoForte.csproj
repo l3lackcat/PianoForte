@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="WebServices\CourseWebService.asmx" />
     <Content Include="WebServices\TeacherWebService.asmx" />
     <Content Include="Web\App\css\style.css" />
     <Content Include="Web\App\css\test.css" />
@@ -113,6 +114,7 @@
     <Content Include="Web\App\js\directives\widgets\my-tabs\MyPaneDirective.js" />
     <Content Include="Web\App\js\directives\widgets\my-tabs\MyTabsDirective.js" />
     <Content Include="Web\App\js\enum.js" />
+    <Content Include="Web\App\js\services\courses\CourseService.js" />
     <Content Include="Web\App\js\services\teachers\TeacherService.js" />
     <Content Include="Web\App\js\utilities\FormatManager.js" />
     <Content Include="Web\App\js\utilities\ValidationManager.js" />
@@ -2198,6 +2200,11 @@
     <Compile Include="Services\TeachedCourseService.cs" />
     <Compile Include="Services\TeacherContactService.cs" />
     <Compile Include="Services\TeacherService.cs" />
+    <Compile Include="Utilities\FormatManager.cs" />
+    <Compile Include="WebServices\CourseWebService.asmx.cs">
+      <DependentUpon>CourseWebService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="WebServices\TeacherWebService.asmx.cs">
       <DependentUpon>TeacherWebService.asmx</DependentUpon>
       <SubType>Component</SubType>

@@ -6,11 +6,11 @@ PianoForte.Directives.Widgets.MyTextBoxDirective = function () {
     return {
         restrict: 'E',
         replace: true,
-        scope: {
-            text: '=',
+        scope: {            
             disabled: '=',
-            width: '=',
-            placeholder: '='
+            placeholder: '=',
+            text: '=',
+            width: '='            
         },
         controller: 'MyTextBoxController',
         templateUrl: 'partials/widgets/my-text-box/my-text-box.htm',

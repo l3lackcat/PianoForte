@@ -3,10 +3,12 @@
 goog.provide('PianoForte.Services.TeacherService');
 
 PianoForte.Services.TeacherService = function ($http) {
+    var databaseName = 'pianoforte_b01';
+    
     return {
         getTeacherList: function (onSuccess, onError) {
             var data = {
-                databaseName: 'pianoforte_b01'
+                databaseName: databaseName
             };
 
             $http.post('/WebServices/TeacherWebService.asmx/getTeacherList', data).success(onSuccess).error(onError);
@@ -14,7 +16,7 @@ PianoForte.Services.TeacherService = function ($http) {
 
         getTeacherInfoById: function (teacherId, onSuccess, onError) {
             var data = {
-                databaseName: 'pianoforte_b01',
+                databaseName: databaseName,
                 teacherId: teacherId
             };
 
@@ -23,7 +25,7 @@ PianoForte.Services.TeacherService = function ($http) {
 
         updateTeacherGeneralInfo: function (teacher, onSuccess, onError) {
             var data = {
-                databaseName: 'pianoforte_b01',
+                databaseName: databaseName,
                 teacher: {
                     Id: teacher.id.value,
                     Firstname: teacher.firstname.value,
@@ -38,7 +40,7 @@ PianoForte.Services.TeacherService = function ($http) {
 
         insertTeacherContactInfo: function (contact, onSuccess, onError) {
             var data = {
-                databaseName: 'pianoforte_b01',
+                databaseName: databaseName,
                 teacherContact: {
                     Id: contact.id,
                     Type: contact.type,
@@ -54,7 +56,7 @@ PianoForte.Services.TeacherService = function ($http) {
 
         updateTeacherContactInfo: function (contact, onSuccess, onError) {
             var data = {
-                databaseName: 'pianoforte_b01',
+                databaseName: databaseName,
                 teacherContact: {
                     Id: contact.id,
                     Type: contact.type,
@@ -70,7 +72,7 @@ PianoForte.Services.TeacherService = function ($http) {
 
         deleteTeacherContactInfo: function (contact, onSuccess, onError) {
             var data = {
-                databaseName: 'pianoforte_b01',
+                databaseName: databaseName,
                 teacherContact: {
                     Id: contact.id,
                     Type: contact.type,

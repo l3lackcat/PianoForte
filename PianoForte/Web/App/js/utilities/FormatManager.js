@@ -12,6 +12,8 @@ PianoForte.Utilities.FormatManager = function () {
                 var part2;
                 var part3;
 
+                input = input.replace(/-/g, '');
+
                 var inputLength = input.length;
                 if ((inputLength === 9) && (input.substring(0, 2) === '02')) {
                     part1 = input.substring(0, 2);

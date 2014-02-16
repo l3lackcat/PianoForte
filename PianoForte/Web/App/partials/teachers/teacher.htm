@@ -1,4 +1,4 @@
-﻿<div id="teacher" ng-controller="TeacherController" ng-init="init()">
+﻿<div id="teacher" ng-controller="TeacherController" ng-init="initialize()">
     <my-tabs ng-show="!isReady">
         <my-pane data-title="Loading">
             Now Loading...
@@ -57,7 +57,7 @@
                 </my-box>
             </div>
             <div class="tube-50-percent">
-                <my-box data-title="วิชาที่สอน" data-editable="false">
+                <my-box data-title="วิชาที่สอน" data-editable="true" data-edit="onEditTeachedCourseInfo()">
                     <div class="rows">
                         <div class="row" ng-repeat="teachCourse in teacher.teachedCourses">{{teachCourse}}</div>
                         <div class="row no-data" ng-show="teacher.teachedCourses.length == 0">*** ไม่มีข้อมูล ***</div>
@@ -108,12 +108,12 @@
                     </div>
                     <div class="clear-fix"></div>
                 </div>
-            </div>        
-        </div>        
+            </div>
+        </div>                
     </my-dialog-box>
     <my-dialog-box data-title="teacher > edit > ข้อมูลการติดต่อ" data-submit="onSubmitEditContactInfo()" data-close="onCancelEditContactInfo()" ng-show="isOnEditContactInfo">
         <h4>เบอร์โทรศัพท์</h4>
-        <div class="wrapper">       
+        <div class="wrapper">                
             <div class="rows">
                 <div class="row" ng-hide="contact.status == 19" ng-repeat="contact in edittedContactInfo.phones">
                     <div class="col col-label no-padding-top no-padding-bottom">
@@ -130,7 +130,7 @@
             </div>
         </div>
         <h4>อีเมล์</h4>
-        <div class="wrapper">       
+        <div class="wrapper">
             <div class="rows">
                 <div class="row" ng-hide="contact.status == 19" ng-repeat="contact in edittedContactInfo.emails">
                     <div class="col col-label no-padding-top no-padding-bottom">
@@ -145,6 +145,23 @@
                 </div>
                 <button class="btn-add-email" ng-hide="isOnUpdateEdittedContactInfo" ng-click="addEmail()">เพิ่มอีเมล์</button>
             </div>
-        </div>
+        </div>     
+    </my-dialog-box>
+    <my-dialog-box data-title="teacher > edit > วิชาที่สอน" data-submit="onSubmitEditTeachedCourseInfo()" data-close="onCancelEditTeachedCourseInfo()" ng-show="isOnEditTeachedCourseInfo">
+        <div class="wrapper">
+            <div class="rows">
+                <div class="row" ng-repeat="teachedCourse in edittedTeachedCourseInfo">
+                    <div class="col col-span label-value">
+                        <my-select 
+                            data-placeholder="'Please select...'"
+                            data-items="teachedCourse.courseNameList" 
+                            data-default-selected-item-index="teachedCourse.index"></my-select>
+                    </div>
+                    <div class="col col-trash" ng-hide="isOnUpdateEdittedTeachedCourseInfo" ng-click="removeTeachedCourse($index)" title="ลบ"></div>
+                    <div class="clear-fix"></div>
+                </div>
+                <button class="btn-add-course" ng-hide="isOnUpdateEdittedTeachedCourseInfo" ng-click="addTeachedCourse()">เพิ่มวิชาสอน</button>            
+            </div>
+        </div>            
     </my-dialog-box>
 </div>

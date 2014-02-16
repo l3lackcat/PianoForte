@@ -2,9 +2,10 @@
 
 goog.provide('PianoForte.Controllers.Teachers.TeacherController');
 
-PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope, $routeParams, TeacherService, Enum, EnumConverter, ValidationManager, FormatManager) {
+PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope, $routeParams, TeacherService, CourseService, Enum, EnumConverter, ValidationManager, FormatManager) {
     $scope.isReady = false;
     $scope.teacher = null;
+    $scope.courseNameList = null;
 
     $scope.edittedGeneralInfo = null;
     $scope.isOnEditGeneralInfo = false;
@@ -14,31 +15,23 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
     $scope.isOnEditContactInfo = false;
     $scope.isOnUpdateEdittedContactInfo = false;
 
+    $scope.edittedTeachedCourseInfo = null;
+    $scope.isOnEditTeachedCourseInfo = false;
+    $scope.isOnUpdateEdittedTeachedCourseInfo = false;    
+
     var requestInsertContactList = [];
     var requestUpdateContactList = [];
     var requestDeleteContactList = [];
 
-    $scope.init = function () {
+    $scope.initialize = function () {
         $rootScope.$broadcast('SelectMenuItem', 'teachers');
 
         $scope.isReady = false;
-        $scope.teacher = {
-            id: '',
-            firstname: '',
-            lastname: '',
-            nickname: '',
-            status: {
-                key: '',
-                text: ''
-            },
-            contacts: {
-                phones: [],
-                emails: []
-            },
-            teachedCourses: []
-        };
+        $scope.teacher = null;
+        $scope.courseNameList = null;        
 
         TeacherService.getTeacherInfoById($routeParams.teacherId, onSuccessReceiveTeacherInfoById, onErrorReceiveTeacherInfoById);
+        CourseService.getCourseNameList(Enum.Status.Active, onSuccessReceiveCourseNameList, onErrorReceiveCourseNameList);
     };
 
     $scope.onEditGeneralInfo = function () {
@@ -76,59 +69,6 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
         $scope.isOnEditGeneralInfo = true;
     };
 
-    $scope.onSubmitEditGeneralInfo = function () {
-        if (validateGeneralInfo() === true) {
-            if (isGeneralInfoChanged() === true) {
-                $scope.isOnUpdateEdittedGeneralInfo = true;
-                TeacherService.updateTeacherGeneralInfo($scope.edittedGeneralInfo, onSuccessUpdateTeacherGeneralInfo, onErrorUpdateTeacherGeneralInfo);
-            } else {
-                hideGeneralInfoDialogBox();
-            }
-        }
-    };
-
-    $scope.onCancelEditGeneralInfo = function () {
-        hideGeneralInfoDialogBox();
-    };
-
-    function hideGeneralInfoDialogBox() {
-        $scope.edittedGeneralInfo = null;
-        $scope.isOnEditGeneralInfo = false;
-        $scope.isOnUpdateEdittedGeneralInfo = false;
-    };
-
-    function validateGeneralInfo() {
-        var isValid = true;
-
-        if ($scope.edittedGeneralInfo.firstname.value === '') {
-            $scope.edittedGeneralInfo.firstname.isValid = false;
-            isValid = false;
-        } else {
-            $scope.edittedGeneralInfo.firstname.isValid = true;
-        }
-
-        if ($scope.edittedGeneralInfo.lastname.value === '') {
-            $scope.edittedGeneralInfo.lastname.isValid = false;
-            isValid = false;
-        } else {
-            $scope.edittedGeneralInfo.lastname.isValid = true;
-        }
-
-        return isValid;
-    };
-
-    function isGeneralInfoChanged() {
-        var isChanged = false;
-
-        if (($scope.teacher.firstname !== $scope.edittedGeneralInfo.firstname.value) ||
-            ($scope.teacher.lastname !== $scope.edittedGeneralInfo.lastname.value) ||
-            ($scope.teacher.nickname !== $scope.edittedGeneralInfo.nickname.value)) {
-            isChanged = true;
-        }
-
-        return isChanged;
-    };
-
     $scope.onEditContactInfo = function () {
         if ($scope.edittedContactInfo === null) {
             $scope.edittedContactInfo = {
@@ -164,6 +104,53 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
 
             $scope.isOnEditContactInfo = true;
         }            
+    };
+
+    $scope.onEditTeachedCourseInfo = function () {
+        if ($scope.edittedTeachedCourseInfo === null) {
+            $scope.edittedTeachedCourseInfo = [];
+
+            for (var i = $scope.teacher.teachedCourses.length - 1; i >= 0; i--) {
+                var tempCourseList = [];
+                var teachedCourseIndex = -1;
+
+                var courseNameListLength = $scope.courseNameList.length;
+                for (var j = 0; j < courseNameListLength; j++) {
+                    var courseName = $scope.courseNameList[j];
+                    if (courseName === $scope.teacher.teachedCourses[i]) {
+                        teachedCourseIndex = j;
+                    }
+
+                    tempCourseList.push({
+                        id: j,
+                        text: courseName,
+                        excluded: false
+                    });
+                }
+
+                $scope.edittedTeachedCourseInfo.push({
+                    index: teachedCourseIndex,
+                    courseNameList: tempCourseList
+                });
+            };
+
+            $scope.isOnEditTeachedCourseInfo = true;
+        }
+    };
+
+    $scope.onSubmitEditGeneralInfo = function () {
+        if (validateGeneralInfo() === true) {
+            if (isGeneralInfoChanged() === true) {
+                $scope.isOnUpdateEdittedGeneralInfo = true;
+                TeacherService.updateTeacherGeneralInfo($scope.edittedGeneralInfo, onSuccessUpdateTeacherGeneralInfo, onErrorUpdateTeacherGeneralInfo);
+            } else {
+                hideGeneralInfoDialogBox();
+            }
+        }
+    };
+
+    $scope.onCancelEditGeneralInfo = function () {
+        hideGeneralInfoDialogBox();
     };
 
     $scope.onSubmitEditContactInfo = function () {
@@ -263,6 +250,23 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
         hideContactInfoDialogBox();
     };
 
+    $scope.onSubmitEditTeachedCourseInfo = function () {
+        for (var i = $scope.edittedTeachedCourseInfo.length - 1; i >= 0; i--) {
+            var teachedCourse = $scope.edittedTeachedCourseInfo[i];
+
+            for (var j = teachedCourse.courseNameList.length - 1; j >= 0; j--) {
+                var courseName = teachedCourse.courseNameList[j];
+                if (courseName.selected === true) {
+                    console.log(courseName);
+                }
+            };
+        };
+    };
+
+    $scope.onCancelEditTeachedCourseInfo = function () {
+        hideTeachedCourseInfoDialogBox();
+    };
+
     $scope.addPhone = function () {
         $scope.edittedContactInfo.phones.push({
             id: 0,
@@ -291,11 +295,80 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
         email.status = Enum.Status.Deleted;
     };
 
+    $scope.addTeachedCourse = function () {
+        var tempCourseList = [];
+        var teachedCourseIndex = -1;
+
+        var courseNameListLength = $scope.courseNameList.length;
+        for (var j = 0; j < courseNameListLength; j++) {
+            var courseName = $scope.courseNameList[j];
+
+            tempCourseList.push({
+                id: j,
+                text: courseName,
+                excluded: false
+            });
+        }
+
+        $scope.edittedTeachedCourseInfo.push({
+            index: teachedCourseIndex,
+            courseNameList: tempCourseList
+        });
+    };
+
+    $scope.removeTeachedCourse = function (index) {
+        $scope.edittedTeachedCourseInfo.splice(index, 1);
+    };    
+
+    function hideGeneralInfoDialogBox() {
+        $scope.edittedGeneralInfo = null;
+        $scope.isOnEditGeneralInfo = false;
+        $scope.isOnUpdateEdittedGeneralInfo = false;
+    };
+
     function hideContactInfoDialogBox() {
         $scope.edittedContactInfo = null;
         $scope.isOnEditContactInfo = false;
         $scope.isOnUpdateEdittedContactInfo = false;
     };
+
+    function hideTeachedCourseInfoDialogBox() {
+        $scope.edittedTeachedCourseInfo = null;
+        $scope.isOnEditTeachedCourseInfo = false;
+        $scope.isOnUpdateEdittedTeachedCourseInfo = false;
+    };
+
+    function validateGeneralInfo() {
+        var isValid = true;
+
+        if ($scope.edittedGeneralInfo.firstname.value === '') {
+            $scope.edittedGeneralInfo.firstname.isValid = false;
+            isValid = false;
+        } else {
+            $scope.edittedGeneralInfo.firstname.isValid = true;
+        }
+
+        if ($scope.edittedGeneralInfo.lastname.value === '') {
+            $scope.edittedGeneralInfo.lastname.isValid = false;
+            isValid = false;
+        } else {
+            $scope.edittedGeneralInfo.lastname.isValid = true;
+        }
+
+        return isValid;
+    };
+
+    function isGeneralInfoChanged() {
+        var isChanged = false;
+
+        if (($scope.teacher.firstname !== $scope.edittedGeneralInfo.firstname.value) ||
+            ($scope.teacher.lastname !== $scope.edittedGeneralInfo.lastname.value) ||
+            ($scope.teacher.nickname !== $scope.edittedGeneralInfo.nickname.value)) {
+            isChanged = true;
+        }
+
+        return isChanged;
+    };            
 
     function validateContactInfo() {
         var isValid = true;
@@ -349,27 +422,49 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
         var tempTeacher = data.d;
 
         if (tempTeacher !== null) {
-            $scope.teacher.id = tempTeacher.id;
-            $scope.teacher.firstname = tempTeacher.firstname;
-            $scope.teacher.lastname = tempTeacher.lastname;
-            $scope.teacher.nickname = tempTeacher.nickname;
-            $scope.teacher.contacts.phones = tempTeacher.phoneList;
-            $scope.teacher.contacts.emails = tempTeacher.emailList;
-            $scope.teacher.teachedCourses = tempTeacher.teachedCourseList;
-            $scope.teacher.status.key = tempTeacher.status;
-            $scope.teacher.status.text = EnumConverter.Status.toString(tempTeacher.status);
+            $scope.teacher = {
+                id: tempTeacher.id,
+                firstname: tempTeacher.firstname,
+                lastname: tempTeacher.lastname,
+                nickname: tempTeacher.nickname,
+                status: {
+                    key: tempTeacher.status,
+                    text: EnumConverter.Status.toString(tempTeacher.status)
+                },
+                contacts: {
+                    phones: tempTeacher.phoneList,
+                    emails: tempTeacher.emailList
+                },
+                teachedCourses: tempTeacher.teachedCourseList
+            };
 
             for (var i = $scope.teacher.contacts.phones.length - 1; i >= 0; i--) {
                 var phone = $scope.teacher.contacts.phones[i];
                 phone.value = FormatManager.toDisplayedPhoneNumber(phone.value);
             };
 
-            $scope.isReady = true;
+            if ($scope.courseNameList !== null) {
+                $scope.isReady = true;
+            }            
         }
     };
 
     var onErrorReceiveTeacherInfoById = function (data, status, headers, config) {
         console.log('onErrorReceiveTeacherInfoById');
+    };
+
+    var onSuccessReceiveCourseNameList = function (data, status, headers, config) {
+        if (data.d !== null) {
+            $scope.courseNameList = data.d;
+
+            if ($scope.teacher !== null) {
+                $scope.isReady = true;
+            }
+        }
+    };
+
+    var onErrorReceiveCourseNameList = function (data, status, headers, config) {
+        console.log('onErrorReceiveCourseNameList');
     };
 
     var onSuccessUpdateTeacherGeneralInfo = function (data, status, headers, config) {

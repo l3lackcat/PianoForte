@@ -1,5 +1,5 @@
-﻿<div id="teachers" ng-controller="TeacherMainController" ng-init="init()">
-    <my-tabs>
+﻿<div id="teachers" ng-controller="TeacherMainController" ng-init="initialize()">
+    <my-tabs>        
         <my-pane data-title="dashboard">
             <div class="tube width-50-percent">
                 <my-box>                    
@@ -12,14 +12,33 @@
             </div>
             <div class="tube width-50-percent">
                 <div class="tube width-50-percent">
-                    <!-- <select class="widget-dropdown" ng-model="currrentFilter" ng-options="tf.text for tf in teacherFilterList"></select> -->
-                    <my-select data-items="teacherFilterList" selectedItemIndex="1"></my-select>                    
+                    <my-select 
+                        data-placeholder="'Test'" 
+                        data-items="dropdownFilterList" 
+                        data-default-selected-item-index="-1" 
+                        data-on-changed="onDropdownFilterChanged(selectedIndex)"></my-select>
                 </div>
                 <div class="tube width-50-percent">
                     <my-search-box data-text="filterText" data-placeholder="'ค้นหาครู...'"></my-search-box>
                 </div>
             </div>
             <div class="clear-fix"></div>
+            <div class="tube width-100-percent">
+                <div class="pagination">
+                    <ul>
+                        <li ng-show="pageNumbers.length > 1">
+                            <span class="btn-prev" ng-click="goToPrevPage(pageNumber)" title="ก่อนหน้า">&#9664;</span>
+                        </li>
+                        <li ng-repeat="pageNumber in pageNumbers" ng-switch on="!$last">
+                            <span class="{{pageNumber.className}}" ng-click="goToPage(pageNumber.index)">{{pageNumber.index}}</span>
+                            <span class="seperator" ng-switch-when="true">.</span>
+                        </li>
+                        <li ng-show="pageNumbers.length > 1">
+                            <span class="btn-next" ng-click="goToNextPage(pageNumber)" title="ถัดไป">&#9654;</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
             <div class="tube width-100-percent">
                 <my-box class="header">
                     <div class="rows">
@@ -36,7 +55,7 @@
             <div class="tube width-100-percent fix-height">
                 <my-box class="content">
                     <div class="rows">
-                        <div ng-repeat="teacher in teacherList | orderBy:'name' | filter:filterText" class="row">
+                        <div ng-repeat="teacher in teacherList | orderBy:'name' | filter:filterText | startFrom:(currentPage-1)*showPerPage | limitTo:showPerPage" class="row">
                             <div class="col col-name">{{teacher.name}}</div>
                             <div class="col col-nickname">{{teacher.nickname}}</div>
                             <div class="col col-phone">{{teacher.phoneNumber}}</div>

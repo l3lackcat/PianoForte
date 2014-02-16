@@ -10,9 +10,9 @@ PianoForte.Directives.Widgets.MyPaneDirective = function () {
         scope: {
             title: '@'
         },
+        templateUrl: 'partials/widgets/my-tabs/my-pane.htm',
         link: function (scope, element, attrs, tabsCtrl) {
             tabsCtrl.addPane(scope);
-        },
-        templateUrl: 'partials/widgets/my-tabs/my-pane.htm'
+        }        
     };
 };

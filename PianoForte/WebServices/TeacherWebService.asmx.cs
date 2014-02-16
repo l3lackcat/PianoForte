@@ -7,6 +7,7 @@ using System.Web.Services;
 using PianoForte.Enum;
 using PianoForte.Models;
 using PianoForte.Services;
+using PianoForte.Utilities;
 
 namespace PianoForte.WebServices
 {
@@ -19,7 +20,7 @@ namespace PianoForte.WebServices
         [WebMethod]
         public List<Object> getTeacherList(string databaseName)
         {
-            System.Threading.Thread.Sleep(3000);
+            System.Threading.Thread.Sleep(1500);
 
             List<Object> displayedTeacherList = new List<Object>();
             List<Teacher> teacherList = TeacherService.getTeacherList(databaseName);
@@ -32,7 +33,7 @@ namespace PianoForte.WebServices
                 {
                     if (contact.Type == ContactType.PHONE)
                     {
-                        phoneNumber = contact.Content;
+                        phoneNumber = FormatManager.toDisplayedPhoneNumber(contact.Content);
                         break;
                     }
                 }
@@ -51,7 +52,7 @@ namespace PianoForte.WebServices
         [WebMethod]
         public Object getTeacherById(string databaseName, int teacherId)
         {
-            System.Threading.Thread.Sleep(3000);
+            System.Threading.Thread.Sleep(1500);
 
             Object teacher = null;
             List<Object> phoneList = new List<Object>();
@@ -116,14 +117,14 @@ namespace PianoForte.WebServices
         [WebMethod]
         public bool updateTeacherGeneralInfo(string databaseName, Teacher teacher)
         {
-            System.Threading.Thread.Sleep(3000);
+            System.Threading.Thread.Sleep(1500);
             return TeacherService.updateTeacher(databaseName, teacher);
         }
 
         [WebMethod]
         public int insertTeacherContactInfo(string databaseName, TeacherContact teacherContact)
         {
-            System.Threading.Thread.Sleep(3000);
+            System.Threading.Thread.Sleep(1500);
 
             int contactId = 0;
 
@@ -143,14 +144,14 @@ namespace PianoForte.WebServices
         [WebMethod]
         public bool updateTeacherContactInfo(string databaseName, TeacherContact teacherContact)
         {
-            System.Threading.Thread.Sleep(3000);
+            System.Threading.Thread.Sleep(1500);
             return TeacherContactService.updateTeacherContact(databaseName, teacherContact);
         }
 
         [WebMethod]
         public bool deleteTeacherContactInfo(string databaseName, TeacherContact teacherContact)
         {
-            System.Threading.Thread.Sleep(3000);
+            System.Threading.Thread.Sleep(1500);
             return TeacherContactService.updateTeacherContact(databaseName, teacherContact);
         }
     }

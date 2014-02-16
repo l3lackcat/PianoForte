@@ -2,6 +2,14 @@
 // Mixins
 // --------------------------------------------------
 
+.user-select(@properties) {
+  -webkit-user-select: @properties;
+   -khtml-user-select: @properties;
+     -moz-user-select: @properties;
+       -o-user-select: @properties;
+          user-select: @properties;
+}
+
 .border-radius(@radius) {
   -webkit-border-radius: @radius;
      -moz-border-radius: @radius;
