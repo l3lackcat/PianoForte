@@ -7,13 +7,15 @@ PianoForte.Controllers.Widgets.MySelectController = function ($scope, $attrs, $e
     $scope.isMenuVisible = false;
 
     var selectElement = null;
+    var buttonElement = null;
     var textElement = null;
     var caretElement = null;
 
     $scope.initialize = function () {
         selectElement = $element[0];
-        textElement = $element[0].children[0].children[0];
-        caretElement = $element[0].children[0].children[1];
+        buttonElement = selectElement.children[0];
+        textElement = buttonElement.children[0];
+        caretElement = buttonElement.children[1];
 
         updateLayout();
         addEventsListen();
@@ -22,7 +24,9 @@ PianoForte.Controllers.Widgets.MySelectController = function ($scope, $attrs, $e
     };
 
     $scope.toggleMenu = function () {
-        $scope.isMenuVisible = !$scope.isMenuVisible;
+        if ($scope.disabled === false) {
+            $scope.isMenuVisible = !$scope.isMenuVisible;
+        }        
     };
 
     $scope.select = function (selectedItem) {
@@ -31,6 +35,18 @@ PianoForte.Controllers.Widgets.MySelectController = function ($scope, $attrs, $e
         
         $scope.isMenuVisible = false;
     }
+
+    $scope.$watch('disabled', function(newValue, oldValue) {
+        if (newValue === true) {
+            if (buttonElement !== null) {
+                buttonElement.classList.add('disabled');
+            }            
+        } else {
+            if (buttonElement !== null) {
+                buttonElement.classList.remove('disabled');
+            }            
+        }
+    });
 
     function updateLayout () {
         adjustWidth();

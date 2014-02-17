@@ -84,6 +84,16 @@ PianoForte.Services.TeacherService = function ($http) {
             };
 
             $http.post('/WebServices/TeacherWebService.asmx/updateTeacherContactInfo', data).success(onSuccess).error(onError);
+        },
+
+        updateTeachedCourseInfo: function (teacherId, teachedCourseNameList, onSuccess, onError) {
+            var data = {
+                databaseName: databaseName,
+                teacherId: teacherId,
+                teachedCourseNameList: teachedCourseNameList
+            };
+
+            $http.post('/WebServices/TeacherWebService.asmx/updateTeachedCourseInfo', data).success(onSuccess).error(onError);
         }
     }
 };

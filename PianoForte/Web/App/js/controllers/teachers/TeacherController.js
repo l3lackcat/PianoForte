@@ -251,6 +251,8 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
     };
 
     $scope.onSubmitEditTeachedCourseInfo = function () {
+        var newTeachedCourseList = [];
+
         for (var i = $scope.edittedTeachedCourseInfo.length - 1; i >= 0; i--) {
             var teachedCourse = $scope.edittedTeachedCourseInfo[i];
 
@@ -258,9 +260,44 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
                 var courseName = teachedCourse.courseNameList[j];
                 if (courseName.selected === true) {
                     console.log(courseName);
+                    var courseNameText = courseName.text;
+                    if (newTeachedCourseList.indexOf(courseNameText) === -1) {
+                        newTeachedCourseList.push(courseNameText);
+                    }
                 }
-            };
-        };
+            }
+        }
+
+        var isDifferent = false;
+        var newTeachedCourseListLength = newTeachedCourseList.length;
+        var oldTeachedCourseListLength = $scope.teacher.teachedCourses.length;
+
+        if (newTeachedCourseListLength !== oldTeachedCourseListLength) {
+            isDifferent = true;
+        } else {
+            for (var i = newTeachedCourseListLength - 1; i >= 0; i--) {
+                var isFound = false;
+                var newTeachedCourse = newTeachedCourseList[i];
+
+                for (var j = oldTeachedCourseListLength - 1; j >= 0; j--) {
+                    var oldTeachedCourse = $scope.teacher.teachedCourses[j];
+                    if (oldTeachedCourse === newTeachedCourse) {
+                        isFound = true;
+                        break;
+                    }                    
+                }
+
+                if (isFound === false) {
+                    isDifferent = true;
+                    break;
+                }
+            }
+        }
+
+        if (isDifferent === true) {
+            $scope.isOnUpdateEdittedTeachedCourseInfo = true;
+            TeacherService.updateTeachedCourseInfo($scope.teacher.id, newTeachedCourseList, onSuccessUpdateTeachedCourseInfo, onErrorUpdateTeachedCourseInfo);
+        }
     };
 
     $scope.onCancelEditTeachedCourseInfo = function () {
@@ -668,5 +705,20 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
 
     var onErrorDeleteTeacherContactInfo = function (data, status, headers, config) {
         console.log('onErrorDeleteTeacherContactInfo');
+    };
+
+    var onSuccessUpdateTeachedCourseInfo = function (data, status, headers, config) {
+        var isSuccess = data.d;
+        if (isSuccess === true) {
+            $scope.teacher.teachedCourses = config.data.teachedCourseNameList;
+
+            hideTeachedCourseInfoDialogBox();
+        } else {
+            onErrorUpdateTeachedCourseInfo(data, status, headers, config);
+        }
+    };
+
+    var onErrorUpdateTeachedCourseInfo = function (data, status, headers, config) {
+        console.log('onErrorUpdateTeachedCourseInfo');
     };
 };

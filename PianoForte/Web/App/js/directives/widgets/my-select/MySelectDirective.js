@@ -9,6 +9,7 @@ PianoForte.Directives.Widgets.MySelectDirective = function () {
         scope: {       
             defaultSelectedItemId: '=',
             defaultSelectedItemIndex: '=',
+            disabled: '=',
             items: '=',            
             onChanged: '&',
             placeholder: '=',

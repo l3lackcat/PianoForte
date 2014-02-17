@@ -153,9 +153,10 @@
                 <div class="row" ng-repeat="teachedCourse in edittedTeachedCourseInfo">
                     <div class="col col-span label-value">
                         <my-select 
-                            data-placeholder="'Please select...'"
+                            data-default-selected-item-index="teachedCourse.index"
+                            data-disabled="isOnUpdateEdittedTeachedCourseInfo"                            
                             data-items="teachedCourse.courseNameList" 
-                            data-default-selected-item-index="teachedCourse.index"></my-select>
+                            data-placeholder="'Please select...'"></my-select>
                     </div>
                     <div class="col col-trash" ng-hide="isOnUpdateEdittedTeachedCourseInfo" ng-click="removeTeachedCourse($index)" title="ลบ"></div>
                     <div class="clear-fix"></div>

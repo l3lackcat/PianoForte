@@ -154,5 +154,32 @@ namespace PianoForte.WebServices
             System.Threading.Thread.Sleep(1500);
             return TeacherContactService.updateTeacherContact(databaseName, teacherContact);
         }
+
+        [WebMethod]
+        public bool updateTeachedCourseInfo(int teacherId, string databaseName, List<string> teachedCourseNameList)
+        {
+            System.Threading.Thread.Sleep(1500);
+
+            bool isUpdateSuccess = true;
+
+            if (TeachedCourseService.deleteTeachedCourseListByTeacherId(databaseName, teacherId))
+            {
+                foreach(string courseName in teachedCourseNameList)
+                {
+                    List<Course> courseList = CourseService.getCourseListByName(databaseName, courseName);
+                    foreach(Course course in courseList)
+                    {
+                        bool isSuccess = TeachedCourseService.insertTeachedCourse(databaseName, teacherId, course.Id);
+
+                        if (isUpdateSuccess)
+                        {
+                            isUpdateSuccess = isSuccess; 
+                        }
+                    }
+                }
+            }
+
+            return isUpdateSuccess;
+        }
     }
 }
