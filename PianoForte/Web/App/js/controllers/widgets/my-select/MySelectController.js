@@ -24,7 +24,7 @@ PianoForte.Controllers.Widgets.MySelectController = function ($scope, $attrs, $e
     };
 
     $scope.toggleMenu = function () {
-        if ($scope.disabled === false) {
+        if (($scope.disabled === undefined) || ($scope.disabled === false)) {
             $scope.isMenuVisible = !$scope.isMenuVisible;
         }        
     };

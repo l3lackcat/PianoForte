@@ -115,12 +115,12 @@
         <h4>เบอร์โทรศัพท์</h4>
         <div class="wrapper">                
             <div class="rows">
-                <div class="row" ng-hide="contact.status == 19" ng-repeat="contact in edittedContactInfo.phones">
+                <div class="row editted-contact" ng-hide="contact.status == 19" ng-repeat="contact in edittedContactInfo.phones">
                     <div class="col col-label no-padding-top no-padding-bottom">
                         <my-text-box data-text="contact.label" data-placeholder="'เบอร์โทร'" data-disabled="isOnUpdateEdittedContactInfo"></my-text-box>
                     </div>
                     <div class="col col-value">
-                        <my-text-box data-text="contact.value" data-placeholder="'Example: 089-999-9999'" data-disabled="isOnUpdateEdittedContactInfo"></my-text-box>
+                        <my-text-box data-text="contact.value" data-placeholder="'Ex: 089-999-9999'" data-disabled="isOnUpdateEdittedContactInfo"></my-text-box>
                         <label ng-hide="contact.isValid">*กรุณากรอกหมายเลขโทรศัพท์ให้ถูกต้อง</label>
                     </div>
                     <div class="col col-trash" ng-hide="isOnUpdateEdittedContactInfo" ng-click="removePhone(contact)" title="ลบ"></div>
@@ -132,12 +132,12 @@
         <h4>อีเมล์</h4>
         <div class="wrapper">
             <div class="rows">
-                <div class="row" ng-hide="contact.status == 19" ng-repeat="contact in edittedContactInfo.emails">
+                <div class="row editted-contact" ng-hide="contact.status == 19" ng-repeat="contact in edittedContactInfo.emails">
                     <div class="col col-label no-padding-top no-padding-bottom">
                         <my-text-box data-text="contact.label" data-placeholder="'อีเมล์'" data-disabled="isOnUpdateEdittedContactInfo"></my-text-box>
                     </div>
                     <div class="col col-value">
-                        <my-text-box data-text="contact.value" data-placeholder="'Example: email@pianoforte.com'" data-disabled="isOnUpdateEdittedContactInfo"></my-text-box>
+                        <my-text-box data-text="contact.value" data-placeholder="'Ex: email@pianoforte.com'" data-disabled="isOnUpdateEdittedContactInfo"></my-text-box>
                         <label ng-hide="contact.isValid">*กรุณากรอกอีเมล์ให้ถูกต้อง</label>
                     </div>
                     <div class="col col-trash" ng-hide="isOnUpdateEdittedContactInfo" ng-click="removeEmail(contact)" title="ลบ"></div>

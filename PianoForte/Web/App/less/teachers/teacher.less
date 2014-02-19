@@ -1,5 +1,5 @@
 ﻿#teacher {
-	font-size: 14px;
+	font-size: @fontSizeM;
 	height: inherit;
 
 	my-tabs {
@@ -27,7 +27,6 @@
 				.rows {
 					color: #636363;
 					font-family: inherit;
-					//font-size: 14px;
 
 					.row {
 						color: inherit;
@@ -68,7 +67,7 @@
 				> h4 {
 					color: @teachersThemeColor;
 					font-family: inherit;
-					font-size: 16px;
+					font-size: @fontSizeL;
 					margin: 10px 0px 10px 70px;
 
 					&:first-child {
@@ -87,7 +86,6 @@
 					.rows {
 						color: #636363;
 						font-family: inherit;
-						//font-size: 14px;
 						width: inherit;
 																	
 						.row {
@@ -106,7 +104,7 @@
 
 								&.col-label {									
 									margin-right: 20px;
-									padding: 8px 0;
+									padding: 10px 0;
 									text-align: right;
 									width: 100px;
 
@@ -139,7 +137,7 @@
 									background-image: url('../images/icons/trashcan_12_grey.png');
 									background-repeat: no-repeat;
 									height: 12px;
-									margin: 10px 7px;
+									margin: 12px 7px;
 									width: 12px;
 
 									&:hover {
@@ -153,6 +151,17 @@
 
 								&.no-padding-bottom {
 									padding-bottom: 0;
+								}
+							}
+
+							&.editted-contact {
+								.col {
+									&.col-label { 
+										margin-right: 10px;
+										width: 140px; 
+									}
+
+									&.col-value { width: calc(~'100% - 176px'); }
 								}
 							}
 
