@@ -7,8 +7,8 @@ PianoForte.Directives.Widgets.MyBoxDirective = function () {
         restrict: 'E',
         transclude: true,
         scope: {
-            title: '@',
-            editable: '@',
+            title: '=',
+            editable: '=',
             edit: '&'
         },
         controller: 'MyBoxController',

@@ -53,47 +53,20 @@
 
 		.dialog-box-content {
 			font-family: inherit;
-			padding: 25px;
+			padding: 25px 25px 0 25px;
 		}
 
 		.dialog-box-footer {
 			font-family: inherit;
-			padding: 0 20px 20px 20px;
+			padding: 20px 25px 25px 25px;
 			text-align: right;
-
-			.btn {
-				font-family: inherit;
-				font-size: @fontSizeM;
-				border: 0;
-				height: 27px;
-				margin: 0;
-				padding: 0;
-				width: 80px;				
-
-				&.btn-cancel {
-					background-color: #F8F7F4;
-					color: #AAA9A8;
-				}
-
-				&:hover {
-					cursor: pointer;
-				}
-			}
 		}
 	}
 }
 
-#teacher {
+#teacher,
+#teachers {
 	.widget-dialog-box {
-		.dialog-box-header {
-			background-color: @teachersThemeColor;			
-		}
-
-		.dialog-box-footer {
-			.btn-submit { 
-				background-color: @teachersThemeColor;
-				color: #EDECEA;
-			}
-		}
+		.dialog-box-header { background-color: @teacherThemeColor; }
 	}
 }

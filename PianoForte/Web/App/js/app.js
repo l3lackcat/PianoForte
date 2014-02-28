@@ -18,6 +18,7 @@ goog.require('PianoForte.Controllers.Teachers.TeacherController');
 goog.require('PianoForte.Controllers.Teachers.TeacherMainController');
 
 goog.require('PianoForte.Controllers.Widgets.MyBoxController');
+goog.require('PianoForte.Controllers.Widgets.MyButtonController');
 goog.require('PianoForte.Controllers.Widgets.MyDialogBoxController');
 goog.require('PianoForte.Controllers.Widgets.MyLeftMenuController');
 goog.require('PianoForte.Controllers.Widgets.MySearchBoxController');
@@ -26,9 +27,11 @@ goog.require('PianoForte.Controllers.Widgets.MyTabsController');
 goog.require('PianoForte.Controllers.Widgets.MyTextBoxController');
 
 goog.require('PianoForte.Directives.Widgets.MyBoxDirective');
+goog.require('PianoForte.Directives.Widgets.MyButtonDirective');
 goog.require('PianoForte.Directives.Widgets.MyDialogBoxDirective');
 goog.require('PianoForte.Directives.Widgets.MyLeftMenuDirective');
 goog.require('PianoForte.Directives.Widgets.MyPaneDirective');
+goog.require('PianoForte.Directives.Widgets.MyScrollbarDirective');
 goog.require('PianoForte.Directives.Widgets.MySearchBoxDirective');
 goog.require('PianoForte.Directives.Widgets.MySelectDirective');
 goog.require('PianoForte.Directives.Widgets.MyTabsDirective');
@@ -96,6 +99,7 @@ PianoForte.App.controller('StudentMainController', ['$scope', '$rootScope', Pian
 PianoForte.App.controller('TeacherController', ['$scope', '$rootScope', '$routeParams', 'TeacherService', 'CourseService', 'Enum', 'EnumConverter', 'ValidationManager', 'FormatManager', PianoForte.Controllers.Teachers.TeacherController]);
 PianoForte.App.controller('TeacherMainController', ['$scope', '$rootScope', 'TeacherService', 'FormatManager', PianoForte.Controllers.Teachers.TeacherMainController]);
 PianoForte.App.controller('MyBoxController', ['$scope', PianoForte.Controllers.Widgets.MyBoxController]);
+PianoForte.App.controller('MyButtonController', ['$scope', '$attrs', '$element', PianoForte.Controllers.Widgets.MyButtonController]);
 PianoForte.App.controller('MyDialogBoxController', ['$scope', '$attrs', '$element', PianoForte.Controllers.Widgets.MyDialogBoxController]);
 PianoForte.App.controller('MyLeftMenuController', ['$scope', '$attrs', '$element', PianoForte.Controllers.Widgets.MyLeftMenuController]);
 PianoForte.App.controller('MySearchBoxController', ['$scope', '$attrs', '$element', PianoForte.Controllers.Widgets.MySearchBoxController]);
@@ -104,9 +108,11 @@ PianoForte.App.controller('MyTabsController', ['$scope', '$attrs', '$element', P
 PianoForte.App.controller('MyTextBoxController', ['$scope', '$attrs', '$element', PianoForte.Controllers.Widgets.MyTextBoxController]);
 
 PianoForte.App.directive('myBox', PianoForte.Directives.Widgets.MyBoxDirective);
+PianoForte.App.directive('myButton', PianoForte.Directives.Widgets.MyButtonDirective);
 PianoForte.App.directive('myDialogBox', PianoForte.Directives.Widgets.MyDialogBoxDirective);
 PianoForte.App.directive('myLeftMenu', PianoForte.Directives.Widgets.MyLeftMenuDirective);
 PianoForte.App.directive('myPane', PianoForte.Directives.Widgets.MyPaneDirective);
+PianoForte.App.directive('myScrollbar', PianoForte.Directives.Widgets.MyScrollbarDirective);
 PianoForte.App.directive('mySearchBox', PianoForte.Directives.Widgets.MySearchBoxDirective);
 PianoForte.App.directive('mySelect', PianoForte.Directives.Widgets.MySelectDirective);
 PianoForte.App.directive('myTabs', PianoForte.Directives.Widgets.MyTabsDirective);

@@ -13,6 +13,7 @@ PianoForte.Directives.Widgets.MySelectDirective = function () {
             items: '=',            
             onChanged: '&',
             placeholder: '=',
+            showMaxItems: '=',
             width: '='
         },
         controller: 'MySelectController',

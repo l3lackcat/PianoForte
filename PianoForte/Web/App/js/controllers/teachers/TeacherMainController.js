@@ -27,25 +27,25 @@ PianoForte.Controllers.Teachers.TeacherMainController = function ($scope, $rootS
 
     $scope.onDropdownFilterChanged = function () {
         // To do
-    }
+    };
 
     $scope.goToPage = function (pageNumbers) {
         if ($scope.currentPage !== pageNumbers) {
             $scope.currentPage = pageNumbers;
         }        
-    }
+    };
 
     $scope.goToPrevPage = function () {
         if ($scope.currentPage > 1) {
             $scope.currentPage--;
         };
-    }
+    };
 
     $scope.goToNextPage = function () {
         if ($scope.currentPage < $scope.pageNumbers.length) {
             $scope.currentPage++;
         };
-    }
+    };
 
     $scope.$watch('currentPage', function () {
         for (var i = $scope.pageNumbers.length - 1; i >= 0; i--) {
@@ -68,7 +68,7 @@ PianoForte.Controllers.Teachers.TeacherMainController = function ($scope, $rootS
                 className: (i === $scope.currentPage) ? 'active' : ''
             });
         };
-    }
+    };
 
     var onSuccessReceiveTeacherList = function (data, status, headers, config) {
         if (data.d !== null) {

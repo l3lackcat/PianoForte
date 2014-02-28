@@ -2,7 +2,7 @@
     <my-tabs>        
         <my-pane data-title="dashboard">
             <div class="tube width-50-percent">
-                <my-box>                    
+                <my-box class="no-margin-bottom">                    
                     <ul class="widget-breadcrumb">
                         <li>teachers</li>
                         <li class="seperator">&gt;</li>
@@ -52,7 +52,7 @@
                 </my-box>
             </div> 
             <div class="tube width-100-percent fix-height">
-                <my-box class="content">
+                <my-box class="content no-margin-bottom">
                     <div class="rows">
                         <div ng-repeat="teacher in teacherList | orderBy:'name' | filter:filterText | startFrom:(currentPage-1)*showPerPage | limitTo:showPerPage" class="row">
                             <div class="col col-name">{{teacher.name}}</div>
@@ -61,7 +61,7 @@
                             <div class="col col-view-icon"><a href="#/teachers/{{teacher.id}}">view</a></div>
                             <div class="clear-fix"></div>
                         </div>
-                    </div>
+                    </div>                       
                 </my-box>
             </div>            
         </my-pane>
