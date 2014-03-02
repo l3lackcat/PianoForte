@@ -96,6 +96,7 @@
     <Content Include="Web\App\js\controllers\courses\CourseController.js" />
     <Content Include="Web\App\js\controllers\students\StudentMainController.js" />
     <Content Include="Web\App\js\controllers\students\StudentController.js" />
+    <Content Include="Web\App\js\controllers\widgets\my-checkbox\MyCheckboxController.js" />
     <Content Include="Web\App\js\controllers\widgets\my-button\MyButtonController.js" />
     <Content Include="Web\App\js\controllers\widgets\my-select\MySelectController.js" />
     <Content Include="Web\App\js\controllers\widgets\my-search-box\MySearchBoxController.js" />
@@ -106,6 +107,7 @@
     <Content Include="Web\App\js\controllers\widgets\my-dialog-box\MyDialogBoxController.js" />
     <Content Include="Web\App\js\controllers\widgets\my-box\MyBoxController.js" />
     <Content Include="Web\App\js\controllers\widgets\my-tabs\MyTabsController.js" />
+    <Content Include="Web\App\js\directives\widgets\my-checkbox\MyCheckboxDirective.js" />
     <Content Include="Web\App\js\directives\widgets\my-button\MyButtonDirective.js" />
     <Content Include="Web\App\js\directives\widgets\my-scrollbar\MyScrollbarDirective.js" />
     <Content Include="Web\App\js\directives\widgets\my-select\MySelectDirective.js" />
@@ -2045,6 +2047,7 @@
     <Content Include="Web\App\partials\cds\cd-main.htm" />
     <Content Include="Web\App\partials\courses\course-main.htm" />
     <Content Include="Web\App\partials\students\student-main.htm" />
+    <Content Include="Web\App\partials\widgets\my-checkbox\my-checkbox.htm" />
     <Content Include="Web\App\partials\widgets\my-button\my-button.htm" />
     <Content Include="Web\App\partials\widgets\my-select\my-select.htm" />
     <Content Include="Web\App\partials\widgets\my-search-box\my-search-box.htm" />
@@ -2287,6 +2290,7 @@
     <None Include="Web\App\less\students\student.less" />
     <None Include="Web\App\less\layouts\content.less" />
     <None Include="Web\App\less\layouts\content-col.less" />
+    <None Include="Web\App\less\widgets\my-checkbox.less" />
     <None Include="Web\App\less\widgets\my-button.less" />
     <None Include="Web\App\less\widgets\my-select.less" />
     <None Include="Web\App\less\widgets\my-search-box.less" />

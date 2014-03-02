@@ -1,0 +1,59 @@
+﻿.widget-box {
+	font-family: inherit;
+	padding-left: 17px;
+	width: calc(~'100% - 17px');;
+
+	.wrapper {
+		font-family: inherit;				
+		width: auto;
+
+		.box-header {
+			background-color: #FFF;
+			font-family: inherit;
+			font-size: @fontSizeL;
+			margin-bottom: 2px;
+			padding: 10px;
+			position: relative;
+			width: auto;
+
+			button {
+				border: 0;
+				color: #FEFEFE;
+				font-family: inherit;
+				font-size: @fontSizeXXS;
+				margin: 0;
+				padding: 0 5px;
+
+				&:hover {
+					cursor: pointer;
+				}
+
+				&.btn-edit {
+					bottom: 0;
+					position: absolute;
+					right: 5px;
+				}
+			}
+		}
+
+		.box-content {
+			background-color: #FFF;
+			font-family: inherit;
+			padding: 10px;
+			width: auto;
+		}
+	}
+}
+
+#teacher,
+#teachers {
+	.widget-box {
+		background-color: @teacherThemeColor;
+
+		.box-header {
+			button {
+				background-color: @teacherThemeColor;
+			}
+		}
+	}
+}

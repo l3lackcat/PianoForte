@@ -1,0 +1,9 @@
+﻿<div class="widget-box">
+    <div class="wrapper">
+        <div class="box-header" ng-show="getHeaderVisibility()">
+            <span>{{title}}</span>
+            <button class="btn-edit" ng-show="editable" ng-click="onEdit()">แก้ไข</button>
+        </div>
+        <div class="box-content" ng-transclude></div>
+    </div>
+</div>

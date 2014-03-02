@@ -19,6 +19,7 @@ goog.require('PianoForte.Controllers.Teachers.TeacherMainController');
 
 goog.require('PianoForte.Controllers.Widgets.MyBoxController');
 goog.require('PianoForte.Controllers.Widgets.MyButtonController');
+goog.require('PianoForte.Controllers.Widgets.MyCheckboxController');
 goog.require('PianoForte.Controllers.Widgets.MyDialogBoxController');
 goog.require('PianoForte.Controllers.Widgets.MyLeftMenuController');
 goog.require('PianoForte.Controllers.Widgets.MySearchBoxController');
@@ -28,6 +29,7 @@ goog.require('PianoForte.Controllers.Widgets.MyTextBoxController');
 
 goog.require('PianoForte.Directives.Widgets.MyBoxDirective');
 goog.require('PianoForte.Directives.Widgets.MyButtonDirective');
+goog.require('PianoForte.Directives.Widgets.MyCheckboxDirective');
 goog.require('PianoForte.Directives.Widgets.MyDialogBoxDirective');
 goog.require('PianoForte.Directives.Widgets.MyLeftMenuDirective');
 goog.require('PianoForte.Directives.Widgets.MyPaneDirective');
@@ -100,6 +102,7 @@ PianoForte.App.controller('TeacherController', ['$scope', '$rootScope', '$routeP
 PianoForte.App.controller('TeacherMainController', ['$scope', '$rootScope', 'TeacherService', 'FormatManager', PianoForte.Controllers.Teachers.TeacherMainController]);
 PianoForte.App.controller('MyBoxController', ['$scope', PianoForte.Controllers.Widgets.MyBoxController]);
 PianoForte.App.controller('MyButtonController', ['$scope', '$attrs', '$element', PianoForte.Controllers.Widgets.MyButtonController]);
+PianoForte.App.controller('MyCheckboxController', ['$scope', '$attrs', '$element', PianoForte.Controllers.Widgets.MyCheckboxController]);
 PianoForte.App.controller('MyDialogBoxController', ['$scope', '$attrs', '$element', PianoForte.Controllers.Widgets.MyDialogBoxController]);
 PianoForte.App.controller('MyLeftMenuController', ['$scope', '$attrs', '$element', PianoForte.Controllers.Widgets.MyLeftMenuController]);
 PianoForte.App.controller('MySearchBoxController', ['$scope', '$attrs', '$element', PianoForte.Controllers.Widgets.MySearchBoxController]);
@@ -109,6 +112,7 @@ PianoForte.App.controller('MyTextBoxController', ['$scope', '$attrs', '$element'
 
 PianoForte.App.directive('myBox', PianoForte.Directives.Widgets.MyBoxDirective);
 PianoForte.App.directive('myButton', PianoForte.Directives.Widgets.MyButtonDirective);
+PianoForte.App.directive('myCheckbox', PianoForte.Directives.Widgets.MyCheckboxDirective);
 PianoForte.App.directive('myDialogBox', PianoForte.Directives.Widgets.MyDialogBoxDirective);
 PianoForte.App.directive('myLeftMenu', PianoForte.Directives.Widgets.MyLeftMenuDirective);
 PianoForte.App.directive('myPane', PianoForte.Directives.Widgets.MyPaneDirective);
