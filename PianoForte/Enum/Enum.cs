@@ -67,7 +67,7 @@ namespace PianoForte.Enum
     {
         NONE,                   // 0
         TEACHES_45_MIN          // 1
-    }
+    }   
 
     public class Enum
     {

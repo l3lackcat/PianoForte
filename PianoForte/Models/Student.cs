@@ -9,8 +9,8 @@ namespace PianoForte.Models
 {
     public class Student : Person
     {
-        public DateTime Birthdate { get; set; }
-        public DateTime RegisteredDate { get; set; }
+        public DateTime LastEnrollmentDate { get; set; }
+
         public List<StudentContact> ContactList { get; set; }
         public StudentAddress Address { get; set; }
 

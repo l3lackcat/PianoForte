@@ -7,6 +7,7 @@ namespace PianoForte.Models
 {
     public class Address
     {
+        public int Id { get; set; }
         public string BuildingName { get; set; }
         public string StreetAddress { get; set; }
         public string SubDistrict { get; set; }

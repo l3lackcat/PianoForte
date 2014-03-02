@@ -10,6 +10,7 @@ namespace PianoForte.Models
     public class Course : Product
     {
         public int CourseCategoryId { get; set; }
+        public int CourseTypeId { get; set; }
         public string Level { get; set; }
         public int NumberOfTimes { get; set; }
         public int ClassroomDuration { get; set; }

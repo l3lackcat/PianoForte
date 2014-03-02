@@ -9,13 +9,17 @@ namespace PianoForte.Models
 {
     public class Teacher : Person
     {
+        public DateTime ResignedDate { get; set; }
+
         public List<TeacherContact> ContactList { get; set; }
+        public TeacherAddress Address { get; set; }
         public List<string> TeachedCourseList { get; set; }
         public TeacherProperty Property { get; set; }
 
         public Teacher()
         {
             this.ContactList = new List<TeacherContact>();
+            this.Address = new TeacherAddress();
             this.TeachedCourseList = new List<string>();
         }
 
