@@ -66,7 +66,8 @@
     <Content Include="Web\App\fonts\thaisansneue\thaisansneue-semibold-webfont.svg" />
     <Content Include="Web\App\fonts\thaisansneue\thaisansneue-ultrabold-webfont.svg" />
     <Content Include="Web\App\fonts\thaisansneue\thaisansneue-ultralight-webfont.svg" />
-    <Content Include="Web\App\images\icons\checked_10_gray.png" />
+    <Content Include="Web\App\images\icons\checkbox_checked.png" />
+    <Content Include="Web\App\images\icons\checkbox_unchecked.png" />
     <Content Include="Web\App\images\icons\droptri_10_green.png" />
     <Content Include="Web\App\images\icons\eyeglass_15_blue.png" />
     <Content Include="Web\App\images\icons\eyeglass_15_green.png" />

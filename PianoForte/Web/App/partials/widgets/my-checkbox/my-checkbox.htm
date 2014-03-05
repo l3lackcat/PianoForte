@@ -1,9 +1,8 @@
-﻿<div class="widget-box">
+﻿<div class="widget-checkbox">
     <div class="wrapper">
-        <div class="box-header" ng-show="getHeaderVisibility()">
-            <span>{{title}}</span>
-            <button class="btn-edit" ng-show="editable" ng-click="onEdit()">แก้ไข</button>
-        </div>
-        <div class="box-content" ng-transclude></div>
+    	<button class="checkbox" ng-click="toggleCheck()">
+    		<div class="icon-checked" ng-show="checked"></div>
+    	</button>
+    	<div class="text">{{text}}</div>
     </div>
 </div>
