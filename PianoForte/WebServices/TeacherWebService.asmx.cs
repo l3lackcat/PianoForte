@@ -33,8 +33,18 @@ namespace PianoForte.WebServices
                 {
                     if (contact.Type == ContactType.PHONE)
                     {
-                        phoneNumber = FormatManager.toDisplayedPhoneNumber(contact.Content);
-                        break;
+                        if (phoneNumber == "-")
+                        {
+                            phoneNumber = FormatManager.toDisplayedPhoneNumber(contact.Content);
+                        }
+                        else
+                        {
+                            if (contact.IsPrimary)
+                            {
+                                phoneNumber = FormatManager.toDisplayedPhoneNumber(contact.Content);
+                                break;
+                            }
+                        }                        
                     }
                 }
 
@@ -71,7 +81,8 @@ namespace PianoForte.WebServices
                             id = contact.Id,
                             label = contact.Label,
                             value = contact.Content,
-                            status = contact.Status
+                            status = contact.Status,
+                            isPrimary = contact.IsPrimary
                         });
                     }
                     else if (contact.Type == ContactType.EMAIL)
@@ -80,7 +91,8 @@ namespace PianoForte.WebServices
                             id = contact.Id,
                             label = contact.Label,
                             value = contact.Content,
-                            status = contact.Status
+                            status = contact.Status,
+                            isPrimary = contact.IsPrimary
                         });
                     }
                 }
@@ -144,7 +156,7 @@ namespace PianoForte.WebServices
         [WebMethod]
         public bool updateTeacherContactInfo(string databaseName, TeacherContact teacherContact)
         {
-            System.Threading.Thread.Sleep(1500);
+            System.Threading.Thread.Sleep(5000);
             return TeacherContactService.updateTeacherContact(databaseName, teacherContact);
         }
 
@@ -152,7 +164,7 @@ namespace PianoForte.WebServices
         public bool deleteTeacherContactInfo(string databaseName, TeacherContact teacherContact)
         {
             System.Threading.Thread.Sleep(1500);
-            return TeacherContactService.updateTeacherContact(databaseName, teacherContact);
+            return TeacherContactService.deleteTeacherContact(databaseName, teacherContact.Id);
         }
 
         [WebMethod]

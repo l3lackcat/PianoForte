@@ -6,7 +6,8 @@ PianoForte.Directives.Widgets.MyButtonDirective = function () {
     return {
         restrict: 'E',
         replace: true,
-        scope: {            
+        scope: {     
+            disabled: '=',       
             onClick: '&',
             text: '=',
             type: '=',

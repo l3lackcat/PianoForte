@@ -68,7 +68,7 @@
 					color: @teacherThemeColor;
 					font-family: inherit;
 					font-size: @fontSizeL;
-					margin: 10px 0px 10px 70px;
+					margin: 10px 0px 10px 55px;
 
 					&:first-child {
 						margin-top: 0;
@@ -81,7 +81,7 @@
 							
 				> .wrapper {
 					margin: 0 auto;
-					width: 380px;				
+					width: 460px;				
 
 					.rows {
 						color: #636363;
@@ -119,16 +119,10 @@
 									label {
 										display: block;
 										color: @teacherThemeColor;
-										font-size: 12px;
+										font-size: @fontSizeXS;
 										font-style: italic;
 										margin: 7px 0;
 										padding: 0;
-									}
-								}
-
-								&.col-span {
-									&.label-value {
-										width: calc(~'100% - 26px');
 									}
 								}
 
@@ -145,6 +139,12 @@
 									}
 								}
 
+								&.col-span {
+									&.label-value {
+										width: calc(~'100% - 26px');
+									}
+								}
+																		
 								&.no-padding-top {
 									padding-top: 0;
 								}
@@ -158,10 +158,31 @@
 								.col {
 									&.col-label { 
 										margin-right: 10px;
-										width: 140px; 
+										width: 140px;
 									}
 
-									&.col-value { width: calc(~'100% - 176px'); }
+									&.col-value { 
+										width: calc(~'100% - 256px'); 
+									}								
+
+									&.col-primary {
+										// visibility: hidden;
+										margin: 2px 0px 3px 0px;
+										width: 80px;
+
+										.widget-checkbox {
+											color: #939393;
+											font-size: @fontSizeS;
+										}
+									}
+								}
+
+								&:hover {
+									.col {
+										&.col-primary {
+											visibility: visible;
+										}
+									}
 								}
 							}
 
@@ -169,7 +190,23 @@
 								margin-bottom: 0;	
 							}
 						}
-					}
+
+						.btn-add-phone,
+						.btn-add-email,
+						.btn-add-course {
+							background-color: transparent;
+							border: 0;
+							color: @teacherThemeColor;
+							font-family: inherit;
+							font-size: @fontSizeS;
+							margin: 0;
+							padding: 0;
+
+							&:hover {
+								cursor: pointer;
+							}
+						}
+					}					
 				}
 			}
 		}

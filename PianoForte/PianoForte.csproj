@@ -2159,33 +2159,141 @@
     <Compile Include="Models\TeacherAddress.cs" />
     <Compile Include="Models\TeacherContact.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resourses\DatabaseStructure\MySqlTable\Absences.Designer.cs" />
-    <Compile Include="Resourses\DatabaseStructure\MySqlTable\Books.Designer.cs" />
-    <Compile Include="Resourses\DatabaseStructure\MySqlTable\Branches.Designer.cs" />
-    <Compile Include="Resourses\DatabaseStructure\MySqlTable\CashPayments.Designer.cs" />
-    <Compile Include="Resourses\DatabaseStructure\MySqlTable\Cds.Designer.cs" />
-    <Compile Include="Resourses\DatabaseStructure\MySqlTable\ClassroomDetails.Designer.cs" />
-    <Compile Include="Resourses\DatabaseStructure\MySqlTable\Classrooms.Designer.cs" />
-    <Compile Include="Resourses\DatabaseStructure\MySqlTable\CourseCategories.Designer.cs" />
-    <Compile Include="Resourses\DatabaseStructure\MySqlTable\Courses.Designer.cs" />
-    <Compile Include="Resourses\DatabaseStructure\MySqlTable\CreditCardPayments.Designer.cs" />
-    <Compile Include="Resourses\DatabaseStructure\MySqlTable\Enrollments.Designer.cs" />
-    <Compile Include="Resourses\DatabaseStructure\MySqlTable\GlobalUsers.Designer.cs" />
-    <Compile Include="Resourses\DatabaseStructure\MySqlTable\Holidays.Designer.cs" />
-    <Compile Include="Resourses\DatabaseStructure\MySqlTable\LocalUsers.Designer.cs" />
-    <Compile Include="Resourses\DatabaseStructure\MySqlTable\OtherProducts.Designer.cs" />
-    <Compile Include="Resourses\DatabaseStructure\MySqlTable\PaymentDetails.Designer.cs" />
-    <Compile Include="Resourses\DatabaseStructure\MySqlTable\Payments.Designer.cs" />
-    <Compile Include="Resourses\DatabaseStructure\MySqlTable\PrintedPayments.Designer.cs" />
-    <Compile Include="Resourses\DatabaseStructure\MySqlTable\ProductUnitPriceHistory.Designer.cs" />
-    <Compile Include="Resourses\DatabaseStructure\MySqlTable\StudentAddresses.Designer.cs" />
-    <Compile Include="Resourses\DatabaseStructure\MySqlTable\StudentContacts.Designer.cs" />
-    <Compile Include="Resourses\DatabaseStructure\MySqlTable\Students.Designer.cs" />
-    <Compile Include="Resourses\DatabaseStructure\MySqlTable\TeachedCourses.Designer.cs" />
-    <Compile Include="Resourses\DatabaseStructure\MySqlTable\TeacherContacts.Designer.cs" />
-    <Compile Include="Resourses\DatabaseStructure\MySqlTable\TeacherProperties.Designer.cs" />
-    <Compile Include="Resourses\DatabaseStructure\MySqlTable\Teachers.Designer.cs" />
-    <Compile Include="Resourses\DatabaseStructure\MySqlTable\Users.Designer.cs" />
+    <Compile Include="Resourses\DatabaseStructure\MySqlTable\Absences.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Absences.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resourses\DatabaseStructure\MySqlTable\Books.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Books.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resourses\DatabaseStructure\MySqlTable\Branches.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Branches.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resourses\DatabaseStructure\MySqlTable\CashPayments.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CashPayments.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resourses\DatabaseStructure\MySqlTable\Cds.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Cds.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resourses\DatabaseStructure\MySqlTable\ClassroomDetails.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClassroomDetails.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resourses\DatabaseStructure\MySqlTable\Classrooms.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Classrooms.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resourses\DatabaseStructure\MySqlTable\CourseCategories.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CourseCategories.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resourses\DatabaseStructure\MySqlTable\Courses.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Courses.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resourses\DatabaseStructure\MySqlTable\CreditCardPayments.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreditCardPayments.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resourses\DatabaseStructure\MySqlTable\Enrollments.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Enrollments.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resourses\DatabaseStructure\MySqlTable\GlobalUsers.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GlobalUsers.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resourses\DatabaseStructure\MySqlTable\Holidays.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Holidays.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resourses\DatabaseStructure\MySqlTable\LocalUsers.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LocalUsers.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resourses\DatabaseStructure\MySqlTable\OtherProducts.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OtherProducts.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resourses\DatabaseStructure\MySqlTable\PaymentDetails.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PaymentDetails.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resourses\DatabaseStructure\MySqlTable\Payments.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Payments.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resourses\DatabaseStructure\MySqlTable\PrintedPayments.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrintedPayments.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resourses\DatabaseStructure\MySqlTable\ProductUnitPriceHistory.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductUnitPriceHistory.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resourses\DatabaseStructure\MySqlTable\StudentAddresses.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudentAddresses.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resourses\DatabaseStructure\MySqlTable\StudentContacts.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudentContacts.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resourses\DatabaseStructure\MySqlTable\Students.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Students.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resourses\DatabaseStructure\MySqlTable\TeachedCourses.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TeachedCourses.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resourses\DatabaseStructure\MySqlTable\TeacherContacts.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TeacherContacts.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resourses\DatabaseStructure\MySqlTable\TeacherProperties.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TeacherProperties.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resourses\DatabaseStructure\MySqlTable\Teachers.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Teachers.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resourses\DatabaseStructure\MySqlTable\Users.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Users.resx</DependentUpon>
+    </Compile>
     <Compile Include="Services\BookService.cs" />
     <Compile Include="Services\BranchService.cs" />
     <Compile Include="Services\CashPaymentService.cs" />
@@ -2224,33 +2332,114 @@
     <Folder Include="Web\App\libs\closure-library\.git\refs\tags\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\Absences.resx" />
-    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\Books.resx" />
-    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\Branches.resx" />
-    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\CashPayments.resx" />
-    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\Cds.resx" />
-    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\ClassroomDetails.resx" />
-    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\Classrooms.resx" />
-    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\CourseCategories.resx" />
-    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\Courses.resx" />
-    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\CreditCardPayments.resx" />
-    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\Enrollments.resx" />
-    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\GlobalUsers.resx" />
-    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\Holidays.resx" />
-    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\LocalUsers.resx" />
-    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\OtherProducts.resx" />
-    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\PaymentDetails.resx" />
-    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\Payments.resx" />
-    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\PrintedPayments.resx" />
-    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\ProductUnitPriceHistory.resx" />
-    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\StudentAddresses.resx" />
-    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\StudentContacts.resx" />
-    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\Students.resx" />
-    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\TeachedCourses.resx" />
-    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\TeacherContacts.resx" />
-    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\TeacherProperties.resx" />
-    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\Teachers.resx" />
-    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\Users.resx" />
+    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\Absences.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Absences.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\Books.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Books.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\Branches.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Branches.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\CashPayments.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CashPayments.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\Cds.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Cds.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\ClassroomDetails.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ClassroomDetails.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\Classrooms.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Classrooms.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\CourseCategories.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CourseCategories.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\Courses.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Courses.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\CreditCardPayments.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CreditCardPayments.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\Enrollments.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Enrollments.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\GlobalUsers.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GlobalUsers.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\Holidays.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Holidays.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\LocalUsers.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LocalUsers.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\OtherProducts.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>OtherProducts.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\PaymentDetails.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PaymentDetails.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\Payments.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Payments.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\PrintedPayments.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PrintedPayments.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\ProductUnitPriceHistory.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProductUnitPriceHistory.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\StudentAddresses.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>StudentAddresses.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\StudentContacts.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>StudentContacts.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\Students.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Students.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\TeachedCourses.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TeachedCourses.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\TeacherContacts.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TeacherContacts.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\TeacherProperties.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TeacherProperties.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\Teachers.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Teachers.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resourses\DatabaseStructure\MySqlTable\Users.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Users.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="Web\App\build-deps.js.bat" />

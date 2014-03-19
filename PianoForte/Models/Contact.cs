@@ -14,5 +14,6 @@ namespace PianoForte.Models
         public string Label { get; set; }
         public string Content { get; set; }
         public Status Status { get; set; }
+        public bool IsPrimary { get; set; }
     }
 }

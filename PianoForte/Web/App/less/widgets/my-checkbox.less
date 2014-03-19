@@ -1,48 +1,45 @@
 ﻿.widget-checkbox {
 	font-family: inherit;
 
-	> .wrapper {
-		background-color: transparent;		
+	.checkbox {
+		background-color: transparent;
+		border: 0;
+		color: inherit;
+		display: inline-block;
 		font-family: inherit;
-		font-size: inherit;	
+		font-size: inherit;
+		margin: 0;
+		padding: 2px;
 
-		.checkbox {
-			background-color: #F8F7F4;
-			border: 0;
+		.icon-checked {
 			display: inline-block;
-			height: 14px;
-			padding: 2px;
+			background-color: #F8F7F4;
+			background-image: url('../images/icons/checkbox_checked.png');
+			background-position: center center;
+			background-repeat: no-repeat;
+			height: 13px;
+			vertical-align: middle;
 			width: 14px;
+		}
 
-			.icon-checked {
-				background-color: transparent;
-				background-image: url('../images/icons/checkbox_checked.png');
-				background-repeat: no-repeat;
-				height: 10px;
-				width: 10px;
-			}
-
-			&:hover {
-				cursor: pointer;
-			}
+		.icon-unchecked {
+			display: inline-block;
+			background-color: #F8F7F4;
+			background-image: none;
+			height: 13px;
+			vertical-align: middle;
+			width: 14px;
 		}
 
 		.text {		
-			display: inline-block;	
-			font-size: inherit;			
+			color: inherit;
+			display: inline-block;
+			font-size: inherit;
+			vertical-align: middle;			
 		}
-	}
-}
 
-#teacher,
-#teachers {
-	.widget-box {
-		background-color: @teacherThemeColor;
-
-		.box-header {
-			button {
-				background-color: @teacherThemeColor;
-			}
+		&:hover {
+			cursor: pointer;
 		}
 	}
 }

@@ -120,6 +120,9 @@
   <data name="ColumnContactContent" xml:space="preserve">
     <value>contact_content</value>
   </data>
+  <data name="ColumnContactIsPrimary" xml:space="preserve">
+    <value>contact_is_primary</value>
+  </data>
   <data name="ColumnContactLabel" xml:space="preserve">
     <value>contact_label</value>
   </data>

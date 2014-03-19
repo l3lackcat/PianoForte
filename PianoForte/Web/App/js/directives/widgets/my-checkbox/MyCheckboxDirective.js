@@ -8,7 +8,8 @@ PianoForte.Directives.Widgets.MyCheckboxDirective = function () {
         replace: true,
         transclude: true,
         scope: {
-            checked: '@',
+            checked: '=',
+            name: '=',
             onChanged: '&',
             text: '='
         },

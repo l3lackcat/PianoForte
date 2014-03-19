@@ -37,6 +37,7 @@ namespace PianoForte.Dao
                         command.Parameters.AddWithValue(TeacherContacts.ColumnContactLabel, teacherContact.Label);
                         command.Parameters.AddWithValue(TeacherContacts.ColumnContactContent, teacherContact.Content);
                         command.Parameters.AddWithValue(TeacherContacts.ColumnContactStatus, teacherContact.Status);
+                        command.Parameters.AddWithValue(TeacherContacts.ColumnContactIsPrimary, teacherContact.IsPrimary);
 
                         int affectedRow = command.ExecuteNonQuery();
                         if (affectedRow != -1)
@@ -88,6 +89,7 @@ namespace PianoForte.Dao
                         command.Parameters.AddWithValue(TeacherContacts.ColumnContactLabel, teacherContact.Label);
                         command.Parameters.AddWithValue(TeacherContacts.ColumnContactContent, teacherContact.Content);
                         command.Parameters.AddWithValue(TeacherContacts.ColumnContactStatus, teacherContact.Status);
+                        command.Parameters.AddWithValue(TeacherContacts.ColumnContactIsPrimary, teacherContact.IsPrimary);
                         command.Parameters.AddWithValue(TeacherContacts.ColumnTeacherContactId, teacherContact.Id);
 
                         int affectedRow = command.ExecuteNonQuery();
@@ -182,12 +184,13 @@ namespace PianoForte.Dao
                     if (data.Tables[TeacherContacts.TableName].Rows.Count == 1)
                     {
                         teacherContact = new TeacherContact();
-                        teacherContact.Id = Convert.ToInt32(data.Tables[TeacherContacts.TableName].Rows[0][TeacherContacts.ColumnTeacherContactId].ToString());
-                        teacherContact.TeacherId = Convert.ToInt32(data.Tables[TeacherContacts.TableName].Rows[0][TeacherContacts.ColumnTeacherId].ToString());
+                        teacherContact.Id = Convert.ToInt32(data.Tables[TeacherContacts.TableName].Rows[0][TeacherContacts.ColumnTeacherContactId]);
+                        teacherContact.TeacherId = Convert.ToInt32(data.Tables[TeacherContacts.TableName].Rows[0][TeacherContacts.ColumnTeacherId]);
                         teacherContact.Type = EnumConverter.ToContactType(data.Tables[TeacherContacts.TableName].Rows[0][TeacherContacts.ColumnContactType].ToString());
                         teacherContact.Label = data.Tables[TeacherContacts.TableName].Rows[0][TeacherContacts.ColumnContactLabel].ToString();
                         teacherContact.Content = data.Tables[TeacherContacts.TableName].Rows[0][TeacherContacts.ColumnContactContent].ToString();
                         teacherContact.Status = EnumConverter.ToStatus(data.Tables[TeacherContacts.TableName].Rows[0][TeacherContacts.ColumnContactStatus].ToString());
+                        teacherContact.IsPrimary = Convert.ToBoolean(data.Tables[TeacherContacts.TableName].Rows[0][TeacherContacts.ColumnContactIsPrimary]);
                     }
                 }
             }
@@ -233,12 +236,13 @@ namespace PianoForte.Dao
                     for (int i = 0; i < data.Tables[TeacherContacts.TableName].Rows.Count; i++)
                     {
                         TeacherContact teacherContact = new TeacherContact();
-                        teacherContact.Id = Convert.ToInt32(data.Tables[TeacherContacts.TableName].Rows[i][TeacherContacts.ColumnTeacherContactId].ToString());
-                        teacherContact.TeacherId = Convert.ToInt32(data.Tables[TeacherContacts.TableName].Rows[i][TeacherContacts.ColumnTeacherId].ToString());
+                        teacherContact.Id = Convert.ToInt32(data.Tables[TeacherContacts.TableName].Rows[i][TeacherContacts.ColumnTeacherContactId]);
+                        teacherContact.TeacherId = Convert.ToInt32(data.Tables[TeacherContacts.TableName].Rows[i][TeacherContacts.ColumnTeacherId]);
                         teacherContact.Type = EnumConverter.ToContactType(data.Tables[TeacherContacts.TableName].Rows[i][TeacherContacts.ColumnContactType].ToString());
                         teacherContact.Label = data.Tables[TeacherContacts.TableName].Rows[i][TeacherContacts.ColumnContactLabel].ToString();
                         teacherContact.Content = data.Tables[TeacherContacts.TableName].Rows[i][TeacherContacts.ColumnContactContent].ToString();
-                        teacherContact.Status = EnumConverter.ToStatus(data.Tables[TeacherContacts.TableName].Rows[0][TeacherContacts.ColumnContactStatus].ToString());
+                        teacherContact.Status = EnumConverter.ToStatus(data.Tables[TeacherContacts.TableName].Rows[i][TeacherContacts.ColumnContactStatus].ToString());
+                        teacherContact.IsPrimary = Convert.ToBoolean(data.Tables[TeacherContacts.TableName].Rows[i][TeacherContacts.ColumnContactIsPrimary]);
 
                         teacherContactList.Add(teacherContact);
                     }
@@ -272,13 +276,15 @@ namespace PianoForte.Dao
                          TeacherContacts.ColumnContactType + ", " +
                          TeacherContacts.ColumnContactLabel + ", " +
                          TeacherContacts.ColumnContactContent + ", " +
-                         TeacherContacts.ColumnContactStatus + ") " +
+                         TeacherContacts.ColumnContactStatus + ", " +
+                         TeacherContacts.ColumnContactIsPrimary + ") " +
                          "VALUES(" +
                          "?" + TeacherContacts.ColumnTeacherId + ", " +
                          "?" + TeacherContacts.ColumnContactType + ", " +
                          "?" + TeacherContacts.ColumnContactLabel + ", " +
                          "?" + TeacherContacts.ColumnContactContent + ", " +
-                         "?" + TeacherContacts.ColumnContactStatus + ")";
+                         "?" + TeacherContacts.ColumnContactStatus + ", " +
+                         "?" + TeacherContacts.ColumnContactIsPrimary + ")";
 
             return this.insert(databaseName, teacherContact, sql);
         }
@@ -291,7 +297,8 @@ namespace PianoForte.Dao
                          TeacherContacts.ColumnContactType + " = ?" + TeacherContacts.ColumnContactType + ", " +
                          TeacherContacts.ColumnContactLabel + " = ?" + TeacherContacts.ColumnContactLabel + ", " +
                          TeacherContacts.ColumnContactContent + " = ?" + TeacherContacts.ColumnContactContent + ", " +
-                         TeacherContacts.ColumnContactStatus + " = ?" + TeacherContacts.ColumnContactStatus + " " +
+                         TeacherContacts.ColumnContactStatus + " = ?" + TeacherContacts.ColumnContactStatus + ", " +
+                         TeacherContacts.ColumnContactIsPrimary + " = ?" + TeacherContacts.ColumnContactIsPrimary + " " +
                          "WHERE " + TeacherContacts.ColumnTeacherContactId + " = ?" + TeacherContacts.ColumnTeacherContactId;
 
             return this.update(databaseName, teacherContact, sql);

@@ -47,6 +47,7 @@ PianoForte.Services.TeacherService = function ($http) {
                     Label: contact.label,
                     Content: contact.value,
                     Status: contact.status,
+                    IsPrimary: contact.isPrimary,
                     TeacherId: contact.teacherId
                 }
             };
@@ -63,6 +64,7 @@ PianoForte.Services.TeacherService = function ($http) {
                     Label: contact.label,
                     Content: contact.value,
                     Status: contact.status,
+                    IsPrimary: contact.isPrimary,
                     TeacherId: contact.teacherId
                 }
             };
@@ -79,11 +81,12 @@ PianoForte.Services.TeacherService = function ($http) {
                     Label: contact.label,
                     Content: contact.value,
                     Status: contact.status,
+                    IsPrimary: contact.isPrimary,
                     TeacherId: contact.teacherId
                 }
             };
 
-            $http.post('/WebServices/TeacherWebService.asmx/updateTeacherContactInfo', data).success(onSuccess).error(onError);
+            $http.post('/WebServices/TeacherWebService.asmx/deleteTeacherContactInfo', data).success(onSuccess).error(onError);
         },
 
         updateTeachedCourseInfo: function (teacherId, teachedCourseNameList, onSuccess, onError) {

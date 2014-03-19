@@ -36,7 +36,8 @@ namespace PianoForte.Dao
                         command.Parameters.AddWithValue(StudentContacts.ColumnContactType, (int)studentContact.Type);
                         command.Parameters.AddWithValue(StudentContacts.ColumnContactLabel, studentContact.Label);
                         command.Parameters.AddWithValue(StudentContacts.ColumnContactContent, studentContact.Content);
-                        command.Parameters.AddWithValue(StudentContacts.ColumnContactStatus, studentContact.Status); 
+                        command.Parameters.AddWithValue(StudentContacts.ColumnContactStatus, studentContact.Status);
+                        command.Parameters.AddWithValue(StudentContacts.ColumnContactIsPrimary, studentContact.IsPrimary);
 
                         int affectedRow = command.ExecuteNonQuery();
                         if (affectedRow != -1)
@@ -88,6 +89,7 @@ namespace PianoForte.Dao
                         command.Parameters.AddWithValue(StudentContacts.ColumnContactLabel, studentContact.Label);
                         command.Parameters.AddWithValue(StudentContacts.ColumnContactContent, studentContact.Content);
                         command.Parameters.AddWithValue(StudentContacts.ColumnContactStatus, studentContact.Status);
+                        command.Parameters.AddWithValue(StudentContacts.ColumnContactIsPrimary, studentContact.IsPrimary);
                         command.Parameters.AddWithValue(StudentContacts.ColumnStudentContactId, studentContact.Id);
 
                         int affectedRow = command.ExecuteNonQuery();
@@ -188,6 +190,7 @@ namespace PianoForte.Dao
                         studentContact.Label = data.Tables[StudentContacts.TableName].Rows[0][StudentContacts.ColumnContactLabel].ToString();
                         studentContact.Content = data.Tables[StudentContacts.TableName].Rows[0][StudentContacts.ColumnContactContent].ToString();
                         studentContact.Status = EnumConverter.ToStatus(data.Tables[StudentContacts.TableName].Rows[0][StudentContacts.ColumnContactStatus].ToString());
+                        studentContact.IsPrimary = Convert.ToBoolean(data.Tables[StudentContacts.TableName].Rows[0][StudentContacts.ColumnContactIsPrimary]);
                     }
                 }
             }
@@ -238,7 +241,8 @@ namespace PianoForte.Dao
                         studentContact.Type = EnumConverter.ToContactType(data.Tables[StudentContacts.TableName].Rows[i][StudentContacts.ColumnContactType].ToString());
                         studentContact.Label = data.Tables[StudentContacts.TableName].Rows[i][StudentContacts.ColumnContactLabel].ToString();
                         studentContact.Content = data.Tables[StudentContacts.TableName].Rows[i][StudentContacts.ColumnContactContent].ToString();
-                        studentContact.Status = EnumConverter.ToStatus(data.Tables[StudentContacts.TableName].Rows[0][StudentContacts.ColumnContactStatus].ToString());
+                        studentContact.Status = EnumConverter.ToStatus(data.Tables[StudentContacts.TableName].Rows[i][StudentContacts.ColumnContactStatus].ToString());
+                        studentContact.IsPrimary = Convert.ToBoolean(data.Tables[StudentContacts.TableName].Rows[i][StudentContacts.ColumnContactIsPrimary]);
 
                         studentContactList.Add(studentContact);
                     }
@@ -272,13 +276,15 @@ namespace PianoForte.Dao
                          StudentContacts.ColumnContactType + ", " +
                          StudentContacts.ColumnContactLabel + ", " +
                          StudentContacts.ColumnContactContent + ", " +
-                         StudentContacts.ColumnContactStatus + ") " +
+                         StudentContacts.ColumnContactStatus + ", " +
+                         StudentContacts.ColumnContactIsPrimary + ") " +
                          "VALUES(" +
                          "?" + StudentContacts.ColumnStudentId + ", " +
                          "?" + StudentContacts.ColumnContactType + ", " +
                          "?" + StudentContacts.ColumnContactLabel + ", " +
                          "?" + StudentContacts.ColumnContactContent + ", " +
-                         "?" + StudentContacts.ColumnContactStatus + ")";
+                         "?" + StudentContacts.ColumnContactStatus + ", " +
+                         "?" + StudentContacts.ColumnContactIsPrimary + ")";
 
             return this.insert(databaseName, studentContact, sql);
         }
@@ -291,7 +297,8 @@ namespace PianoForte.Dao
                          StudentContacts.ColumnContactType + " = ?" + StudentContacts.ColumnContactType + ", " +
                          StudentContacts.ColumnContactLabel + " = ?" + StudentContacts.ColumnContactLabel + ", " +
                          StudentContacts.ColumnContactContent + " = ?" + StudentContacts.ColumnContactContent + ", " +
-                         StudentContacts.ColumnContactStatus + " = ?" + StudentContacts.ColumnContactStatus + " " +
+                         StudentContacts.ColumnContactStatus + " = ?" + StudentContacts.ColumnContactStatus + ", " +
+                         StudentContacts.ColumnContactIsPrimary + " = ?" + StudentContacts.ColumnContactIsPrimary + " " +
                          "WHERE " + StudentContacts.ColumnStudentContactId + " = ?" + StudentContacts.ColumnStudentContactId;
 
             return this.update(databaseName, studentContact, sql);
