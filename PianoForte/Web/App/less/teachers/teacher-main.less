@@ -97,7 +97,7 @@
 
 			.box-content {
 				color: #636363;
-				height: calc(~'100% - 20px');				
+				height: calc(~'100% - 20px');
 
 				> div {
 					height: 100%;
@@ -146,6 +146,8 @@
 
 		&.content {
 			.box-content {
+				height: calc(~'100%');
+
 				.rows {
 					overflow-y: scroll;
 
@@ -159,6 +161,30 @@
 		&.no-margin-bottom {
 			.widget-box {
 				margin-bottom: 0px;
+			}
+		}
+
+		&.no-padding-top {
+			.widget-box {
+				.box-content {
+					padding-top: 0px;
+				}
+			}
+		}
+
+		&.no-padding-bottom {
+			.widget-box {
+				.box-content {
+					padding-bottom: 0px;
+				}
+			}
+		}
+
+		&.no-padding-right {
+			.widget-box {
+				.box-content {
+					padding-right: 0px;
+				}
 			}
 		}
 	}

@@ -4,10 +4,10 @@
             Now Loading...
         </my-pane>
     </my-tabs>
-    <my-tabs ng-show="isReady">        
+    <my-tabs ng-show="isReady">
         <my-pane data-title="about">
             <div class="tube-50-percent">
-                <my-box data-title="'ข้อมูลทั่วไป'" data-editable="true" data-edit="onEditGeneralInfo()">                    
+                <my-box data-title="'ข้อมูลทั่วไป'" data-editable="true" data-edit="onEditGeneralInfo()">
                     <div class="rows">
                         <div class="row">
                             <div class="col col-label">รหัสประจำตัว :</div>
@@ -34,7 +34,7 @@
                             <div class="col col-value">{{teacher.status.text}}</div>
                             <div class="clear-fix"></div>
                         </div>
-                    </div>            
+                    </div>
                 </my-box>
                 <my-box data-title="'ข้อมูลการติดต่อ'" data-editable="true" data-edit="onEditContactInfo()">
                     <div class="rows">
@@ -109,11 +109,11 @@
                     <div class="clear-fix"></div>
                 </div>
             </div>
-        </div>                
+        </div>
     </my-dialog-box>
-    <my-dialog-box data-title="'teacher > edit > ข้อมูลการติดต่อ'" data-submit="onSubmitEditContactInfo()" data-disabled="isOnUpdateEdittedContactInfo" data-close="onCancelEditContactInfo()" ng-show="isOnEditContactInfo">
-        <h4>เบอร์โทรศัพท์</h4>
-        <div class="wrapper">                
+    <my-dialog-box data-title="'teacher > edit > ข้อมูลการติดต่อ'" data-submit="onSubmitEditContactInfo()" data-disabled="isOnUpdateEdittedContactInfo" data-close="onCancelEditContactInfo()" ng-show="isOnEditContactInfo">        
+        <div class="wrapper">
+            <h4>เบอร์โทรศัพท์</h4>
             <div class="rows">
                 <div class="row editted-contact" ng-hide="contact.status == 19" ng-repeat="contact in edittedContactInfo.phones">
                     <div class="col col-label no-padding-top no-padding-bottom">
@@ -131,9 +131,7 @@
                 </div>
                 <button class="btn-add-phone" ng-hide="isOnUpdateEdittedContactInfo" ng-click="addPhone()">+ add</button>
             </div>
-        </div>
-        <h4>อีเมล์</h4>
-        <div class="wrapper">
+            <h4>อีเมล์</h4>
             <div class="rows">
                 <div class="row editted-contact" ng-hide="contact.status == 19" ng-repeat="contact in edittedContactInfo.emails">
                     <div class="col col-label no-padding-top no-padding-bottom">
@@ -151,7 +149,7 @@
                 </div>
                 <button class="btn-add-email" ng-hide="isOnUpdateEdittedContactInfo" ng-click="addEmail()">+ add</button>
             </div>
-        </div>     
+        </div>
     </my-dialog-box>
     <my-dialog-box data-title="'teacher > edit > วิชาที่สอน'" data-submit="onSubmitEditTeachedCourseInfo()" data-disabled="isOnUpdateEdittedTeachedCourseInfo" data-close="onCancelEditTeachedCourseInfo()" ng-show="isOnEditTeachedCourseInfo">
         <div class="wrapper">
@@ -160,7 +158,7 @@
                     <div class="col col-span label-value">
                         <my-select 
                             data-default-selected-item-index="teachedCourse.index"
-                            data-disabled="isOnUpdateEdittedTeachedCourseInfo"                            
+                            data-disabled="isOnUpdateEdittedTeachedCourseInfo"
                             data-items="teachedCourse.courseNameList" 
                             data-show-max-items="5"
                             data-placeholder="'Please select...'"></my-select>
@@ -168,8 +166,8 @@
                     <div class="col col-trash" ng-hide="isOnUpdateEdittedTeachedCourseInfo" ng-click="removeTeachedCourse($index)" title="ลบ"></div>
                     <div class="clear-fix"></div>
                 </div>
-                <button class="btn-add-course" ng-hide="isOnUpdateEdittedTeachedCourseInfo" ng-click="addTeachedCourse()">+ add</button>            
+                <button class="btn-add-course" ng-hide="isOnUpdateEdittedTeachedCourseInfo" ng-click="addTeachedCourse()">+ add</button>
             </div>
-        </div>            
+        </div>
     </my-dialog-box>
 </div>

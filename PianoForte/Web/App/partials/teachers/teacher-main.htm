@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class="tube width-100-percent">
-                <my-box class="header">
+                <my-box class="header no-padding-right">
                     <div class="rows">
                         <div class="row">
                             <div class="col col-name">ชื่อ - นามสกุล</div>
@@ -52,9 +52,9 @@
                 </my-box>
             </div> 
             <div class="tube width-100-percent fix-height">
-                <my-box class="content no-margin-bottom">
+                <my-box class="content no-margin-bottom no-padding-top no-padding-bottom no-padding-right">
                     <div class="rows">
-                        <div ng-repeat="teacher in teacherList | orderBy:'name' | filter:filterText | startFrom:(currentPage-1)*showPerPage | limitTo:showPerPage" class="row">
+                        <div class="row" ng-repeat="teacher in teacherList | orderBy:'name' | filter:filterText | startFrom:(currentPage-1)*showPerPage | limitTo:showPerPage">
                             <div class="col col-name">{{teacher.name}}</div>
                             <div class="col col-nickname">{{teacher.nickname}}</div>
                             <div class="col col-phone">{{teacher.phoneNumber}}</div>

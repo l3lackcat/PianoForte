@@ -13,6 +13,9 @@ PianoForte.Directives.Widgets.MyDialogBoxDirective = function () {
             close: '&'
         },
         controller: 'MyDialogBoxController',
-        templateUrl: 'partials/widgets/my-dialog-box/my-dialog-box.htm'
+        templateUrl: 'partials/widgets/my-dialog-box/my-dialog-box.htm',
+        link: function (scope, element, attrs) {
+            scope.initialize();
+        }
     };
 };

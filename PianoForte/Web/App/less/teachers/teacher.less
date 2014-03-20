@@ -63,25 +63,25 @@
 
 	my-dialog-box {
 		.widget-dialog-box {
-			.dialog-box-content {
-				> h4 {
-					color: @teacherThemeColor;
-					font-family: inherit;
-					font-size: @fontSizeL;
-					margin: 10px 0px 10px 55px;
-
-					&:first-child {
-						margin-top: 0;
-					}
-
-					&:hover {
-						cursor: default;
-					}
-				}
-							
+			.dialog-box-content {												
 				> .wrapper {
 					margin: 0 auto;
 					width: 460px;				
+
+					> h4 {
+						color: @teacherThemeColor;
+						font-family: inherit;
+						font-size: @fontSizeL;
+						margin: 10px 0;
+
+						&:first-child {
+							margin-top: 0;
+						}
+
+						&:hover {
+							cursor: default;
+						}
+					}
 
 					.rows {
 						color: #636363;
@@ -199,15 +199,16 @@
 							color: @teacherThemeColor;
 							font-family: inherit;
 							font-size: @fontSizeS;
-							margin: 0;
+							margin: 0 0 1px 0;
 							padding: 0;
 
 							&:hover {
 								cursor: pointer;
+								text-decoration: underline;
 							}
 						}
 					}					
-				}
+				}					
 			}
 		}
 	}	
