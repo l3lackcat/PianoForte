@@ -1,0 +1,74 @@
+﻿.widget-dialog-box {
+	font-family: @baseFontFamily;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(61,59,55,0.7);
+	z-index: 99999;
+	opacity: 1;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	pointer-events: auto;
+
+	> .wrapper {
+		font-family: inherit;
+		width: 620px;
+		position: relative;
+		margin: 160px auto auto auto;
+		padding: 0;
+		background-color: #EBEAE8;
+
+		.dialog-box-header {
+			color: #EDECEA;
+			font-family: inherit;
+			font-size: @fontSizeL;
+			padding: 25px;
+
+			span {
+				&:hover {
+					cursor: default;
+				}
+			}
+
+			.dialog-close {
+				background-color: transparent;
+				background-image: url('../images/icons/x_close_10_gray.png');
+				background-repeat: no-repeat;
+				border: 0;
+				height: 10px;
+				margin: 0;
+				position: absolute;
+				right: 10px;
+				top: 10px;
+				width: 10px;
+
+				&:hover {
+					cursor: pointer;
+				}
+			}
+		}
+
+		.dialog-box-content {
+			font-family: inherit;
+			padding: 25px 25px 0 25px;
+			// overflow-y: auto;
+			// To be fixed
+		}
+
+		.dialog-box-footer {
+			font-family: inherit;
+			padding: 20px 25px 25px 25px;
+			text-align: right;
+		}
+	}
+}
+
+#teacher,
+#teachers {
+	.widget-dialog-box {
+		.dialog-box-header { background-color: @teacherThemeColor; }
+	}
+}

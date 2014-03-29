@@ -1,0 +1,61 @@
+﻿.widget-search-box {
+	> .wrapper {
+		font-family: inherit;
+		font-size: inherit;
+		position: relative;
+
+		> input[type="text"] {	
+			background-color: #FFF;			
+			border: 0;
+			border-bottom: 1px solid transparent;
+			color: inherit;
+			font-family: inherit;
+			font-size: inherit;
+			margin: 0;
+			padding: 3px 20px 3px 5px;
+			width: calc(~'100% - 25px');
+			
+			&::-webkit-input-placeholder {
+				font-style: italic;
+			}
+										
+			&:disabled { 
+				background-color: transparent; 
+			}			
+		}
+
+		> .btn-search {	
+			background-color: transparent;								
+			background-repeat: no-repeat;
+			border: 0;
+			display: inline-block;
+			height: 14px;
+			margin: 0;
+			padding: 0;
+			position: absolute;
+			right: 5px;
+			width: 15px;
+
+			&:hover {
+				cursor: pointer;
+			}
+		}
+	}	
+}
+
+#teacher,
+#teachers {
+	.widget-search-box {
+		> .wrapper {
+			> input[type="text"] {
+				&:focus { border-bottom-color: @teacherThemeColor; }
+				&:hover { border-bottom-color: @teacherThemeColor; }	
+				&:disabled { border-bottom-color: transparent; }	
+			}
+
+			> .btn-search {
+				background-image: url('../images/icons/eyeglass_15_green.png');
+			}
+		}
+	}
+}

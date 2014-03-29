@@ -1,0 +1,173 @@
+﻿<div id="teacher" ng-controller="TeacherController" ng-init="initialize()">
+    <my-tabs ng-show="!isReady">
+        <my-pane data-title="Loading">
+            Now Loading...
+        </my-pane>
+    </my-tabs>
+    <my-tabs ng-show="isReady">
+        <my-pane data-title="about">
+            <div class="tube-50-percent">
+                <my-box data-title="'ข้อมูลทั่วไป'" data-editable="true" data-edit="onEditGeneralInfo()">
+                    <div class="rows">
+                        <div class="row">
+                            <div class="col col-label">รหัสประจำตัว :</div>
+                            <div class="col col-value">{{teacher.id}}</div>
+                            <div class="clear-fix"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-label">ชื่อ :</div>
+                            <div class="col col-value">{{teacher.firstname}}</div>
+                            <div class="clear-fix"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-label">นามสกุล :</div>
+                            <div class="col col-value">{{teacher.lastname}}</div>
+                            <div class="clear-fix"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-label">ชื่อเล่น :</div>
+                            <div class="col col-value">{{teacher.nickname}}</div>
+                            <div class="clear-fix"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-label">สถานะ :</div>
+                            <div class="col col-value">{{teacher.status.text}}</div>
+                            <div class="clear-fix"></div>
+                        </div>
+                    </div>
+                </my-box>
+                <my-box data-title="'ข้อมูลการติดต่อ'" data-editable="true" data-edit="onEditContactInfo()">
+                    <div class="rows">
+                        <div class="row" ng-repeat="contact in teacher.contacts.phones">
+                            <input type="hidden" ng-model="contact.id" />
+                            <input type="hidden" ng-model="contact.type" />
+                            <div class="col col-label">{{contact.label}} :</div>
+                            <div class="col col-value">{{contact.value}}</div>
+                            <div class="clear-fix"></div>
+                        </div>
+                        <div class="row" ng-repeat="contact in teacher.contacts.emails">
+                            <input type="hidden" ng-model="contact.id" />
+                            <input type="hidden" ng-model="contact.type" />
+                            <div class="col col-label">{{contact.label}} :</div>
+                            <div class="col col-value">{{contact.value}}</div>
+                            <div class="clear-fix"></div>
+                        </div>
+                        <div class="row no-data" ng-show="teacher.contacts.phones.length == 0 && teacher.contacts.emails.length == 0">*** ไม่มีข้อมูล ***</div>
+                    </div>
+                </my-box>
+            </div>
+            <div class="tube-50-percent">
+                <my-box data-title="'วิชาที่สอน'" data-editable="true" data-edit="onEditTeachedCourseInfo()">
+                    <div class="rows">
+                        <div class="row" ng-repeat="teachCourse in teacher.teachedCourses">{{teachCourse}}</div>
+                        <div class="row no-data" ng-show="teacher.teachedCourses.length == 0">*** ไม่มีข้อมูล ***</div>
+                    </div>    
+                </my-box>
+            </div>
+            <div class="clear-fix"></div>
+        </my-pane>
+        <my-pane data-title="calendar"></my-pane>
+    </my-tabs>
+    <my-dialog-box data-title="'teacher > edit > ข้อมูลทั่วไป'" data-submit="onSubmitEditGeneralInfo()" data-disabled="isOnSaveEdittedGeneralInfo" data-close="onCancelEditGeneralInfo()" ng-show="isOnEditGeneralInfo">
+        <div class="wrapper">
+            <div class="rows">
+                <div class="row">
+                    <div class="col col-label"><span ng-show="edittedGeneralInfo.id.isRequired" class="required">*</span>รหัสประจำตัว</div>
+                    <div class="col col-value">     
+                        <my-text-box data-text="edittedGeneralInfo.id.value" data-disabled="true"></my-text-box>
+                    </div>
+                    <div class="clear-fix"></div>
+                </div>
+                <div class="row">
+                    <div class="col col-label"><span ng-show="edittedGeneralInfo.firstname.isRequired" class="required">*</span>ชื่อ</div>
+                    <div class="col col-value">
+                        <my-text-box data-text="edittedGeneralInfo.firstname.value" data-disabled="isOnSaveEdittedGeneralInfo"></my-text-box>
+                        <label ng-hide="edittedGeneralInfo.firstname.isValid">*กรุณากรอกชื่อจริง</label>
+                    </div>
+                    <div class="clear-fix"></div>
+                </div>
+                <div class="row">
+                    <div class="col col-label"><span ng-show="edittedGeneralInfo.lastname.isRequired" class="required">*</span>นามสกุล</div>
+                    <div class="col col-value">
+                        <my-text-box data-text="edittedGeneralInfo.lastname.value" data-disabled="isOnSaveEdittedGeneralInfo"></my-text-box>
+                        <label ng-hide="edittedGeneralInfo.lastname.isValid">*กรุณากรอกนามสกุล</label>
+                    </div>
+                    <div class="clear-fix"></div>
+                </div>
+                <div class="row">
+                    <div class="col col-label"><span ng-show="edittedGeneralInfo.nickname.isRequired" class="required">*</span>ชื่อเล่น</div>
+                    <div class="col col-value">
+                        <my-text-box data-text="edittedGeneralInfo.nickname.value" data-disabled="isOnSaveEdittedGeneralInfo"></my-text-box>
+                    </div>
+                    <div class="clear-fix"></div>
+                </div>
+                <div class="row">
+                    <div class="col col-label"><span ng-show="edittedGeneralInfo.status.isRequired" class="required">*</span>สถานะ</div>
+                    <div class="col col-value">
+                        <my-text-box data-text="edittedGeneralInfo.status.value.text" data-disabled="true"></my-text-box>
+                    </div>
+                    <div class="clear-fix"></div>
+                </div>
+            </div>
+        </div>
+    </my-dialog-box>
+    <my-dialog-box data-title="'teacher > edit > ข้อมูลการติดต่อ'" data-submit="onSubmitEditContactInfo()" data-disabled="isOnUpdateEdittedContactInfo" data-close="onCancelEditContactInfo()" ng-show="isOnEditContactInfo">        
+        <div class="wrapper">
+            <h4>เบอร์โทรศัพท์</h4>
+            <div class="rows">
+                <div class="row editted-contact" ng-hide="contact.status == 19" ng-repeat="contact in edittedContactInfo.phones">
+                    <div class="col col-label no-padding-top no-padding-bottom">
+                        <my-text-box data-text="contact.label" data-placeholder="'เบอร์โทร'" data-disabled="isOnUpdateEdittedContactInfo"></my-text-box>
+                    </div>
+                    <div class="col col-value">
+                        <my-text-box data-text="contact.value" data-placeholder="'Ex: 089-999-9999'" data-disabled="isOnUpdateEdittedContactInfo"></my-text-box>
+                        <label ng-hide="contact.isValid">*กรุณากรอกหมายเลขโทรศัพท์ให้ถูกต้อง</label>
+                    </div>
+                    <div class="col col-trash" ng-hide="isOnUpdateEdittedContactInfo" ng-click="removePhone(contact)" title="ลบ"></div>
+                    <div class="col col-primary" ng-hide="isOnUpdateEdittedContactInfo">
+                        <my-checkbox data-name="contact.id" data-text="'primary'" data-checked="contact.isPrimary" data-on-changed="onCheckedPrimaryPhone(e)"></my-checkbox>
+                    </div>
+                    <div class="clear-fix"></div>
+                </div>
+                <button class="btn-add-phone" ng-hide="isOnUpdateEdittedContactInfo" ng-click="addPhone()">+ add</button>
+            </div>
+            <h4>อีเมล์</h4>
+            <div class="rows">
+                <div class="row editted-contact" ng-hide="contact.status == 19" ng-repeat="contact in edittedContactInfo.emails">
+                    <div class="col col-label no-padding-top no-padding-bottom">
+                        <my-text-box data-text="contact.label" data-placeholder="'อีเมล์'" data-disabled="isOnUpdateEdittedContactInfo"></my-text-box>
+                    </div>
+                    <div class="col col-value">
+                        <my-text-box data-text="contact.value" data-placeholder="'Ex: email@pianoforte.com'" data-disabled="isOnUpdateEdittedContactInfo"></my-text-box>
+                        <label ng-hide="contact.isValid">*กรุณากรอกอีเมล์ให้ถูกต้อง</label>
+                    </div>
+                    <div class="col col-trash" ng-hide="isOnUpdateEdittedContactInfo" ng-click="removeEmail(contact)" title="ลบ"></div>
+                    <div class="col col-primary" ng-hide="isOnUpdateEdittedContactInfo">
+                        <my-checkbox data-text="'primary'" data-checked="contact.isPrimary" data-on-changed="test()"></my-checkbox>
+                    </div>
+                    <div class="clear-fix"></div>
+                </div>
+                <button class="btn-add-email" ng-hide="isOnUpdateEdittedContactInfo" ng-click="addEmail()">+ add</button>
+            </div>
+        </div>
+    </my-dialog-box>
+    <my-dialog-box data-title="'teacher > edit > วิชาที่สอน'" data-submit="onSubmitEditTeachedCourseInfo()" data-disabled="isOnUpdateEdittedTeachedCourseInfo" data-close="onCancelEditTeachedCourseInfo()" ng-show="isOnEditTeachedCourseInfo">
+        <div class="wrapper">
+            <div class="rows">
+                <div class="row" ng-repeat="teachedCourse in edittedTeachedCourseInfo">
+                    <div class="col col-span label-value">
+                        <my-select 
+                            data-default-selected-item-index="teachedCourse.index"
+                            data-disabled="isOnUpdateEdittedTeachedCourseInfo"
+                            data-items="teachedCourse.courseNameList" 
+                            data-show-max-items="5"
+                            data-placeholder="'Please select...'"></my-select>
+                    </div>
+                    <div class="col col-trash" ng-hide="isOnUpdateEdittedTeachedCourseInfo" ng-click="removeTeachedCourse($index)" title="ลบ"></div>
+                    <div class="clear-fix"></div>
+                </div>
+                <button class="btn-add-course" ng-hide="isOnUpdateEdittedTeachedCourseInfo" ng-click="addTeachedCourse()">+ add</button>
+            </div>
+        </div>
+    </my-dialog-box>
+</div>
