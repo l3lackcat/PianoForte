@@ -1,0 +1,982 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{243000DD-FF1B-4721-9E0D-B5CA80F87C31}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PianoForte</RootNamespace>
+    <AssemblyName>PianoForte</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ApplicationIcon>icon48.ico</ApplicationIcon>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Enterprise.Framework, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Enterprise.InfoStore, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="MySql.Data, Version=1.0.10.1, Culture=neutral, PublicKeyToken=c5687fc88969c44d">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\MySQL\Connector ODBC 5.1\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\WINDOWS\assembly\GAC_MSIL\System.Web.Services\2.0.0.0__b03f5f7f11d50a3a\System.Web.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Constant\Constant.cs" />
+    <Compile Include="Constant\DatabaseConstant.cs" />
+    <Compile Include="Constant\DateTimeConstant.cs" />
+    <Compile Include="Dao\CdDao.cs" />
+    <Compile Include="Dao\ClassroomDao.cs" />
+    <Compile Include="Dao\ClassroomDetailDao.cs" />
+    <Compile Include="Dao\CourseCategoryDao.cs" />
+    <Compile Include="Dao\CourseDao.cs" />
+    <Compile Include="Dao\EnrollmentDao.cs" />
+    <Compile Include="Dao\HolidayDao.cs" />
+    <Compile Include="Dao\MySql\ProductDaoImplMySql.cs" />
+    <Compile Include="Dao\OtherCostDao.cs" />
+    <Compile Include="Dao\PaymentDao.cs" />
+    <Compile Include="Dao\PaymentDetailDao.cs" />
+    <Compile Include="Dao\ProductDao.cs" />
+    <Compile Include="Dao\RoomDao.cs" />
+    <Compile Include="Dao\RoomDetailDao.cs" />
+    <Compile Include="Dao\StudentDao.cs" />
+    <Compile Include="Dao\TeacherDao.cs" />
+    <Compile Include="Dao\TeachingCourseDao.cs" />
+    <Compile Include="Dao\UserDao.cs" />
+    <Compile Include="Dao\MySql\BookDaoImplMySql.cs" />
+    <Compile Include="Dao\MySql\CdDaoImplMySql.cs" />
+    <Compile Include="Dao\MySql\ClassroomDaoImplMySql.cs" />
+    <Compile Include="Dao\MySql\ClassroomDetailDaoImplMySql.cs" />
+    <Compile Include="Dao\MySql\CourseCategoryDaoImplMySql.cs" />
+    <Compile Include="Dao\MySql\CourseDaoImplMySql.cs" />
+    <Compile Include="Dao\BookDao.cs" />
+    <Compile Include="Dao\DaoFactory.cs" />
+    <Compile Include="Dao\MySql\EnrollmentDaoImplMySql.cs" />
+    <Compile Include="Dao\MySql\DaoFactoryImplMySql.cs" />
+    <Compile Include="Dao\MySql\OtherCostDaoImplMySql.cs" />
+    <Compile Include="Dao\MySql\PaymentDaoImplMySql.cs" />
+    <Compile Include="Dao\MySql\PaymentDetailDaoImplMySql.cs" />
+    <Compile Include="Dao\MySql\RoomDaoImplMySql.cs" />
+    <Compile Include="Dao\MySql\RoomDetailDaoImplMySql.cs" />
+    <Compile Include="Dao\MySql\HolidayDaoImplMySql.cs" />
+    <Compile Include="Dao\MySql\StudentDaoImplMySql.cs" />
+    <Compile Include="Dao\MySql\TeacherDaoImplMySql.cs" />
+    <Compile Include="Dao\MySql\TeachingCourseDaoImplMySql.cs" />
+    <Compile Include="Dao\MySql\UserDaoImplMySql.cs" />
+    <Compile Include="DatasetModel\DailyIncomeDataSet.cs">
+      <DependentUpon>DailyIncomeDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DatasetModel\DailyIncomeDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DailyIncomeDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DatasetModel\DailySalaryDetailDataSet.cs">
+      <DependentUpon>DailySalaryDetailDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DatasetModel\DailySalaryDetailDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DailySalaryDetailDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DatasetModel\DailySalaryHeaderDataSet.cs">
+      <DependentUpon>DailySalaryHeaderDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DatasetModel\DailySalaryHeaderDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DailySalaryHeaderDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DatasetModel\DataSetManager.cs" />
+    <Compile Include="DatasetModel\DisplayEnrollmentDataSet.cs">
+      <DependentUpon>DisplayEnrollmentDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DatasetModel\DisplayEnrollmentDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DisplayEnrollmentDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DatasetModel\PaymentDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PaymentDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DatasetModel\PaymentDetailDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PaymentDetailDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DatasetModel\ReceiptFooterDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReceiptFooterDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DatasetModel\RoomDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RoomDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DatasetModel\RoomDetailDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RoomDetailDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DatasetModel\StudentDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudentDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DatasetModel\TeacherDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TeacherDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DatasetModel\UserDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\HolidayManager.cs" />
+    <Compile Include="Manager\PrinterManager.cs" />
+    <Compile Include="Manager\ProductManager.cs" />
+    <Compile Include="Manager\ProgressBarManager.cs" />
+    <Compile Include="Manager\TeachingCourseManager.cs" />
+    <Compile Include="Model\ProductPriceHistory.cs" />
+    <Compile Include="Model\Holiday.cs" />
+    <Compile Include="Report\ReceiptViewCancel.cs">
+      <DependentUpon>ReceiptViewCancel.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="View\AddBookDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AddBookDetailForm.Designer.cs">
+      <DependentUpon>AddBookDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddCdDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AddCdDetailForm.Designer.cs">
+      <DependentUpon>AddCdDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\BookDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\BookDetailForm.Designer.cs">
+      <DependentUpon>BookDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\CdDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CdDetailForm.Designer.cs">
+      <DependentUpon>CdDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ClassroomForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ClassroomForm.Designer.cs">
+      <DependentUpon>ClassroomForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\ClassroomFormInterface.cs" />
+    <Compile Include="Manager\BookManager.cs" />
+    <Compile Include="Manager\CdManager.cs" />
+    <Compile Include="Manager\ClassroomDetailManager.cs" />
+    <Compile Include="Manager\ClassroomManager.cs" />
+    <Compile Include="Manager\DatabaseManager.cs" />
+    <Compile Include="Manager\ConvertManager.cs" />
+    <Compile Include="Manager\CourseCategoryManager.cs" />
+    <Compile Include="Manager\CourseManager.cs" />
+    <Compile Include="Manager\EnrollmentManager.cs" />
+    <Compile Include="Manager\ExportManager.cs" />
+    <Compile Include="Manager\LogManager.cs" />
+    <Compile Include="Manager\OtherCostManager.cs" />
+    <Compile Include="Manager\PaymentDetailManager.cs" />
+    <Compile Include="Manager\PaymentManager.cs" />
+    <Compile Include="Manager\ReceiptManager.cs" />
+    <Compile Include="Manager\RoomDetailManager.cs" />
+    <Compile Include="Manager\RoomManager.cs" />
+    <Compile Include="Manager\StudentManager.cs" />
+    <Compile Include="Manager\TeacherManager.cs" />
+    <Compile Include="Manager\DateTimeManager.cs" />
+    <Compile Include="Manager\UserManager.cs" />
+    <Compile Include="Manager\UtilityManager.cs" />
+    <Compile Include="Manager\ValidateManager.cs" />
+    <Compile Include="Model\Address.cs" />
+    <Compile Include="Model\Book.cs" />
+    <Compile Include="Model\ClassroomDetail.cs" />
+    <Compile Include="Model\DailyIncome.cs" />
+    <Compile Include="Model\DisplayEnrollment.cs" />
+    <Compile Include="Model\DisplayPayment.cs" />
+    <Compile Include="Model\Cd.cs" />
+    <Compile Include="Model\Classroom.cs" />
+    <Compile Include="Model\Course.cs" />
+    <Compile Include="Model\CourseCategory.cs" />
+    <Compile Include="Model\Enrollment.cs" />
+    <Compile Include="Model\OtherCost.cs" />
+    <Compile Include="Model\Payment.cs" />
+    <Compile Include="Model\PianoForteResult.cs" />
+    <Compile Include="Model\ReceiptFooter.cs" />
+    <Compile Include="Model\Person.cs" />
+    <Compile Include="Model\Product.cs" />
+    <Compile Include="Model\PaymentDetail.cs" />
+    <Compile Include="Model\Room.cs" />
+    <Compile Include="Model\RoomDetail.cs" />
+    <Compile Include="Model\Student.cs" />
+    <Compile Include="Model\Teacher.cs" />
+    <Compile Include="Model\TeachingCourse.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReceiptViewCancel.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReceiptViewCancel.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReceiptPrint.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReceiptPrint.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\DailySalaryReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DailySalaryReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReceiptViewPaid.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReceiptViewPaid.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\DailyIncomeReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DailyIncomeReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AddBookDetailForm.resx">
+      <DependentUpon>AddBookDetailForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AddCdDetailForm.resx">
+      <DependentUpon>AddCdDetailForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AddCourseForm.resx">
+      <DependentUpon>AddCourseForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AddCourseLevelForm.resx">
+      <DependentUpon>AddCourseLevelForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\BookDetailForm.resx">
+      <DependentUpon>BookDetailForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\BookMainForm.resx">
+      <DependentUpon>BookMainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CdDetailForm.resx">
+      <DependentUpon>CdDetailForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CdMainForm.resx">
+      <DependentUpon>CdMainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CheckInMainForm.resx">
+      <DependentUpon>CheckInMainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ClassroomDetailForm.resx">
+      <DependentUpon>ClassroomDetailForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ClassroomForm.resx">
+      <DependentUpon>ClassroomForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ConfirmDialogBox.resx">
+      <DependentUpon>ConfirmDialogBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CourseMainForm.resx">
+      <DependentUpon>CourseMainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\DailyPaymentReportForm.resx">
+      <DependentUpon>DailyPaymentReportForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\DateTimePickerDialogBox.resx">
+      <DependentUpon>DateTimePickerDialogBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CourseDetailForm.resx">
+      <DependentUpon>CourseDetailForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EditCourseLevelForm.resx">
+      <DependentUpon>EditCourseLevelForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EnrollmentForm.resx">
+      <DependentUpon>EnrollmentForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\HiddenForm.resx">
+      <DependentUpon>HiddenForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\HolidayMainForm.resx">
+      <DependentUpon>HolidayMainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\InputDialogBox.resx">
+      <DependentUpon>InputDialogBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\PaymentForm.resx">
+      <DependentUpon>PaymentForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\PaymentForm_Course.resx">
+      <DependentUpon>PaymentForm_Course.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\PaymentForm_OtherProduct.resx">
+      <DependentUpon>PaymentForm_OtherProduct.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\PaymentForm_Student.resx">
+      <DependentUpon>PaymentForm_Student.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\PaymentMainForm.resx">
+      <DependentUpon>PaymentMainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ProgressBarDialogBox.resx">
+      <DependentUpon>ProgressBarDialogBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ReceiptForm.resx">
+      <DependentUpon>ReceiptForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SearchProductResultForm.resx">
+      <DependentUpon>SearchProductResultForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SearchBookResultForm.resx">
+      <DependentUpon>SearchBookResultForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SearchCdResultForm.resx">
+      <DependentUpon>SearchCdResultForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SearchCourseResultForm.resx">
+      <DependentUpon>SearchCourseResultForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SetupCheckInForm.resx">
+      <DependentUpon>SetupCheckInForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SetupTeacherForm.resx">
+      <DependentUpon>SetupTeacherForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\StudentCheckInForm.resx">
+      <DependentUpon>StudentCheckInForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\StudentMainForm.resx">
+      <DependentUpon>StudentMainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\StudentProfileForm.resx">
+      <DependentUpon>StudentProfileForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\StudentRegisterForm.resx">
+      <DependentUpon>StudentRegisterForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\TeacherCheckInForm.resx">
+      <DependentUpon>TeacherCheckInForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\TeacherMainForm.resx">
+      <DependentUpon>TeacherMainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\TeacherProfileForm.resx">
+      <DependentUpon>TeacherProfileForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\TeacherRegisterForm.resx">
+      <DependentUpon>TeacherRegisterForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UserRegisterForm.resx">
+      <DependentUpon>UserRegisterForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="DatasetModel\DailyIncomeDataSet.xsc">
+      <DependentUpon>DailyIncomeDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DatasetModel\DailyIncomeDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DailyIncomeDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DatasetModel\DailyIncomeDataSet.xss">
+      <DependentUpon>DailyIncomeDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DatasetModel\DailySalaryDetailDataSet.xsc">
+      <DependentUpon>DailySalaryDetailDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DatasetModel\DailySalaryDetailDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DailySalaryDetailDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DatasetModel\DailySalaryDetailDataSet.xss">
+      <DependentUpon>DailySalaryDetailDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DatasetModel\DailySalaryHeaderDataSet.xsc">
+      <DependentUpon>DailySalaryHeaderDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DatasetModel\DailySalaryHeaderDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DailySalaryHeaderDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DatasetModel\DailySalaryHeaderDataSet.xss">
+      <DependentUpon>DailySalaryHeaderDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DatasetModel\DisplayEnrollmentDataSet.xsc">
+      <DependentUpon>DisplayEnrollmentDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DatasetModel\DisplayEnrollmentDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DisplayEnrollmentDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DatasetModel\DisplayEnrollmentDataSet.xss">
+      <DependentUpon>DisplayEnrollmentDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DatasetModel\PaymentDataSet.xsc">
+      <DependentUpon>PaymentDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DatasetModel\PaymentDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PaymentDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DatasetModel\PaymentDataSet.xss">
+      <DependentUpon>PaymentDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DatasetModel\PaymentDetailDataSet.xsc">
+      <DependentUpon>PaymentDetailDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DatasetModel\PaymentDetailDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PaymentDetailDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DatasetModel\PaymentDetailDataSet.xss">
+      <DependentUpon>PaymentDetailDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DatasetModel\ReceiptFooterDataSet.xsc">
+      <DependentUpon>ReceiptFooterDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DatasetModel\ReceiptFooterDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReceiptFooterDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DatasetModel\ReceiptFooterDataSet.xss">
+      <DependentUpon>ReceiptFooterDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DatasetModel\RoomDataSet.xsc">
+      <DependentUpon>RoomDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DatasetModel\RoomDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>RoomDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DatasetModel\RoomDataSet.xss">
+      <DependentUpon>RoomDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DatasetModel\RoomDetailDataSet.xsc">
+      <DependentUpon>RoomDetailDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DatasetModel\RoomDetailDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>RoomDetailDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DatasetModel\RoomDetailDataSet.xss">
+      <DependentUpon>RoomDetailDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DatasetModel\StudentDataSet.xsc">
+      <DependentUpon>StudentDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DatasetModel\StudentDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>StudentDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DatasetModel\StudentDataSet.xss">
+      <DependentUpon>StudentDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DatasetModel\TeacherDataSet.xsc">
+      <DependentUpon>TeacherDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DatasetModel\TeacherDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TeacherDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DatasetModel\TeacherDataSet.xss">
+      <DependentUpon>TeacherDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DatasetModel\UserDataSet.xsc">
+      <DependentUpon>UserDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DatasetModel\UserDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>UserDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DatasetModel\UserDataSet.xss">
+      <DependentUpon>UserDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Report\ReceiptPrint.cs">
+      <DependentUpon>ReceiptPrint.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Report\DailySalaryReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DailySalaryReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReceiptViewPaid.cs">
+      <DependentUpon>ReceiptViewPaid.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Report\DailyIncomeReport.cs">
+      <DependentUpon>DailyIncomeReport.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="View\AddCourseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AddCourseForm.Designer.cs">
+      <DependentUpon>AddCourseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddCourseLevelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AddCourseLevelForm.Designer.cs">
+      <DependentUpon>AddCourseLevelForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\BookMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\BookMainForm.Designer.cs">
+      <DependentUpon>BookMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\CdMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CdMainForm.Designer.cs">
+      <DependentUpon>CdMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\CheckInMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CheckInMainForm.Designer.cs">
+      <DependentUpon>CheckInMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ClassroomDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ClassroomDetailForm.Designer.cs">
+      <DependentUpon>ClassroomDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ConfirmDialogBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ConfirmDialogBox.Designer.cs">
+      <DependentUpon>ConfirmDialogBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\CourseMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CourseMainForm.Designer.cs">
+      <DependentUpon>CourseMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\DailyPaymentReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DailyPaymentReportForm.Designer.cs">
+      <DependentUpon>DailyPaymentReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\DateTimePickerDialogBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DateTimePickerDialogBox.Designer.cs">
+      <DependentUpon>DateTimePickerDialogBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\CourseDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CourseDetailForm.Designer.cs">
+      <DependentUpon>CourseDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditCourseLevelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EditCourseLevelForm.Designer.cs">
+      <DependentUpon>EditCourseLevelForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EnrollmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EnrollmentForm.Designer.cs">
+      <DependentUpon>EnrollmentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\FormInterface.cs" />
+    <Compile Include="View\HiddenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\HiddenForm.Designer.cs">
+      <DependentUpon>HiddenForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\HolidayMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\HolidayMainForm.Designer.cs">
+      <DependentUpon>HolidayMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\InputDialogBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\InputDialogBox.Designer.cs">
+      <DependentUpon>InputDialogBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\PaymentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PaymentForm.Designer.cs">
+      <DependentUpon>PaymentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\PaymentForm_Course.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PaymentForm_Course.Designer.cs">
+      <DependentUpon>PaymentForm_Course.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\PaymentForm_OtherProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PaymentForm_OtherProduct.Designer.cs">
+      <DependentUpon>PaymentForm_OtherProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\PaymentForm_Student.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PaymentForm_Student.Designer.cs">
+      <DependentUpon>PaymentForm_Student.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\PaymentMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PaymentMainForm.Designer.cs">
+      <DependentUpon>PaymentMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ProgressBarDialogBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ProgressBarDialogBox.Designer.cs">
+      <DependentUpon>ProgressBarDialogBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ReceiptForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ReceiptForm.Designer.cs">
+      <DependentUpon>ReceiptForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\SearchBookResultFormInterface.cs" />
+    <Compile Include="Interface\SearchCdResultFormInterface.cs" />
+    <Compile Include="Interface\SearchCourseResultFormInterface.cs" />
+    <Compile Include="View\SearchProductResultForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SearchProductResultForm.Designer.cs">
+      <DependentUpon>SearchProductResultForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\SearchBookResultForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SearchBookResultForm.Designer.cs">
+      <DependentUpon>SearchBookResultForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\SearchCdResultForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SearchCdResultForm.Designer.cs">
+      <DependentUpon>SearchCdResultForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\SearchCourseResultForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SearchCourseResultForm.Designer.cs">
+      <DependentUpon>SearchCourseResultForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\SetupCheckInForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SetupCheckInForm.Designer.cs">
+      <DependentUpon>SetupCheckInForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\SetupTeacherForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SetupTeacherForm.Designer.cs">
+      <DependentUpon>SetupTeacherForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\StudentCheckInForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\StudentCheckInForm.Designer.cs">
+      <DependentUpon>StudentCheckInForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\StudentMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\StudentMainForm.Designer.cs">
+      <DependentUpon>StudentMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\StudentProfileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\StudentProfileForm.Designer.cs">
+      <DependentUpon>StudentProfileForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\StudentRegisterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\StudentRegisterForm.Designer.cs">
+      <DependentUpon>StudentRegisterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\TeacherCheckInForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\TeacherCheckInForm.Designer.cs">
+      <DependentUpon>TeacherCheckInForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\TeacherMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\TeacherMainForm.Designer.cs">
+      <DependentUpon>TeacherMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\TeacherProfileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\TeacherProfileForm.Designer.cs">
+      <DependentUpon>TeacherProfileForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\TeacherRegisterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\TeacherRegisterForm.Designer.cs">
+      <DependentUpon>TeacherRegisterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserRegisterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\UserRegisterForm.Designer.cs">
+      <DependentUpon>UserRegisterForm.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icon48.ico" />
+    <None Include="Images\Check-In.png" />
+    <None Include="Resources\Check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Dao\Default\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

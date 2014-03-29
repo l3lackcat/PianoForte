@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DailyIncomeDataSet" targetNamespace="http://tempuri.org/DailyIncomeDataSet.xsd" xmlns:mstns="http://tempuri.org/DailyIncomeDataSet.xsd" xmlns="http://tempuri.org/DailyIncomeDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DailyIncomeDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="DailyIncomeDataSet" msprop:Generator_UserDSName="DailyIncomeDataSet" msprop:EnableTableAdapterManager="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="daily_income" msprop:Generator_UserTableName="daily_income" msprop:Generator_RowDeletedName="daily_incomeRowDeleted" msprop:Generator_TableClassName="daily_incomeDataTable" msprop:Generator_RowChangedName="daily_incomeRowChanged" msprop:Generator_RowClassName="daily_incomeRow" msprop:Generator_RowChangingName="daily_incomeRowChanging" msprop:Generator_RowEvArgName="daily_incomeRowChangeEvent" msprop:Generator_RowEvHandlerName="daily_incomeRowChangeEventHandler" msprop:Generator_TablePropName="daily_income" msprop:Generator_TableVarName="tabledaily_income" msprop:Generator_RowDeletingName="daily_incomeRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="dailyIncomeId" msprop:Generator_UserColumnName="dailyIncomeId" msprop:Generator_ColumnPropNameInRow="dailyIncomeId" msprop:Generator_ColumnVarNameInTable="columndailyIncomeId" msprop:Generator_ColumnPropNameInTable="dailyIncomeIdColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="dailyIncomeDate" msprop:Generator_UserColumnName="dailyIncomeDate" msprop:Generator_ColumnPropNameInRow="dailyIncomeDate" msprop:Generator_ColumnVarNameInTable="columndailyIncomeDate" msprop:Generator_ColumnPropNameInTable="dailyIncomeDateColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="totalCoursePrice" msprop:Generator_UserColumnName="totalCoursePrice" msprop:Generator_ColumnPropNameInRow="totalCoursePrice" msprop:Generator_ColumnVarNameInTable="columntotalCoursePrice" msprop:Generator_ColumnPropNameInTable="totalCoursePriceColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="totalBookPrice" msprop:Generator_UserColumnName="totalBookPrice" msprop:Generator_ColumnPropNameInRow="totalBookPrice" msprop:Generator_ColumnVarNameInTable="columntotalBookPrice" msprop:Generator_ColumnPropNameInTable="totalBookPriceColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="totalAssignmentBookPrice" msprop:Generator_UserColumnName="totalAssignmentBookPrice" msprop:Generator_ColumnPropNameInRow="totalAssignmentBookPrice" msprop:Generator_ColumnVarNameInTable="columntotalAssignmentBookPrice" msprop:Generator_ColumnPropNameInTable="totalAssignmentBookPriceColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="totalFirstRegister" msprop:Generator_UserColumnName="totalFirstRegister" msprop:Generator_ColumnPropNameInRow="totalFirstRegister" msprop:Generator_ColumnVarNameInTable="columntotalFirstRegister" msprop:Generator_ColumnPropNameInTable="totalFirstRegisterColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="totalCDPrice" msprop:Generator_UserColumnName="totalCDPrice" msprop:Generator_ColumnPropNameInRow="totalCDPrice" msprop:Generator_ColumnVarNameInTable="columntotalCDPrice" msprop:Generator_ColumnPropNameInTable="totalCDPriceColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="totalOtherPrice" msprop:Generator_UserColumnName="totalOtherPrice" msprop:Generator_ColumnPropNameInRow="totalOtherPrice" msprop:Generator_ColumnVarNameInTable="columntotalOtherPrice" msprop:Generator_ColumnPropNameInTable="totalOtherPriceColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="totalCash" msprop:Generator_UserColumnName="totalCash" msprop:Generator_ColumnPropNameInRow="totalCash" msprop:Generator_ColumnVarNameInTable="columntotalCash" msprop:Generator_ColumnPropNameInTable="totalCashColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="totalCreditcard" msprop:Generator_UserColumnName="totalCreditcard" msprop:Generator_ColumnPropNameInRow="totalCreditcard" msprop:Generator_ColumnVarNameInTable="columntotalCreditcard" msprop:Generator_ColumnPropNameInTable="totalCreditcardColumn" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

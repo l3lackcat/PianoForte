@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DailySalaryDetailDataSet" targetNamespace="http://tempuri.org/DailySalaryDetailDataSet.xsd" xmlns:mstns="http://tempuri.org/DailySalaryDetailDataSet.xsd" xmlns="http://tempuri.org/DailySalaryDetailDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DailySalaryDetailDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DailySalaryDetailDataSet" msprop:Generator_DataSetName="DailySalaryDetailDataSet" msprop:EnableTableAdapterManager="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="daily_salary_detail" msprop:Generator_UserTableName="daily_salary_detail" msprop:Generator_RowDeletedName="daily_salary_detailRowDeleted" msprop:Generator_RowChangedName="daily_salary_detailRowChanged" msprop:Generator_RowClassName="daily_salary_detailRow" msprop:Generator_RowChangingName="daily_salary_detailRowChanging" msprop:Generator_RowEvArgName="daily_salary_detailRowChangeEvent" msprop:Generator_RowEvHandlerName="daily_salary_detailRowChangeEventHandler" msprop:Generator_TableClassName="daily_salary_detailDataTable" msprop:Generator_TableVarName="tabledaily_salary_detail" msprop:Generator_RowDeletingName="daily_salary_detailRowDeleting" msprop:Generator_TablePropName="daily_salary_detail">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="teacherId" msprop:Generator_UserColumnName="teacherId" msprop:Generator_ColumnVarNameInTable="columnteacherId" msprop:Generator_ColumnPropNameInRow="teacherId" msprop:Generator_ColumnPropNameInTable="teacherIdColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="roomNumber" msprop:Generator_UserColumnName="roomNumber" msprop:Generator_ColumnPropNameInRow="roomNumber" msprop:Generator_ColumnVarNameInTable="columnroomNumber" msprop:Generator_ColumnPropNameInTable="roomNumberColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="startTime" msprop:Generator_UserColumnName="startTime" msprop:Generator_ColumnPropNameInRow="startTime" msprop:Generator_ColumnVarNameInTable="columnstartTime" msprop:Generator_ColumnPropNameInTable="startTimeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="endTime" msprop:Generator_UserColumnName="endTime" msprop:Generator_ColumnPropNameInRow="endTime" msprop:Generator_ColumnVarNameInTable="columnendTime" msprop:Generator_ColumnPropNameInTable="endTimeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="studentName" msprop:Generator_UserColumnName="studentName" msprop:Generator_ColumnPropNameInRow="studentName" msprop:Generator_ColumnVarNameInTable="columnstudentName" msprop:Generator_ColumnPropNameInTable="studentNameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="commission" msprop:Generator_UserColumnName="commission" msprop:Generator_ColumnPropNameInRow="commission" msprop:Generator_ColumnVarNameInTable="columncommission" msprop:Generator_ColumnPropNameInTable="commissionColumn" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="RoomDetailDataSet" targetNamespace="http://tempuri.org/RoomDetailDataSet.xsd" xmlns:mstns="http://tempuri.org/RoomDetailDataSet.xsd" xmlns="http://tempuri.org/RoomDetailDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="RoomDetailDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="RoomDetailDataSet" msprop:Generator_UserDSName="RoomDetailDataSet" msprop:EnableTableAdapterManager="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="room_detail" msprop:Generator_UserTableName="room_detail" msprop:Generator_RowDeletedName="room_detailRowDeleted" msprop:Generator_TableClassName="room_detailDataTable" msprop:Generator_RowChangedName="room_detailRowChanged" msprop:Generator_RowClassName="room_detailRow" msprop:Generator_RowChangingName="room_detailRowChanging" msprop:Generator_RowEvArgName="room_detailRowChangeEvent" msprop:Generator_RowEvHandlerName="room_detailRowChangeEventHandler" msprop:Generator_TablePropName="room_detail" msprop:Generator_TableVarName="tableroom_detail" msprop:Generator_RowDeletingName="room_detailRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="roomDetailId" msprop:Generator_UserColumnName="roomDetailId" msprop:Generator_ColumnPropNameInRow="roomDetailId" msprop:Generator_ColumnVarNameInTable="columnroomDetailId" msprop:Generator_ColumnPropNameInTable="roomDetailIdColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="roomId" msprop:Generator_UserColumnName="roomId" msprop:Generator_ColumnPropNameInRow="roomId" msprop:Generator_ColumnVarNameInTable="columnroomId" msprop:Generator_ColumnPropNameInTable="roomIdColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="teacherId" msprop:Generator_UserColumnName="teacherId" msprop:Generator_ColumnPropNameInRow="teacherId" msprop:Generator_ColumnVarNameInTable="columnteacherId" msprop:Generator_ColumnPropNameInTable="teacherIdColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="startTime" msprop:Generator_UserColumnName="startTime" msprop:Generator_ColumnPropNameInRow="startTime" msprop:Generator_ColumnVarNameInTable="columnstartTime" msprop:Generator_ColumnPropNameInTable="startTimeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="endTime" msprop:Generator_UserColumnName="endTime" msprop:Generator_ColumnPropNameInRow="endTime" msprop:Generator_ColumnVarNameInTable="columnendTime" msprop:Generator_ColumnPropNameInTable="endTimeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="checkInTime" msprop:Generator_UserColumnName="checkInTime" msprop:Generator_ColumnPropNameInRow="checkInTime" msprop:Generator_ColumnVarNameInTable="columncheckInTime" msprop:Generator_ColumnPropNameInTable="checkInTimeColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
