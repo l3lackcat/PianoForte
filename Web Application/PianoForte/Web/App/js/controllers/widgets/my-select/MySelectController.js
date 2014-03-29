@@ -19,16 +19,32 @@ PianoForte.Controllers.Widgets.MySelectController = function ($scope, $attrs, $e
         textElement = buttonElement.children[0];
         caretElement = buttonElement.children[1];        
 
-        updateLayout();
+        updateTheme();
+        updateLayout();        
         addEventsListen();
         resetSelectedItem();
         setDefaultSelectedItem();
     };
 
-    $scope.toggleMenu = function () {
+    $scope.showDropdownMenu = function () {
         if (($scope.disabled === undefined) || ($scope.disabled === false)) {
-            $scope.isMenuVisible = !$scope.isMenuVisible;
-        }        
+            var selectElementOffset = selectElement.getBoundingClientRect();
+            if (selectElementOffset !== undefined) {
+                dropdownElement.style.top = (selectElementOffset.top + selectElement.clientHeight) + 'px';
+                dropdownElement.style.left = selectElementOffset.left + 'px';
+                document.body.appendChild(dropdownElement);
+
+                $scope.isMenuVisible = !$scope.isMenuVisible;
+            }
+        }
+    };
+
+    $scope.hideDropdownMenu = function () {
+        if ($scope.isMenuVisible === true) {
+            selectElement.appendChild(dropdownElement);
+            $scope.isMenuVisible = false;
+            $scope.$apply();
+        }            
     };
 
     $scope.select = function (selectedItem) {
@@ -50,6 +66,10 @@ PianoForte.Controllers.Widgets.MySelectController = function ($scope, $attrs, $e
         }
     });
 
+    function updateTheme () {
+        dropdownElement.className = dropdownElement.className + ' ' + $scope.theme;
+    };
+
     function updateLayout () {
         adjustWidth();
         adjustDropdownMenuHeight();
@@ -61,6 +81,7 @@ PianoForte.Controllers.Widgets.MySelectController = function ($scope, $attrs, $e
         }
 
         textElement.style.width = (selectElement.clientWidth - caretElement.clientWidth - 12) + 'px';
+        dropdownElement.style.width = selectElement.clientWidth + 'px';
     }; 
 
     function adjustDropdownMenuHeight () {
@@ -74,11 +95,10 @@ PianoForte.Controllers.Widgets.MySelectController = function ($scope, $attrs, $e
         $document.bind('click', onClick);
     };
 
-    function onClick (e) {
+    function onClick(e) {
         if (selectElement.contains(e.target) === false) {
-            $scope.isMenuVisible = false;
-            $scope.$apply();
-        }  
+            $scope.hideDropdownMenu();
+        }
     };
 
     function resetSelectedItem () {

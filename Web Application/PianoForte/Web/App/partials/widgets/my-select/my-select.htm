@@ -1,10 +1,10 @@
 ﻿<div class="widget-select">
-    <button class="btn-toggle" ng-click="toggleMenu()">
+    <button class="btn-toggle" ng-click="showDropdownMenu()">
     	<div class="text">{{selectedText}}</div>
     	<div class="caret" ng-hide="disabled">&#9660;</div>
     	<div class="clear-fix"></div>
     </button>    
-    <div class="dropdown-menu" ng-show="isMenuVisible">
+    <div class="dropdown-menu" ng-show="isMenuVisible" ng-blur="hideDropdownMenu()">
 		<div class="items">
 			<div class="item" ng-repeat="item in items" ng-click="select(item)" ng-switch on="item.excluded">
                 <span ng-switch-when="false">{{item.text}}</span>
