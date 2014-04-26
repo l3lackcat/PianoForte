@@ -34,7 +34,8 @@ namespace PianoForte.View
         public static CdMainForm cdMainForm;
         public static PaymentMainForm paymentMainForm;
         public static DailyPaymentReportForm dailyPaymentReportForm;
-        public static CheckInMainForm checkInMainForm;      
+        public static CheckInMainForm checkInMainForm;
+        public static PaymentForm2 paymentForm2;
 
         public MainForm()
         {
@@ -123,6 +124,9 @@ namespace PianoForte.View
             //this.initialForm(checkInMainForm);
             //LogManager.writeLog("Finish loading CheckInMainForm");
 
+            paymentForm2 = new PaymentForm2();
+            this.initialForm(paymentForm2);
+
             this.switchForm(loginForm);
 
             //LogManager.writeLog("Finish MainForm.MainForm_Load()");
@@ -208,9 +212,10 @@ namespace PianoForte.View
 
         private void toolStripButton_CheckIn_Click(object sender, EventArgs e)
         {
-            checkInMainForm.init();
-            checkInMainForm.reload();
-            this.switchForm(checkInMainForm);
+            //checkInMainForm.init();
+            //checkInMainForm.reload();
+            //this.switchForm(checkInMainForm);
+            this.switchForm(paymentForm2);            
         } 
 
         private void ToolStripButton_Logout_Click(object sender, EventArgs e)
