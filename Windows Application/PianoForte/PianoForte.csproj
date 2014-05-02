@@ -939,6 +939,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon48.ico" />
+    <None Include="Resources\barcode.png" />
+    <None Include="Resources\basket_add.png" />
+    <None Include="Resources\cd.png" />
+    <None Include="Resources\book.png" />
+    <None Include="Resources\music.png" />
     <None Include="Images\search.png" />
     <None Include="Images\View.png" />
     <None Include="Images\Check-In.png" />
