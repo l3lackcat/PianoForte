@@ -384,7 +384,7 @@ namespace PianoForte.View
 
             PaymentDetail paymentDetail = new PaymentDetail();
             paymentDetail.Product = product;
-            paymentDetail.Amount = 1;
+            paymentDetail.Quantity = 1;
             paymentDetail.Discount = this.getDiscountRate();
 
             if (this.paymentForm.addPaymentDetail(paymentDetail))

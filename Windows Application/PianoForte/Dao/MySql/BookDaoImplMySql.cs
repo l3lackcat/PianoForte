@@ -354,7 +354,7 @@ namespace PianoForte.Dao.MySql
                         //command.Parameters.AddWithValue(Book.columnOriginalBookBarcode, book.OriginalBarcode);
                         command.Parameters.AddWithValue(Book.columnBookName, book.Name);
                         command.Parameters.AddWithValue(Book.columnBookPrice, book.Price);
-                        command.Parameters.AddWithValue(Book.columnBookAmount, book.Amount);
+                        command.Parameters.AddWithValue(Book.columnBookAmount, book.Quantity);
                         command.Parameters.AddWithValue(Book.columnStatus, book.Status);
 
                         int affectedRow = command.ExecuteNonQuery();
@@ -404,7 +404,7 @@ namespace PianoForte.Dao.MySql
                         //command.Parameters.AddWithValue(Book.columnOriginalBookBarcode, book.OriginalBarcode);
                         command.Parameters.AddWithValue(Book.columnBookName, book.Name);
                         command.Parameters.AddWithValue(Book.columnBookPrice, book.Price);
-                        command.Parameters.AddWithValue(Book.columnBookAmount, book.Amount);
+                        command.Parameters.AddWithValue(Book.columnBookAmount, book.Quantity);
                         command.Parameters.AddWithValue(Book.columnStatus, book.Status);
                         command.Parameters.AddWithValue(Book.columnBookId, book.Id);
 
@@ -537,7 +537,7 @@ namespace PianoForte.Dao.MySql
             string amount = data.Tables[Book.tableName].Rows[index][Book.columnBookAmount].ToString();
             if (ValidateManager.isNumber(amount))
             {
-                book.Amount = Convert.ToInt32(amount);
+                book.Quantity = Convert.ToInt32(amount);
             }
 
             book.Status = data.Tables[Book.tableName].Rows[index][Book.columnStatus].ToString();

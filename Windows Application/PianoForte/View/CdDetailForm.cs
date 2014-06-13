@@ -38,7 +38,7 @@ namespace PianoForte.View
             this.TextBox_Barcode.Text = cd.Barcode;
             this.TextBox_CdName.Text = cd.Name;
             this.TextBox_CdPrice.Text = cd.Price.ToString();
-            this.TextBox_CdAmount.Text = cd.Amount.ToString();
+            this.TextBox_CdAmount.Text = cd.Quantity.ToString();
 
             if (cd.Status == Cd.CdStatus.CANCELED.ToString())
             {
@@ -129,7 +129,7 @@ namespace PianoForte.View
                 tempCd.Barcode = this.TextBox_Barcode.Text;
                 tempCd.Name = this.TextBox_CdName.Text;
                 tempCd.Price = Convert.ToDouble(this.TextBox_CdPrice.Text);
-                tempCd.Amount = Convert.ToInt32(this.TextBox_CdAmount.Text);
+                tempCd.Quantity = Convert.ToInt32(this.TextBox_CdAmount.Text);
 
                 if (this.CheckBox_Cancel_Cd.Checked)
                 {
@@ -137,7 +137,7 @@ namespace PianoForte.View
                 }
                 else
                 {
-                    if (tempCd.Amount <= 0)
+                    if (tempCd.Quantity <= 0)
                     {
                         tempCd.Status = Cd.CdStatus.EMPTY.ToString();
                     }

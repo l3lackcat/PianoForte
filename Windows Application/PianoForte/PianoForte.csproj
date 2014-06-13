@@ -219,6 +219,11 @@
     <Compile Include="Manager\TeachingCourseManager.cs" />
     <Compile Include="Model\ProductPriceHistory.cs" />
     <Compile Include="Model\Holiday.cs" />
+    <Compile Include="Properties\Resources1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Report\ReceiptViewCancel.cs">
       <DependentUpon>ReceiptViewCancel.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -236,6 +241,12 @@
     </Compile>
     <Compile Include="View\AddCdDetailForm.Designer.cs">
       <DependentUpon>AddCdDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddOtherProductPopUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AddOtherProductPopUp.Designer.cs">
+      <DependentUpon>AddOtherProductPopUp.cs</DependentUpon>
     </Compile>
     <Compile Include="View\BookDetailForm.cs">
       <SubType>Form</SubType>
@@ -306,9 +317,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\ReceiptViewCancel.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -344,6 +355,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\AddCourseLevelForm.resx">
       <DependentUpon>AddCourseLevelForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AddOtherProductPopUp.resx">
+      <DependentUpon>AddOtherProductPopUp.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="View\BookDetailForm.resx">
@@ -402,6 +417,10 @@
       <DependentUpon>EnrollmentForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\EnrollmentPopUp.resx">
+      <DependentUpon>EnrollmentPopUp.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\HiddenForm.resx">
       <DependentUpon>HiddenForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -451,6 +470,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\ReceiptForm.resx">
       <DependentUpon>ReceiptForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SearchBookPopUp.resx">
+      <DependentUpon>SearchBookPopUp.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SearchCDPopUp.resx">
+      <DependentUpon>SearchCDPopUp.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SearchCoursePopUp.resx">
+      <DependentUpon>SearchCoursePopUp.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="View\SearchProductResultForm.resx">
@@ -513,11 +544,6 @@
       <DependentUpon>UserRegisterForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="DatasetModel\DailyIncomeDataSet.xsc">
       <DependentUpon>DailyIncomeDataSet.xsd</DependentUpon>
     </None>
@@ -762,6 +788,12 @@
       <DependentUpon>EnrollmentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Interface\FormInterface.cs" />
+    <Compile Include="View\EnrollmentPopUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EnrollmentPopUp.Designer.cs">
+      <DependentUpon>EnrollmentPopUp.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\HiddenForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -843,6 +875,24 @@
     <Compile Include="Interface\SearchBookResultFormInterface.cs" />
     <Compile Include="Interface\SearchCdResultFormInterface.cs" />
     <Compile Include="Interface\SearchCourseResultFormInterface.cs" />
+    <Compile Include="View\SearchBookPopUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SearchBookPopUp.Designer.cs">
+      <DependentUpon>SearchBookPopUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\SearchCDPopUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SearchCDPopUp.Designer.cs">
+      <DependentUpon>SearchCDPopUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\SearchCoursePopUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SearchCoursePopUp.Designer.cs">
+      <DependentUpon>SearchCoursePopUp.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\SearchProductResultForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -939,6 +989,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon48.ico" />
+    <Content Include="Resources\Delete.png" />
+    <Content Include="Resources\Empty.png" />
     <None Include="Resources\barcode.png" />
     <None Include="Resources\basket_add.png" />
     <None Include="Resources\cd.png" />

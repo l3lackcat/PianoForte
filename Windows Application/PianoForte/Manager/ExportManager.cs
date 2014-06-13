@@ -206,7 +206,7 @@ namespace PianoForte.Manager
                             {
                                 if (tempPaymentDetail.Product.Type == Product.ProductType.COURSE.ToString())
                                 {
-                                    totalCoursePrice = (tempPaymentDetail.Product.Price * tempPaymentDetail.Amount) - tempPaymentDetail.Discount;
+                                    totalCoursePrice = (tempPaymentDetail.Product.Price * tempPaymentDetail.Quantity) - tempPaymentDetail.Discount;
                                     break;
                                 }
                             }
@@ -388,22 +388,22 @@ namespace PianoForte.Manager
                         {
                             if (tempPaymentDetail.Product.Type == Product.ProductType.COURSE.ToString())
                             {
-                                totalCoursePrice += (tempPaymentDetail.Product.Price * tempPaymentDetail.Amount) - tempPaymentDetail.Discount;
+                                totalCoursePrice += (tempPaymentDetail.Product.Price * tempPaymentDetail.Quantity) - tempPaymentDetail.Discount;
                             }
                             else if (tempPaymentDetail.Product.Type == Product.ProductType.BOOK.ToString())
                             {
                                 if (tempPaymentDetail.Product.Id == 2000001)
                                 {
-                                    totalAssignmentBookPrice += (tempPaymentDetail.Product.Price * tempPaymentDetail.Amount) - tempPaymentDetail.Discount;
+                                    totalAssignmentBookPrice += (tempPaymentDetail.Product.Price * tempPaymentDetail.Quantity) - tempPaymentDetail.Discount;
                                 }
                                 else
                                 {
-                                    totalBookPrice += (tempPaymentDetail.Product.Price * tempPaymentDetail.Amount) - tempPaymentDetail.Discount;
+                                    totalBookPrice += (tempPaymentDetail.Product.Price * tempPaymentDetail.Quantity) - tempPaymentDetail.Discount;
                                 }
                             }
                             else
                             {
-                                totalOtherPrice += (tempPaymentDetail.Product.Price * tempPaymentDetail.Amount) - tempPaymentDetail.Discount;
+                                totalOtherPrice += (tempPaymentDetail.Product.Price * tempPaymentDetail.Quantity) - tempPaymentDetail.Discount;
                             }
                         }
                     }

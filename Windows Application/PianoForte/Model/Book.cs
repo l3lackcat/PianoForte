@@ -29,10 +29,9 @@ namespace PianoForte.Model
             CANCELED
         };
 
-        private string barcode;
-        private string originalBarcode;
-        protected int amount;
-        private string status;
+        public string OriginalBarcode { get; set; }
+        public int Quantity { get; set; }
+        public string Status { get; set; }
 
         public Book()
         {
@@ -47,60 +46,60 @@ namespace PianoForte.Model
             this.OriginalBarcode = book.OriginalBarcode;
             this.Name = book.Name;
             this.Price = book.Price;
-            this.Amount = book.Amount;
+            this.Quantity = book.Quantity;
             this.Status = book.Status;
         }
 
-        public string Barcode
-        {
-            get
-            {
-                return this.barcode;
-            }
+        //public string Barcode
+        //{
+        //    get
+        //    {
+        //        return this.barcode;
+        //    }
 
-            set
-            {
-                this.barcode = value;
-            }
-        }
+        //    set
+        //    {
+        //        this.barcode = value;
+        //    }
+        //}
 
-        public string OriginalBarcode
-        {
-            get
-            {
-                return this.originalBarcode;
-            }
+        //public string OriginalBarcode
+        //{
+        //    get
+        //    {
+        //        return this.originalBarcode;
+        //    }
 
-            set
-            {
-                this.originalBarcode = value;
-            }
-        }
+        //    set
+        //    {
+        //        this.originalBarcode = value;
+        //    }
+        //}
 
-        public int Amount
-        {
-            get
-            {
-                return this.amount;
-            }
+        //public int Amount
+        //{
+        //    get
+        //    {
+        //        return this.amount;
+        //    }
 
-            set
-            {
-                this.amount = value;
-            }
-        }
+        //    set
+        //    {
+        //        this.amount = value;
+        //    }
+        //}
 
-        public string Status
-        {
-            get
-            {
-                return this.status;
-            }
+        //public string Status
+        //{
+        //    get
+        //    {
+        //        return this.status;
+        //    }
 
-            set
-            {
-                this.status = value;
-            }
-        }
+        //    set
+        //    {
+        //        this.status = value;
+        //    }
+        //}
     }
 }

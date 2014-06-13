@@ -202,7 +202,7 @@ namespace PianoForte.Manager
                                                 paymentDetailList[i].Product.Id,
                                                 paymentDetailList[i].Product.Type,
                                                 paymentDetailList[i].Product.Name,
-                                                paymentDetailList[i].Amount,
+                                                paymentDetailList[i].Quantity,
                                                 paymentDetailList[i].Discount,
                                                 paymentDetailList[i].Product.Price);
             }

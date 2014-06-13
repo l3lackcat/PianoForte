@@ -15,62 +15,62 @@ namespace PianoForte.Model
             OTHER,
         }
 
-        protected int id;
-        protected string type;
-        protected string name;        
-        protected double price;
-        
+        public int Id { get; set; }
+        public string Type { get; set; }
+        public string Name { get; set; }
+        public double Price { get; set; }
+        public string Barcode { get; set; }
 
-        public int Id
-        {
-            get
-            {
-                return this.id;
-            }
+        //public int Id
+        //{
+        //    get
+        //    {
+        //        return this.id;
+        //    }
 
-            set
-            {
-                this.id = value;
-            }
-        }
+        //    set
+        //    {
+        //        this.id = value;
+        //    }
+        //}
 
-        public string Type
-        {
-            get
-            {
-                return this.type;
-            }
+        //public string Type
+        //{
+        //    get
+        //    {
+        //        return this.type;
+        //    }
 
-            set
-            {
-                this.type = value;
-            }
-        }
+        //    set
+        //    {
+        //        this.type = value;
+        //    }
+        //}
 
-        public string Name
-        {
-            get
-            {
-                return this.name;
-            }
+        //public string Name
+        //{
+        //    get
+        //    {
+        //        return this.name;
+        //    }
 
-            set
-            {
-                this.name = value;
-            }
-        }
+        //    set
+        //    {
+        //        this.name = value;
+        //    }
+        //}
 
-        public double Price
-        {
-            get
-            {
-                return this.price;
-            }
+        //public double Price
+        //{
+        //    get
+        //    {
+        //        return this.price;
+        //    }
 
-            set
-            {
-                this.price = value;
-            }
-        }        
+        //    set
+        //    {
+        //        this.price = value;
+        //    }
+        //}        
     }
 }

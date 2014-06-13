@@ -108,9 +108,9 @@ namespace PianoForte.View
                 newBook.OriginalBarcode = this.TextBox_OriginalBarcode.Text;
                 newBook.Name = this.TextBox_BookName.Text;
                 newBook.Price = Convert.ToDouble(this.TextBox_BookPrice.Text);
-                newBook.Amount = Convert.ToInt32(this.TextBox_BookAmount.Text);
+                newBook.Quantity = Convert.ToInt32(this.TextBox_BookAmount.Text);
 
-                if (newBook.Amount <= 0)
+                if (newBook.Quantity <= 0)
                 {
                     newBook.Status = Book.BookStatus.EMPTY.ToString();
                 }

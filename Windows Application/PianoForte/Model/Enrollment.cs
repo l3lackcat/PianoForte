@@ -27,199 +27,56 @@ namespace PianoForte.Model
             CANCELED
         };
 
-        private int id;
-        private int paymentId;
-        private Student student;
-        private Course course;
-        private DateTime enrolledDate;                
-        private string status;        
-        private List<Classroom> classroomList;
-        private Dictionary<int, List<ClassroomDetail>> classroomIdClassroomDetailListDictionary;
-        //Old
-        private double courseFee;
-        private double discount;
-        private double totalPrice;
+        public int Id { get; set; }
+        public int PaymentId { get; set; }
+        public Student Student { get; set; }
+        public Course Course { get; set; }
+        public DateTime EnrolledDate { get; set; }
+        public string Status { get; set; }
+        public List<Classroom> ClassroomList { get; set; }
+        public Dictionary<int, List<ClassroomDetail>> ClassroomIdClassroomDetailListDictionary { get; set; }
+        // Special
+        public double CourseFee { get; set; }
+        public double Discount { get; set; }
+        public double TotalPrice { get; set; }
 
         public Enrollment()
         {
-            this.student = new Student();
-            this.course = new Course();
-            this.classroomList = new List<Classroom>();
-            this.classroomIdClassroomDetailListDictionary = new Dictionary<int, List<ClassroomDetail>>();
+            this.Student = new Student();
+            this.Course = new Course();
+            this.ClassroomList = new List<Classroom>();
+            this.ClassroomIdClassroomDetailListDictionary = new Dictionary<int, List<ClassroomDetail>>();
         }
 
         public Enrollment(Student student)
         {
-            this.student = new Student(student);
-            this.course = new Course();
-            this.classroomList = new List<Classroom>();
-            this.classroomIdClassroomDetailListDictionary = new Dictionary<int, List<ClassroomDetail>>();
+            this.Student = new Student(student);
+            this.Course = new Course();
+            this.ClassroomList = new List<Classroom>();
+            this.ClassroomIdClassroomDetailListDictionary = new Dictionary<int, List<ClassroomDetail>>();
         }
 
         public Enrollment(Course course)
         {
-            this.student = new Student();
-            this.course = new Course(course);
-            this.classroomList = new List<Classroom>();
-            this.classroomIdClassroomDetailListDictionary = new Dictionary<int, List<ClassroomDetail>>();
+            this.Student = new Student();
+            this.Course = new Course(course);
+            this.ClassroomList = new List<Classroom>();
+            this.ClassroomIdClassroomDetailListDictionary = new Dictionary<int, List<ClassroomDetail>>();
         }
 
         public Enrollment(Student student, Course course)
         {
-            this.student = new Student(student);
-            this.course = new Course(course);
-            this.classroomList = new List<Classroom>();
-            this.classroomIdClassroomDetailListDictionary = new Dictionary<int, List<ClassroomDetail>>();
-        }
-
-        public int Id
-        {
-            get
-            {
-                return this.id;
-            }
-
-            set
-            {
-                this.id = value;
-            }
-        }
-
-        public int PaymentId
-        {
-            get
-            {
-                return this.paymentId;
-            }
-
-            set
-            {
-                this.paymentId = value;
-            }
-        }
-
-        public Student Student
-        {
-            get
-            {
-                return this.student;
-            }
-
-            set
-            {
-                this.student = value;
-            }
-        }
-
-        public Course Course
-        {
-            get
-            {
-                return this.course;
-            }
-
-            set
-            {
-                this.course = value;
-            }
-        }
-
-        public DateTime EnrolledDate
-        {
-            get
-            {
-                return this.enrolledDate;
-            }
-
-            set
-            {
-                this.enrolledDate = value;
-            }
-        }        
-
-        public string Status
-        {
-            get
-            {
-                return this.status;
-            }
-
-            set
-            {
-                this.status = value;
-            }
-        }        
-
-        public List<Classroom> ClassroomList
-        {
-            get
-            {
-                return this.classroomList;
-            }
-
-            set
-            {
-                this.classroomList = value;
-            }
-        }
-
-        public Dictionary<int, List<ClassroomDetail>> ClassroomIdClassroomDetailListDictionary
-        {
-            get
-            {
-                return this.classroomIdClassroomDetailListDictionary;
-            }
-
-            set
-            {
-                this.classroomIdClassroomDetailListDictionary = value;
-            }
-        }
-
-        public double CourseFee
-        {
-            get
-            {
-                return this.courseFee;
-            }
-
-            set
-            {
-                this.courseFee = value;
-            }
-        }
-
-        public double Discount
-        {
-            get
-            {
-                return this.discount;
-            }
-
-            set
-            {
-                this.discount = value;
-            }
-        }
-
-        public double TotalPrice
-        {
-            get
-            {
-                return this.totalPrice;
-            }
-
-            set
-            {
-                this.totalPrice = value;
-            }
+            this.Student = new Student(student);
+            this.Course = new Course(course);
+            this.ClassroomList = new List<Classroom>();
+            this.ClassroomIdClassroomDetailListDictionary = new Dictionary<int, List<ClassroomDetail>>();
         }
 
         public void addClassroom(Classroom classroom)
         {
             if (classroom != null)
             {
-                this.classroomList.Add(classroom);
+                this.ClassroomList.Add(classroom);
             }
         }
     }

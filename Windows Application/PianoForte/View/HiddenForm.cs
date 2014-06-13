@@ -420,7 +420,7 @@ namespace PianoForte.View
                 insertString += "'" + book.OriginalBarcode + "', ";
                 insertString += "'" + this.removeApostrophe(book.Name) + "', ";
                 insertString += "'" + book.Price + "', ";
-                insertString += "'" + book.Amount + "', ";
+                insertString += "'" + book.Quantity + "', ";
 
                 if (book.Status == Book.BookStatus.AVAILABLE.ToString())
                 {
@@ -458,7 +458,7 @@ namespace PianoForte.View
                 insertString += "'', ";
                 insertString += "'" + this.removeApostrophe(cd.Name) + "', ";
                 insertString += "'" + cd.Price + "', ";
-                insertString += "'" + cd.Amount + "', ";
+                insertString += "'" + cd.Quantity + "', ";
 
                 if (cd.Status == Cd.CdStatus.AVAILABLE.ToString())
                 {
@@ -643,7 +643,7 @@ namespace PianoForte.View
                     
                     insertString += "'" + this.removeApostrophe(paymentDetail.Product.Name) + "', ";
                     insertString += "'" + paymentDetail.Product.Price + "', ";
-                    insertString += "'" + paymentDetail.Amount + "', ";
+                    insertString += "'" + paymentDetail.Quantity + "', ";
                     insertString += "'" + paymentDetail.Discount + "');";
 
                     file.WriteLine(insertString);

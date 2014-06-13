@@ -129,7 +129,7 @@ namespace PianoForte.View
 
                 PaymentDetail paymentDetail = new PaymentDetail();
                 paymentDetail.Product = product;
-                paymentDetail.Amount = 1;
+                paymentDetail.Quantity = 1;
 
                 this.paymentForm.addPaymentDetail(paymentDetail);
             }            

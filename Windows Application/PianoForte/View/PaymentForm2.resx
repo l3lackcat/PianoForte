@@ -139,17 +139,6 @@
     <value>True</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="DeleteButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAABFElEQVQ4T52QMWsCQRCF7w8J
-        EgsbC9MIEkSEWFhYWKQIiJDGRkhhEwtB0miljYWFjZDOlPpXRBARQS+aEBh9c+6wezda+ODBzns73x3r
-        EZFnNE/HCb6MEYV73jUAFD+zKVuDaL0AEPjfE1pkY2ycbci13gV8jWiZexBjRn6rE8BZCQT78YBWhaQY
-        s5bhLnZsAMQQf9ijdTGlGp1ZxkIYAAWQfoc2pUfHyOxlSAMEr91t0baccYzsAhBFALz82aRd5Uk1Ohvi
-        AFAc2g3yX/JizFpmIAJAcPyo0+H1WYwZ+a3OAfw13+i3VmLjjOz8ETwYP6zWC8Bc+n+vsq1lI7W3ARBf
-        UpaNIn0YAPEvB0dVTi+A+03eCfYl8BaazUUuAAAAAElFTkSuQmCC
-</value>
-  </data>
   <data name="dataGridViewImageColumn1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8

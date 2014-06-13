@@ -28,9 +28,8 @@ namespace PianoForte.Model
             CANCELED
         };
 
-        private string barcode;
-        private int amount;
-        private string status;
+        public int Quantity { get; set; }
+        public string Status { get; set; }
 
         public Cd()
         {
@@ -44,47 +43,47 @@ namespace PianoForte.Model
             this.Barcode = cd.Barcode;
             this.Name = cd.Name;
             this.Price = cd.Price;
-            this.Amount = cd.Amount;
+            this.Quantity = cd.Quantity;
             this.Status = cd.Status;
         }
 
-        public string Barcode
-        {
-            get
-            {
-                return this.barcode;
-            }
+        //public string Barcode
+        //{
+        //    get
+        //    {
+        //        return this.barcode;
+        //    }
 
-            set
-            {
-                this.barcode = value;
-            }
-        }
+        //    set
+        //    {
+        //        this.barcode = value;
+        //    }
+        //}
 
-        public int Amount
-        {
-            get
-            {
-                return this.amount;
-            }
+        //public int Amount
+        //{
+        //    get
+        //    {
+        //        return this.amount;
+        //    }
 
-            set
-            {
-                this.amount = value;
-            }
-        }
+        //    set
+        //    {
+        //        this.amount = value;
+        //    }
+        //}
 
-        public string Status
-        {
-            get
-            {
-                return this.status;
-            }
+        //public string Status
+        //{
+        //    get
+        //    {
+        //        return this.status;
+        //    }
 
-            set
-            {
-                this.status = value;
-            }
-        }
+        //    set
+        //    {
+        //        this.status = value;
+        //    }
+        //}
     }
 }

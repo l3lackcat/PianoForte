@@ -67,7 +67,7 @@ namespace PianoForte.Model
             }
         }
 
-        public int Amount
+        public int Quantity
         {
             get
             {

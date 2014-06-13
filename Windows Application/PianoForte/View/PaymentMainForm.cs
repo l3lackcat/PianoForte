@@ -552,7 +552,7 @@ namespace PianoForte.View
                         Book tempBook = BookManager.findBook(paymentDetail.Product.Id);
                         if (tempBook != null)
                         {
-                            tempBook.Amount = tempBook.Amount - paymentDetail.Amount;
+                            tempBook.Quantity = tempBook.Quantity - paymentDetail.Quantity;
                             returnFlag = BookManager.updateBook(tempBook);
                         }
                     }
@@ -561,7 +561,7 @@ namespace PianoForte.View
                         Cd tempCd = CdManager.findCd(paymentDetail.Product.Id);
                         if (tempCd != null)
                         {
-                            tempCd.Amount = tempCd.Amount - paymentDetail.Amount;
+                            tempCd.Quantity = tempCd.Quantity - paymentDetail.Quantity;
                             returnFlag = CdManager.updateCd(tempCd);
                         }
                     }

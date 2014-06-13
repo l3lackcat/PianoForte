@@ -38,7 +38,7 @@ namespace PianoForte.View
             this.TextBox_Barcode.Text = book.Barcode;
             this.TextBox_BookName.Text = book.Name;
             this.TextBox_BookPrice.Text = book.Price.ToString();
-            this.TextBox_BookAmount.Text = book.Amount.ToString();
+            this.TextBox_BookAmount.Text = book.Quantity.ToString();
 
             if (book.Status == Book.BookStatus.CANCELED.ToString())
             {
@@ -129,7 +129,7 @@ namespace PianoForte.View
                 tempBook.Barcode = this.TextBox_Barcode.Text;
                 tempBook.Name = this.TextBox_BookName.Text;
                 tempBook.Price = Convert.ToDouble(this.TextBox_BookPrice.Text);
-                tempBook.Amount = Convert.ToInt32(this.TextBox_BookAmount.Text);
+                tempBook.Quantity = Convert.ToInt32(this.TextBox_BookAmount.Text);
 
                 if (this.CheckBox_Cancel_Book.Checked)
                 {
@@ -137,7 +137,7 @@ namespace PianoForte.View
                 }
                 else
                 {
-                    if (tempBook.Amount <= 0)
+                    if (tempBook.Quantity <= 0)
                     {
                         tempBook.Status = Book.BookStatus.EMPTY.ToString();
                     }

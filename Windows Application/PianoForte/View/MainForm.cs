@@ -125,6 +125,7 @@ namespace PianoForte.View
             //LogManager.writeLog("Finish loading CheckInMainForm");
 
             paymentForm2 = new PaymentForm2();
+            paymentForm2.load(this);
             this.initialForm(paymentForm2);
 
             this.switchForm(loginForm);

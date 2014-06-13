@@ -154,32 +154,32 @@ namespace PianoForte.View
                                 string productType = tempPaymentDetail.Product.Type;
                                 if (productType == Product.ProductType.COURSE.ToString())
                                 {
-                                    totalCoursePrice += ((tempPaymentDetail.Product.Price * tempPaymentDetail.Amount) - tempPaymentDetail.Discount);
+                                    totalCoursePrice += ((tempPaymentDetail.Product.Price * tempPaymentDetail.Quantity) - tempPaymentDetail.Discount);
                                 }
                                 else if (productType == Product.ProductType.BOOK.ToString())
                                 {
                                     if (tempPaymentDetail.Product.Id == 2000001)
                                     {
-                                        totalAssignmentBookPrice += (tempPaymentDetail.Product.Price * tempPaymentDetail.Amount);
+                                        totalAssignmentBookPrice += (tempPaymentDetail.Product.Price * tempPaymentDetail.Quantity);
                                     }
                                     else
                                     {
-                                        totalBookPrice += (tempPaymentDetail.Product.Price * tempPaymentDetail.Amount);
+                                        totalBookPrice += (tempPaymentDetail.Product.Price * tempPaymentDetail.Quantity);
                                     }
                                 }
                                 else if (productType == Product.ProductType.CD.ToString())
                                 {
-                                    totalCdPrice += (tempPaymentDetail.Product.Price * tempPaymentDetail.Amount);
+                                    totalCdPrice += (tempPaymentDetail.Product.Price * tempPaymentDetail.Quantity);
                                 }
                                 else if (productType == Product.ProductType.OTHER.ToString())
                                 {
                                     if (tempPaymentDetail.Product.Id == 4000001)
                                     {
-                                        totalFirstRegisterPrice += (tempPaymentDetail.Product.Price * tempPaymentDetail.Amount);
+                                        totalFirstRegisterPrice += (tempPaymentDetail.Product.Price * tempPaymentDetail.Quantity);
                                     }
                                     else
                                     {
-                                        totalOtherPrice += (tempPaymentDetail.Product.Price * tempPaymentDetail.Amount);
+                                        totalOtherPrice += (tempPaymentDetail.Product.Price * tempPaymentDetail.Quantity);
                                     }
                                 }
                             }

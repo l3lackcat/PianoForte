@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CdMainForm));
             this.TabControl_CD = new System.Windows.Forms.TabControl();
             this.TabPage_Book_Main = new System.Windows.Forms.TabPage();
@@ -55,6 +55,7 @@
             this.EditButton = new System.Windows.Forms.DataGridViewImageColumn();
             this.Button_Add_Cd = new System.Windows.Forms.Button();
             this.GroupBox_SearchCriteria_Book = new System.Windows.Forms.GroupBox();
+            this.RadioButton_Search_CdBarcode = new System.Windows.Forms.RadioButton();
             this.label15 = new System.Windows.Forms.Label();
             this.TextBox_Barcode_ForSearch = new System.Windows.Forms.TextBox();
             this.ComboBox_Status = new System.Windows.Forms.ComboBox();
@@ -67,7 +68,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.RadioButton_Search_CdId = new System.Windows.Forms.RadioButton();
             this.RadioButton_Show_AllCd = new System.Windows.Forms.RadioButton();
-            this.RadioButton_Search_CdBarcode = new System.Windows.Forms.RadioButton();
             this.TabControl_CD.SuspendLayout();
             this.TabPage_Book_Main.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView_CdInfo)).BeginInit();
@@ -160,19 +160,19 @@
             this.DataGridView_CdInfo.AllowUserToDeleteRows = false;
             this.DataGridView_CdInfo.AllowUserToResizeColumns = false;
             this.DataGridView_CdInfo.AllowUserToResizeRows = false;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.DataGridView_CdInfo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.DataGridView_CdInfo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.DataGridView_CdInfo.BackgroundColor = System.Drawing.SystemColors.ControlDark;
             this.DataGridView_CdInfo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridView_CdInfo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridView_CdInfo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.DataGridView_CdInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridView_CdInfo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CdId,
@@ -198,9 +198,9 @@
             // CdId
             // 
             this.CdId.DataPropertyName = "id";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.CdId.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.CdId.DefaultCellStyle = dataGridViewCellStyle3;
             this.CdId.HeaderText = "รหัสซีดี";
             this.CdId.Name = "CdId";
             this.CdId.ReadOnly = true;
@@ -210,9 +210,9 @@
             // BarcodeNumber
             // 
             this.BarcodeNumber.DataPropertyName = "barcode";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.BarcodeNumber.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.BarcodeNumber.DefaultCellStyle = dataGridViewCellStyle4;
             this.BarcodeNumber.HeaderText = "หมายเลขบาร์โค้ด";
             this.BarcodeNumber.Name = "BarcodeNumber";
             this.BarcodeNumber.ReadOnly = true;
@@ -223,9 +223,9 @@
             // CdName
             // 
             this.CdName.DataPropertyName = "name";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.CdName.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.CdName.DefaultCellStyle = dataGridViewCellStyle5;
             this.CdName.HeaderText = "ชื่อซีดี";
             this.CdName.Name = "CdName";
             this.CdName.ReadOnly = true;
@@ -236,11 +236,11 @@
             // CdPrice
             // 
             this.CdPrice.DataPropertyName = "price";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            dataGridViewCellStyle14.Format = "N2";
-            dataGridViewCellStyle14.NullValue = null;
-            this.CdPrice.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = null;
+            this.CdPrice.DefaultCellStyle = dataGridViewCellStyle6;
             this.CdPrice.HeaderText = "ราคา";
             this.CdPrice.Name = "CdPrice";
             this.CdPrice.ReadOnly = true;
@@ -250,9 +250,9 @@
             // CdAmount
             // 
             this.CdAmount.DataPropertyName = "amount";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.CdAmount.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.CdAmount.DefaultCellStyle = dataGridViewCellStyle7;
             this.CdAmount.HeaderText = "คงเหลือ";
             this.CdAmount.Name = "CdAmount";
             this.CdAmount.ReadOnly = true;
@@ -262,9 +262,9 @@
             // Status
             // 
             this.Status.DataPropertyName = "status";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.Status.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.Status.DefaultCellStyle = dataGridViewCellStyle8;
             this.Status.HeaderText = "สถานะ";
             this.Status.Name = "Status";
             this.Status.ReadOnly = true;
@@ -322,6 +322,19 @@
             this.GroupBox_SearchCriteria_Book.TabStop = false;
             this.GroupBox_SearchCriteria_Book.Text = "กำหนดข้อมูลการค้นหา";
             // 
+            // RadioButton_Search_CdBarcode
+            // 
+            this.RadioButton_Search_CdBarcode.AutoSize = true;
+            this.RadioButton_Search_CdBarcode.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.RadioButton_Search_CdBarcode.Location = new System.Drawing.Point(209, 39);
+            this.RadioButton_Search_CdBarcode.Name = "RadioButton_Search_CdBarcode";
+            this.RadioButton_Search_CdBarcode.Size = new System.Drawing.Size(120, 20);
+            this.RadioButton_Search_CdBarcode.TabIndex = 14;
+            this.RadioButton_Search_CdBarcode.TabStop = true;
+            this.RadioButton_Search_CdBarcode.Text = "ค้นหาด้วยบาร์โค้ด";
+            this.RadioButton_Search_CdBarcode.UseVisualStyleBackColor = true;
+            this.RadioButton_Search_CdBarcode.CheckedChanged += new System.EventHandler(this.RadioButton_Search_CdBarcode_CheckedChanged);
+            // 
             // label15
             // 
             this.label15.AutoSize = true;
@@ -335,8 +348,8 @@
             // TextBox_Barcode_ForSearch
             // 
             this.TextBox_Barcode_ForSearch.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.TextBox_Barcode_ForSearch.Location = new System.Drawing.Point(318, 59);
-            this.TextBox_Barcode_ForSearch.MaxLength = 11;
+            this.TextBox_Barcode_ForSearch.Location = new System.Drawing.Point(282, 58);
+            this.TextBox_Barcode_ForSearch.MaxLength = 15;
             this.TextBox_Barcode_ForSearch.Name = "TextBox_Barcode_ForSearch";
             this.TextBox_Barcode_ForSearch.Size = new System.Drawing.Size(100, 23);
             this.TextBox_Barcode_ForSearch.TabIndex = 12;
@@ -378,9 +391,9 @@
             this.label2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.label2.Location = new System.Drawing.Point(226, 62);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 16);
+            this.label2.Size = new System.Drawing.Size(50, 16);
             this.label2.TabIndex = 6;
-            this.label2.Text = "บาร์โค้ดภายใน";
+            this.label2.Text = "บาร์โค้ด";
             // 
             // RadioButton_Search_Info
             // 
@@ -450,19 +463,6 @@
             this.RadioButton_Show_AllCd.UseVisualStyleBackColor = true;
             this.RadioButton_Show_AllCd.CheckedChanged += new System.EventHandler(this.RadioButton_Show_AllCd_CheckedChanged);
             this.RadioButton_Show_AllCd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RadioButton_Show_AllCd_KeyDown);
-            // 
-            // RadioButton_Search_CdBarcode
-            // 
-            this.RadioButton_Search_CdBarcode.AutoSize = true;
-            this.RadioButton_Search_CdBarcode.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.RadioButton_Search_CdBarcode.Location = new System.Drawing.Point(209, 39);
-            this.RadioButton_Search_CdBarcode.Name = "RadioButton_Search_CdBarcode";
-            this.RadioButton_Search_CdBarcode.Size = new System.Drawing.Size(120, 20);
-            this.RadioButton_Search_CdBarcode.TabIndex = 14;
-            this.RadioButton_Search_CdBarcode.TabStop = true;
-            this.RadioButton_Search_CdBarcode.Text = "ค้นหาด้วยบาร์โค้ด";
-            this.RadioButton_Search_CdBarcode.UseVisualStyleBackColor = true;
-            this.RadioButton_Search_CdBarcode.CheckedChanged += new System.EventHandler(this.RadioButton_Search_CdBarcode_CheckedChanged);
             // 
             // CdMainForm
             // 

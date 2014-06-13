@@ -33,7 +33,7 @@ namespace PianoForte.View
                     int amount = MainForm.paymentForm.getProductAmount(temCd.Id);
                     if (amount > 0)
                     {
-                        this.cdList[i].Amount -= amount;
+                        this.cdList[i].Quantity -= amount;
                     }
                 }
             }
@@ -83,7 +83,7 @@ namespace PianoForte.View
                 if (tempCd != null)
                 {
                     int cdAmount = 1;
-                    if (cdAmount <= tempCd.Amount)
+                    if (cdAmount <= tempCd.Quantity)
                     {
                         Product product = new Product();
                         product.Id = tempCd.Id;
@@ -93,11 +93,11 @@ namespace PianoForte.View
 
                         PaymentDetail paymentDetail = new PaymentDetail();
                         paymentDetail.Product = product;
-                        paymentDetail.Amount = cdAmount;
+                        paymentDetail.Quantity = cdAmount;
 
                         if (MainForm.paymentForm.addPaymentDetail(paymentDetail))
                         {
-                            this.cdList[e.RowIndex].Amount--;
+                            this.cdList[e.RowIndex].Quantity--;
 
                             this.reload();
                         }

@@ -478,7 +478,7 @@ namespace PianoForte.Manager
                         PaymentDetail paymentDetail = paymentDetailList[j];
                         if (paymentDetail != null)
                         {
-                            double productPrice = (paymentDetail.Product.Price * paymentDetail.Amount) - paymentDetail.Discount;
+                            double productPrice = (paymentDetail.Product.Price * paymentDetail.Quantity) - paymentDetail.Discount;
                             if (paymentDetail.Product.Type == Product.ProductType.COURSE.ToString())
                             {
                                 dailyIncomeDictionary[payment.PaymentDate].TotalCoursePrice += productPrice;

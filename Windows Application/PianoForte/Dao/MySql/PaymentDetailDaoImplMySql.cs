@@ -95,7 +95,7 @@ namespace PianoForte.Dao.MySql
                         command.Parameters.AddWithValue(PaymentDetail.columnProductId, paymentDetail.Product.Id);
                         command.Parameters.AddWithValue(PaymentDetail.columnProductType, paymentDetail.Product.Type);
                         command.Parameters.AddWithValue(PaymentDetail.columnProductName, paymentDetail.Product.Name);
-                        command.Parameters.AddWithValue(PaymentDetail.columnAmount, paymentDetail.Amount);
+                        command.Parameters.AddWithValue(PaymentDetail.columnAmount, paymentDetail.Quantity);
                         command.Parameters.AddWithValue(PaymentDetail.columnDiscount, paymentDetail.Discount);
                         command.Parameters.AddWithValue(PaymentDetail.columnProductPrice, paymentDetail.Product.Price);
 
@@ -146,7 +146,7 @@ namespace PianoForte.Dao.MySql
                         command.Parameters.AddWithValue(PaymentDetail.columnProductId, paymentDetail.Product.Id);
                         command.Parameters.AddWithValue(PaymentDetail.columnProductType, paymentDetail.Product.Type);
                         command.Parameters.AddWithValue(PaymentDetail.columnProductName, paymentDetail.Product.Name);
-                        command.Parameters.AddWithValue(PaymentDetail.columnAmount, paymentDetail.Amount);
+                        command.Parameters.AddWithValue(PaymentDetail.columnAmount, paymentDetail.Quantity);
                         command.Parameters.AddWithValue(PaymentDetail.columnDiscount, paymentDetail.Discount);
                         command.Parameters.AddWithValue(PaymentDetail.columnProductPrice, paymentDetail.Product.Price);
                         command.Parameters.AddWithValue(PaymentDetail.columnPaymentDetailId, paymentDetail.Id);
@@ -270,7 +270,7 @@ namespace PianoForte.Dao.MySql
             paymentDetail.Product.Id = Convert.ToInt32(data.Tables[PaymentDetail.tableName].Rows[index][PaymentDetail.columnProductId].ToString());
             paymentDetail.Product.Type = data.Tables[PaymentDetail.tableName].Rows[index][PaymentDetail.columnProductType].ToString();
             paymentDetail.Product.Name = data.Tables[PaymentDetail.tableName].Rows[index][PaymentDetail.columnProductName].ToString();
-            paymentDetail.Amount = Convert.ToInt32(data.Tables[PaymentDetail.tableName].Rows[index][PaymentDetail.columnAmount].ToString());
+            paymentDetail.Quantity = Convert.ToInt32(data.Tables[PaymentDetail.tableName].Rows[index][PaymentDetail.columnAmount].ToString());
             paymentDetail.Discount = Convert.ToDouble(data.Tables[PaymentDetail.tableName].Rows[index][PaymentDetail.columnDiscount].ToString());
             paymentDetail.Product.Price = Convert.ToDouble(data.Tables[PaymentDetail.tableName].Rows[index][PaymentDetail.columnProductPrice].ToString());
 

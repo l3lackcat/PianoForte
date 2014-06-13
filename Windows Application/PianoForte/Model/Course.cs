@@ -31,13 +31,13 @@ namespace PianoForte.Model
             INACTIVE
         };
 
-        private int courseId_old;
-        private int courseCategoryId;
-        private string level;
-        private int numberOfClassroom;
-        private int classroomDuration;
-        private int studentPerClassroom;
-        private string status;
+        public int CourseId_old { get; set; }
+        public int CourseCategoryId { get; set; }
+        public string Level { get; set; }
+        public int NumberOfClassroom { get; set; }
+        public int ClassroomDuration { get; set; }
+        public int StudentPerClassroom { get; set; }
+        public string Status { get; set; }
 
         public Course()
         {
@@ -47,106 +47,106 @@ namespace PianoForte.Model
         public Course(Course course)
         {
             this.Id = course.Id;
-            this.courseId_old = course.courseId_old;
+            this.CourseId_old = course.CourseId_old;
             this.CourseCategoryId = course.CourseCategoryId;
             this.Name = course.Name;
             this.Level = course.Level;
             this.NumberOfClassroom = course.NumberOfClassroom;
-            this.price = course.Price;
-            this.classroomDuration = course.ClassroomDuration;
-            this.studentPerClassroom = course.StudentPerClassroom;
-            this.status = course.Status;
+            this.Price = course.Price;
+            this.ClassroomDuration = course.ClassroomDuration;
+            this.StudentPerClassroom = course.StudentPerClassroom;
+            this.Status = course.Status;
         }
 
-        public int CourseId_old
-        {
-            get
-            {
-                return this.courseId_old;
-            }
+        //public int CourseId_old
+        //{
+        //    get
+        //    {
+        //        return this.courseId_old;
+        //    }
 
-            set
-            {
-                this.courseId_old = value;
-            }
-        }
+        //    set
+        //    {
+        //        this.courseId_old = value;
+        //    }
+        //}
 
-        public int CourseCategoryId
-        {
-            get
-            {
-                return this.courseCategoryId;
-            }
+        //public int CourseCategoryId
+        //{
+        //    get
+        //    {
+        //        return this.courseCategoryId;
+        //    }
 
-            set
-            {
-                this.courseCategoryId = value;
-            }
-        }
+        //    set
+        //    {
+        //        this.courseCategoryId = value;
+        //    }
+        //}
 
-        public string Level
-        {
-            get
-            {
-                return this.level;
-            }
+        //public string Level
+        //{
+        //    get
+        //    {
+        //        return this.level;
+        //    }
 
-            set
-            {
-                this.level = value;
-            }
-        }
+        //    set
+        //    {
+        //        this.level = value;
+        //    }
+        //}
 
-        public int NumberOfClassroom
-        {
-            get
-            {
-                return this.numberOfClassroom;
-            }
+        //public int NumberOfClassroom
+        //{
+        //    get
+        //    {
+        //        return this.numberOfClassroom;
+        //    }
 
-            set
-            {
-                this.numberOfClassroom = value;
-            }
-        }
+        //    set
+        //    {
+        //        this.numberOfClassroom = value;
+        //    }
+        //}
 
-        public int ClassroomDuration
-        {
-            get
-            {
-                return this.classroomDuration;
-            }
+        //public int ClassroomDuration
+        //{
+        //    get
+        //    {
+        //        return this.classroomDuration;
+        //    }
 
-            set
-            {
-                this.classroomDuration = value;
-            }
-        }
+        //    set
+        //    {
+        //        this.classroomDuration = value;
+        //    }
+        //}
 
-        public int StudentPerClassroom
-        {
-            get
-            {
-                return this.studentPerClassroom;
-            }
+        //public int StudentPerClassroom
+        //{
+        //    get
+        //    {
+        //        return this.studentPerClassroom;
+        //    }
 
-            set
-            {
-                this.studentPerClassroom = value;
-            }
-        }
+        //    set
+        //    {
+        //        this.studentPerClassroom = value;
+        //    }
+        //}
 
-        public string Status
-        {
-            get
-            {
-                return this.status;
-            }
+        //public string Status
+        //{
+        //    get
+        //    {
+        //        return this.status;
+        //    }
 
-            set
-            {
-                this.status = value;
-            }
-        }
+        //    set
+        //    {
+        //        this.status = value;
+        //    }
+        //}
     }
 }

@@ -351,7 +351,7 @@ namespace PianoForte.Dao.MySql
                         command.Parameters.AddWithValue(Cd.columnCdBarcode, cd.Barcode);
                         command.Parameters.AddWithValue(Cd.columnCdName, cd.Name);
                         command.Parameters.AddWithValue(Cd.columnCdPrice, cd.Price);
-                        command.Parameters.AddWithValue(Cd.columnCdAmount, cd.Amount);
+                        command.Parameters.AddWithValue(Cd.columnCdAmount, cd.Quantity);
                         command.Parameters.AddWithValue(Cd.columnStatus, cd.Status);
 
                         int affectedRow = command.ExecuteNonQuery();
@@ -400,7 +400,7 @@ namespace PianoForte.Dao.MySql
                         command.Parameters.AddWithValue(Cd.columnCdBarcode, cd.Barcode);
                         command.Parameters.AddWithValue(Cd.columnCdName, cd.Name);
                         command.Parameters.AddWithValue(Cd.columnCdPrice, cd.Price);
-                        command.Parameters.AddWithValue(Cd.columnCdAmount, cd.Amount);
+                        command.Parameters.AddWithValue(Cd.columnCdAmount, cd.Quantity);
                         command.Parameters.AddWithValue(Cd.columnStatus, cd.Status);
                         command.Parameters.AddWithValue(Cd.columnCdId, cd.Id);
 
@@ -532,7 +532,7 @@ namespace PianoForte.Dao.MySql
             string amount = data.Tables[Cd.tableName].Rows[index][Cd.columnCdAmount].ToString();
             if (ValidateManager.isNumber(amount))
             {
-                cd.Amount = Convert.ToInt32(amount);
+                cd.Quantity = Convert.ToInt32(amount);
             }
 
             cd.Status = data.Tables[Cd.tableName].Rows[index][Cd.columnStatus].ToString();

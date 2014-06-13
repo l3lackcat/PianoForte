@@ -107,9 +107,9 @@ namespace PianoForte.View
                 newCd.Barcode = this.TextBox_Barcode.Text;
                 newCd.Name = this.TextBox_CdName.Text;
                 newCd.Price = Convert.ToDouble(this.TextBox_CdPrice.Text);
-                newCd.Amount = Convert.ToInt32(this.TextBox_CdAmount.Text);
+                newCd.Quantity = Convert.ToInt32(this.TextBox_CdAmount.Text);
 
-                if (newCd.Amount <= 0)
+                if (newCd.Quantity <= 0)
                 {
                     newCd.Status = Cd.CdStatus.EMPTY.ToString();
                 }

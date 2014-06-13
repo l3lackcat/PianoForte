@@ -33,7 +33,7 @@ namespace PianoForte.View
                     int amount = MainForm.paymentForm.getProductAmount(temBook.Id);
                     if (amount > 0)
                     {
-                        this.bookList[i].Amount -= amount;
+                        this.bookList[i].Quantity -= amount;
                     }
                 }
             }
@@ -82,7 +82,7 @@ namespace PianoForte.View
                 if (tempBook != null)
                 {
                     int bookAmount = 1;
-                    if (bookAmount <= tempBook.Amount)
+                    if (bookAmount <= tempBook.Quantity)
                     {
                         Product product = new Product();
                         product.Id = tempBook.Id;
@@ -92,11 +92,11 @@ namespace PianoForte.View
 
                         PaymentDetail paymentDetail = new PaymentDetail();
                         paymentDetail.Product = product;
-                        paymentDetail.Amount = bookAmount;
+                        paymentDetail.Quantity = bookAmount;
 
                         if (MainForm.paymentForm.addPaymentDetail(paymentDetail))
                         {
-                            this.bookList[e.RowIndex].Amount--;
+                            this.bookList[e.RowIndex].Quantity--;
 
                             this.reload();
                         }
@@ -110,7 +110,7 @@ namespace PianoForte.View
                         MessageBox.Show("ไม่สามารถทำรายการได้");
                     }
                 }
-            }            
+            }
         }                       
     }
 }

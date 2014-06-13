@@ -108,10 +108,10 @@ namespace PianoForte.View
                 int n = this.DataGridView_PaymentDetail_Summary.Rows.Add();
                 this.DataGridView_PaymentDetail_Summary.Rows[n].Cells["No"].Value = i + 1;
                 this.DataGridView_PaymentDetail_Summary.Rows[n].Cells["ItemName"].Value = this.paymentDetailList[i].Product.Name;
-                this.DataGridView_PaymentDetail_Summary.Rows[n].Cells["Quantity"].Value = this.paymentDetailList[i].Amount;
+                this.DataGridView_PaymentDetail_Summary.Rows[n].Cells["Quantity"].Value = this.paymentDetailList[i].Quantity;
                 this.DataGridView_PaymentDetail_Summary.Rows[n].Cells["Discount"].Value = this.paymentDetailList[i].Discount;
                 this.DataGridView_PaymentDetail_Summary.Rows[n].Cells["Price"].Value = this.paymentDetailList[i].Product.Price;
-                this.DataGridView_PaymentDetail_Summary.Rows[n].Cells["TotalPrice"].Value = (this.paymentDetailList[i].Amount * this.paymentDetailList[i].Product.Price) - this.paymentDetailList[i].Discount;
+                this.DataGridView_PaymentDetail_Summary.Rows[n].Cells["TotalPrice"].Value = (this.paymentDetailList[i].Quantity * this.paymentDetailList[i].Product.Price) - this.paymentDetailList[i].Discount;
             }
 
             this.DataGridView_PaymentDetail_Summary.ClearSelection();
@@ -125,7 +125,7 @@ namespace PianoForte.View
 
             for (int i = 0; i < this.paymentDetailList.Count; i++)
             {
-                double price = (this.paymentDetailList[i].Amount * this.paymentDetailList[i].Product.Price) - this.paymentDetailList[i].Discount;
+                double price = (this.paymentDetailList[i].Quantity * this.paymentDetailList[i].Product.Price) - this.paymentDetailList[i].Discount;
                 grandTotal += price;
             }
 
@@ -223,7 +223,7 @@ namespace PianoForte.View
                     }
                     else if (index >= 0)
                     {
-                        this.paymentDetailList[index].Amount += paymentDetail.Amount;
+                        this.paymentDetailList[index].Quantity += paymentDetail.Quantity;
                         isAddSuccess = true;
                     }
                 }
@@ -335,7 +335,7 @@ namespace PianoForte.View
             {
                 if (this.paymentDetailList[i].Product.Id == productId)
                 {
-                    productAmount = this.paymentDetailList[i].Amount;
+                    productAmount = this.paymentDetailList[i].Quantity;
                     break;
                 }
             }
@@ -431,8 +431,8 @@ namespace PianoForte.View
                             Book tempBook = BookManager.findBook(paymentDetail.Product.Id);
                             if (tempBook != null)
                             {
-                                tempBook.Amount = tempBook.Amount - paymentDetail.Amount;
-                                if (tempBook.Amount == 0)
+                                tempBook.Quantity = tempBook.Quantity - paymentDetail.Quantity;
+                                if (tempBook.Quantity == 0)
                                 {
                                     tempBook.Status = Book.BookStatus.EMPTY.ToString();
                                 }
@@ -454,8 +454,8 @@ namespace PianoForte.View
                             Cd tempCd = CdManager.findCd(paymentDetail.Product.Id);
                             if (tempCd != null)
                             {
-                                tempCd.Amount = tempCd.Amount - paymentDetail.Amount;
-                                if (tempCd.Amount == 0)
+                                tempCd.Quantity = tempCd.Quantity - paymentDetail.Quantity;
+                                if (tempCd.Quantity == 0)
                                 {
                                     tempCd.Status = Cd.CdStatus.EMPTY.ToString();
                                 }
@@ -521,7 +521,7 @@ namespace PianoForte.View
 
                     PaymentDetail paymentDetail = new PaymentDetail();
                     paymentDetail.Product = product;
-                    paymentDetail.Amount = 1;
+                    paymentDetail.Quantity = 1;
 
                     this.addPaymentDetail(paymentDetail);
                 }                
@@ -701,7 +701,7 @@ namespace PianoForte.View
                 {
                     PaymentDetail paymentDetail = new PaymentDetail();
                     paymentDetail.Product = product;
-                    paymentDetail.Amount = 1;
+                    paymentDetail.Quantity = 1;
 
                     this.addPaymentDetail(paymentDetail);
                 }                

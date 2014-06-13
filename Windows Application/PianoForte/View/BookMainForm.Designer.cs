@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BookMainForm));
             this.TabControl_Book = new System.Windows.Forms.TabControl();
             this.TabPage_Book_Main = new System.Windows.Forms.TabPage();
@@ -55,6 +55,7 @@
             this.EditButton = new System.Windows.Forms.DataGridViewImageColumn();
             this.Button_Add_Book = new System.Windows.Forms.Button();
             this.GroupBox_SearchCriteria_Book = new System.Windows.Forms.GroupBox();
+            this.RadioButton_Search_BookBarcode = new System.Windows.Forms.RadioButton();
             this.label16 = new System.Windows.Forms.Label();
             this.TextBox_BookBarcode_ForSearch = new System.Windows.Forms.TextBox();
             this.ComboBox_Status = new System.Windows.Forms.ComboBox();
@@ -67,7 +68,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.RadioButton_Search_BookId = new System.Windows.Forms.RadioButton();
             this.RadioButton_Show_AllBook = new System.Windows.Forms.RadioButton();
-            this.RadioButton_Search_BookBarcode = new System.Windows.Forms.RadioButton();
             this.TabControl_Book.SuspendLayout();
             this.TabPage_Book_Main.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView_BookInfo)).BeginInit();
@@ -160,19 +160,19 @@
             this.DataGridView_BookInfo.AllowUserToDeleteRows = false;
             this.DataGridView_BookInfo.AllowUserToResizeColumns = false;
             this.DataGridView_BookInfo.AllowUserToResizeRows = false;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.DataGridView_BookInfo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.DataGridView_BookInfo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.DataGridView_BookInfo.BackgroundColor = System.Drawing.SystemColors.ControlDark;
             this.DataGridView_BookInfo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridView_BookInfo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridView_BookInfo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.DataGridView_BookInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridView_BookInfo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.BookId,
@@ -198,9 +198,9 @@
             // BookId
             // 
             this.BookId.DataPropertyName = "id";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.BookId.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.BookId.DefaultCellStyle = dataGridViewCellStyle3;
             this.BookId.HeaderText = "รหัสหนังสือ";
             this.BookId.Name = "BookId";
             this.BookId.ReadOnly = true;
@@ -211,9 +211,9 @@
             // 
             this.BarcodeNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.BarcodeNumber.DataPropertyName = "barcode";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.BarcodeNumber.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.BarcodeNumber.DefaultCellStyle = dataGridViewCellStyle4;
             this.BarcodeNumber.HeaderText = "หมายเลขบาร์โค้ด";
             this.BarcodeNumber.Name = "BarcodeNumber";
             this.BarcodeNumber.ReadOnly = true;
@@ -224,9 +224,9 @@
             // BookName
             // 
             this.BookName.DataPropertyName = "name";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.BookName.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.BookName.DefaultCellStyle = dataGridViewCellStyle5;
             this.BookName.HeaderText = "ชื่อหนังสือ";
             this.BookName.Name = "BookName";
             this.BookName.ReadOnly = true;
@@ -237,11 +237,11 @@
             // BookPrice
             // 
             this.BookPrice.DataPropertyName = "price";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            dataGridViewCellStyle14.Format = "N2";
-            dataGridViewCellStyle14.NullValue = null;
-            this.BookPrice.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = null;
+            this.BookPrice.DefaultCellStyle = dataGridViewCellStyle6;
             this.BookPrice.HeaderText = "ราคา";
             this.BookPrice.Name = "BookPrice";
             this.BookPrice.ReadOnly = true;
@@ -251,9 +251,9 @@
             // Amount
             // 
             this.Amount.DataPropertyName = "amount";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.Amount.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.Amount.DefaultCellStyle = dataGridViewCellStyle7;
             this.Amount.HeaderText = "คงเหลือ";
             this.Amount.Name = "Amount";
             this.Amount.ReadOnly = true;
@@ -263,9 +263,9 @@
             // Status
             // 
             this.Status.DataPropertyName = "status";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.Status.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.Status.DefaultCellStyle = dataGridViewCellStyle8;
             this.Status.HeaderText = "สถานะ";
             this.Status.Name = "Status";
             this.Status.ReadOnly = true;
@@ -325,6 +325,19 @@
             this.GroupBox_SearchCriteria_Book.TabStop = false;
             this.GroupBox_SearchCriteria_Book.Text = "กำหนดข้อมูลการค้นหา";
             // 
+            // RadioButton_Search_BookBarcode
+            // 
+            this.RadioButton_Search_BookBarcode.AutoSize = true;
+            this.RadioButton_Search_BookBarcode.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.RadioButton_Search_BookBarcode.Location = new System.Drawing.Point(209, 39);
+            this.RadioButton_Search_BookBarcode.Name = "RadioButton_Search_BookBarcode";
+            this.RadioButton_Search_BookBarcode.Size = new System.Drawing.Size(120, 20);
+            this.RadioButton_Search_BookBarcode.TabIndex = 14;
+            this.RadioButton_Search_BookBarcode.TabStop = true;
+            this.RadioButton_Search_BookBarcode.Text = "ค้นหาด้วยบาร์โค้ด";
+            this.RadioButton_Search_BookBarcode.UseVisualStyleBackColor = true;
+            this.RadioButton_Search_BookBarcode.CheckedChanged += new System.EventHandler(this.RadioButton_Search_BookBarcode_CheckedChanged);
+            // 
             // label16
             // 
             this.label16.AutoSize = true;
@@ -338,8 +351,8 @@
             // TextBox_BookBarcode_ForSearch
             // 
             this.TextBox_BookBarcode_ForSearch.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.TextBox_BookBarcode_ForSearch.Location = new System.Drawing.Point(318, 59);
-            this.TextBox_BookBarcode_ForSearch.MaxLength = 11;
+            this.TextBox_BookBarcode_ForSearch.Location = new System.Drawing.Point(282, 59);
+            this.TextBox_BookBarcode_ForSearch.MaxLength = 15;
             this.TextBox_BookBarcode_ForSearch.Name = "TextBox_BookBarcode_ForSearch";
             this.TextBox_BookBarcode_ForSearch.Size = new System.Drawing.Size(100, 23);
             this.TextBox_BookBarcode_ForSearch.TabIndex = 12;
@@ -381,9 +394,9 @@
             this.label2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.label2.Location = new System.Drawing.Point(226, 62);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 16);
+            this.label2.Size = new System.Drawing.Size(50, 16);
             this.label2.TabIndex = 6;
-            this.label2.Text = "บาร์โค้ดภายใน";
+            this.label2.Text = "บาร์โค้ด";
             // 
             // RadioButton_Search_Info
             // 
@@ -453,19 +466,6 @@
             this.RadioButton_Show_AllBook.UseVisualStyleBackColor = true;
             this.RadioButton_Show_AllBook.CheckedChanged += new System.EventHandler(this.RadioButton_Show_AllBook_CheckedChanged);
             this.RadioButton_Show_AllBook.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RadioButton_Show_AllBook_KeyDown);
-            // 
-            // RadioButton_Search_BookBarcode
-            // 
-            this.RadioButton_Search_BookBarcode.AutoSize = true;
-            this.RadioButton_Search_BookBarcode.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.RadioButton_Search_BookBarcode.Location = new System.Drawing.Point(209, 39);
-            this.RadioButton_Search_BookBarcode.Name = "RadioButton_Search_BookBarcode";
-            this.RadioButton_Search_BookBarcode.Size = new System.Drawing.Size(120, 20);
-            this.RadioButton_Search_BookBarcode.TabIndex = 14;
-            this.RadioButton_Search_BookBarcode.TabStop = true;
-            this.RadioButton_Search_BookBarcode.Text = "ค้นหาด้วยบาร์โค้ด";
-            this.RadioButton_Search_BookBarcode.UseVisualStyleBackColor = true;
-            this.RadioButton_Search_BookBarcode.CheckedChanged += new System.EventHandler(this.RadioButton_Search_BookBarcode_CheckedChanged);
             // 
             // BookMainForm
             // 
