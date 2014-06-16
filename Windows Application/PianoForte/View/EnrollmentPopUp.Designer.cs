@@ -65,7 +65,6 @@
             this.Label_Prefix_TextBox_CourseFee = new System.Windows.Forms.Label();
             this.Label_Prefix_TextBox_CourseCategoryName = new System.Windows.Forms.Label();
             this.Label_Prefix_TextBox_CourseName = new System.Windows.Forms.Label();
-            this.ComboBox_DiscountType = new System.Windows.Forms.ComboBox();
             this.TextBox_Discount = new System.Windows.Forms.TextBox();
             this.CheckBox_Discount = new System.Windows.Forms.CheckBox();
             this.Button_Reset = new System.Windows.Forms.Button();
@@ -73,6 +72,8 @@
             this.Button_Cancel = new System.Windows.Forms.Button();
             this.TextBox_CourseBarcode = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.GroupBox_Classroom_Frequency.SuspendLayout();
             this.GroupBox_Classroom1.SuspendLayout();
             this.GroupBox_Classroom2.SuspendLayout();
@@ -434,6 +435,7 @@
             // 
             // GroupBox_CourseDetail
             // 
+            this.GroupBox_CourseDetail.Controls.Add(this.label2);
             this.GroupBox_CourseDetail.Controls.Add(this.TextBox_CourseName);
             this.GroupBox_CourseDetail.Controls.Add(this.TextBox_CourseCategoryName);
             this.GroupBox_CourseDetail.Controls.Add(this.TextBox_CourseFee);
@@ -457,7 +459,7 @@
             this.TextBox_CourseName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TextBox_CourseName.Name = "TextBox_CourseName";
             this.TextBox_CourseName.ReadOnly = true;
-            this.TextBox_CourseName.Size = new System.Drawing.Size(446, 23);
+            this.TextBox_CourseName.Size = new System.Drawing.Size(426, 23);
             this.TextBox_CourseName.TabIndex = 18;
             // 
             // TextBox_CourseCategoryName
@@ -474,11 +476,11 @@
             // 
             this.TextBox_CourseFee.Enabled = false;
             this.TextBox_CourseFee.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.TextBox_CourseFee.Location = new System.Drawing.Point(778, 18);
+            this.TextBox_CourseFee.Location = new System.Drawing.Point(758, 18);
             this.TextBox_CourseFee.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TextBox_CourseFee.Name = "TextBox_CourseFee";
             this.TextBox_CourseFee.ReadOnly = true;
-            this.TextBox_CourseFee.Size = new System.Drawing.Size(82, 23);
+            this.TextBox_CourseFee.Size = new System.Drawing.Size(65, 23);
             this.TextBox_CourseFee.TabIndex = 12;
             this.TextBox_CourseFee.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -486,7 +488,7 @@
             // 
             this.Label_Prefix_TextBox_CourseFee.AutoSize = true;
             this.Label_Prefix_TextBox_CourseFee.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.Label_Prefix_TextBox_CourseFee.Location = new System.Drawing.Point(738, 21);
+            this.Label_Prefix_TextBox_CourseFee.Location = new System.Drawing.Point(718, 21);
             this.Label_Prefix_TextBox_CourseFee.Name = "Label_Prefix_TextBox_CourseFee";
             this.Label_Prefix_TextBox_CourseFee.Size = new System.Drawing.Size(34, 16);
             this.Label_Prefix_TextBox_CourseFee.TabIndex = 13;
@@ -512,33 +514,18 @@
             this.Label_Prefix_TextBox_CourseName.TabIndex = 5;
             this.Label_Prefix_TextBox_CourseName.Text = "วิชา";
             // 
-            // ComboBox_DiscountType
-            // 
-            this.ComboBox_DiscountType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboBox_DiscountType.Enabled = false;
-            this.ComboBox_DiscountType.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.ComboBox_DiscountType.FormattingEnabled = true;
-            this.ComboBox_DiscountType.Items.AddRange(new object[] {
-            "บาท",
-            "เปอร์เช็นต์"});
-            this.ComboBox_DiscountType.Location = new System.Drawing.Point(756, 13);
-            this.ComboBox_DiscountType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ComboBox_DiscountType.Name = "ComboBox_DiscountType";
-            this.ComboBox_DiscountType.Size = new System.Drawing.Size(122, 24);
-            this.ComboBox_DiscountType.TabIndex = 42;
-            // 
             // TextBox_Discount
             // 
             this.TextBox_Discount.Enabled = false;
             this.TextBox_Discount.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.TextBox_Discount.Location = new System.Drawing.Point(692, 13);
+            this.TextBox_Discount.Location = new System.Drawing.Point(770, 13);
             this.TextBox_Discount.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TextBox_Discount.MaxLength = 6;
             this.TextBox_Discount.Name = "TextBox_Discount";
-            this.TextBox_Discount.Size = new System.Drawing.Size(58, 23);
+            this.TextBox_Discount.Size = new System.Drawing.Size(65, 23);
             this.TextBox_Discount.TabIndex = 43;
-            this.TextBox_Discount.Text = "0";
             this.TextBox_Discount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TextBox_Discount.TextChanged += new System.EventHandler(this.TextBox_Discount_TextChanged);
             this.TextBox_Discount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_Discount_KeyDown);
             // 
             // CheckBox_Discount
@@ -546,7 +533,7 @@
             this.CheckBox_Discount.AutoSize = true;
             this.CheckBox_Discount.Enabled = false;
             this.CheckBox_Discount.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.CheckBox_Discount.Location = new System.Drawing.Point(620, 15);
+            this.CheckBox_Discount.Location = new System.Drawing.Point(699, 15);
             this.CheckBox_Discount.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CheckBox_Discount.Name = "CheckBox_Discount";
             this.CheckBox_Discount.Size = new System.Drawing.Size(65, 20);
@@ -607,11 +594,32 @@
             this.label1.TabIndex = 57;
             this.label1.Text = "บาร์โค้ด";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label2.Location = new System.Drawing.Point(829, 21);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(31, 16);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "บาท";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label3.Location = new System.Drawing.Point(841, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(31, 16);
+            this.label3.TabIndex = 58;
+            this.label3.Text = "บาท";
+            // 
             // EnrollmentPopUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(890, 284);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TextBox_CourseBarcode);
             this.Controls.Add(this.Button_Cancel);
@@ -625,7 +633,6 @@
             this.Controls.Add(this.GroupBox_Classroom2);
             this.Controls.Add(this.Button_SearchCourse);
             this.Controls.Add(this.GroupBox_CourseDetail);
-            this.Controls.Add(this.ComboBox_DiscountType);
             this.Controls.Add(this.TextBox_Discount);
             this.Controls.Add(this.CheckBox_Discount);
             this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -687,7 +694,6 @@
         private System.Windows.Forms.Label Label_Prefix_TextBox_CourseFee;
         private System.Windows.Forms.Label Label_Prefix_TextBox_CourseCategoryName;
         private System.Windows.Forms.Label Label_Prefix_TextBox_CourseName;
-        private System.Windows.Forms.ComboBox ComboBox_DiscountType;
         private System.Windows.Forms.TextBox TextBox_Discount;
         private System.Windows.Forms.CheckBox CheckBox_Discount;
         private System.Windows.Forms.Button Button_Reset;
@@ -695,5 +701,7 @@
         private System.Windows.Forms.Button Button_Cancel;
         private System.Windows.Forms.TextBox TextBox_CourseBarcode;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -48,6 +48,21 @@ namespace PianoForte.View
             return this.enrollment;
         }
 
+        public Enrollment showFormDialog(Form caller, Enrollment enrollment)
+        {
+            this.caller = caller;            
+
+            this.reset();
+
+            this.enrollment = enrollment;
+
+            this.updateCourseInfo(this.enrollment);            
+
+            this.ShowDialog();
+
+            return this.enrollment;
+        }
+
         private void reset()
         {
             this.course = null;
@@ -74,7 +89,6 @@ namespace PianoForte.View
         {
             this.CheckBox_Discount.Checked = false;
             this.TextBox_Discount.Text = "";
-            this.ComboBox_DiscountType.SelectedIndex = 0;
 
             this.enableDiscountBox(false);
         }
@@ -130,12 +144,6 @@ namespace PianoForte.View
             this.TextBox_Discount.Enabled = isEnable;
         }
 
-        //Enable and disable ComboBox_DiscountType.
-        private void enableComboBoxDiscountType(bool isEnable)
-        {
-            this.ComboBox_DiscountType.Enabled = isEnable;
-        }
-
         //Enable and disable ComboBox_NumberOfClassroomDetail.
         private void enableComboBoxNumberOfClassroomDetail(bool isEnable)
         {
@@ -187,15 +195,21 @@ namespace PianoForte.View
         //Enable and disable all components in GroupBox_Classroom2.
         private void enableGroupBoxClassroom2(bool isEnable)
         {
-            if ((this.RadioButton_TwoClassPerWeek.Checked == false) && (this.RadioButton_TwoClassPerDay.Checked == false)) {
-                isEnable = false;
-            }
+            bool isTwoClassPerDayChecked = this.RadioButton_TwoClassPerDay.Checked;                        
+            bool isTwoClassPerWeekChecked = this.RadioButton_TwoClassPerWeek.Checked;
 
-            this.GroupBox_Classroom2.Enabled = isEnable;
-            this.DateTimePicker_Classroom2_StartDate.Enabled = isEnable;
-            this.ComboBox_Classroom2_Time.Enabled = isEnable;
-            this.TextBox_Classroom2_Duration.Enabled = isEnable;
-            this.ComboBox_Classroom2_Teacher.Enabled = isEnable;
+            if (isTwoClassPerDayChecked == true)
+            {
+                this.enableGroupBoxClassroom2(false, true, true, true);
+            }
+            else if (isTwoClassPerWeekChecked == true)
+            {
+                this.enableGroupBoxClassroom2(true, true, true, true);
+            }
+            else
+            {
+                this.enableGroupBoxClassroom2(false, false, false, false);
+            }            
         }
 
         //Enable and disable all component in GroupBox_Classroom2.
@@ -225,6 +239,15 @@ namespace PianoForte.View
             this.Button_Submit.Enabled = isEnable;
         }        
 
+        private void updateDiscountBox(double discount)
+        {            
+            if (discount > 0)
+            {
+                this.CheckBox_Discount.Checked = true;
+                this.TextBox_Discount.Text = discount.ToString();
+            }
+        }
+
         private void updateCourseInfo(Course course)
         {
             if (course != null)
@@ -240,15 +263,15 @@ namespace PianoForte.View
                     this.teacherList.Clear();
                 }
 
-                CourseCategory courseCategory = CourseCategoryManager.findCourseCategory(course.CourseCategoryId);
+                CourseCategory courseCategory = CourseCategoryManager.findCourseCategory(this.course.CourseCategoryId);
                 if (courseCategory != null)
                 {
                     this.TextBox_CourseCategoryName.Text = courseCategory.Name;
-                    this.TextBox_CourseName.Text = course.Name + " - " + course.Level;
-                    this.TextBox_CourseFee.Text = course.Price.ToString("N", new CultureInfo("en-US"));
+                    this.TextBox_CourseName.Text = this.course.Name + " - " + this.course.Level;
+                    this.TextBox_CourseFee.Text = this.course.Price.ToString("N", new CultureInfo("en-US"));
 
-                    this.updateComboBoxNumberOfClassroomDetailIndex(course.NumberOfClassroom);
-                    this.updateComboBoxTeacher(course.Id);
+                    this.updateComboBoxNumberOfClassroomDetailIndex(this.course.NumberOfClassroom);
+                    this.updateComboBoxTeacher(this.course.Id);
 
                     this.enableDiscountBox(true);                    
                     this.enableComboBoxNumberOfClassroomDetail(true);
@@ -259,11 +282,117 @@ namespace PianoForte.View
             }
         }
 
+        private void updateCourseInfo(Enrollment enrollment)
+        {
+            if (enrollment != null)
+            {
+                this.course = enrollment.Course;
+                this.enrollment = enrollment;
+
+                if (this.teacherList == null)
+                {
+                    this.teacherList = new List<Teacher>();
+                }
+                else
+                {
+                    this.teacherList.Clear();
+                }
+
+                CourseCategory courseCategory = CourseCategoryManager.findCourseCategory(course.CourseCategoryId);
+                if (courseCategory != null)
+                {
+                    this.TextBox_CourseCategoryName.Text = courseCategory.Name;
+                    this.TextBox_CourseName.Text = this.course.Name + " - " + this.course.Level;
+                    this.TextBox_CourseFee.Text = this.course.Price.ToString("N", new CultureInfo("en-US"));
+
+                    this.updateComboBoxNumberOfClassroomDetailIndex(this.course.NumberOfClassroom);
+                    this.updateComboBoxTeacher(this.course.Id);
+
+                    this.enableDiscountBox(true);
+                    this.updateDiscountBox(this.enrollment.Discount);
+                    
+                    this.enableComboBoxNumberOfClassroomDetail(true);
+                    this.updateComboBoxNumberOfClassroomDetailIndex(this.getNumberOfClassroomDetail(this.enrollment));
+
+                    this.enableGroupBoxClassroomFrequency(true);
+                    this.updateGroupBoxClassroomFrequency(this.enrollment);
+
+                    this.enableGroupBoxClassroom1(true);
+                    this.updateGroupBoxClassroom1(enrollment);
+
+                    this.enableGroupBoxClassroom2(true);
+                    this.updateGroupBoxClassroom2(enrollment);
+
+                    this.updateButtonSubmit();
+                }
+            }
+        }
+
         private void updateComboBoxNumberOfClassroomDetailIndex(int numberOfClassroom)
         {
             if ((numberOfClassroom > 0) && (numberOfClassroom <= 12))
             {
                 this.ComboBox_NumberOfClassroomDetail.SelectedIndex = numberOfClassroom - 1;
+            }
+        }
+
+        private void updateGroupBoxClassroomFrequency(Enrollment enrollment)
+        {
+            if (enrollment != null)
+            {
+                int numberOfClassroom = enrollment.ClassroomList.Count;
+
+                if (numberOfClassroom == 1)
+                {
+                    this.RadioButton_OneClassPerWeek.Checked = true;
+                }
+                else
+                {
+                    List<string> dayOfWeekList = new List<string>();
+
+                    for (int i = 0; i < numberOfClassroom; i++)
+                    {
+                        string dayOfWeek = enrollment.ClassroomList[i].StartDate.DayOfWeek.ToString();
+
+                        if (dayOfWeekList.Contains(dayOfWeek) == false)
+                        {
+                            dayOfWeekList.Add(dayOfWeek);
+                        }                        
+                    }
+
+                    if (dayOfWeekList.Count == 1)
+                    {
+                        this.RadioButton_TwoClassPerDay.Checked = true;
+                    }
+                    else
+                    {
+                        this.RadioButton_TwoClassPerWeek.Checked = true;
+                    }
+                }
+            }
+        }
+
+        private void updateGroupBoxClassroom1(Enrollment enrollment)
+        {
+            if (enrollment != null)
+            {
+                int numberOfClassroom = enrollment.ClassroomList.Count;
+
+                if (numberOfClassroom > 0)
+                {
+                    Classroom classroom = enrollment.ClassroomList[0];
+                    Teacher teacher = TeacherManager.findTeacher(classroom.TeacherId);
+
+                    this.DateTimePicker_Classroom1_StartDate.Value = classroom.StartDate;
+                    this.updateComboBoxClassroom1Time(DateTimePicker_Classroom1_StartDate.Value);
+                    this.ComboBox_Classroom1_Time.Text = classroom.ClassTime;
+                    this.TextBox_Classroom1_Duration.Text = classroom.ClassDuration.ToString();
+
+                    if (teacher != null)
+                    {
+                        this.ComboBox_Classroom1_Teacher.Text = teacher.ToString();
+                    }
+                }
             }
         }
 
@@ -292,6 +421,30 @@ namespace PianoForte.View
             if (this.ComboBox_Classroom1_Time.Items.Count > 0)
             {
                 this.ComboBox_Classroom1_Time.SelectedIndex = 0;
+            }
+        }
+
+        private void updateGroupBoxClassroom2(Enrollment enrollment)
+        {
+            if (enrollment != null)
+            {
+                int numberOfClassroom = enrollment.ClassroomList.Count;
+
+                if (numberOfClassroom > 1)
+                {
+                    Classroom classroom = enrollment.ClassroomList[1];
+                    Teacher teacher = TeacherManager.findTeacher(classroom.TeacherId);
+
+                    this.DateTimePicker_Classroom2_StartDate.Value = classroom.StartDate;
+                    this.updateComboBoxClassroom2Time(DateTimePicker_Classroom2_StartDate.Value);
+                    this.ComboBox_Classroom2_Time.Text = classroom.ClassTime;
+                    this.TextBox_Classroom2_Duration.Text = classroom.ClassDuration.ToString();
+
+                    if (teacher != null)
+                    {
+                        this.ComboBox_Classroom2_Teacher.Text = teacher.ToString();
+                    }
+                }
             }
         }
 
@@ -376,6 +529,14 @@ namespace PianoForte.View
                 }
             }
 
+            if (this.CheckBox_Discount.Checked == true)
+            {
+                if (this.TextBox_Discount.Text == "")
+                {
+                    isEnableButtonSubmit = false;
+                }
+            }
+
             this.enableButtonSubmit(isEnableButtonSubmit);
         }
 
@@ -430,6 +591,30 @@ namespace PianoForte.View
             return classroom;
         }
 
+        private int getNumberOfClassroomDetail(Enrollment enrollment)
+        {
+            int numberOfClassroomDetail = -1;
+
+            if (enrollment != null)
+            {
+                for (int i = 0; i < enrollment.ClassroomList.Count; i++)
+                {
+                    int classroomId = enrollment.ClassroomList[i].Id;
+
+                    if (numberOfClassroomDetail == -1)
+                    {
+                        numberOfClassroomDetail = enrollment.ClassroomIdClassroomDetailListDictionary[classroomId].Count;
+                    }
+                    else
+                    {
+                        numberOfClassroomDetail += enrollment.ClassroomIdClassroomDetailListDictionary[classroomId].Count;
+                    }                    
+                }
+            }
+
+            return numberOfClassroomDetail;
+        }
+
         private void TextBox_CourseBarcode_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Enter)
@@ -467,7 +652,8 @@ namespace PianoForte.View
             bool isEnable = this.CheckBox_Discount.Checked;
 
             this.enableTextBoxDiscount(isEnable);
-            this.enableComboBoxDiscountType(isEnable);
+
+            this.updateButtonSubmit();
         }
 
         private void TextBox_Discount_KeyDown(object sender, KeyEventArgs e)
@@ -476,6 +662,11 @@ namespace PianoForte.View
             {
                 e.SuppressKeyPress = true;
             }
+        }
+
+        private void TextBox_Discount_TextChanged(object sender, EventArgs e)
+        {
+            this.updateButtonSubmit();
         }
 
         private void RadioButton_OneClassPerWeek_CheckedChanged(object sender, EventArgs e)
@@ -554,15 +745,7 @@ namespace PianoForte.View
 
                 if (this.CheckBox_Discount.Checked == true)
                 {
-                    string discountText = this.TextBox_Discount.Text;
-                    double discount = Convert.ToDouble(discountText);
-
-                    if (this.ComboBox_DiscountType.SelectedIndex == 1)
-                    {                       
-                        discount = this.enrollment.TotalPrice * (discount / 100);
-                    }
-
-                    this.enrollment.Discount = discount;
+                    this.enrollment.Discount = Convert.ToDouble(this.TextBox_Discount.Text); ;
                 }
             }
         }
@@ -616,6 +799,6 @@ namespace PianoForte.View
         private void TextBox_Classroom2_Duration_TextChanged(object sender, EventArgs e)
         {
             this.updateButtonSubmit();
-        }                                
+        }                                        
     }
 }

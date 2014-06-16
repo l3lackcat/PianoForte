@@ -19,6 +19,8 @@ namespace PianoForte.View
         private MainForm mainForm;
 
         private Student student;
+        private OtherCost firstRegister;
+        private Enrollment enrollment;
         private List<PaymentDetail> paymentDetailList;
 
         public PaymentForm2()
@@ -30,8 +32,11 @@ namespace PianoForte.View
         {
             this.mainForm = mainForm;
 
-            this.student = new Student();
+            this.student = null;            
+            this.enrollment = null;
             this.paymentDetailList = new List<PaymentDetail>();
+
+            this.firstRegister = OtherCostManager.findOtherCost(4000001);
 
             this.initTextBoxPaymentDate();
             this.initPaymentDetailSummaryDataGridView();
@@ -65,13 +70,15 @@ namespace PianoForte.View
             return quantity;
         }
 
-        private bool addPaymentDetail(Enrollment enrollment)
+        private bool updateEnrollment(Enrollment enrollment)
         {
             Product product = null;
             double discount = 0;
 
             if (enrollment != null)
             {
+                this.enrollment = enrollment;
+
                 string productName = enrollment.Course.Name;
                 if (enrollment.Course.Level != "")
                 {
@@ -162,6 +169,7 @@ namespace PianoForte.View
                 {
                     if (paymentDetail.Product.Type == Product.ProductType.COURSE.ToString())
                     {
+                        this.enrollment = null;
                         this.Button_SelectCourse.Enabled = true;
                     }
                 }
@@ -179,10 +187,13 @@ namespace PianoForte.View
         private void reset(bool isResetAll)
         {
             this.student = null;
+            this.enrollment = null;
             this.paymentDetailList.Clear();
 
             this.TextBox_StudentId.Text = "";
             this.TextBox_StudentId.Focus();
+
+            this.CheckBox_AddFirstRegisterCost.Checked = false;
 
             this.TextBox_StudentNickname.Text = "";
             this.TextBox_StudentFullName.Text = "";
@@ -202,6 +213,8 @@ namespace PianoForte.View
             this.RadioButton_Cash.Checked = true;
 
             this.Button_Pay.Enabled = false;
+
+            this.updateDataGridViewPaymentDetailSummary();
         }
 
         private void initTextBoxPaymentDate()
@@ -220,6 +233,19 @@ namespace PianoForte.View
                 this.DataGridView_PaymentDetail_Summary.Rows[n].Cells["Discount"].Value = "";
                 this.DataGridView_PaymentDetail_Summary.Rows[n].Cells["Price"].Value = "";
                 this.DataGridView_PaymentDetail_Summary.Rows[n].Cells["TotalPrice"].Value = "";               
+            }
+        }
+
+        private void resetPaymentDetailSummaryDataGridView()
+        {
+            for (int i = 0; i < 12; i++)
+            {
+                this.DataGridView_PaymentDetail_Summary.Rows[i].Cells["No"].Value = "";
+                this.DataGridView_PaymentDetail_Summary.Rows[i].Cells["ItemName"].Value = "";
+                this.DataGridView_PaymentDetail_Summary.Rows[i].Cells["Quantity"].Value = "";
+                this.DataGridView_PaymentDetail_Summary.Rows[i].Cells["Discount"].Value = "";
+                this.DataGridView_PaymentDetail_Summary.Rows[i].Cells["Price"].Value = "";
+                this.DataGridView_PaymentDetail_Summary.Rows[i].Cells["TotalPrice"].Value = "";
             }
         }
 
@@ -356,8 +382,8 @@ namespace PianoForte.View
                                     EnrollmentPopUp enrollmentPopUp = new EnrollmentPopUp();
                                     Enrollment enrollment = enrollmentPopUp.showFormDialog(this, course);
                                     if (enrollment != null)
-                                    {                                        
-                                        this.addPaymentDetail(enrollment);
+                                    {
+                                        this.updateEnrollment(enrollment);
                                     }
                                 }
                                 else
@@ -451,13 +477,171 @@ namespace PianoForte.View
 
         private void updateButtonPay()
         {
+            bool isEnableButtonPay = false;
+
             if ((this.student != null) && (this.paymentDetailList.Count > 0))
+            {
+                if (this.RadioButton_CreditCard.Checked == true)
+                {
+                    string creditCardNumber = this.getCreditCardNumber();
+                    
+                    if (ValidateManager.validateCreditCardNumber(creditCardNumber) == true)
+                    {
+                        isEnableButtonPay = true;
+                    }
+                }
+                else
+                {
+                    isEnableButtonPay = true;
+                }
+            }
+
+            if (isEnableButtonPay == true)
             {
                 this.Button_Pay.Enabled = true;
             }
             else
             {
                 this.Button_Pay.Enabled = false;
+            }
+        }
+
+        private string getCreditCardNumber()
+        {
+            string creditCardNumber = "";
+            string creditCardNumber1 = this.TextBox_CreditCardNumber1.Text;
+            string creditCardNumber2 = this.TextBox_CreditCardNumber2.Text;
+            string creditCardNumber3 = this.TextBox_CreditCardNumber3.Text;
+            string creditCardNumber4 = this.TextBox_CreditCardNumber4.Text;
+
+            if ((creditCardNumber1 != "") && (creditCardNumber2 != "") && (creditCardNumber3 != "") && (creditCardNumber4 != ""))
+            {
+                creditCardNumber += creditCardNumber1;
+                creditCardNumber += creditCardNumber2;
+                creditCardNumber += creditCardNumber3;
+                creditCardNumber += creditCardNumber4;
+            }
+
+            return creditCardNumber;
+        }
+
+        private double getGrandTotalPrice()
+        {            
+            string grandTotalText = this.TextBox_GrandTotal.Text.Replace(",", "");
+
+            return Convert.ToDouble(grandTotalText);
+        }
+
+        private void processPayment(string creditCardNumber, double grandTotalPrice)
+        {
+            int receiverId = this.mainForm.getUser().Id;
+
+            Payment newPayment = PaymentManager.processPayment(this.student.Id, receiverId, creditCardNumber, grandTotalPrice);
+            if (newPayment != null)
+            {
+                if (this.processPaymentDetail(newPayment.Id))
+                {
+                    this.printReceipt(newPayment.Id);
+                    MessageBox.Show(PianoForte.Constant.Constant.PAYMENT_SUCCESS);
+                    this.reset(true);
+                }
+                else
+                {
+                    MessageBox.Show(PianoForte.Constant.Constant.PAYMENT_FAIL);
+                }
+            }
+            else
+            {
+                MessageBox.Show(PianoForte.Constant.Constant.PAYMENT_FAIL);
+            }
+        }
+
+        private bool processPaymentDetail(int paymentId)
+        {
+            bool isAddComplete = false;
+
+            for (int i = 0; i < this.paymentDetailList.Count; i++)
+            {
+                PaymentDetail paymentDetail = this.paymentDetailList[i];
+                if (paymentDetail != null)
+                {
+                    paymentDetail.PaymentId = paymentId;
+
+                    isAddComplete = PaymentDetailManager.insertPaymentDetail(paymentDetail);
+                    if (isAddComplete)
+                    {
+                        string productType = paymentDetail.Product.Type;
+                        if (productType == Product.ProductType.COURSE.ToString())
+                        {
+                            if (this.enrollment != null)
+                            {
+                                this.enrollment.PaymentId = paymentId;
+                                this.enrollment.Student = this.student;
+                                this.enrollment.Status = Enrollment.EnrollmentStatus.PAID.ToString();
+                                EnrollmentManager.processEnrollment(this.enrollment);
+                            }
+
+                            if (this.student != null)
+                            {
+                                if (this.student.Status != Student.StudentStatus.ACTIVE.ToString())
+                                {
+                                    this.student.Status = Student.StudentStatus.ACTIVE.ToString();
+                                    StudentManager.updateStudent(this.student);
+                                }                                
+                            }
+                        }
+                        else if (productType == Product.ProductType.BOOK.ToString())
+                        {
+                            Book tempBook = BookManager.findBook(paymentDetail.Product.Id);
+                            if (tempBook != null)
+                            {
+                                tempBook.Quantity = tempBook.Quantity - paymentDetail.Quantity;
+                                if (tempBook.Quantity == 0)
+                                {
+                                    tempBook.Status = Book.BookStatus.EMPTY.ToString();
+                                }
+
+                                BookManager.updateBook(tempBook);
+                            }
+                        }
+                        else if (productType == Product.ProductType.CD.ToString())
+                        {
+                            Cd tempCd = CdManager.findCd(paymentDetail.Product.Id);
+                            if (tempCd != null)
+                            {
+                                tempCd.Quantity = tempCd.Quantity - paymentDetail.Quantity;
+                                if (tempCd.Quantity == 0)
+                                {
+                                    tempCd.Status = Cd.CdStatus.EMPTY.ToString();
+                                }
+
+                                CdManager.updateCd(tempCd);
+                            }
+                        }
+                        else if (productType == Product.ProductType.OTHER.ToString())
+                        {
+                            // Do Nothing
+                        }
+                    }
+                }
+            }
+
+            return isAddComplete;
+        }
+
+        private void printReceipt(int paymentId)
+        {
+            if (!ReceiptManager.printReceipt(paymentId))
+            {
+                MessageBox.Show(PianoForte.Constant.Constant.PRINTER_NOT_FOUND);
+            }
+        }
+
+        private void TextBox_StudentId_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!ValidateManager.isPressNumber(e))
+            {
+                e.SuppressKeyPress = true;
             }
         }
 
@@ -550,7 +734,34 @@ namespace PianoForte.View
             }
 
             this.Cursor = Cursors.Arrow;
-        } 
+        }
+
+        private void DataGridView_PaymentDetail_Summary_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int numberOfPaymentDetailList = this.paymentDetailList.Count;
+            if (numberOfPaymentDetailList > 0)
+            {
+                int rowIndex = e.RowIndex;
+                if ((rowIndex >= 0) && (rowIndex < numberOfPaymentDetailList))
+                {
+                    PaymentDetail paymentDetail = this.paymentDetailList[rowIndex];
+
+                    if (paymentDetail.Product.Type == Product.ProductType.COURSE.ToString())
+                    {
+                        EnrollmentPopUp enrollmentPopup = new EnrollmentPopUp();
+                        Enrollment enrollment = enrollmentPopup.showFormDialog(this, this.enrollment);
+
+                        if (enrollment != null)
+                        {
+                            this.removePaymentDetail(enrollment.Course.Id);
+                            this.updateEnrollment(enrollment);
+                        }
+                    }
+                }
+            }
+
+            this.Cursor = Cursors.Arrow;
+        }
 
         private void RadioButton_Cash_CheckedChanged(object sender, EventArgs e)
         {
@@ -575,6 +786,14 @@ namespace PianoForte.View
             this.TextBox_CreditCardNumber1.Focus();
         }
 
+        private void TextBox_CreditCardNumber1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!ValidateManager.isPressNumber(e))
+            {
+                e.SuppressKeyPress = true;
+            }
+        }         
+
         private void TextBox_CreditCardNumber1_TextChanged(object sender, EventArgs e)
         {
             int textLength = this.TextBox_CreditCardNumber1.Text.Length;
@@ -584,6 +803,14 @@ namespace PianoForte.View
                 this.TextBox_CreditCardNumber2.Focus();
             }
         }
+
+        private void TextBox_CreditCardNumber2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!ValidateManager.isPressNumber(e))
+            {
+                e.SuppressKeyPress = true;
+            }
+        }        
 
         private void TextBox_CreditCardNumber2_TextChanged(object sender, EventArgs e)
         {
@@ -595,6 +822,14 @@ namespace PianoForte.View
             }
         }
 
+        private void TextBox_CreditCardNumber3_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!ValidateManager.isPressNumber(e))
+            {
+                e.SuppressKeyPress = true;
+            }
+        }        
+
         private void TextBox_CreditCardNumber3_TextChanged(object sender, EventArgs e)
         {
             int textLength = this.TextBox_CreditCardNumber3.Text.Length;
@@ -602,6 +837,14 @@ namespace PianoForte.View
             if (textLength == 4)
             {
                 this.TextBox_CreditCardNumber4.Focus();
+            }
+        }
+
+        private void TextBox_CreditCardNumber4_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!ValidateManager.isPressNumber(e))
+            {
+                e.SuppressKeyPress = true;
             }
         }
 
@@ -617,7 +860,46 @@ namespace PianoForte.View
 
         private void Button_Pay_Click(object sender, EventArgs e)
         {
+            double grandTotalPrice = getGrandTotalPrice();
 
+            if (this.RadioButton_CreditCard.Checked)
+            {
+                string creditCardNumber = this.getCreditCardNumber();
+
+                if (ValidateManager.validateCreditCardNumber(creditCardNumber))
+                {
+                    this.processPayment(creditCardNumber, grandTotalPrice);
+                }
+                else
+                {
+                    MessageBox.Show(Constant.Constant.INVALID_CREDITCARD_NUMBER);
+                }
+            }
+            else
+            {
+                string temp = InputDialogBox.show("Cash");
+                if (ValidateManager.isNumber(temp))
+                {                    
+                    double receiveMoney = Convert.ToDouble(temp);
+                    if (receiveMoney >= grandTotalPrice)
+                    {
+                        double change = receiveMoney - grandTotalPrice;
+                        MessageBox.Show("Change is " + change.ToString());
+                        this.processPayment("", grandTotalPrice);
+                    }
+                    else
+                    {
+                        MessageBox.Show("จำนวนเงินไม่ครบ");
+                    }
+                }
+                else
+                {
+                    if (temp != "")
+                    {
+                        MessageBox.Show("กรุณากรอกจำนวนเงินให้ถูกต้อง");
+                    }
+                }
+            }
         }
 
         private void Button_Reset_Click(object sender, EventArgs e)
@@ -631,7 +913,7 @@ namespace PianoForte.View
             EnrollmentPopUp enrollmentPopUp = new EnrollmentPopUp();
             Enrollment enrollment = enrollmentPopUp.showFormDialog(this);
 
-            this.addPaymentDetail(enrollment);
+            this.updateEnrollment(enrollment);
         }
 
         private void Button_SelectBook_Click(object sender, EventArgs e)
@@ -665,6 +947,36 @@ namespace PianoForte.View
 
                 this.addPaymentDetail(paymentDetail);
             }
-        }                       
+        }
+
+        private void CheckBox_AddFirstRegisterCost_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.CheckBox_AddFirstRegisterCost.Checked)
+            {
+                if (this.firstRegister == null)
+                {
+                    this.firstRegister = OtherCostManager.findOtherCost(4000001);
+                }
+
+                if (this.firstRegister != null)
+                {
+                    Product product = new Product();
+                    product.Id = this.firstRegister.Id;
+                    product.Type = Product.ProductType.OTHER.ToString();
+                    product.Name = this.firstRegister.Name;
+                    product.Price = this.firstRegister.Price;
+
+                    PaymentDetail paymentDetail = new PaymentDetail();
+                    paymentDetail.Product = product;
+                    paymentDetail.Quantity = 1;
+
+                    this.addPaymentDetail(paymentDetail);
+                }
+            }
+            else
+            {
+                this.removePaymentDetail(this.firstRegister.Id);
+            }
+        }                                              
     }
 }
