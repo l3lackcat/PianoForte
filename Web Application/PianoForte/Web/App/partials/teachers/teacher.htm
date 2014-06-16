@@ -68,7 +68,7 @@
         </my-pane>
         <my-pane data-title="calendar"></my-pane>
     </my-tabs>
-    <my-dialog-box data-title="'teacher > edit > ข้อมูลทั่วไป'" data-submit="onSubmitEditGeneralInfo()" data-disabled="isOnSaveEdittedGeneralInfo" data-close="onCancelEditGeneralInfo()" ng-show="isOnEditGeneralInfo">
+    <my-dialog-box data-title="'teacher > edit > ข้อมูลทั่วไป'" data-submit="onSubmitEditGeneralInfo()" data-disabled="isOnSaveEdittedGeneralInfo" data-close="onCancelEditGeneralInfo()" data-visible="isOnEditGeneralInfo">
         <div class="wrapper">
             <div class="rows">
                 <div class="row">
@@ -111,7 +111,7 @@
             </div>
         </div>
     </my-dialog-box>
-    <my-dialog-box data-title="'teacher > edit > ข้อมูลการติดต่อ'" data-submit="onSubmitEditContactInfo()" data-disabled="isOnUpdateEdittedContactInfo" data-close="onCancelEditContactInfo()" ng-show="isOnEditContactInfo">        
+    <my-dialog-box data-title="'teacher > edit > ข้อมูลการติดต่อ'" data-submit="onSubmitEditContactInfo()" data-disabled="isOnUpdateEdittedContactInfo" data-close="onCancelEditContactInfo()" data-visible="isOnEditContactInfo">        
         <div class="wrapper">
             <h4>เบอร์โทรศัพท์</h4>
             <div class="rows">
@@ -151,7 +151,7 @@
             </div>
         </div>
     </my-dialog-box>
-    <my-dialog-box data-title="'teacher > edit > วิชาที่สอน'" data-submit="onSubmitEditTeachedCourseInfo()" data-disabled="isOnUpdateEdittedTeachedCourseInfo" data-close="onCancelEditTeachedCourseInfo()" ng-show="isOnEditTeachedCourseInfo">
+    <my-dialog-box data-title="'teacher > edit > วิชาที่สอน'" data-submit="onSubmitEditTeachedCourseInfo()" data-disabled="isOnUpdateEdittedTeachedCourseInfo" data-close="onCancelEditTeachedCourseInfo()" data-visible="isOnEditTeachedCourseInfo">
         <div class="wrapper">
             <div class="rows">
                 <div class="row" ng-repeat="teachedCourse in edittedTeachedCourseInfo">

@@ -2,12 +2,14 @@
 
 goog.provide('PianoForte.Controllers.Widgets.MyDialogBoxController');
 
-PianoForte.Controllers.Widgets.MyDialogBoxController = function ($scope, $attrs, $element) {
-	$scope.initialize = function () {
-		var documentHeight = document.body.clientHeight;       
-        var dialogBoxContent = $element[0].children[0].children[0].children[1];
+PianoForte.Controllers.Widgets.MyDialogBoxController = function ($scope, $attrs, $element, $rootScope) {
+    var dialogBoxContent = null;
 
-        dialogBoxContent.style.maxHeight = (documentHeight - 481) + 'px'; 
+    $scope.initialize = function () {
+        dialogBoxContent = $element[0].children[0].children[0].children[1];
+
+        addEventListener();
+        adjustPostion();
     };
 
     $scope.onSubmit = function () {
@@ -16,5 +18,25 @@ PianoForte.Controllers.Widgets.MyDialogBoxController = function ($scope, $attrs,
 
     $scope.onCancel = function () {
         $scope.close();
+    };
+
+    $scope.$watch('visible', function (newInput, oldInput) {
+        if (newInput === true) {
+            adjustPostion();
+        }
+    });
+
+    function addEventListener() {
+        dialogBoxContent.onscroll = onScrollDialogBoxContent;
+    };
+
+    function adjustPostion() {
+        var documentHeight = document.body.clientHeight;
+
+        dialogBoxContent.style.maxHeight = (documentHeight - 481) + 'px';
+    };
+
+    function onScrollDialogBoxContent() {
+        $rootScope.$broadcast('onScroll', 'MyDialogBoxContent');
     };
 };

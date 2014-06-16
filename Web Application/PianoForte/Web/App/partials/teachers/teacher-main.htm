@@ -14,8 +14,11 @@
                 <div class="tube width-50-percent">
                     <my-select 
                         data-items="dropdownFilterList" 
-                        data-default-selected-item-index="0" 
-                        data-on-changed="onDropdownFilterChanged(selectedIndex)"></my-select>
+                        data-default-selected-item-index="0"
+                        data-show-max-items="5"
+                        data-placeholder="'Please select...'"
+                        data-on-changed="onDropdownFilterChanged(selectedIndex)"
+                        data-theme="'teacher'"></my-select>
                 </div>
                 <div class="tube width-50-percent">
                     <my-search-box data-text="filterText" data-placeholder="'ค้นหาครู...'"></my-search-box>
@@ -54,7 +57,8 @@
             <div class="tube width-100-percent fix-height">
                 <my-box class="content no-margin-bottom no-padding-top no-padding-bottom no-padding-right">
                     <div class="rows">
-                        <div class="row" ng-repeat="teacher in teacherList | orderBy:'name' | filter:filterText | startFrom:(currentPage-1)*showPerPage | limitTo:showPerPage">
+                        <!-- <div class="row" ng-repeat="teacher in teacherList | orderBy:'name' | filter:filterText | startFrom:(currentPage-1)*showPerPage | limitTo:showPerPage"> -->
+                        <div class="row" ng-repeat="teacher in filteredTeacherList | orderBy:'name' | startFrom:(currentPage-1)*showPerPage | limitTo:showPerPage">
                             <div class="col col-name">{{teacher.name}}</div>
                             <div class="col col-nickname">{{teacher.nickname}}</div>
                             <div class="col col-phone">{{teacher.phoneNumber}}</div>

@@ -17,13 +17,21 @@ PianoForte.Controllers.Widgets.MySelectController = function ($scope, $attrs, $e
         dropdownElement = selectElement.children[1];
         buttonElement = selectElement.children[0];
         textElement = buttonElement.children[0];
-        caretElement = buttonElement.children[1];        
+        caretElement = buttonElement.children[1];
 
         updateTheme();
-        updateLayout();        
+        updateLayout();
         addEventsListen();
         resetSelectedItem();
         setDefaultSelectedItem();
+    };
+
+    $scope.toggleDropdownMenu = function () {
+        if ($scope.isMenuVisible === false) {
+            $scope.showDropdownMenu();
+        } else {
+            $scope.hideDropdownMenu();
+        }
     };
 
     $scope.showDropdownMenu = function () {
@@ -34,82 +42,99 @@ PianoForte.Controllers.Widgets.MySelectController = function ($scope, $attrs, $e
                 dropdownElement.style.left = selectElementOffset.left + 'px';
                 document.body.appendChild(dropdownElement);
 
-                $scope.isMenuVisible = !$scope.isMenuVisible;
+                $scope.isMenuVisible = true;
             }
         }
     };
 
     $scope.hideDropdownMenu = function () {
         if ($scope.isMenuVisible === true) {
-            selectElement.appendChild(dropdownElement);
             $scope.isMenuVisible = false;
-            $scope.$apply();
-        }            
+            selectElement.appendChild(dropdownElement);
+        }
     };
 
     $scope.select = function (selectedItem) {
         resetSelectedItem();
         updateSelectedItemById(selectedItem.id);
-        
+
         $scope.isMenuVisible = false;
     }
 
-    $scope.$watch('disabled', function(newValue, oldValue) {
+    $scope.$watch('disabled', function (newValue, oldValue) {
         if (newValue === true) {
             if (buttonElement !== null) {
                 buttonElement.classList.add('disabled');
-            }            
+            }
         } else {
             if (buttonElement !== null) {
                 buttonElement.classList.remove('disabled');
-            }            
+            }
         }
     });
 
-    function updateTheme () {
+    $scope.$on('onScroll', function (scope, scrolledElementName) {
+        if (scrolledElementName === 'MyDialogBoxContent') {
+            $scope.hideDropdownMenu();
+            $scope.$apply();
+        }        
+    }, true);
+
+    function updateTheme() {
         dropdownElement.className = dropdownElement.className + ' ' + $scope.theme;
     };
 
-    function updateLayout () {
+    function updateLayout() {
         adjustWidth();
         adjustDropdownMenuHeight();
     }
 
-    function adjustWidth () {
+    function adjustWidth() {
         if ($scope.width !== undefined) {
             selectElement.style.width = $scope.width + 'px';
         }
 
         textElement.style.width = (selectElement.clientWidth - caretElement.clientWidth - 12) + 'px';
         dropdownElement.style.width = selectElement.clientWidth + 'px';
-    }; 
+    };
 
-    function adjustDropdownMenuHeight () {
+    function adjustDropdownMenuHeight() {
         var maximumItems = $scope.showMaxItems;
         if (maximumItems !== undefined) {
-            dropdownElement.style.height = (maximumItems * 26) + 'px';
+            var numberOfItems = $scope.items.length;
+            if (numberOfItems < maximumItems) {
+                dropdownElement.style.height = (numberOfItems * 26) + 'px';
+            } else {
+                dropdownElement.style.height = (maximumItems * 26) + 'px';
+            }
         }
-    }   
+    };
 
-    function addEventsListen () {
+    function addEventsListen() {
         $document.bind('click', onClick);
+        dropdownElement.addEventListener('blur', onBlurDropdownMenu);
     };
 
     function onClick(e) {
         if (selectElement.contains(e.target) === false) {
             $scope.hideDropdownMenu();
+            $scope.$apply();
         }
     };
 
-    function resetSelectedItem () {
+    function onBlurDropdownMenu(e) {
+        $scope.hideDropdownMenu();
+    };
+
+    function resetSelectedItem() {
         if ($scope.items !== null) {
             for (var i = $scope.items.length - 1; i >= 0; i--) {
                 $scope.items[i].selected = false;
             }
-        }            
+        }
     }
 
-    function setDefaultSelectedItem () {
+    function setDefaultSelectedItem() {
         if ($scope.defaultSelectedItemId !== undefined) {
             updateSelectedItemById($scope.defaultSelectedItemId);
         } else if ($scope.defaultSelectedItemIndex !== undefined) {
@@ -119,15 +144,15 @@ PianoForte.Controllers.Widgets.MySelectController = function ($scope, $attrs, $e
         }
     }
 
-    function updateSelectedItemById (itemId) {
+    function updateSelectedItemById(itemId) {
         for (var i = $scope.items.length - 1; i >= 0; i--) {
             if ($scope.items[i].id === itemId) {
                 updateSelectedItemByIndex(i);
             }
         };
-    }; 
+    };
 
-    function updateSelectedItemByIndex (index) {
+    function updateSelectedItemByIndex(index) {
         var selectedItem = $scope.items[index];
         if (selectedItem !== undefined) {
             selectedItem.selected = true;
@@ -137,7 +162,7 @@ PianoForte.Controllers.Widgets.MySelectController = function ($scope, $attrs, $e
             if ($scope.placeholder !== undefined) {
                 $scope.selectedText = $scope.placeholder;
                 textElement.classList.add('placeholder');
-            }            
+            }
         }
-    };    
+    };
 };

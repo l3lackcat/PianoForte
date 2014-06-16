@@ -10,7 +10,8 @@ PianoForte.Directives.Widgets.MyDialogBoxDirective = function () {
             disabled: '=',
             title: '=',
             submit: '&',
-            close: '&'
+            close: '&',
+            visible: '='
         },
         controller: 'MyDialogBoxController',
         templateUrl: 'partials/widgets/my-dialog-box/my-dialog-box.htm',
