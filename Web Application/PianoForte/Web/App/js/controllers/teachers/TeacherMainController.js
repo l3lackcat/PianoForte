@@ -5,32 +5,27 @@ goog.provide('PianoForte.Controllers.Teachers.TeacherMainController');
 PianoForte.Controllers.Teachers.TeacherMainController = function ($scope, $rootScope, filterFilter, TeacherService, FormatManager) {
     $scope.isReady = false;
     $scope.teacherList = [];
-    $scope.filteredTeacherList = [];
     $scope.pageNumbers = [];
     $scope.currentPage = 1;
     $scope.showPerPage = 20;
-    $scope.filterText = '';
-    $scope.dropdownFilterList = [
-        { id: 0, text: 'ดูทั้งหมด', excluded: false },
-        { id: 1, text: 'Item 2', excluded: false },
-        { id: 2, text: 'Item 3', excluded: false }
-    ];
+    $scope.filter = {        
+        dropdownList: [
+            { id: 0, text: 'ดูทั้งหมด', excluded: false },
+            { id: 1, text: 'Item 2', excluded: false },
+            { id: 2, text: 'Item 3', excluded: false }
+        ],
+        result: [],
+        text: '',
+    };
 
     $scope.initialize = function () {
         $rootScope.$broadcast('SelectMenuItem', 'teachers');
 
-        $scope.isReady = false;
-        $scope.teacherList = [];
-        $scope.filteredTeacherList = [];
-        $scope.pageNumbers = [];
-        $scope.currentPage = 1;
-        $scope.filterText = '';
-
         TeacherService.getTeacherList(onSuccessReceiveTeacherList, onErrorReceiveTeacherList);
     };
 
-    $scope.onDropdownFilterChanged = function () {
-        // To do
+    $scope.onFilteredDropdownChanged = function (e) {
+        // ToDo
     };
 
     $scope.goToPage = function (pageNumbers) {
@@ -42,13 +37,13 @@ PianoForte.Controllers.Teachers.TeacherMainController = function ($scope, $rootS
     $scope.goToPrevPage = function () {
         if ($scope.currentPage > 1) {
             $scope.currentPage--;
-        };
+        }
     };
 
     $scope.goToNextPage = function () {
         if ($scope.currentPage < $scope.pageNumbers.length) {
             $scope.currentPage++;
-        };
+        }
     };
 
     $scope.$watch('currentPage', function (newInput, oldInput) {
@@ -62,19 +57,19 @@ PianoForte.Controllers.Teachers.TeacherMainController = function ($scope, $rootS
         }
     });
 
-    $scope.$watch('filterText', function (newInput, oldInput) {
-        updateFilteredTeacherList($scope.teacherList, newInput);
+    $scope.$watch('filter.text', function (newInput, oldInput) {
+        updateFilteredResult($scope.teacherList, newInput);
         updatePageNumbers();
     });
 
-    function updateFilteredTeacherList(teacherList, filterText) {
-        $scope.filteredTeacherList = filterFilter(teacherList, filterText);
+    function updateFilteredResult(teacherList, filteredText) {
+        $scope.filter.result = filterFilter(teacherList, filteredText);
     };
 
     function updatePageNumbers() {
         $scope.pageNumbers = [];
 
-        var numberOfPage = Math.ceil($scope.filteredTeacherList.length / $scope.showPerPage);
+        var numberOfPage = Math.ceil($scope.filter.result.length / $scope.showPerPage);
         for (var i = 1; i <= numberOfPage; i++) {
             $scope.pageNumbers.push({
                 index: i,
@@ -87,7 +82,7 @@ PianoForte.Controllers.Teachers.TeacherMainController = function ($scope, $rootS
         if (data.d !== null) {
             $scope.teacherList = data.d;
 
-            updateFilteredTeacherList($scope.teacherList, $scope.filterText);
+            updateFilteredResult($scope.teacherList, $scope.filter.text);
             updatePageNumbers();
 
             $scope.isReady = true;
