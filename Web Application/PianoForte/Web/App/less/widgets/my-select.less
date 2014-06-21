@@ -21,6 +21,7 @@
 			overflow: hidden;
 			padding: 0;
 			text-overflow: ellipsis;
+			white-space: nowrap;
 
 			&.placeholder {
 				color: #A9A9A9;
@@ -58,7 +59,10 @@ body {
 			.item {
 				color: #FFF;
 				font-size: @fontSizeM;
+				overflow: hidden;
 				padding: 5px;
+				text-overflow: ellipsis;
+				white-space: nowrap;
 
 				&:hover {					
 					cursor: default;
@@ -71,6 +75,14 @@ body {
 
 			.items {
 				.item:hover { background-color: @teacherThemeColor2; }
+			}
+		}
+
+		&.book {
+			background-color: @bookThemeColor;
+
+			.items {
+				.item:hover { background-color: @bookThemeColor2; }
 			}
 		}
 	}
@@ -87,12 +99,12 @@ body {
 	}
 }
 
-#student,
-#students {
+#book,
+#books {
 	.widget-select {
 		> .btn-toggle {
 			.caret {
-				color: @studentThemeColor;
+				color: @bookThemeColor;
 			}	
 		}
 	}

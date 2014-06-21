@@ -1,6 +1,8 @@
 ﻿.widget-button {
 	border: 0;
 	border-bottom: 2px solid transparent;
+	font-family: inherit;
+	font-size: inherit;
 	margin: 0;
 	padding: 3px 0 2px 0;
 	text-align: center;
@@ -12,7 +14,7 @@
 	.widget-button {
 		background-color: @teacherThemeColor;
 		border-bottom-color: @teacherThemeColor;
-		color: #EDECEA;
+		color: #FEFEFE;
 		opacity: 1.0;
 
 		&:hover { 
@@ -23,6 +25,28 @@
 
 		&:disabled {
 			background-color: @teacherThemeColor; 
+			cursor: default;
+			opacity: 0.5;
+		}
+	}
+}
+
+#book,
+#books {
+	.widget-button {
+		background-color: @bookThemeColor;
+		border-bottom-color: @bookThemeColor;
+		color: #FEFEFE;
+		opacity: 1.0;
+
+		&:hover { 
+			background-color: @bookThemeColor2; 
+			cursor: pointer;
+			opacity: 1.0;
+		}
+
+		&:disabled {
+			background-color: @bookThemeColor; 
 			cursor: default;
 			opacity: 0.5;
 		}

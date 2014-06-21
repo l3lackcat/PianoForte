@@ -6,14 +6,13 @@ PianoForte.Directives.Widgets.MySelectDirective = function () {
     return {
         restrict: 'E',
         replace: true,
-        scope: {       
-            defaultSelectedItemId: '=',
-            defaultSelectedItemIndex: '=',
+        scope: {                   
             disabled: '=',
-            items: '=',            
+            items: '=',
+            maximumDisplayedItems: '=',
             onChanged: '&',
-            placeholder: '=',
-            showMaxItems: '=',
+            placeholder: '=',            
+            selectedItemId: '=',
             theme: '=',
             width: '='
         },

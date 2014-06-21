@@ -157,11 +157,11 @@
                 <div class="row" ng-repeat="teachedCourse in edittedTeachedCourseInfo">
                     <div class="col col-span label-value">
                         <my-select 
-                            data-default-selected-item-index="teachedCourse.index"
                             data-disabled="isOnUpdateEdittedTeachedCourseInfo"
-                            data-items="teachedCourse.courseNameList" 
-                            data-show-max-items="5"
+                            data-items="teachedCourse.courseNameList"
+                            data-maximum-displayed-items="5"                            
                             data-placeholder="'Please select...'"
+                            data-selected-item-id="teachedCourse.selectedId"
                             data-theme="'teacher'"></my-select>
                     </div>
                     <div class="col col-trash" ng-hide="isOnUpdateEdittedTeachedCourseInfo" ng-click="removeTeachedCourse($index)" title="ลบ"></div>

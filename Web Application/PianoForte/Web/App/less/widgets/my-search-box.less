@@ -59,3 +59,20 @@
 		}
 	}
 }
+
+#book,
+#books {
+	.widget-search-box {
+		> .wrapper {
+			> input[type="text"] {
+				&:focus { border-bottom-color: @bookThemeColor; }
+				&:hover { border-bottom-color: @bookThemeColor; }	
+				&:disabled { border-bottom-color: transparent; }	
+			}
+
+			> .btn-search {
+				background-image: url('../images/icons/eyeglass_15_yellow.png');
+			}
+		}
+	}
+}

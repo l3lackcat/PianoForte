@@ -41,6 +41,7 @@ goog.require('PianoForte.Directives.Widgets.MyTextBoxDirective');
 
 goog.require('PianoForte.Enum');
 
+goog.require('PianoForte.Services.BookService');
 goog.require('PianoForte.Services.CourseService');
 goog.require('PianoForte.Services.TeacherService');
 
@@ -94,7 +95,7 @@ PianoForte.App.filter('startFrom', function() {
     }
 });
 
-PianoForte.App.controller('BookMainController', ['$scope', '$rootScope', PianoForte.Controllers.Books.BookMainController]);
+PianoForte.App.controller('BookMainController', ['$scope', '$rootScope', 'filterFilter', 'BookService', 'FormatManager', PianoForte.Controllers.Books.BookMainController]);
 PianoForte.App.controller('CdMainController', ['$scope', '$rootScope', PianoForte.Controllers.Cds.CdMainController]);
 PianoForte.App.controller('CourseMainController', ['$scope', '$rootScope', PianoForte.Controllers.Courses.CourseMainController]);
 PianoForte.App.controller('StudentMainController', ['$scope', '$rootScope', PianoForte.Controllers.Students.StudentMainController]);
@@ -127,5 +128,7 @@ PianoForte.App.service('Enum', [PianoForte.Enum]);
 PianoForte.App.service('EnumConverter', ['Enum', PianoForte.Utilities.EnumConverter]);
 PianoForte.App.service('FormatManager', [PianoForte.Utilities.FormatManager]);
 PianoForte.App.service('ValidationManager', [PianoForte.Utilities.ValidationManager]);
+
+PianoForte.App.service('BookService', ['$http', PianoForte.Services.BookService]);
 PianoForte.App.service('CourseService', ['$http', PianoForte.Services.CourseService]);
 PianoForte.App.service('TeacherService', ['$http', PianoForte.Services.TeacherService]);

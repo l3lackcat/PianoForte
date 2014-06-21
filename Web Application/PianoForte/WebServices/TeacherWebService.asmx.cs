@@ -178,7 +178,7 @@ namespace PianoForte.WebServices
             {
                 foreach(string courseName in teachedCourseNameList)
                 {
-                    List<Course> courseList = CourseService.getCourseListByName(databaseName, courseName);
+                    List<Course> courseList = CourseService.getCourseListByName(databaseName, courseName, Status.ACTIVE);
                     foreach(Course course in courseList)
                     {
                         bool isSuccess = TeachedCourseService.insertTeachedCourse(databaseName, teacherId, course.Id);

@@ -1,7 +1,79 @@
-﻿<div id="books" ng-controller="BookMainController" ng-init="init()">
+﻿<div id="books" ng-controller="BookMainController" ng-init="initialize()">
     <my-tabs>
         <my-pane data-title="dashboard">
-            Books
+        	<div class="tube width-100-percent no-margin-bottom">
+        		<div class="tube width-30-percent">
+	                <my-box class="no-margin-bottom">                    
+	                    <ul class="widget-breadcrumb">
+	                        <li>books</li>
+	                        <li class="seperator">&gt;</li>
+	                        <li>dashboard</li>
+	                    </ul>
+	                </my-box>
+	            </div>
+	            <div class="tube width-70-percent">
+	                <div class="tube width-25-percent">
+	                    <!-- <my-select 
+	                        data-items="filter.dropdownList" 
+	                        data-selected-item-id="filter.dropdownSelectedId"
+	                        data-show-max-items="5"
+	                        data-placeholder="'Please select...'"
+	                        data-theme="'book'"></my-select> -->
+	                    <my-select></my-select>
+	                </div>
+	                <div class="tube width-30-percent">
+	                    <my-search-box data-text="filter.text" data-placeholder="'ค้นหาหนังสือ...'"></my-search-box>
+	                </div>
+	                <div class="tube width-20-percent">
+	                    <my-button data-text="'Stock'"></my-button>
+	                </div>
+	                <div class="tube width-25-percent">
+	                    <my-button data-text="'เพิ่มหนังสือ'"></my-button>
+	                </div>
+	            </div>
+        	</div>	            
+            <div class="clear-fix"></div>
+            <div class="tube width-100-percent no-margin-bottom">
+                <my-box class="header no-padding-right">
+                    <div class="rows">
+                        <div class="row">
+                            <div class="col col-name">ชื่อหนังสือ</div>
+                            <div class="col col-unitprice">ราคา</div>
+                            <div class="col col-quantity">คงเหลือ</div>
+                            <div class="col col-view-icon">&nbsp;</div>
+                            <div class="clear-fix"></div>
+                        </div>
+                    </div>
+                </my-box>
+            </div> 
+            <div class="clear-fix"></div>
+            <div class="tube width-100-percent no-margin-bottom fix-height">
+                <my-box class="content no-margin-bottom no-padding-top no-padding-bottom no-padding-right">
+                    <div class="rows">
+                        <div class="row" ng-repeat="book in filter.result | orderBy:'name' | startFrom:(currentPage-1)*showPerPage | limitTo:showPerPage">
+                            <div class="col col-name" title="{{book.name}}">{{book.name}}</div>
+                            <div class="col col-unitprice">{{book.unitPrice.formatted}}</div>
+                            <div class="col col-quantity">{{book.quantity}}</div>
+                            <!-- <div class="col col-view-icon"><a href="#/teachers/{{teacher.id}}">view</a></div> -->
+                            <div class="clear-fix"></div>
+                        </div>
+                    </div>
+                    <div class="pagination">
+	                    <ul>
+	                        <li ng-show="pageNumbers.length > 1">
+	                            <span class="btn-prev" ng-click="goToPrevPage(pageNumber)" title="ก่อนหน้า">&#9664;</span>
+	                        </li>
+	                        <li ng-repeat="pageNumber in pageNumbers" ng-switch on="!$last">
+	                            <span class="{{pageNumber.className}}" ng-click="goToPage(pageNumber.index)">{{pageNumber.index}}</span>
+	                            <span class="seperator" ng-switch-when="true">.</span>
+	                        </li>
+	                        <li ng-show="pageNumbers.length > 1">
+	                            <span class="btn-next" ng-click="goToNextPage(pageNumber)" title="ถัดไป">&#9654;</span>
+	                        </li>
+	                    </ul>
+	                </div>                      
+                </my-box>
+            </div>
         </my-pane>
     </my-tabs>
 </div>

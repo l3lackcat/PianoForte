@@ -14,10 +14,9 @@
                 <div class="tube width-50-percent">
                     <my-select 
                         data-items="filter.dropdownList" 
-                        data-default-selected-item-index="0"
+                        data-selected-item-id="filter.dropdownSelectedId"
                         data-show-max-items="5"
                         data-placeholder="'Please select...'"
-                        data-on-changed="onFilteredDropdownChanged(selectedIndex)"
                         data-theme="'teacher'"></my-select>
                 </div>
                 <div class="tube width-50-percent">
@@ -57,7 +56,6 @@
             <div class="tube width-100-percent fix-height">
                 <my-box class="content no-margin-bottom no-padding-top no-padding-bottom no-padding-right">
                     <div class="rows">
-                        <!-- <div class="row" ng-repeat="teacher in teacherList | orderBy:'name' | filter:filteredText | startFrom:(currentPage-1)*showPerPage | limitTo:showPerPage"> -->
                         <div class="row" ng-repeat="teacher in filter.result | orderBy:'name' | startFrom:(currentPage-1)*showPerPage | limitTo:showPerPage">
                             <div class="col col-name">{{teacher.name}}</div>
                             <div class="col col-nickname">{{teacher.nickname}}</div>

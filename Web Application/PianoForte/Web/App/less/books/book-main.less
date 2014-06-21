@@ -1,7 +1,274 @@
 ﻿#books {
+	font-size: @fontSizeM;
 	height: inherit;
 
 	my-tabs {
-		height: inherit;		
+		height: inherit;
+		
+		my-pane {
+			font-family: inherit;	
+			height: inherit;
+
+			.tab-pane { height: 100%; }
+		}		
+	}
+
+	.tube {
+		float: left;
+		font-family: inherit;
+		margin: 0 6px 12px 6px;
+
+		.widget-button {
+			font-family: @baseFontFamily;
+			font-size: inherit;
+		}
+
+		.widget-select {
+			color: #636363;
+			font-size: inherit;
+		}
+
+		.widget-search-box {
+			color: #636363;
+			font-size: inherit;
+		}
+
+		&.width-10-percent { 			
+			width: calc(~'10% - 12px'); 
+
+			&:first-child { width: calc(~'10% - 6px'); }
+			&:last-child { width: calc(~'10% - 6px'); }
+		}
+
+		&.width-20-percent { 			
+			width: calc(~'20% - 12px'); 
+
+			&:first-child { width: calc(~'20% - 6px'); }
+			&:last-child { width: calc(~'20% - 6px'); }
+		}
+
+		&.width-25-percent { 			
+			width: calc(~'25% - 12px'); 
+
+			&:first-child { width: calc(~'25% - 6px'); }
+			&:last-child { width: calc(~'25% - 6px'); }
+		}
+
+		&.width-30-percent { 			
+			width: calc(~'30% - 12px'); 
+
+			&:first-child { width: calc(~'30% - 6px'); }
+			&:last-child { width: calc(~'30% - 6px'); }
+		}
+
+		&.width-40-percent { 
+			width: calc(~'40% - 12px'); 
+
+			&:first-child { width: calc(~'40% - 6px'); }
+			&:last-child { width: calc(~'40% - 6px'); }
+		}
+
+		&.width-50-percent {
+			width: calc(~'50% - 12px');						
+
+			&:first-child { width: calc(~'50% - 6px'); }
+			&:last-child { width: calc(~'50% - 6px'); }			
+		}
+
+		&.width-60-percent { 
+			width: calc(~'60% - 12px'); 
+
+			&:first-child { width: calc(~'60% - 6px'); }
+			&:last-child { width: calc(~'60% - 6px'); }
+		}
+
+		&.width-70-percent { 
+			width: calc(~'70% - 12px'); 
+
+			&:first-child { width: calc(~'70% - 6px'); }
+			&:last-child { width: calc(~'70% - 6px'); }
+		}
+
+		&:first-child { margin: 0 6px 12px 0; }
+		&:last-child { margin: 0 0 0 6px; }
+
+		&.width-100-percent { 
+			width: 100%;
+			margin-left: 0;
+			margin-right: 0; 
+		}
+
+		&.no-margin-bottom { margin-bottom: 0; }	
+
+		&.fix-height { height: calc(~'100% - 120px'); }	
+	}			
+
+	my-box {
+		height: inherit;
+				
+		.widget-box {
+			height: 100%;
+			margin-bottom: 12px;
+
+			.box-content {
+				color: #636363;
+				height: calc(~'100% - 20px');
+
+				.rows {
+					height: calc(~'100% - 36px');					
+
+					.row {	
+						padding: 10px;						
+																	
+						.col {
+							float: left;
+							margin-right: 5px;							
+
+							&.col-name { width: calc(~'100% - 250px'); }
+
+							&.col-unitprice { width: 55px; }
+
+							&.col-quantity { width: 105px; }
+
+							&.col-view-icon { width: 30px; }
+
+							&:nth-child(4) { margin-right: 0px; }
+
+							&:hover { cursor: default; }
+						}
+		
+					}										
+				}							
+
+				.pagination {
+					padding: 4px 0 10px 0;
+					.user-select(none);
+
+					ul {
+						text-align: center;
+						
+						li {
+							color: #CCCBC9;
+							display: inline-block;
+							font-size: @fontSizeS;
+							margin-right: 5px;
+
+							span {
+								display: inline-block;
+								padding: 0 2px;
+
+								&.active { color: #989898; }
+
+								&:hover {
+									color: #989898;
+									cursor: pointer;
+								}
+
+								&.btn-prev, &.btn-next {
+									color: @bookThemeColor;
+									padding: 0;
+
+									&:hover { color: @bookThemeColor; }
+								}
+
+								&.seperator {
+									color: @bookThemeColor;
+									font-size: 22px;
+
+									&:hover {
+										color: @bookThemeColor;
+										cursor: default;
+									}
+								}
+							}											
+						}
+
+						&:hover { cursor: default; }
+					}
+				}
+			}
+		}		
+
+		&.header {
+			.box-content {
+				padding-top: 0px;
+				padding-bottom: 0px;
+
+				.rows {
+					.row {
+						width: calc(~'100% - 35px');
+
+						.col {
+							&.col-name { text-align: center; }
+
+							&.col-unitprice { text-align: center; }
+
+							&.col-quantity { text-align: center; }
+						}
+					}
+				}
+			}	
+		}
+
+		&.content {
+			.box-content {
+				height: calc(~'100%');
+
+				.rows {
+					overflow: hidden;					
+
+					&:hover {
+						overflow-y: scroll;
+					}
+
+					.row {
+						width: calc(~'100% - 20px');
+
+						.col {
+							&.col-name { 								
+								overflow: hidden;
+								text-align: left;
+								text-overflow: ellipsis;
+								white-space: nowrap;
+							}
+
+							&.col-unitprice { text-align: right; }
+
+							&.col-quantity { text-align: center; }
+						}
+					}
+				}
+			}
+		}
+
+		&.no-margin-bottom {
+			.widget-box {
+				margin-bottom: 0px;
+			}
+		}
+
+		&.no-padding-top {
+			.widget-box {
+				.box-content {
+					padding-top: 0px;
+				}
+			}
+		}
+
+		&.no-padding-bottom {
+			.widget-box {
+				.box-content {
+					padding-bottom: 0px;
+				}
+			}
+		}
+
+		&.no-padding-right {
+			.widget-box {
+				.box-content {
+					padding-right: 0px;
+				}
+			}
+		}
 	}
 }

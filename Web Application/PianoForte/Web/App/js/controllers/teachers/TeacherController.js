@@ -131,7 +131,8 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
                 }
 
                 $scope.edittedTeachedCourseInfo.push({
-                    index: teachedCourseIndex,
+                    index: $scope.edittedTeachedCourseInfo.length,
+                    selectedId: teachedCourseIndex,
                     courseNameList: tempCourseList
                 });
             };
@@ -259,17 +260,21 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
 
         for(var i = $scope.edittedTeachedCourseInfo.length - 1; i >= 0; i--) {
             var teachedCourse = $scope.edittedTeachedCourseInfo[i];
+            var selectedId = teachedCourse.selectedId;
 
-            for(var j = teachedCourse.courseNameList.length - 1; j >= 0; j--) {
-                var courseName = teachedCourse.courseNameList[j];
-                if (courseName.selected === true) {
-                    console.log(courseName);
-                    var courseNameText = courseName.text;
-                    if (newTeachedCourseList.indexOf(courseNameText) === -1) {
-                        newTeachedCourseList.push(courseNameText);
+            if (selectedId !== undefined) {
+                for(var j = teachedCourse.courseNameList.length - 1; j >= 0; j--) {
+                    var courseName = teachedCourse.courseNameList[j];
+                    if (courseName.id === selectedId) {
+                        var courseNameText = courseName.text;
+                        if (newTeachedCourseList.indexOf(courseNameText) === -1) {
+                            newTeachedCourseList.push(courseNameText);
+                        }
+
+                        break;
                     }
                 }
-            }
+            }                
         }
 
         var isDifferent = false;
@@ -381,7 +386,6 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
 
     $scope.addTeachedCourse = function () {
         var tempCourseList = [];
-        var teachedCourseIndex = -1;
 
         var courseNameListLength = $scope.courseNameList.length;
         for(var j = 0; j < courseNameListLength; j++) {
@@ -395,7 +399,8 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
         }
 
         $scope.edittedTeachedCourseInfo.push({
-            index: teachedCourseIndex,
+            index: $scope.edittedTeachedCourseInfo.length,
+            selectedId: undefined,
             courseNameList: tempCourseList
         });
     };
