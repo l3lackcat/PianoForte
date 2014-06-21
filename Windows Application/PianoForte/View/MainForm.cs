@@ -71,9 +71,9 @@ namespace PianoForte.View
             //LogManager.writeLog("Finish loading LoginForm");
 
             //LogManager.writeLog("Start loading PaymentForm");
-            paymentForm = new PaymentForm();
-            paymentForm.load(this);
-            this.initialForm(paymentForm);
+            //paymentForm = new PaymentForm();
+            //paymentForm.load(this);
+            //this.initialForm(paymentForm);
             //LogManager.writeLog("Finish loading PaymentForm");
 
             //LogManager.writeLog("Start loading StudentMainForm");
@@ -139,7 +139,7 @@ namespace PianoForte.View
 
             this.user = user;
             dailyPaymentReportForm.init(this.user.Role);
-            this.switchForm(paymentForm);
+            this.switchForm(paymentForm2);
         }
 
         public User getUser()
@@ -149,7 +149,7 @@ namespace PianoForte.View
 
         private void ToolStripButton_Home_Click(object sender, EventArgs e)
         {
-            this.switchForm(paymentForm);
+            this.switchForm(paymentForm2);
         }
 
         private void ToolStripButton_RegisterStudent_Click(object sender, EventArgs e)
@@ -158,8 +158,8 @@ namespace PianoForte.View
             Student student = studentRegisterForm.showFormDialog();
             if (student != null)
             {
-                MainForm.paymentForm.initGroupbox_Student(student.Id);
-                this.switchForm(MainForm.paymentForm);
+                MainForm.paymentForm2.setStudent(student);
+                this.switchForm(MainForm.paymentForm2);
             }
         }        
 
@@ -253,17 +253,22 @@ namespace PianoForte.View
 
             currentForm = form;            
             currentForm.Show();
+
+            if (currentForm is PaymentForm2)
+            {
+                paymentForm2.updateFocusedTextBox();
+            }
         }  
       
-        public void switchForm(PaymentForm paymentForm, Student student)
+        public void switchForm(PaymentForm2 paymentForm2, Student student)
         {
             if (currentForm != null)
             {
                 currentForm.Hide();
             }
 
-            paymentForm.initGroupbox_Student(student);
-            currentForm = paymentForm;
+            paymentForm2.setStudent(student);
+            currentForm = paymentForm2;
             currentForm.Show();
         } 
        

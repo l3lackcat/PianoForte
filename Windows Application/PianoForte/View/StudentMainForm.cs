@@ -308,9 +308,8 @@ namespace PianoForte.View
         {
             if (e.RowIndex >= 0)
             {
-                int studentId = studentList[e.RowIndex].Id;
-                MainForm.paymentForm.initGroupbox_Student(studentId);
-                this.mainForm.switchForm(MainForm.paymentForm);
+                MainForm.paymentForm2.setStudent(studentList[e.RowIndex]);
+                this.mainForm.switchForm(MainForm.paymentForm2);
             }
 
             this.Cursor = Cursors.Arrow;
@@ -381,8 +380,8 @@ namespace PianoForte.View
             Student student = studentRegisterForm.showFormDialog();
             if (student != null)
             {
-                MainForm.paymentForm.initGroupbox_Student(student.Id);
-                this.mainForm.switchForm(MainForm.paymentForm);
+                MainForm.paymentForm2.setStudent(student);
+                this.mainForm.switchForm(MainForm.paymentForm2);
             }
         }                    
     }

@@ -226,6 +226,7 @@
             // toolStripButton_CheckIn
             // 
             this.toolStripButton_CheckIn.AutoSize = false;
+            this.toolStripButton_CheckIn.Enabled = false;
             this.toolStripButton_CheckIn.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripButton_CheckIn.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_CheckIn.Image")));
             this.toolStripButton_CheckIn.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;

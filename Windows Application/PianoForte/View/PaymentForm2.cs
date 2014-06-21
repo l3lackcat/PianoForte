@@ -70,6 +70,34 @@ namespace PianoForte.View
             return quantity;
         }
 
+        public void setStudent(Student student)
+        {
+            if (student != null)
+            {
+                this.student = student;
+
+                this.TextBox_StudentNickname.Text = student.Nickname;
+                this.TextBox_StudentFullName.Text = student.Firstname + " " + student.Lastname;
+                this.TextBox_StudentPhoneNumber.Text = student.Phone1;
+
+                this.TextBox_Barcode.Focus();
+            }
+
+            this.updateButtonPay();
+        }
+
+        public void updateFocusedTextBox()
+        {
+            if (this.student == null)
+            {
+                this.TextBox_StudentId.Focus();
+            }
+            else
+            {
+                this.TextBox_Barcode.Focus();
+            }
+        }
+
         private bool updateEnrollment(Enrollment enrollment)
         {
             Product product = null;
@@ -317,19 +345,8 @@ namespace PianoForte.View
             this.TextBox_StudentFullName.Text = "";
             this.TextBox_StudentPhoneNumber.Text = "";
 
-            if (searchedStudent != null)
-            {
-                this.student = searchedStudent;
-
-                this.TextBox_StudentNickname.Text = searchedStudent.Nickname;
-                this.TextBox_StudentFullName.Text = searchedStudent.Firstname + " " + searchedStudent.Lastname;
-                this.TextBox_StudentPhoneNumber.Text = searchedStudent.Phone1;
-
-                this.TextBox_Barcode.Focus();
-            }
-
-            this.updateButtonPay();
-        }
+            setStudent(searchedStudent);
+        }        
 
         private void searchProduct(string barcode)
         {

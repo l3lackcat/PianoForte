@@ -30,22 +30,22 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentProfileForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ComboBox_Status = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
@@ -92,9 +92,21 @@
             this.label10 = new System.Windows.Forms.Label();
             this.PreviousCourseTab = new System.Windows.Forms.TabPage();
             this.DataGridView_PreviousCourse = new System.Windows.Forms.DataGridView();
+            this.PreviousCourse_EnrollmentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PreviousCourse_CourseName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PreviousCourse_CourseLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PreviousCourse_EnrolledDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PreviousCourse_Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CurrentCourseTab = new System.Windows.Forms.TabPage();
             this.Button_Add_Enrollment = new System.Windows.Forms.Button();
             this.DatagridView_CurrentCourse = new System.Windows.Forms.DataGridView();
+            this.CurrentCourse_EnrollmentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CurrentCourse_CourseName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CurrentCourse_CourseLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CurrentCourse_EnrolledDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CurrentCourse_Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CurrentCourse_TransactionButton = new System.Windows.Forms.DataGridViewImageColumn();
+            this.CurrentCourse_DeleteButton = new System.Windows.Forms.DataGridViewImageColumn();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -103,18 +115,6 @@
             this.ClassroomDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DisplayStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ViewButton = new System.Windows.Forms.DataGridViewImageColumn();
-            this.CurrentCourse_EnrollmentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CurrentCourse_CourseName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CurrentCourse_CourseLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CurrentCourse_EnrolledDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CurrentCourse_Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CurrentCourse_TransactionButton = new System.Windows.Forms.DataGridViewImageColumn();
-            this.CurrentCourse_DeleteButton = new System.Windows.Forms.DataGridViewImageColumn();
-            this.PreviousCourse_EnrollmentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PreviousCourse_CourseName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PreviousCourse_CourseLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PreviousCourse_EnrolledDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PreviousCourse_Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.PreviousCourseTab.SuspendLayout();
@@ -650,6 +650,66 @@
             this.DataGridView_PreviousCourse.TabIndex = 2;
             this.DataGridView_PreviousCourse.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_PreviousCourse_CellClick);
             // 
+            // PreviousCourse_EnrollmentId
+            // 
+            this.PreviousCourse_EnrollmentId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.PreviousCourse_EnrollmentId.DefaultCellStyle = dataGridViewCellStyle3;
+            this.PreviousCourse_EnrollmentId.HeaderText = "รหัสลงทะเบียน";
+            this.PreviousCourse_EnrollmentId.Name = "PreviousCourse_EnrollmentId";
+            this.PreviousCourse_EnrollmentId.ReadOnly = true;
+            this.PreviousCourse_EnrollmentId.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.PreviousCourse_EnrollmentId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.PreviousCourse_EnrollmentId.Width = 110;
+            // 
+            // PreviousCourse_CourseName
+            // 
+            this.PreviousCourse_CourseName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.PreviousCourse_CourseName.DefaultCellStyle = dataGridViewCellStyle4;
+            this.PreviousCourse_CourseName.HeaderText = "วิชา";
+            this.PreviousCourse_CourseName.Name = "PreviousCourse_CourseName";
+            this.PreviousCourse_CourseName.ReadOnly = true;
+            this.PreviousCourse_CourseName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.PreviousCourse_CourseName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.PreviousCourse_CourseName.Width = 125;
+            // 
+            // PreviousCourse_CourseLevel
+            // 
+            this.PreviousCourse_CourseLevel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.PreviousCourse_CourseLevel.HeaderText = "ระดับ";
+            this.PreviousCourse_CourseLevel.Name = "PreviousCourse_CourseLevel";
+            this.PreviousCourse_CourseLevel.ReadOnly = true;
+            this.PreviousCourse_CourseLevel.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.PreviousCourse_CourseLevel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.PreviousCourse_CourseLevel.Width = 160;
+            // 
+            // PreviousCourse_EnrolledDate
+            // 
+            this.PreviousCourse_EnrolledDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.PreviousCourse_EnrolledDate.DefaultCellStyle = dataGridViewCellStyle5;
+            this.PreviousCourse_EnrolledDate.HeaderText = "วันที่ลงทะเบียน";
+            this.PreviousCourse_EnrolledDate.Name = "PreviousCourse_EnrolledDate";
+            this.PreviousCourse_EnrolledDate.ReadOnly = true;
+            this.PreviousCourse_EnrolledDate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.PreviousCourse_EnrolledDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // PreviousCourse_Status
+            // 
+            this.PreviousCourse_Status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.PreviousCourse_Status.DefaultCellStyle = dataGridViewCellStyle6;
+            this.PreviousCourse_Status.HeaderText = "สถานะ";
+            this.PreviousCourse_Status.Name = "PreviousCourse_Status";
+            this.PreviousCourse_Status.ReadOnly = true;
+            this.PreviousCourse_Status.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.PreviousCourse_Status.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
             // CurrentCourseTab
             // 
             this.CurrentCourseTab.Controls.Add(this.Button_Add_Enrollment);
@@ -664,6 +724,7 @@
             // 
             // Button_Add_Enrollment
             // 
+            this.Button_Add_Enrollment.Enabled = false;
             this.Button_Add_Enrollment.Location = new System.Drawing.Point(567, 256);
             this.Button_Add_Enrollment.Name = "Button_Add_Enrollment";
             this.Button_Add_Enrollment.Size = new System.Drawing.Size(75, 25);
@@ -711,6 +772,82 @@
             this.DatagridView_CurrentCourse.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.DatagridView_CurrentCourse_CellMouseLeave);
             this.DatagridView_CurrentCourse.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DatagridView_CurrentCourse_CellMouseEnter);
             this.DatagridView_CurrentCourse.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DatagridView_CurrentCourse_CellClick);
+            // 
+            // CurrentCourse_EnrollmentId
+            // 
+            this.CurrentCourse_EnrollmentId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.CurrentCourse_EnrollmentId.DefaultCellStyle = dataGridViewCellStyle9;
+            this.CurrentCourse_EnrollmentId.HeaderText = "รหัสลงทะเบียน";
+            this.CurrentCourse_EnrollmentId.Name = "CurrentCourse_EnrollmentId";
+            this.CurrentCourse_EnrollmentId.ReadOnly = true;
+            this.CurrentCourse_EnrollmentId.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.CurrentCourse_EnrollmentId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.CurrentCourse_EnrollmentId.Width = 110;
+            // 
+            // CurrentCourse_CourseName
+            // 
+            this.CurrentCourse_CourseName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.CurrentCourse_CourseName.DefaultCellStyle = dataGridViewCellStyle10;
+            this.CurrentCourse_CourseName.HeaderText = "วิชา";
+            this.CurrentCourse_CourseName.Name = "CurrentCourse_CourseName";
+            this.CurrentCourse_CourseName.ReadOnly = true;
+            this.CurrentCourse_CourseName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.CurrentCourse_CourseName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.CurrentCourse_CourseName.Width = 125;
+            // 
+            // CurrentCourse_CourseLevel
+            // 
+            this.CurrentCourse_CourseLevel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CurrentCourse_CourseLevel.HeaderText = "ระดับ";
+            this.CurrentCourse_CourseLevel.Name = "CurrentCourse_CourseLevel";
+            this.CurrentCourse_CourseLevel.ReadOnly = true;
+            this.CurrentCourse_CourseLevel.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.CurrentCourse_CourseLevel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.CurrentCourse_CourseLevel.Width = 160;
+            // 
+            // CurrentCourse_EnrolledDate
+            // 
+            this.CurrentCourse_EnrolledDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.CurrentCourse_EnrolledDate.DefaultCellStyle = dataGridViewCellStyle11;
+            this.CurrentCourse_EnrolledDate.HeaderText = "วันที่ลงทะเบียน";
+            this.CurrentCourse_EnrolledDate.Name = "CurrentCourse_EnrolledDate";
+            this.CurrentCourse_EnrolledDate.ReadOnly = true;
+            this.CurrentCourse_EnrolledDate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.CurrentCourse_EnrolledDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // CurrentCourse_Status
+            // 
+            this.CurrentCourse_Status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.CurrentCourse_Status.DefaultCellStyle = dataGridViewCellStyle12;
+            this.CurrentCourse_Status.HeaderText = "สถานะ";
+            this.CurrentCourse_Status.Name = "CurrentCourse_Status";
+            this.CurrentCourse_Status.ReadOnly = true;
+            this.CurrentCourse_Status.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.CurrentCourse_Status.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // CurrentCourse_TransactionButton
+            // 
+            this.CurrentCourse_TransactionButton.HeaderText = "";
+            this.CurrentCourse_TransactionButton.Image = ((System.Drawing.Image)(resources.GetObject("CurrentCourse_TransactionButton.Image")));
+            this.CurrentCourse_TransactionButton.Name = "CurrentCourse_TransactionButton";
+            this.CurrentCourse_TransactionButton.ReadOnly = true;
+            this.CurrentCourse_TransactionButton.Width = 20;
+            // 
+            // CurrentCourse_DeleteButton
+            // 
+            this.CurrentCourse_DeleteButton.HeaderText = "";
+            this.CurrentCourse_DeleteButton.Image = ((System.Drawing.Image)(resources.GetObject("CurrentCourse_DeleteButton.Image")));
+            this.CurrentCourse_DeleteButton.Name = "CurrentCourse_DeleteButton";
+            this.CurrentCourse_DeleteButton.ReadOnly = true;
+            this.CurrentCourse_DeleteButton.Width = 20;
             // 
             // tabControl1
             // 
@@ -828,142 +965,6 @@
             this.ViewButton.Name = "ViewButton";
             this.ViewButton.ReadOnly = true;
             this.ViewButton.Width = 20;
-            // 
-            // CurrentCourse_EnrollmentId
-            // 
-            this.CurrentCourse_EnrollmentId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.CurrentCourse_EnrollmentId.DefaultCellStyle = dataGridViewCellStyle9;
-            this.CurrentCourse_EnrollmentId.HeaderText = "รหัสลงทะเบียน";
-            this.CurrentCourse_EnrollmentId.Name = "CurrentCourse_EnrollmentId";
-            this.CurrentCourse_EnrollmentId.ReadOnly = true;
-            this.CurrentCourse_EnrollmentId.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.CurrentCourse_EnrollmentId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.CurrentCourse_EnrollmentId.Width = 110;
-            // 
-            // CurrentCourse_CourseName
-            // 
-            this.CurrentCourse_CourseName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.CurrentCourse_CourseName.DefaultCellStyle = dataGridViewCellStyle10;
-            this.CurrentCourse_CourseName.HeaderText = "วิชา";
-            this.CurrentCourse_CourseName.Name = "CurrentCourse_CourseName";
-            this.CurrentCourse_CourseName.ReadOnly = true;
-            this.CurrentCourse_CourseName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.CurrentCourse_CourseName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.CurrentCourse_CourseName.Width = 125;
-            // 
-            // CurrentCourse_CourseLevel
-            // 
-            this.CurrentCourse_CourseLevel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.CurrentCourse_CourseLevel.HeaderText = "ระดับ";
-            this.CurrentCourse_CourseLevel.Name = "CurrentCourse_CourseLevel";
-            this.CurrentCourse_CourseLevel.ReadOnly = true;
-            this.CurrentCourse_CourseLevel.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.CurrentCourse_CourseLevel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.CurrentCourse_CourseLevel.Width = 160;
-            // 
-            // CurrentCourse_EnrolledDate
-            // 
-            this.CurrentCourse_EnrolledDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.CurrentCourse_EnrolledDate.DefaultCellStyle = dataGridViewCellStyle11;
-            this.CurrentCourse_EnrolledDate.HeaderText = "วันที่ลงทะเบียน";
-            this.CurrentCourse_EnrolledDate.Name = "CurrentCourse_EnrolledDate";
-            this.CurrentCourse_EnrolledDate.ReadOnly = true;
-            this.CurrentCourse_EnrolledDate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.CurrentCourse_EnrolledDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // CurrentCourse_Status
-            // 
-            this.CurrentCourse_Status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.CurrentCourse_Status.DefaultCellStyle = dataGridViewCellStyle12;
-            this.CurrentCourse_Status.HeaderText = "สถานะ";
-            this.CurrentCourse_Status.Name = "CurrentCourse_Status";
-            this.CurrentCourse_Status.ReadOnly = true;
-            this.CurrentCourse_Status.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.CurrentCourse_Status.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // CurrentCourse_TransactionButton
-            // 
-            this.CurrentCourse_TransactionButton.HeaderText = "";
-            this.CurrentCourse_TransactionButton.Image = ((System.Drawing.Image)(resources.GetObject("CurrentCourse_TransactionButton.Image")));
-            this.CurrentCourse_TransactionButton.Name = "CurrentCourse_TransactionButton";
-            this.CurrentCourse_TransactionButton.ReadOnly = true;
-            this.CurrentCourse_TransactionButton.Width = 20;
-            // 
-            // CurrentCourse_DeleteButton
-            // 
-            this.CurrentCourse_DeleteButton.HeaderText = "";
-            this.CurrentCourse_DeleteButton.Image = ((System.Drawing.Image)(resources.GetObject("CurrentCourse_DeleteButton.Image")));
-            this.CurrentCourse_DeleteButton.Name = "CurrentCourse_DeleteButton";
-            this.CurrentCourse_DeleteButton.ReadOnly = true;
-            this.CurrentCourse_DeleteButton.Width = 20;
-            // 
-            // PreviousCourse_EnrollmentId
-            // 
-            this.PreviousCourse_EnrollmentId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.PreviousCourse_EnrollmentId.DefaultCellStyle = dataGridViewCellStyle3;
-            this.PreviousCourse_EnrollmentId.HeaderText = "รหัสลงทะเบียน";
-            this.PreviousCourse_EnrollmentId.Name = "PreviousCourse_EnrollmentId";
-            this.PreviousCourse_EnrollmentId.ReadOnly = true;
-            this.PreviousCourse_EnrollmentId.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.PreviousCourse_EnrollmentId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.PreviousCourse_EnrollmentId.Width = 110;
-            // 
-            // PreviousCourse_CourseName
-            // 
-            this.PreviousCourse_CourseName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.PreviousCourse_CourseName.DefaultCellStyle = dataGridViewCellStyle4;
-            this.PreviousCourse_CourseName.HeaderText = "วิชา";
-            this.PreviousCourse_CourseName.Name = "PreviousCourse_CourseName";
-            this.PreviousCourse_CourseName.ReadOnly = true;
-            this.PreviousCourse_CourseName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.PreviousCourse_CourseName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.PreviousCourse_CourseName.Width = 125;
-            // 
-            // PreviousCourse_CourseLevel
-            // 
-            this.PreviousCourse_CourseLevel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.PreviousCourse_CourseLevel.HeaderText = "ระดับ";
-            this.PreviousCourse_CourseLevel.Name = "PreviousCourse_CourseLevel";
-            this.PreviousCourse_CourseLevel.ReadOnly = true;
-            this.PreviousCourse_CourseLevel.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.PreviousCourse_CourseLevel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.PreviousCourse_CourseLevel.Width = 160;
-            // 
-            // PreviousCourse_EnrolledDate
-            // 
-            this.PreviousCourse_EnrolledDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.PreviousCourse_EnrolledDate.DefaultCellStyle = dataGridViewCellStyle5;
-            this.PreviousCourse_EnrolledDate.HeaderText = "วันที่ลงทะเบียน";
-            this.PreviousCourse_EnrolledDate.Name = "PreviousCourse_EnrolledDate";
-            this.PreviousCourse_EnrolledDate.ReadOnly = true;
-            this.PreviousCourse_EnrolledDate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.PreviousCourse_EnrolledDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // PreviousCourse_Status
-            // 
-            this.PreviousCourse_Status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.PreviousCourse_Status.DefaultCellStyle = dataGridViewCellStyle6;
-            this.PreviousCourse_Status.HeaderText = "สถานะ";
-            this.PreviousCourse_Status.Name = "PreviousCourse_Status";
-            this.PreviousCourse_Status.ReadOnly = true;
-            this.PreviousCourse_Status.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.PreviousCourse_Status.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // StudentProfileForm
             // 

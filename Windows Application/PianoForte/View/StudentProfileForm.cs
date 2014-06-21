@@ -354,15 +354,15 @@ namespace PianoForte.View
                 {
                     case 5:
                         {
-                            if (this.currentEnrolledCourseList[e.RowIndex].Status == Enrollment.EnrollmentStatus.NOT_PAID.ToString())
-                            {
-                                if (ConfirmDialogBox.show("คุณต้องการทำรายการการลงทะเบียนรหัส " + this.currentEnrolledCourseList[e.RowIndex].Id.ToString() + " ใช่หรือไม่?"))
-                                {
-                                    MainForm.paymentForm.searchEnrollment(this.currentEnrolledCourseList[e.RowIndex].Id);
-                                    this.mainForm.switchForm(MainForm.paymentForm);
-                                    this.Close();
-                                }
-                            }
+                            //if (this.currentEnrolledCourseList[e.RowIndex].Status == Enrollment.EnrollmentStatus.NOT_PAID.ToString())
+                            //{
+                            //    if (ConfirmDialogBox.show("คุณต้องการทำรายการการลงทะเบียนรหัส " + this.currentEnrolledCourseList[e.RowIndex].Id.ToString() + " ใช่หรือไม่?"))
+                            //    {
+                            //        MainForm.paymentForm.searchEnrollment(this.currentEnrolledCourseList[e.RowIndex].Id);
+                            //        this.mainForm.switchForm(MainForm.paymentForm);
+                            //        this.Close();
+                            //    }
+                            //}
                         }
                         break;
                     case 6:
