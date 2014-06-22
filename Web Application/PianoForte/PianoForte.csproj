@@ -58,6 +58,7 @@
     <Content Include="WebServices\TeacherWebService.asmx" />
     <Content Include="Web\App\css\style.css" />
     <Content Include="Web\App\css\test.css" />
+    <Content Include="Web\App\fonts\fontawesome\fontawesome-webfont.svg" />
     <Content Include="Web\App\fonts\thaisansneue\thaisansneue-black-webfont.svg" />
     <Content Include="Web\App\fonts\thaisansneue\thaisansneue-bold-webfont.svg" />
     <Content Include="Web\App\fonts\thaisansneue\thaisansneue-extrabold-webfont.svg" />
@@ -2453,6 +2454,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Web\App\build-deps.js.bat" />
+    <None Include="Web\App\fonts\fontawesome\fontawesome-webfont.eot" />
+    <None Include="Web\App\fonts\fontawesome\fontawesome-webfont.ttf" />
+    <None Include="Web\App\fonts\fontawesome\fontawesome-webfont.woff" />
+    <None Include="Web\App\fonts\fontawesome\FontAwesome.otf" />
     <None Include="Web\App\fonts\thaisansneue\thaisansneue-black-webfont.eot" />
     <None Include="Web\App\fonts\thaisansneue\thaisansneue-black-webfont.ttf" />
     <None Include="Web\App\fonts\thaisansneue\thaisansneue-black-webfont.woff" />
@@ -2487,6 +2492,19 @@
     <None Include="Web\App\less\cds\cd.less" />
     <None Include="Web\App\less\courses\course-main.less" />
     <None Include="Web\App\less\courses\course.less" />
+    <None Include="Web\App\less\fontawesome\bordered-pulled.less" />
+    <None Include="Web\App\less\fontawesome\core.less" />
+    <None Include="Web\App\less\fontawesome\fixed-width.less" />
+    <None Include="Web\App\less\fontawesome\font-awesome.less" />
+    <None Include="Web\App\less\fontawesome\icons.less" />
+    <None Include="Web\App\less\fontawesome\larger.less" />
+    <None Include="Web\App\less\fontawesome\list.less" />
+    <None Include="Web\App\less\fontawesome\mixins.less" />
+    <None Include="Web\App\less\fontawesome\path.less" />
+    <None Include="Web\App\less\fontawesome\rotated-flipped.less" />
+    <None Include="Web\App\less\fontawesome\spinning.less" />
+    <None Include="Web\App\less\fontawesome\stacked.less" />
+    <None Include="Web\App\less\fontawesome\variables.less" />
     <None Include="Web\App\less\students\student-main.less" />
     <None Include="Web\App\less\students\student.less" />
     <None Include="Web\App\less\layouts\content.less" />
