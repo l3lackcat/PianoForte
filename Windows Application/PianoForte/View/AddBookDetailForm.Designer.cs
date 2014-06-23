@@ -31,8 +31,6 @@
             this.TextBox_BookName = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.TextBox_OriginalBarcode = new System.Windows.Forms.TextBox();
             this.Button_Submit = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.Button_Cancel = new System.Windows.Forms.Button();
@@ -53,7 +51,7 @@
             // TextBox_BookName
             // 
             this.TextBox_BookName.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.TextBox_BookName.Location = new System.Drawing.Point(104, 99);
+            this.TextBox_BookName.Location = new System.Drawing.Point(104, 70);
             this.TextBox_BookName.Name = "TextBox_BookName";
             this.TextBox_BookName.Size = new System.Drawing.Size(300, 23);
             this.TextBox_BookName.TabIndex = 81;
@@ -63,7 +61,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label15.Location = new System.Drawing.Point(170, 160);
+            this.label15.Location = new System.Drawing.Point(170, 131);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(28, 16);
             this.label15.TabIndex = 80;
@@ -73,35 +71,16 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label14.Location = new System.Drawing.Point(170, 131);
+            this.label14.Location = new System.Drawing.Point(170, 102);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(31, 16);
             this.label14.TabIndex = 79;
             this.label14.Text = "บาท";
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label12.Location = new System.Drawing.Point(48, 73);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(50, 16);
-            this.label12.TabIndex = 78;
-            this.label12.Text = "บาร์โค้ด";
-            // 
-            // TextBox_OriginalBarcode
-            // 
-            this.TextBox_OriginalBarcode.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.TextBox_OriginalBarcode.Location = new System.Drawing.Point(104, 70);
-            this.TextBox_OriginalBarcode.MaxLength = 13;
-            this.TextBox_OriginalBarcode.Name = "TextBox_OriginalBarcode";
-            this.TextBox_OriginalBarcode.Size = new System.Drawing.Size(100, 23);
-            this.TextBox_OriginalBarcode.TabIndex = 64;
-            // 
             // Button_Submit
             // 
             this.Button_Submit.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.Button_Submit.Location = new System.Drawing.Point(104, 186);
+            this.Button_Submit.Location = new System.Drawing.Point(104, 157);
             this.Button_Submit.Name = "Button_Submit";
             this.Button_Submit.Size = new System.Drawing.Size(60, 23);
             this.Button_Submit.TabIndex = 66;
@@ -122,7 +101,7 @@
             // Button_Cancel
             // 
             this.Button_Cancel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.Button_Cancel.Location = new System.Drawing.Point(170, 186);
+            this.Button_Cancel.Location = new System.Drawing.Point(170, 157);
             this.Button_Cancel.Name = "Button_Cancel";
             this.Button_Cancel.Size = new System.Drawing.Size(60, 23);
             this.Button_Cancel.TabIndex = 76;
@@ -144,7 +123,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.label10.ForeColor = System.Drawing.Color.Red;
-            this.label10.Location = new System.Drawing.Point(194, 160);
+            this.label10.Location = new System.Drawing.Point(194, 131);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(16, 16);
             this.label10.TabIndex = 75;
@@ -155,7 +134,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.label9.ForeColor = System.Drawing.Color.Red;
-            this.label9.Location = new System.Drawing.Point(197, 131);
+            this.label9.Location = new System.Drawing.Point(197, 102);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(16, 16);
             this.label9.TabIndex = 74;
@@ -177,7 +156,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.label13.ForeColor = System.Drawing.Color.Red;
-            this.label13.Location = new System.Drawing.Point(406, 102);
+            this.label13.Location = new System.Drawing.Point(406, 73);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(16, 16);
             this.label13.TabIndex = 72;
@@ -187,7 +166,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label7.Location = new System.Drawing.Point(55, 160);
+            this.label7.Location = new System.Drawing.Point(55, 131);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(43, 16);
             this.label7.TabIndex = 71;
@@ -197,7 +176,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label6.Location = new System.Drawing.Point(64, 131);
+            this.label6.Location = new System.Drawing.Point(64, 102);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(34, 16);
             this.label6.TabIndex = 70;
@@ -207,7 +186,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label5.Location = new System.Drawing.Point(36, 102);
+            this.label5.Location = new System.Drawing.Point(36, 73);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(62, 16);
             this.label5.TabIndex = 69;
@@ -217,16 +196,16 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label3.Location = new System.Drawing.Point(12, 44);
+            this.label3.Location = new System.Drawing.Point(48, 44);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 16);
+            this.label3.Size = new System.Drawing.Size(50, 16);
             this.label3.TabIndex = 65;
-            this.label3.Text = "บาร์โค้ดภายใน";
+            this.label3.Text = "บาร์โค้ด";
             // 
             // TextBox_BookAmount
             // 
             this.TextBox_BookAmount.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.TextBox_BookAmount.Location = new System.Drawing.Point(104, 157);
+            this.TextBox_BookAmount.Location = new System.Drawing.Point(104, 128);
             this.TextBox_BookAmount.Name = "TextBox_BookAmount";
             this.TextBox_BookAmount.Size = new System.Drawing.Size(60, 23);
             this.TextBox_BookAmount.TabIndex = 68;
@@ -236,7 +215,7 @@
             // TextBox_BookPrice
             // 
             this.TextBox_BookPrice.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.TextBox_BookPrice.Location = new System.Drawing.Point(104, 128);
+            this.TextBox_BookPrice.Location = new System.Drawing.Point(104, 99);
             this.TextBox_BookPrice.Name = "TextBox_BookPrice";
             this.TextBox_BookPrice.Size = new System.Drawing.Size(60, 23);
             this.TextBox_BookPrice.TabIndex = 67;
@@ -247,7 +226,7 @@
             // 
             this.TextBox_Barcode.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.TextBox_Barcode.Location = new System.Drawing.Point(104, 41);
-            this.TextBox_Barcode.MaxLength = 11;
+            this.TextBox_Barcode.MaxLength = 15;
             this.TextBox_Barcode.Name = "TextBox_Barcode";
             this.TextBox_Barcode.Size = new System.Drawing.Size(100, 23);
             this.TextBox_Barcode.TabIndex = 63;
@@ -258,12 +237,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(424, 221);
+            this.ClientSize = new System.Drawing.Size(424, 192);
             this.Controls.Add(this.TextBox_BookName);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.TextBox_OriginalBarcode);
             this.Controls.Add(this.Button_Submit);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.Button_Cancel);
@@ -295,8 +272,6 @@
         private System.Windows.Forms.TextBox TextBox_BookName;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox TextBox_OriginalBarcode;
         private System.Windows.Forms.Button Button_Submit;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button Button_Cancel;

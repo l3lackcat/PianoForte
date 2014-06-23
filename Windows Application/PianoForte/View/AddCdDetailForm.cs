@@ -29,7 +29,6 @@ namespace PianoForte.View
         {
             this.TextBox_CdId.Text = CdManager.getNewCdId().ToString();
             this.TextBox_Barcode.Text = "";
-            this.TextBox_OriginalBarcode.Text = "";
             this.TextBox_CdName.Text = "";
             this.TextBox_CdPrice.Text = "";
             this.TextBox_CdAmount.Text = "";

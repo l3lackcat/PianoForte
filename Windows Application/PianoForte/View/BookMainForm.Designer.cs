@@ -45,14 +45,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.ComboBox_NumberPerPage = new System.Windows.Forms.ComboBox();
             this.DataGridView_BookInfo = new System.Windows.Forms.DataGridView();
-            this.BookId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BarcodeNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BookName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BookPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ViewButton = new System.Windows.Forms.DataGridViewImageColumn();
-            this.EditButton = new System.Windows.Forms.DataGridViewImageColumn();
             this.Button_Add_Book = new System.Windows.Forms.Button();
             this.GroupBox_SearchCriteria_Book = new System.Windows.Forms.GroupBox();
             this.RadioButton_Search_BookBarcode = new System.Windows.Forms.RadioButton();
@@ -68,6 +60,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.RadioButton_Search_BookId = new System.Windows.Forms.RadioButton();
             this.RadioButton_Show_AllBook = new System.Windows.Forms.RadioButton();
+            this.BookId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BarcodeNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BookName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BookPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ViewButton = new System.Windows.Forms.DataGridViewImageColumn();
+            this.EditButton = new System.Windows.Forms.DataGridViewImageColumn();
             this.TabControl_Book.SuspendLayout();
             this.TabPage_Book_Main.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView_BookInfo)).BeginInit();
@@ -179,7 +179,7 @@
             this.BarcodeNumber,
             this.BookName,
             this.BookPrice,
-            this.Amount,
+            this.Quantity,
             this.Status,
             this.ViewButton,
             this.EditButton});
@@ -194,6 +194,182 @@
             this.DataGridView_BookInfo.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_BookInfo_CellMouseLeave);
             this.DataGridView_BookInfo.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_BookInfo_CellMouseEnter);
             this.DataGridView_BookInfo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_BookInfo_CellClick);
+            // 
+            // Button_Add_Book
+            // 
+            this.Button_Add_Book.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.Button_Add_Book.Location = new System.Drawing.Point(878, 506);
+            this.Button_Add_Book.Name = "Button_Add_Book";
+            this.Button_Add_Book.Size = new System.Drawing.Size(100, 23);
+            this.Button_Add_Book.TabIndex = 2;
+            this.Button_Add_Book.Text = "เพิ่ม";
+            this.Button_Add_Book.UseVisualStyleBackColor = true;
+            this.Button_Add_Book.Click += new System.EventHandler(this.Button_Add_Book_Click);
+            // 
+            // GroupBox_SearchCriteria_Book
+            // 
+            this.GroupBox_SearchCriteria_Book.Controls.Add(this.RadioButton_Search_BookBarcode);
+            this.GroupBox_SearchCriteria_Book.Controls.Add(this.label16);
+            this.GroupBox_SearchCriteria_Book.Controls.Add(this.TextBox_BookBarcode_ForSearch);
+            this.GroupBox_SearchCriteria_Book.Controls.Add(this.ComboBox_Status);
+            this.GroupBox_SearchCriteria_Book.Controls.Add(this.label4);
+            this.GroupBox_SearchCriteria_Book.Controls.Add(this.TextBox_BookName_ForSearch);
+            this.GroupBox_SearchCriteria_Book.Controls.Add(this.label2);
+            this.GroupBox_SearchCriteria_Book.Controls.Add(this.RadioButton_Search_Info);
+            this.GroupBox_SearchCriteria_Book.Controls.Add(this.Button_Search);
+            this.GroupBox_SearchCriteria_Book.Controls.Add(this.TextBox_BookId_ForSearch);
+            this.GroupBox_SearchCriteria_Book.Controls.Add(this.label1);
+            this.GroupBox_SearchCriteria_Book.Controls.Add(this.RadioButton_Search_BookId);
+            this.GroupBox_SearchCriteria_Book.Controls.Add(this.RadioButton_Show_AllBook);
+            this.GroupBox_SearchCriteria_Book.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.GroupBox_SearchCriteria_Book.Location = new System.Drawing.Point(6, 6);
+            this.GroupBox_SearchCriteria_Book.Name = "GroupBox_SearchCriteria_Book";
+            this.GroupBox_SearchCriteria_Book.Size = new System.Drawing.Size(972, 134);
+            this.GroupBox_SearchCriteria_Book.TabIndex = 0;
+            this.GroupBox_SearchCriteria_Book.TabStop = false;
+            this.GroupBox_SearchCriteria_Book.Text = "กำหนดข้อมูลการค้นหา";
+            // 
+            // RadioButton_Search_BookBarcode
+            // 
+            this.RadioButton_Search_BookBarcode.AutoSize = true;
+            this.RadioButton_Search_BookBarcode.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.RadioButton_Search_BookBarcode.Location = new System.Drawing.Point(209, 39);
+            this.RadioButton_Search_BookBarcode.Name = "RadioButton_Search_BookBarcode";
+            this.RadioButton_Search_BookBarcode.Size = new System.Drawing.Size(120, 20);
+            this.RadioButton_Search_BookBarcode.TabIndex = 14;
+            this.RadioButton_Search_BookBarcode.TabStop = true;
+            this.RadioButton_Search_BookBarcode.Text = "ค้นหาด้วยบาร์โค้ด";
+            this.RadioButton_Search_BookBarcode.UseVisualStyleBackColor = true;
+            this.RadioButton_Search_BookBarcode.CheckedChanged += new System.EventHandler(this.RadioButton_Search_BookBarcode_CheckedChanged);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label16.Location = new System.Drawing.Point(491, 68);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(62, 16);
+            this.label16.TabIndex = 13;
+            this.label16.Text = "ชื่อหนังสือ";
+            // 
+            // TextBox_BookBarcode_ForSearch
+            // 
+            this.TextBox_BookBarcode_ForSearch.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.TextBox_BookBarcode_ForSearch.Location = new System.Drawing.Point(282, 65);
+            this.TextBox_BookBarcode_ForSearch.MaxLength = 15;
+            this.TextBox_BookBarcode_ForSearch.Name = "TextBox_BookBarcode_ForSearch";
+            this.TextBox_BookBarcode_ForSearch.Size = new System.Drawing.Size(100, 23);
+            this.TextBox_BookBarcode_ForSearch.TabIndex = 12;
+            this.TextBox_BookBarcode_ForSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_Barcode_ForSearch_KeyDown);
+            // 
+            // ComboBox_Status
+            // 
+            this.ComboBox_Status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_Status.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.ComboBox_Status.FormattingEnabled = true;
+            this.ComboBox_Status.Location = new System.Drawing.Point(765, 65);
+            this.ComboBox_Status.Name = "ComboBox_Status";
+            this.ComboBox_Status.Size = new System.Drawing.Size(90, 24);
+            this.ComboBox_Status.TabIndex = 11;
+            this.ComboBox_Status.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComboBox_Status_KeyDown);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label4.Location = new System.Drawing.Point(715, 68);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(44, 16);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "สถานะ";
+            // 
+            // TextBox_BookName_ForSearch
+            // 
+            this.TextBox_BookName_ForSearch.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.TextBox_BookName_ForSearch.Location = new System.Drawing.Point(559, 65);
+            this.TextBox_BookName_ForSearch.Name = "TextBox_BookName_ForSearch";
+            this.TextBox_BookName_ForSearch.Size = new System.Drawing.Size(150, 23);
+            this.TextBox_BookName_ForSearch.TabIndex = 7;
+            this.TextBox_BookName_ForSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_BookName_ForSearch_KeyDown);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label2.Location = new System.Drawing.Point(226, 68);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(50, 16);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "บาร์โค้ด";
+            // 
+            // RadioButton_Search_Info
+            // 
+            this.RadioButton_Search_Info.AutoSize = true;
+            this.RadioButton_Search_Info.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.RadioButton_Search_Info.Location = new System.Drawing.Point(474, 39);
+            this.RadioButton_Search_Info.Name = "RadioButton_Search_Info";
+            this.RadioButton_Search_Info.Size = new System.Drawing.Size(140, 20);
+            this.RadioButton_Search_Info.TabIndex = 5;
+            this.RadioButton_Search_Info.Text = "ค้นหาด้วยข้อมูลทั่วไป";
+            this.RadioButton_Search_Info.UseVisualStyleBackColor = true;
+            this.RadioButton_Search_Info.CheckedChanged += new System.EventHandler(this.RadioButton_Search_Info_CheckedChanged);
+            this.RadioButton_Search_Info.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RadioButton_Search_Info_KeyDown);
+            // 
+            // Button_Search
+            // 
+            this.Button_Search.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.Button_Search.Location = new System.Drawing.Point(441, 105);
+            this.Button_Search.Name = "Button_Search";
+            this.Button_Search.Size = new System.Drawing.Size(90, 23);
+            this.Button_Search.TabIndex = 4;
+            this.Button_Search.Text = "ค้นหา";
+            this.Button_Search.UseVisualStyleBackColor = true;
+            this.Button_Search.Click += new System.EventHandler(this.Button_Search_Click);
+            // 
+            // TextBox_BookId_ForSearch
+            // 
+            this.TextBox_BookId_ForSearch.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.TextBox_BookId_ForSearch.Location = new System.Drawing.Point(97, 65);
+            this.TextBox_BookId_ForSearch.Name = "TextBox_BookId_ForSearch";
+            this.TextBox_BookId_ForSearch.Size = new System.Drawing.Size(60, 23);
+            this.TextBox_BookId_ForSearch.TabIndex = 3;
+            this.TextBox_BookId_ForSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_BookId_ForSearch_KeyDown);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label1.Location = new System.Drawing.Point(23, 68);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(68, 16);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "รหัสหนังสือ";
+            // 
+            // RadioButton_Search_BookId
+            // 
+            this.RadioButton_Search_BookId.AutoSize = true;
+            this.RadioButton_Search_BookId.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.RadioButton_Search_BookId.Location = new System.Drawing.Point(6, 39);
+            this.RadioButton_Search_BookId.Name = "RadioButton_Search_BookId";
+            this.RadioButton_Search_BookId.Size = new System.Drawing.Size(138, 20);
+            this.RadioButton_Search_BookId.TabIndex = 1;
+            this.RadioButton_Search_BookId.Text = "ค้นหาด้วยรหัสหนังสือ";
+            this.RadioButton_Search_BookId.UseVisualStyleBackColor = true;
+            this.RadioButton_Search_BookId.CheckedChanged += new System.EventHandler(this.RadioButton_Search_BookId_CheckedChanged);
+            this.RadioButton_Search_BookId.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RadioButton_Search_BookId_KeyDown);
+            // 
+            // RadioButton_Show_AllBook
+            // 
+            this.RadioButton_Show_AllBook.AutoSize = true;
+            this.RadioButton_Show_AllBook.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.RadioButton_Show_AllBook.Location = new System.Drawing.Point(6, 22);
+            this.RadioButton_Show_AllBook.Name = "RadioButton_Show_AllBook";
+            this.RadioButton_Show_AllBook.Size = new System.Drawing.Size(95, 20);
+            this.RadioButton_Show_AllBook.TabIndex = 0;
+            this.RadioButton_Show_AllBook.Text = "แสดงทั้งหมด";
+            this.RadioButton_Show_AllBook.UseVisualStyleBackColor = true;
+            this.RadioButton_Show_AllBook.CheckedChanged += new System.EventHandler(this.RadioButton_Show_AllBook_CheckedChanged);
+            this.RadioButton_Show_AllBook.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RadioButton_Show_AllBook_KeyDown);
             // 
             // BookId
             // 
@@ -248,17 +424,17 @@
             this.BookPrice.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.BookPrice.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // Amount
+            // Quantity
             // 
-            this.Amount.DataPropertyName = "amount";
+            this.Quantity.DataPropertyName = "quantity";
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.Amount.DefaultCellStyle = dataGridViewCellStyle7;
-            this.Amount.HeaderText = "คงเหลือ";
-            this.Amount.Name = "Amount";
-            this.Amount.ReadOnly = true;
-            this.Amount.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Amount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Quantity.DefaultCellStyle = dataGridViewCellStyle7;
+            this.Quantity.HeaderText = "คงเหลือ";
+            this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
+            this.Quantity.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Quantity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Status
             // 
@@ -290,182 +466,6 @@
             this.EditButton.ReadOnly = true;
             this.EditButton.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.EditButton.Width = 20;
-            // 
-            // Button_Add_Book
-            // 
-            this.Button_Add_Book.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.Button_Add_Book.Location = new System.Drawing.Point(878, 506);
-            this.Button_Add_Book.Name = "Button_Add_Book";
-            this.Button_Add_Book.Size = new System.Drawing.Size(100, 23);
-            this.Button_Add_Book.TabIndex = 2;
-            this.Button_Add_Book.Text = "เพิ่ม";
-            this.Button_Add_Book.UseVisualStyleBackColor = true;
-            this.Button_Add_Book.Click += new System.EventHandler(this.Button_Add_Book_Click);
-            // 
-            // GroupBox_SearchCriteria_Book
-            // 
-            this.GroupBox_SearchCriteria_Book.Controls.Add(this.RadioButton_Search_BookBarcode);
-            this.GroupBox_SearchCriteria_Book.Controls.Add(this.label16);
-            this.GroupBox_SearchCriteria_Book.Controls.Add(this.TextBox_BookBarcode_ForSearch);
-            this.GroupBox_SearchCriteria_Book.Controls.Add(this.ComboBox_Status);
-            this.GroupBox_SearchCriteria_Book.Controls.Add(this.label4);
-            this.GroupBox_SearchCriteria_Book.Controls.Add(this.TextBox_BookName_ForSearch);
-            this.GroupBox_SearchCriteria_Book.Controls.Add(this.label2);
-            this.GroupBox_SearchCriteria_Book.Controls.Add(this.RadioButton_Search_Info);
-            this.GroupBox_SearchCriteria_Book.Controls.Add(this.Button_Search);
-            this.GroupBox_SearchCriteria_Book.Controls.Add(this.TextBox_BookId_ForSearch);
-            this.GroupBox_SearchCriteria_Book.Controls.Add(this.label1);
-            this.GroupBox_SearchCriteria_Book.Controls.Add(this.RadioButton_Search_BookId);
-            this.GroupBox_SearchCriteria_Book.Controls.Add(this.RadioButton_Show_AllBook);
-            this.GroupBox_SearchCriteria_Book.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.GroupBox_SearchCriteria_Book.Location = new System.Drawing.Point(6, 6);
-            this.GroupBox_SearchCriteria_Book.Name = "GroupBox_SearchCriteria_Book";
-            this.GroupBox_SearchCriteria_Book.Size = new System.Drawing.Size(972, 134);
-            this.GroupBox_SearchCriteria_Book.TabIndex = 0;
-            this.GroupBox_SearchCriteria_Book.TabStop = false;
-            this.GroupBox_SearchCriteria_Book.Text = "กำหนดข้อมูลการค้นหา";
-            // 
-            // RadioButton_Search_BookBarcode
-            // 
-            this.RadioButton_Search_BookBarcode.AutoSize = true;
-            this.RadioButton_Search_BookBarcode.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.RadioButton_Search_BookBarcode.Location = new System.Drawing.Point(209, 39);
-            this.RadioButton_Search_BookBarcode.Name = "RadioButton_Search_BookBarcode";
-            this.RadioButton_Search_BookBarcode.Size = new System.Drawing.Size(120, 20);
-            this.RadioButton_Search_BookBarcode.TabIndex = 14;
-            this.RadioButton_Search_BookBarcode.TabStop = true;
-            this.RadioButton_Search_BookBarcode.Text = "ค้นหาด้วยบาร์โค้ด";
-            this.RadioButton_Search_BookBarcode.UseVisualStyleBackColor = true;
-            this.RadioButton_Search_BookBarcode.CheckedChanged += new System.EventHandler(this.RadioButton_Search_BookBarcode_CheckedChanged);
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label16.Location = new System.Drawing.Point(491, 62);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(62, 16);
-            this.label16.TabIndex = 13;
-            this.label16.Text = "ชื่อหนังสือ";
-            // 
-            // TextBox_BookBarcode_ForSearch
-            // 
-            this.TextBox_BookBarcode_ForSearch.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.TextBox_BookBarcode_ForSearch.Location = new System.Drawing.Point(282, 59);
-            this.TextBox_BookBarcode_ForSearch.MaxLength = 15;
-            this.TextBox_BookBarcode_ForSearch.Name = "TextBox_BookBarcode_ForSearch";
-            this.TextBox_BookBarcode_ForSearch.Size = new System.Drawing.Size(100, 23);
-            this.TextBox_BookBarcode_ForSearch.TabIndex = 12;
-            this.TextBox_BookBarcode_ForSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_Barcode_ForSearch_KeyDown);
-            // 
-            // ComboBox_Status
-            // 
-            this.ComboBox_Status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboBox_Status.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.ComboBox_Status.FormattingEnabled = true;
-            this.ComboBox_Status.Location = new System.Drawing.Point(765, 59);
-            this.ComboBox_Status.Name = "ComboBox_Status";
-            this.ComboBox_Status.Size = new System.Drawing.Size(90, 24);
-            this.ComboBox_Status.TabIndex = 11;
-            this.ComboBox_Status.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComboBox_Status_KeyDown);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label4.Location = new System.Drawing.Point(715, 62);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(44, 16);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "สถานะ";
-            // 
-            // TextBox_BookName_ForSearch
-            // 
-            this.TextBox_BookName_ForSearch.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.TextBox_BookName_ForSearch.Location = new System.Drawing.Point(559, 59);
-            this.TextBox_BookName_ForSearch.Name = "TextBox_BookName_ForSearch";
-            this.TextBox_BookName_ForSearch.Size = new System.Drawing.Size(150, 23);
-            this.TextBox_BookName_ForSearch.TabIndex = 7;
-            this.TextBox_BookName_ForSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_BookName_ForSearch_KeyDown);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label2.Location = new System.Drawing.Point(226, 62);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 16);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "บาร์โค้ด";
-            // 
-            // RadioButton_Search_Info
-            // 
-            this.RadioButton_Search_Info.AutoSize = true;
-            this.RadioButton_Search_Info.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.RadioButton_Search_Info.Location = new System.Drawing.Point(474, 39);
-            this.RadioButton_Search_Info.Name = "RadioButton_Search_Info";
-            this.RadioButton_Search_Info.Size = new System.Drawing.Size(140, 20);
-            this.RadioButton_Search_Info.TabIndex = 5;
-            this.RadioButton_Search_Info.Text = "ค้นหาด้วยข้อมูลทั่วไป";
-            this.RadioButton_Search_Info.UseVisualStyleBackColor = true;
-            this.RadioButton_Search_Info.CheckedChanged += new System.EventHandler(this.RadioButton_Search_Info_CheckedChanged);
-            this.RadioButton_Search_Info.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RadioButton_Search_Info_KeyDown);
-            // 
-            // Button_Search
-            // 
-            this.Button_Search.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.Button_Search.Location = new System.Drawing.Point(441, 105);
-            this.Button_Search.Name = "Button_Search";
-            this.Button_Search.Size = new System.Drawing.Size(90, 23);
-            this.Button_Search.TabIndex = 4;
-            this.Button_Search.Text = "ค้นหา";
-            this.Button_Search.UseVisualStyleBackColor = true;
-            this.Button_Search.Click += new System.EventHandler(this.Button_Search_Click);
-            // 
-            // TextBox_BookId_ForSearch
-            // 
-            this.TextBox_BookId_ForSearch.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.TextBox_BookId_ForSearch.Location = new System.Drawing.Point(97, 59);
-            this.TextBox_BookId_ForSearch.Name = "TextBox_BookId_ForSearch";
-            this.TextBox_BookId_ForSearch.Size = new System.Drawing.Size(60, 23);
-            this.TextBox_BookId_ForSearch.TabIndex = 3;
-            this.TextBox_BookId_ForSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_BookId_ForSearch_KeyDown);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label1.Location = new System.Drawing.Point(23, 62);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 16);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "รหัสหนังสือ";
-            // 
-            // RadioButton_Search_BookId
-            // 
-            this.RadioButton_Search_BookId.AutoSize = true;
-            this.RadioButton_Search_BookId.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.RadioButton_Search_BookId.Location = new System.Drawing.Point(6, 39);
-            this.RadioButton_Search_BookId.Name = "RadioButton_Search_BookId";
-            this.RadioButton_Search_BookId.Size = new System.Drawing.Size(138, 20);
-            this.RadioButton_Search_BookId.TabIndex = 1;
-            this.RadioButton_Search_BookId.Text = "ค้นหาด้วยรหัสหนังสือ";
-            this.RadioButton_Search_BookId.UseVisualStyleBackColor = true;
-            this.RadioButton_Search_BookId.CheckedChanged += new System.EventHandler(this.RadioButton_Search_BookId_CheckedChanged);
-            this.RadioButton_Search_BookId.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RadioButton_Search_BookId_KeyDown);
-            // 
-            // RadioButton_Show_AllBook
-            // 
-            this.RadioButton_Show_AllBook.AutoSize = true;
-            this.RadioButton_Show_AllBook.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.RadioButton_Show_AllBook.Location = new System.Drawing.Point(6, 22);
-            this.RadioButton_Show_AllBook.Name = "RadioButton_Show_AllBook";
-            this.RadioButton_Show_AllBook.Size = new System.Drawing.Size(95, 20);
-            this.RadioButton_Show_AllBook.TabIndex = 0;
-            this.RadioButton_Show_AllBook.Text = "แสดงทั้งหมด";
-            this.RadioButton_Show_AllBook.UseVisualStyleBackColor = true;
-            this.RadioButton_Show_AllBook.CheckedChanged += new System.EventHandler(this.RadioButton_Show_AllBook_CheckedChanged);
-            this.RadioButton_Show_AllBook.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RadioButton_Show_AllBook_KeyDown);
             // 
             // BookMainForm
             // 
@@ -506,19 +506,19 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox TextBox_BookBarcode_ForSearch;
         private System.Windows.Forms.DataGridView DataGridView_BookInfo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BookId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BarcodeNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BookName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BookPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
-        private System.Windows.Forms.DataGridViewImageColumn ViewButton;
-        private System.Windows.Forms.DataGridViewImageColumn EditButton;
         private System.Windows.Forms.Button Button_PreviousPage;
         private System.Windows.Forms.Button Button_NextPage;
         private System.Windows.Forms.TextBox TextBox_PageNumber;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox ComboBox_NumberPerPage;
         private System.Windows.Forms.RadioButton RadioButton_Search_BookBarcode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BookId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BarcodeNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BookName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BookPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        private System.Windows.Forms.DataGridViewImageColumn ViewButton;
+        private System.Windows.Forms.DataGridViewImageColumn EditButton;
     }
 }

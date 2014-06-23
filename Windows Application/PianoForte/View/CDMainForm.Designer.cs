@@ -45,14 +45,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.ComboBox_NumberPerPage = new System.Windows.Forms.ComboBox();
             this.DataGridView_CdInfo = new System.Windows.Forms.DataGridView();
-            this.CdId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BarcodeNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CdName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CdPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CdAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ViewButton = new System.Windows.Forms.DataGridViewImageColumn();
-            this.EditButton = new System.Windows.Forms.DataGridViewImageColumn();
             this.Button_Add_Cd = new System.Windows.Forms.Button();
             this.GroupBox_SearchCriteria_Book = new System.Windows.Forms.GroupBox();
             this.RadioButton_Search_CdBarcode = new System.Windows.Forms.RadioButton();
@@ -68,6 +60,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.RadioButton_Search_CdId = new System.Windows.Forms.RadioButton();
             this.RadioButton_Show_AllCd = new System.Windows.Forms.RadioButton();
+            this.CdId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BarcodeNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CdName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CdPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ViewButton = new System.Windows.Forms.DataGridViewImageColumn();
+            this.EditButton = new System.Windows.Forms.DataGridViewImageColumn();
             this.TabControl_CD.SuspendLayout();
             this.TabPage_Book_Main.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView_CdInfo)).BeginInit();
@@ -179,7 +179,7 @@
             this.BarcodeNumber,
             this.CdName,
             this.CdPrice,
-            this.CdAmount,
+            this.Quantity,
             this.Status,
             this.ViewButton,
             this.EditButton});
@@ -194,6 +194,182 @@
             this.DataGridView_CdInfo.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_CdInfo_CellMouseLeave);
             this.DataGridView_CdInfo.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_CdInfo_CellMouseEnter);
             this.DataGridView_CdInfo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_CdInfo_CellClick);
+            // 
+            // Button_Add_Cd
+            // 
+            this.Button_Add_Cd.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.Button_Add_Cd.Location = new System.Drawing.Point(878, 506);
+            this.Button_Add_Cd.Name = "Button_Add_Cd";
+            this.Button_Add_Cd.Size = new System.Drawing.Size(100, 23);
+            this.Button_Add_Cd.TabIndex = 2;
+            this.Button_Add_Cd.Text = "เพิ่ม";
+            this.Button_Add_Cd.UseVisualStyleBackColor = true;
+            this.Button_Add_Cd.Click += new System.EventHandler(this.Button_Add_Cd_Click);
+            // 
+            // GroupBox_SearchCriteria_Book
+            // 
+            this.GroupBox_SearchCriteria_Book.Controls.Add(this.RadioButton_Search_CdBarcode);
+            this.GroupBox_SearchCriteria_Book.Controls.Add(this.label15);
+            this.GroupBox_SearchCriteria_Book.Controls.Add(this.TextBox_Barcode_ForSearch);
+            this.GroupBox_SearchCriteria_Book.Controls.Add(this.ComboBox_Status);
+            this.GroupBox_SearchCriteria_Book.Controls.Add(this.label4);
+            this.GroupBox_SearchCriteria_Book.Controls.Add(this.TextBox_CdName_ForSearch);
+            this.GroupBox_SearchCriteria_Book.Controls.Add(this.label2);
+            this.GroupBox_SearchCriteria_Book.Controls.Add(this.RadioButton_Search_Info);
+            this.GroupBox_SearchCriteria_Book.Controls.Add(this.Button_Search);
+            this.GroupBox_SearchCriteria_Book.Controls.Add(this.TextBox_CdId_ForSearch);
+            this.GroupBox_SearchCriteria_Book.Controls.Add(this.label1);
+            this.GroupBox_SearchCriteria_Book.Controls.Add(this.RadioButton_Search_CdId);
+            this.GroupBox_SearchCriteria_Book.Controls.Add(this.RadioButton_Show_AllCd);
+            this.GroupBox_SearchCriteria_Book.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.GroupBox_SearchCriteria_Book.Location = new System.Drawing.Point(6, 6);
+            this.GroupBox_SearchCriteria_Book.Name = "GroupBox_SearchCriteria_Book";
+            this.GroupBox_SearchCriteria_Book.Size = new System.Drawing.Size(972, 134);
+            this.GroupBox_SearchCriteria_Book.TabIndex = 0;
+            this.GroupBox_SearchCriteria_Book.TabStop = false;
+            this.GroupBox_SearchCriteria_Book.Text = "กำหนดข้อมูลการค้นหา";
+            // 
+            // RadioButton_Search_CdBarcode
+            // 
+            this.RadioButton_Search_CdBarcode.AutoSize = true;
+            this.RadioButton_Search_CdBarcode.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.RadioButton_Search_CdBarcode.Location = new System.Drawing.Point(209, 39);
+            this.RadioButton_Search_CdBarcode.Name = "RadioButton_Search_CdBarcode";
+            this.RadioButton_Search_CdBarcode.Size = new System.Drawing.Size(120, 20);
+            this.RadioButton_Search_CdBarcode.TabIndex = 14;
+            this.RadioButton_Search_CdBarcode.TabStop = true;
+            this.RadioButton_Search_CdBarcode.Text = "ค้นหาด้วยบาร์โค้ด";
+            this.RadioButton_Search_CdBarcode.UseVisualStyleBackColor = true;
+            this.RadioButton_Search_CdBarcode.CheckedChanged += new System.EventHandler(this.RadioButton_Search_CdBarcode_CheckedChanged);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label15.Location = new System.Drawing.Point(489, 68);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(41, 16);
+            this.label15.TabIndex = 13;
+            this.label15.Text = "ชื่อซีดี";
+            // 
+            // TextBox_Barcode_ForSearch
+            // 
+            this.TextBox_Barcode_ForSearch.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.TextBox_Barcode_ForSearch.Location = new System.Drawing.Point(282, 65);
+            this.TextBox_Barcode_ForSearch.MaxLength = 15;
+            this.TextBox_Barcode_ForSearch.Name = "TextBox_Barcode_ForSearch";
+            this.TextBox_Barcode_ForSearch.Size = new System.Drawing.Size(100, 23);
+            this.TextBox_Barcode_ForSearch.TabIndex = 12;
+            this.TextBox_Barcode_ForSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_Barcode_ForSearch_KeyDown);
+            // 
+            // ComboBox_Status
+            // 
+            this.ComboBox_Status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_Status.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.ComboBox_Status.FormattingEnabled = true;
+            this.ComboBox_Status.Location = new System.Drawing.Point(742, 65);
+            this.ComboBox_Status.Name = "ComboBox_Status";
+            this.ComboBox_Status.Size = new System.Drawing.Size(90, 24);
+            this.ComboBox_Status.TabIndex = 11;
+            this.ComboBox_Status.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComboBox_Status_KeyDown);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label4.Location = new System.Drawing.Point(692, 68);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(44, 16);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "สถานะ";
+            // 
+            // TextBox_CdName_ForSearch
+            // 
+            this.TextBox_CdName_ForSearch.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.TextBox_CdName_ForSearch.Location = new System.Drawing.Point(536, 65);
+            this.TextBox_CdName_ForSearch.Name = "TextBox_CdName_ForSearch";
+            this.TextBox_CdName_ForSearch.Size = new System.Drawing.Size(150, 23);
+            this.TextBox_CdName_ForSearch.TabIndex = 7;
+            this.TextBox_CdName_ForSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_CdName_ForSearch_KeyDown);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label2.Location = new System.Drawing.Point(226, 68);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(50, 16);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "บาร์โค้ด";
+            // 
+            // RadioButton_Search_Info
+            // 
+            this.RadioButton_Search_Info.AutoSize = true;
+            this.RadioButton_Search_Info.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.RadioButton_Search_Info.Location = new System.Drawing.Point(474, 39);
+            this.RadioButton_Search_Info.Name = "RadioButton_Search_Info";
+            this.RadioButton_Search_Info.Size = new System.Drawing.Size(140, 20);
+            this.RadioButton_Search_Info.TabIndex = 5;
+            this.RadioButton_Search_Info.Text = "ค้นหาด้วยข้อมูลทั่วไป";
+            this.RadioButton_Search_Info.UseVisualStyleBackColor = true;
+            this.RadioButton_Search_Info.CheckedChanged += new System.EventHandler(this.RadioButton_Search_Info_CheckedChanged);
+            this.RadioButton_Search_Info.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RadioButton_Search_Info_KeyDown);
+            // 
+            // Button_Search
+            // 
+            this.Button_Search.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.Button_Search.Location = new System.Drawing.Point(441, 105);
+            this.Button_Search.Name = "Button_Search";
+            this.Button_Search.Size = new System.Drawing.Size(90, 23);
+            this.Button_Search.TabIndex = 4;
+            this.Button_Search.Text = "ค้นหา";
+            this.Button_Search.UseVisualStyleBackColor = true;
+            this.Button_Search.Click += new System.EventHandler(this.Button_Search_Click);
+            // 
+            // TextBox_CdId_ForSearch
+            // 
+            this.TextBox_CdId_ForSearch.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.TextBox_CdId_ForSearch.Location = new System.Drawing.Point(76, 65);
+            this.TextBox_CdId_ForSearch.Name = "TextBox_CdId_ForSearch";
+            this.TextBox_CdId_ForSearch.Size = new System.Drawing.Size(60, 23);
+            this.TextBox_CdId_ForSearch.TabIndex = 3;
+            this.TextBox_CdId_ForSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_CdId_ForSearch_KeyDown);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label1.Location = new System.Drawing.Point(23, 68);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(47, 16);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "รหัสซีดี";
+            // 
+            // RadioButton_Search_CdId
+            // 
+            this.RadioButton_Search_CdId.AutoSize = true;
+            this.RadioButton_Search_CdId.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.RadioButton_Search_CdId.Location = new System.Drawing.Point(6, 39);
+            this.RadioButton_Search_CdId.Name = "RadioButton_Search_CdId";
+            this.RadioButton_Search_CdId.Size = new System.Drawing.Size(117, 20);
+            this.RadioButton_Search_CdId.TabIndex = 1;
+            this.RadioButton_Search_CdId.Text = "ค้นหาด้วยรหัสซีดี";
+            this.RadioButton_Search_CdId.UseVisualStyleBackColor = true;
+            this.RadioButton_Search_CdId.CheckedChanged += new System.EventHandler(this.RadioButton_Search_CdId_CheckedChanged);
+            this.RadioButton_Search_CdId.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RadioButton_Search_CdId_KeyDown);
+            // 
+            // RadioButton_Show_AllCd
+            // 
+            this.RadioButton_Show_AllCd.AutoSize = true;
+            this.RadioButton_Show_AllCd.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.RadioButton_Show_AllCd.Location = new System.Drawing.Point(6, 22);
+            this.RadioButton_Show_AllCd.Name = "RadioButton_Show_AllCd";
+            this.RadioButton_Show_AllCd.Size = new System.Drawing.Size(95, 20);
+            this.RadioButton_Show_AllCd.TabIndex = 0;
+            this.RadioButton_Show_AllCd.Text = "แสดงทั้งหมด";
+            this.RadioButton_Show_AllCd.UseVisualStyleBackColor = true;
+            this.RadioButton_Show_AllCd.CheckedChanged += new System.EventHandler(this.RadioButton_Show_AllCd_CheckedChanged);
+            this.RadioButton_Show_AllCd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RadioButton_Show_AllCd_KeyDown);
             // 
             // CdId
             // 
@@ -247,17 +423,17 @@
             this.CdPrice.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.CdPrice.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // CdAmount
+            // Quantity
             // 
-            this.CdAmount.DataPropertyName = "amount";
+            this.Quantity.DataPropertyName = "quantity";
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.CdAmount.DefaultCellStyle = dataGridViewCellStyle7;
-            this.CdAmount.HeaderText = "คงเหลือ";
-            this.CdAmount.Name = "CdAmount";
-            this.CdAmount.ReadOnly = true;
-            this.CdAmount.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.CdAmount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Quantity.DefaultCellStyle = dataGridViewCellStyle7;
+            this.Quantity.HeaderText = "คงเหลือ";
+            this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
+            this.Quantity.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Quantity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Status
             // 
@@ -287,182 +463,6 @@
             this.EditButton.Name = "EditButton";
             this.EditButton.ReadOnly = true;
             this.EditButton.Width = 20;
-            // 
-            // Button_Add_Cd
-            // 
-            this.Button_Add_Cd.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.Button_Add_Cd.Location = new System.Drawing.Point(878, 506);
-            this.Button_Add_Cd.Name = "Button_Add_Cd";
-            this.Button_Add_Cd.Size = new System.Drawing.Size(100, 23);
-            this.Button_Add_Cd.TabIndex = 2;
-            this.Button_Add_Cd.Text = "เพิ่ม";
-            this.Button_Add_Cd.UseVisualStyleBackColor = true;
-            this.Button_Add_Cd.Click += new System.EventHandler(this.Button_Add_Cd_Click);
-            // 
-            // GroupBox_SearchCriteria_Book
-            // 
-            this.GroupBox_SearchCriteria_Book.Controls.Add(this.RadioButton_Search_CdBarcode);
-            this.GroupBox_SearchCriteria_Book.Controls.Add(this.label15);
-            this.GroupBox_SearchCriteria_Book.Controls.Add(this.TextBox_Barcode_ForSearch);
-            this.GroupBox_SearchCriteria_Book.Controls.Add(this.ComboBox_Status);
-            this.GroupBox_SearchCriteria_Book.Controls.Add(this.label4);
-            this.GroupBox_SearchCriteria_Book.Controls.Add(this.TextBox_CdName_ForSearch);
-            this.GroupBox_SearchCriteria_Book.Controls.Add(this.label2);
-            this.GroupBox_SearchCriteria_Book.Controls.Add(this.RadioButton_Search_Info);
-            this.GroupBox_SearchCriteria_Book.Controls.Add(this.Button_Search);
-            this.GroupBox_SearchCriteria_Book.Controls.Add(this.TextBox_CdId_ForSearch);
-            this.GroupBox_SearchCriteria_Book.Controls.Add(this.label1);
-            this.GroupBox_SearchCriteria_Book.Controls.Add(this.RadioButton_Search_CdId);
-            this.GroupBox_SearchCriteria_Book.Controls.Add(this.RadioButton_Show_AllCd);
-            this.GroupBox_SearchCriteria_Book.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.GroupBox_SearchCriteria_Book.Location = new System.Drawing.Point(6, 6);
-            this.GroupBox_SearchCriteria_Book.Name = "GroupBox_SearchCriteria_Book";
-            this.GroupBox_SearchCriteria_Book.Size = new System.Drawing.Size(972, 134);
-            this.GroupBox_SearchCriteria_Book.TabIndex = 0;
-            this.GroupBox_SearchCriteria_Book.TabStop = false;
-            this.GroupBox_SearchCriteria_Book.Text = "กำหนดข้อมูลการค้นหา";
-            // 
-            // RadioButton_Search_CdBarcode
-            // 
-            this.RadioButton_Search_CdBarcode.AutoSize = true;
-            this.RadioButton_Search_CdBarcode.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.RadioButton_Search_CdBarcode.Location = new System.Drawing.Point(209, 39);
-            this.RadioButton_Search_CdBarcode.Name = "RadioButton_Search_CdBarcode";
-            this.RadioButton_Search_CdBarcode.Size = new System.Drawing.Size(120, 20);
-            this.RadioButton_Search_CdBarcode.TabIndex = 14;
-            this.RadioButton_Search_CdBarcode.TabStop = true;
-            this.RadioButton_Search_CdBarcode.Text = "ค้นหาด้วยบาร์โค้ด";
-            this.RadioButton_Search_CdBarcode.UseVisualStyleBackColor = true;
-            this.RadioButton_Search_CdBarcode.CheckedChanged += new System.EventHandler(this.RadioButton_Search_CdBarcode_CheckedChanged);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label15.Location = new System.Drawing.Point(491, 62);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(41, 16);
-            this.label15.TabIndex = 13;
-            this.label15.Text = "ชื่อซีดี";
-            // 
-            // TextBox_Barcode_ForSearch
-            // 
-            this.TextBox_Barcode_ForSearch.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.TextBox_Barcode_ForSearch.Location = new System.Drawing.Point(282, 58);
-            this.TextBox_Barcode_ForSearch.MaxLength = 15;
-            this.TextBox_Barcode_ForSearch.Name = "TextBox_Barcode_ForSearch";
-            this.TextBox_Barcode_ForSearch.Size = new System.Drawing.Size(100, 23);
-            this.TextBox_Barcode_ForSearch.TabIndex = 12;
-            this.TextBox_Barcode_ForSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_Barcode_ForSearch_KeyDown);
-            // 
-            // ComboBox_Status
-            // 
-            this.ComboBox_Status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboBox_Status.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.ComboBox_Status.FormattingEnabled = true;
-            this.ComboBox_Status.Location = new System.Drawing.Point(744, 58);
-            this.ComboBox_Status.Name = "ComboBox_Status";
-            this.ComboBox_Status.Size = new System.Drawing.Size(90, 24);
-            this.ComboBox_Status.TabIndex = 11;
-            this.ComboBox_Status.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComboBox_Status_KeyDown);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label4.Location = new System.Drawing.Point(694, 62);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(44, 16);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "สถานะ";
-            // 
-            // TextBox_CdName_ForSearch
-            // 
-            this.TextBox_CdName_ForSearch.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.TextBox_CdName_ForSearch.Location = new System.Drawing.Point(538, 59);
-            this.TextBox_CdName_ForSearch.Name = "TextBox_CdName_ForSearch";
-            this.TextBox_CdName_ForSearch.Size = new System.Drawing.Size(150, 23);
-            this.TextBox_CdName_ForSearch.TabIndex = 7;
-            this.TextBox_CdName_ForSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_CdName_ForSearch_KeyDown);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label2.Location = new System.Drawing.Point(226, 62);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 16);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "บาร์โค้ด";
-            // 
-            // RadioButton_Search_Info
-            // 
-            this.RadioButton_Search_Info.AutoSize = true;
-            this.RadioButton_Search_Info.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.RadioButton_Search_Info.Location = new System.Drawing.Point(474, 39);
-            this.RadioButton_Search_Info.Name = "RadioButton_Search_Info";
-            this.RadioButton_Search_Info.Size = new System.Drawing.Size(140, 20);
-            this.RadioButton_Search_Info.TabIndex = 5;
-            this.RadioButton_Search_Info.Text = "ค้นหาด้วยข้อมูลทั่วไป";
-            this.RadioButton_Search_Info.UseVisualStyleBackColor = true;
-            this.RadioButton_Search_Info.CheckedChanged += new System.EventHandler(this.RadioButton_Search_Info_CheckedChanged);
-            this.RadioButton_Search_Info.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RadioButton_Search_Info_KeyDown);
-            // 
-            // Button_Search
-            // 
-            this.Button_Search.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.Button_Search.Location = new System.Drawing.Point(441, 105);
-            this.Button_Search.Name = "Button_Search";
-            this.Button_Search.Size = new System.Drawing.Size(90, 23);
-            this.Button_Search.TabIndex = 4;
-            this.Button_Search.Text = "ค้นหา";
-            this.Button_Search.UseVisualStyleBackColor = true;
-            this.Button_Search.Click += new System.EventHandler(this.Button_Search_Click);
-            // 
-            // TextBox_CdId_ForSearch
-            // 
-            this.TextBox_CdId_ForSearch.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.TextBox_CdId_ForSearch.Location = new System.Drawing.Point(76, 59);
-            this.TextBox_CdId_ForSearch.Name = "TextBox_CdId_ForSearch";
-            this.TextBox_CdId_ForSearch.Size = new System.Drawing.Size(60, 23);
-            this.TextBox_CdId_ForSearch.TabIndex = 3;
-            this.TextBox_CdId_ForSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_CdId_ForSearch_KeyDown);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label1.Location = new System.Drawing.Point(23, 62);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 16);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "รหัสซีดี";
-            // 
-            // RadioButton_Search_CdId
-            // 
-            this.RadioButton_Search_CdId.AutoSize = true;
-            this.RadioButton_Search_CdId.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.RadioButton_Search_CdId.Location = new System.Drawing.Point(6, 39);
-            this.RadioButton_Search_CdId.Name = "RadioButton_Search_CdId";
-            this.RadioButton_Search_CdId.Size = new System.Drawing.Size(117, 20);
-            this.RadioButton_Search_CdId.TabIndex = 1;
-            this.RadioButton_Search_CdId.Text = "ค้นหาด้วยรหัสซีดี";
-            this.RadioButton_Search_CdId.UseVisualStyleBackColor = true;
-            this.RadioButton_Search_CdId.CheckedChanged += new System.EventHandler(this.RadioButton_Search_CdId_CheckedChanged);
-            this.RadioButton_Search_CdId.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RadioButton_Search_CdId_KeyDown);
-            // 
-            // RadioButton_Show_AllCd
-            // 
-            this.RadioButton_Show_AllCd.AutoSize = true;
-            this.RadioButton_Show_AllCd.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.RadioButton_Show_AllCd.Location = new System.Drawing.Point(6, 22);
-            this.RadioButton_Show_AllCd.Name = "RadioButton_Show_AllCd";
-            this.RadioButton_Show_AllCd.Size = new System.Drawing.Size(95, 20);
-            this.RadioButton_Show_AllCd.TabIndex = 0;
-            this.RadioButton_Show_AllCd.Text = "แสดงทั้งหมด";
-            this.RadioButton_Show_AllCd.UseVisualStyleBackColor = true;
-            this.RadioButton_Show_AllCd.CheckedChanged += new System.EventHandler(this.RadioButton_Show_AllCd_CheckedChanged);
-            this.RadioButton_Show_AllCd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RadioButton_Show_AllCd_KeyDown);
             // 
             // CdMainForm
             // 
@@ -503,19 +503,19 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox TextBox_Barcode_ForSearch;
         private System.Windows.Forms.DataGridView DataGridView_CdInfo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CdId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BarcodeNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CdName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CdPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CdAmount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
-        private System.Windows.Forms.DataGridViewImageColumn ViewButton;
-        private System.Windows.Forms.DataGridViewImageColumn EditButton;
         private System.Windows.Forms.Button Button_PreviousPage;
         private System.Windows.Forms.Button Button_NextPage;
         private System.Windows.Forms.TextBox TextBox_PageNumber;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox ComboBox_NumberPerPage;
         private System.Windows.Forms.RadioButton RadioButton_Search_CdBarcode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CdId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BarcodeNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CdName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CdPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        private System.Windows.Forms.DataGridViewImageColumn ViewButton;
+        private System.Windows.Forms.DataGridViewImageColumn EditButton;
     }
 }

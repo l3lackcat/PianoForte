@@ -239,7 +239,7 @@
             // 
             this.TextBox_Barcode.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.TextBox_Barcode.Location = new System.Drawing.Point(104, 41);
-            this.TextBox_Barcode.MaxLength = 11;
+            this.TextBox_Barcode.MaxLength = 15;
             this.TextBox_Barcode.Name = "TextBox_Barcode";
             this.TextBox_Barcode.Size = new System.Drawing.Size(100, 23);
             this.TextBox_Barcode.TabIndex = 63;

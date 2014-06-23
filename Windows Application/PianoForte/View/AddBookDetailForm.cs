@@ -29,7 +29,6 @@ namespace PianoForte.View
         {
             this.TextBox_BookId.Text = BookManager.getNewBookId().ToString();
             this.TextBox_Barcode.Text = "";
-            this.TextBox_OriginalBarcode.Text = "";
             this.TextBox_BookName.Text = "";
             this.TextBox_BookPrice.Text = "";
             this.TextBox_BookAmount.Text = "";
@@ -105,7 +104,6 @@ namespace PianoForte.View
                 newBook.Id = Convert.ToInt32(this.TextBox_BookId.Text);
                 newBook.Type = Product.ProductType.BOOK.ToString();
                 newBook.Barcode = this.TextBox_Barcode.Text;
-                newBook.OriginalBarcode = this.TextBox_OriginalBarcode.Text;
                 newBook.Name = this.TextBox_BookName.Text;
                 newBook.Price = Convert.ToDouble(this.TextBox_BookPrice.Text);
                 newBook.Quantity = Convert.ToInt32(this.TextBox_BookAmount.Text);
