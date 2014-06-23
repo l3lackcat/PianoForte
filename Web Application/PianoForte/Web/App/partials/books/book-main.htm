@@ -2,7 +2,7 @@
     <my-tabs>
         <my-pane data-title="dashboard">
         	<div class="tube width-100-percent no-margin-bottom">
-        		<div class="tube width-30-percent">
+        		<div class="tube width-25-percent">
 	                <my-box class="no-margin-bottom">                    
 	                    <ul class="widget-breadcrumb">
 	                        <li>books</li>
@@ -11,7 +11,7 @@
 	                    </ul>
 	                </my-box>
 	            </div>
-	            <div class="tube width-70-percent">
+	            <div class="tube width-75-percent">
 	                <div class="tube width-25-percent">
 	                    <!-- <my-select 
 	                        data-items="filter.dropdownList" 
@@ -37,10 +37,13 @@
                 <my-box class="header no-padding-right">
                     <div class="rows">
                         <div class="row">
+                        	<div class="col col-barcode">หมายเลขบาร์โค้ด</div>
                             <div class="col col-name">ชื่อหนังสือ</div>
                             <div class="col col-unitprice">ราคา</div>
                             <div class="col col-quantity">คงเหลือ</div>
-                            <div class="col col-view-icon">&nbsp;</div>
+                            <div class="col col-status">&nbsp;</div>
+                            <div class="col col-view">&nbsp;</div>
+                            <div class="col col-upd-stock">&nbsp;</div>
                             <div class="clear-fix"></div>
                         </div>
                     </div>
@@ -51,10 +54,14 @@
                 <my-box class="content no-margin-bottom no-padding-top no-padding-bottom no-padding-right">
                     <div class="rows">
                         <div class="row" ng-repeat="book in filter.result | orderBy:'name' | startFrom:(currentPage-1)*showPerPage | limitTo:showPerPage">
+                            <div class="col col-barcode">{{book.barcode}}</div>
                             <div class="col col-name" title="{{book.name}}">{{book.name}}</div>
-                            <div class="col col-unitprice">{{book.unitPrice.formatted}}</div>
+                            <div class="col col-unitprice">{{book.unitPrice.raw}}</div>
                             <div class="col col-quantity">{{book.quantity}}</div>
-                            <!-- <div class="col col-view-icon"><a href="#/teachers/{{teacher.id}}">view</a></div> -->
+                            <div class="col col-status status-{{book.status}}"><i class="fa fa-circle"></i></div>
+                            <div class="col col-view"><a href="#/books/{{book.id}}"><i class="fa fa-th-list"></i></a></div>
+                            <div class="col col-upd-stock"><i class="fa fa-archive"></i></div>
+                            <!-- <div class="col col-view-icon"></div> -->
                             <div class="clear-fix"></div>
                         </div>
                     </div>

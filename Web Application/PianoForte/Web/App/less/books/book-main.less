@@ -89,6 +89,13 @@
 			&:last-child { width: calc(~'70% - 6px'); }
 		}
 
+		&.width-75-percent { 
+			width: calc(~'75% - 12px'); 
+
+			&:first-child { width: calc(~'75% - 6px'); }
+			&:last-child { width: calc(~'75% - 6px'); }
+		}
+
 		&:first-child { margin: 0 6px 12px 0; }
 		&:last-child { margin: 0 0 0 6px; }
 
@@ -115,7 +122,7 @@
 				height: calc(~'100% - 20px');
 
 				.rows {
-					height: calc(~'100% - 36px');					
+					height: calc(~'100% - 36px');
 
 					.row {	
 						padding: 10px;						
@@ -124,19 +131,22 @@
 							float: left;
 							margin-right: 5px;							
 
-							&.col-name { width: calc(~'100% - 250px'); }
+							&.col-barcode { width: 115px; }
 
-							&.col-unitprice { width: 55px; }
+							&.col-name { width: calc(~'100% - 340px'); }
 
-							&.col-quantity { width: 105px; }
+							&.col-unitprice { width: 35px; }
 
-							&.col-view-icon { width: 30px; }
+							&.col-quantity { width: 85px; }
 
-							&:nth-child(4) { margin-right: 0px; }
+							&.col-status { width: 25px; }
 
-							&:hover { cursor: default; }
-						}
-		
+							&.col-view { width: 25px; }
+
+							&.col-upd-stock { width: 25px; }
+
+							&:nth-child(7) { margin-right: 0px; }							
+						}	
 					}										
 				}							
 
@@ -196,7 +206,7 @@
 
 				.rows {
 					.row {
-						width: calc(~'100% - 35px');
+						width: calc(~'100% - 20px');
 
 						.col {
 							&.col-name { text-align: center; }
@@ -205,6 +215,8 @@
 
 							&.col-quantity { text-align: center; }
 						}
+
+						&:hover { cursor: default; }
 					}
 				}
 			}	
@@ -215,7 +227,7 @@
 				height: calc(~'100%');
 
 				.rows {
-					overflow: hidden;					
+					overflow: hidden;									
 
 					&:hover {
 						overflow-y: scroll;
@@ -235,6 +247,28 @@
 							&.col-unitprice { text-align: right; }
 
 							&.col-quantity { text-align: center; }
+							
+							&.col-status { 
+								text-align: center;
+
+								&.status-5 { color: #C2E3A0; }
+								&.status-6 { color: #C8C8C8; }
+								&.status-7 { color: #EAA079; }
+							}
+
+							&.col-view,
+							&.col-view > a,
+							&.col-upd-stock { 
+								color: @bookThemeColor;
+								text-align: center;
+
+								i:hover { cursor: pointer; } 
+						 	}
+						}
+
+						&:hover { 
+							background-color: #FCF7EC;
+							cursor: default; 
 						}
 					}
 				}

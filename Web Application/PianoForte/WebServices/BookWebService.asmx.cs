@@ -29,6 +29,7 @@ namespace PianoForte.WebServices
                 displayedBookList.Add(new
                 {
                     id = book.Id,
+                    barcode = book.OriginalBarcode != "" ? book.OriginalBarcode : book.InternalBarcode,
                     name = book.Name,
                     unitPrice = new{
                         raw = book.UnitPrice,
