@@ -1,0 +1,10 @@
+﻿<div class="widget-dropdown-menu overlay" ng-show="visible">
+	<div class="dropdown-menu">	
+		<!-- <input type="text" ng-model="" ng-show="" /> -->
+		<div class="items">
+			<div class="item" ng-repeat="item in items" ng-click="select(item)" ng-switch on="item.excluded">
+	            <span ng-switch-when="false">{{item.text}}</span>
+	        </div>
+		</div> 
+	</div>
+</div>	

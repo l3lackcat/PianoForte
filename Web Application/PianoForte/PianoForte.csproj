@@ -101,6 +101,7 @@
     <Content Include="Web\App\js\controllers\students\StudentController.js" />
     <Content Include="Web\App\js\controllers\widgets\my-checkbox\MyCheckboxController.js" />
     <Content Include="Web\App\js\controllers\widgets\my-button\MyButtonController.js" />
+    <Content Include="Web\App\js\controllers\widgets\my-dropdown-menu\MyDropdownMenuController.js" />
     <Content Include="Web\App\js\controllers\widgets\my-select\MySelectController.js" />
     <Content Include="Web\App\js\controllers\widgets\my-search-box\MySearchBoxController.js" />
     <Content Include="Web\App\js\controllers\widgets\my-text-box\MyTextBoxController.js" />
@@ -112,6 +113,7 @@
     <Content Include="Web\App\js\controllers\widgets\my-tabs\MyTabsController.js" />
     <Content Include="Web\App\js\directives\widgets\my-checkbox\MyCheckboxDirective.js" />
     <Content Include="Web\App\js\directives\widgets\my-button\MyButtonDirective.js" />
+    <Content Include="Web\App\js\directives\widgets\my-dropdown-menu\MyDropdownMenuDirective.js" />
     <Content Include="Web\App\js\directives\widgets\my-scrollbar\MyScrollbarDirective.js" />
     <Content Include="Web\App\js\directives\widgets\my-select\MySelectDirective.js" />
     <Content Include="Web\App\js\directives\widgets\my-search-box\MySearchBoxDirective.js" />
@@ -2057,6 +2059,7 @@
     <Content Include="Web\App\partials\students\student-main.htm" />
     <Content Include="Web\App\partials\widgets\my-checkbox\my-checkbox.htm" />
     <Content Include="Web\App\partials\widgets\my-button\my-button.htm" />
+    <Content Include="Web\App\partials\widgets\my-dropdown-menu\my-dropdown-menu.htm" />
     <Content Include="Web\App\partials\widgets\my-select\my-select.htm" />
     <Content Include="Web\App\partials\widgets\my-search-box\my-search-box.htm" />
     <Content Include="Web\App\partials\widgets\my-text-box\my-text-box.htm" />
@@ -2509,12 +2512,13 @@
     <None Include="Web\App\less\students\student.less" />
     <None Include="Web\App\less\layouts\content.less" />
     <None Include="Web\App\less\layouts\content-col.less" />
+    <None Include="Web\App\less\widgets\my-overlay.less" />
     <None Include="Web\App\less\widgets\my-checkbox.less" />
     <None Include="Web\App\less\widgets\my-button.less" />
     <None Include="Web\App\less\widgets\my-select.less" />
     <None Include="Web\App\less\widgets\my-search-box.less" />
     <None Include="Web\App\less\widgets\my-breadcrumb.less" />
-    <None Include="Web\App\less\widgets\my-dropdown.less" />
+    <None Include="Web\App\less\widgets\my-dropdown-menu.less" />
     <None Include="Web\App\less\widgets\my-text-box.less" />
     <None Include="Web\App\less\widgets\my-left-menu.less" />
     <None Include="Web\App\less\layouts\left-col.less" />

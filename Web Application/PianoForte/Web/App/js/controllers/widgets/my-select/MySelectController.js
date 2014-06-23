@@ -4,30 +4,27 @@ goog.provide('PianoForte.Controllers.Widgets.MySelectController');
 
 PianoForte.Controllers.Widgets.MySelectController = function ($scope, $attrs, $element, $document) {
     $scope['selectedItem'] = null;
-    $scope['isMenuVisible'] = false;
+    $scope['dropdownMenu'] = null;
 
     var selectElement = null;
     var buttonElement = null;
     var textElement = null;
     var placeHolderElement = null;
     var caretElement = null;
-    var dropdownElement = null;
 
     $scope.initialize = function () {
         selectElement = $element[0];
-        dropdownElement = selectElement.children[1];
         buttonElement = selectElement.children[0];
         textElement = buttonElement.children[0];
         placeHolderElement = buttonElement.children[1];
         caretElement = buttonElement.children[2];
 
-        updateTheme();
         updateLayout();
         addEventsListen();
     };
 
     $scope.toggleDropdownMenu = function () {
-        if ($scope['isMenuVisible'] === false) {
+        if ($scope['dropdownMenu']['visible'] === false) {
             $scope.showDropdownMenu();
         } else {
             $scope.hideDropdownMenu();
@@ -35,29 +32,40 @@ PianoForte.Controllers.Widgets.MySelectController = function ($scope, $attrs, $e
     };
 
     $scope.showDropdownMenu = function () {
-        if (($scope['disabled'] === undefined) || ($scope['disabled'] === false)) {
-            var selectElementOffset = selectElement.getBoundingClientRect();
-            if (selectElementOffset !== undefined) {
-                dropdownElement.style.top = (selectElementOffset.top + selectElement.clientHeight) + 'px';
-                dropdownElement.style.left = selectElementOffset.left + 'px';
-                document.body.appendChild(dropdownElement);
+        if ($scope['dropdownMenu'] !== null) {
+            if (($scope['disabled'] === undefined) || ($scope['disabled'] === false)) {
+                var selectElementOffset = selectElement.getBoundingClientRect();
+                if (selectElementOffset !== undefined) {
+                    var widgetDropdownMenuElement = $scope['dropdownMenu']['element'];
+                    if (dropdownMenuElement !== null) {
+                        var dropdownMenuElement = widgetDropdownMenuElement.children[0];
+                        if (dropdownMenuElement !== undefined) {
+                            dropdownMenuElement.style.top = (selectElementOffset.top + selectElement.clientHeight) + 'px';
+                            dropdownMenuElement.style.left = selectElementOffset.left + 'px';
+                        }
 
-                $scope['isMenuVisible'] = true;
-            }
-        }
+                        document.body.appendChild(widgetDropdownMenuElement);
+                        $scope['dropdownMenu']['visible'] = true;
+                    }                    
+                }
+            } 
+        }                
     };
 
     $scope.hideDropdownMenu = function () {
-        if ($scope['isMenuVisible'] === true) {
-            $scope['isMenuVisible'] = false;
-            selectElement.appendChild(dropdownElement);
-        }
+        if ($scope['dropdownMenu'] !== null) {
+            if ($scope['dropdownMenu']['visible'] === true) {
+                $scope['dropdownMenu']['visible'] = false;
+
+                selectElement.appendChild($scope['dropdownMenu']['element']);
+            }
+        }            
     };
 
     $scope.select = function (selectedItem) {
         $scope.selectedItemId = selectedItem.id;
         $scope.hideDropdownMenu();
-    }
+    };
 
     $scope.$watch('disabled', function (newValue, oldValue) {
         if (newValue === true) {
@@ -85,53 +93,58 @@ PianoForte.Controllers.Widgets.MySelectController = function ($scope, $attrs, $e
         }
     });
 
-    $scope.$on('onScroll', function (scope, scrolledElementName) {
-        if (scrolledElementName === 'MyDialogBoxContent') {
-            $scope.hideDropdownMenu();
-            $scope.$apply();
-        }        
-    }, true);
+    this.setDropdownMenu = function(dropdownMenu) {
+        if ($scope['dropdownMenu'] === null) {
+            $scope['dropdownMenu'] = dropdownMenu;
+            $scope['dropdownMenu']['filterable'] = $scope['filterable'];
+            $scope['dropdownMenu']['items'] = $scope['items'];
+            $scope['dropdownMenu']['maximumDisplayedItems'] = $scope['maximumDisplayedItems'];
+            $scope['dropdownMenu']['visible'] = false;
 
-    function updateTheme() {
-        dropdownElement.className = dropdownElement.className + ' ' + $scope['theme'];
+            $scope['dropdownMenu'].setTheme($scope['theme']);
+            $scope['dropdownMenu'].setWidth(selectElement.clientWidth);
+            $scope['dropdownMenu'].updateHeight();
+        }
     };
 
     function updateLayout() {
-        adjustWidth();
-        adjustDropdownMenuHeight();
-    };
-
-    function adjustWidth() {
-        var elementWidth = $scope['width'];       
-        if (elementWidth !== undefined) {
-            selectElement.style.width = elementWidth + 'px';
+        var customizedWidth = $scope['width'];       
+        if (customizedWidth !== undefined) {
+            setSelectElementWidth(customizedWidth);
         }
 
-        textElement.style.width = (selectElement.clientWidth - caretElement.clientWidth - 12) + 'px';
-        placeHolderElement.style.width = (selectElement.clientWidth - caretElement.clientWidth - 12) + 'px';
-        dropdownElement.style.width = selectElement.clientWidth + 'px';
+        var textElementWidth = selectElement.clientWidth - caretElement.clientWidth - 12;
+
+        setTextElementWidth(textElementWidth);
+        setPlaceHolderElementWidth(textElementWidth)
     };
 
-    function adjustDropdownMenuHeight() {
-        var maximumDisplayedItems = $scope.maximumDisplayedItems;
-        if (maximumDisplayedItems !== undefined) {
-            var numberOfItems = $scope.items.length;
-            if (numberOfItems < maximumDisplayedItems) {
-                dropdownElement.style.height = (numberOfItems * 26) + 'px';
-            } else {
-                dropdownElement.style.height = (maximumDisplayedItems * 26) + 'px';
-            }
-        }
+    function setSelectElementWidth(width) {
+        selectElement.style.width = width + 'px';
+    };
+
+    function setTextElementWidth(width) {
+        textElement.style.width = width + 'px';
+    };
+
+    function setPlaceHolderElementWidth(width) {
+        placeHolderElement.style.width = width + 'px';
     };
 
     function addEventsListen() {
-        $document.bind('click', onClick);
+        document.addEventListener('click', onDocumentClicked);
+        window.addEventListener('resize', onWindowResized); 
     };
 
-    function onClick(e) {
+    function onDocumentClicked(e) {
         if (selectElement.contains(e.target) === false) {
             $scope.hideDropdownMenu();
             $scope.$apply();
         }
+    };
+
+    function onWindowResized(e) {
+        $scope.hideDropdownMenu();
+        $scope.$apply();
     };
 };

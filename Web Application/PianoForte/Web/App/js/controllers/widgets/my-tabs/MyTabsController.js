@@ -14,7 +14,7 @@ PianoForte.Controllers.Widgets.MyTabsController = function ($scope, $attrs, $ele
     };
 
     this.addPane = function (pane) {
-        if (panes.length == 0) {
+        if (panes.length === 0) {
             $scope.select(pane);
         }
 

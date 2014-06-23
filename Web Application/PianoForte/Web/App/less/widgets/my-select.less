@@ -47,47 +47,6 @@
 	}
 }
 
-body {
-	.dropdown-menu {
-		padding: 5px 0;
-		position: absolute;			
-		opacity: 0.9;
-		overflow-y: auto;
-		z-index: 10;
-
-		.items {
-			.item {
-				color: #FFF;
-				font-size: @fontSizeM;
-				overflow: hidden;
-				padding: 5px;
-				text-overflow: ellipsis;
-				white-space: nowrap;
-
-				&:hover {					
-					cursor: default;
-				}
-			}
-		}
-
-		&.teacher {
-			background-color: @teacherThemeColor;
-
-			.items {
-				.item:hover { background-color: @teacherThemeColor2; }
-			}
-		}
-
-		&.book {
-			background-color: @bookThemeColor;
-
-			.items {
-				.item:hover { background-color: @bookThemeColor2; }
-			}
-		}
-	}
-}
-
 #teacher,
 #teachers {
 	.widget-select {
