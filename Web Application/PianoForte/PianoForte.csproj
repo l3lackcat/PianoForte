@@ -2512,6 +2512,7 @@
     <None Include="Web\App\less\students\student.less" />
     <None Include="Web\App\less\layouts\content.less" />
     <None Include="Web\App\less\layouts\content-col.less" />
+    <None Include="Web\App\less\widgets\my-dialog-box.less" />
     <None Include="Web\App\less\widgets\my-overlay.less" />
     <None Include="Web\App\less\widgets\my-checkbox.less" />
     <None Include="Web\App\less\widgets\my-button.less" />
@@ -2529,7 +2530,6 @@
     <None Include="Web\App\less\font.less" />
     <None Include="Web\App\less\mixins.less" />
     <None Include="Web\App\less\reset.less" />
-    <None Include="Web\App\less\widgets\my-dialog-box.less" />
     <None Include="Web\App\less\widgets\my-box.less" />
     <None Include="Web\App\less\widgets\my-tabs.less" />
     <None Include="Web\App\libs\angular-ui\utils\0.1.1\.travis.yml" />

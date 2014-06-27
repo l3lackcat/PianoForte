@@ -258,6 +258,7 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
     $scope.onSubmitEditTeachedCourseInfo = function () {
         var newTeachedCourseList = [];
 
+        console.log($scope.edittedTeachedCourseInfo);
         for(var i = $scope.edittedTeachedCourseInfo.length - 1; i >= 0; i--) {
             var teachedCourse = $scope.edittedTeachedCourseInfo[i];
             var selectedId = teachedCourse.selectedId;
@@ -268,6 +269,7 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
                     if (courseName.id === selectedId) {
                         var courseNameText = courseName.text;
                         if (newTeachedCourseList.indexOf(courseNameText) === -1) {
+                            console.log(courseNameText);
                             newTeachedCourseList.push(courseNameText);
                         }
 
@@ -304,6 +306,7 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
         }
 
         if (isDifferent === true) {
+            console.log(newTeachedCourseList);
             $scope.isOnUpdateEdittedTeachedCourseInfo = true;
             TeacherService.updateTeachedCourseInfo($scope.teacher.id, newTeachedCourseList, onSuccessUpdateTeachedCourseInfo, onErrorUpdateTeachedCourseInfo);
         }

@@ -108,7 +108,7 @@ PianoForte.App.controller('MyBoxController', ['$scope', PianoForte.Controllers.W
 PianoForte.App.controller('MyButtonController', ['$scope', '$attrs', '$element', PianoForte.Controllers.Widgets.MyButtonController]);
 PianoForte.App.controller('MyCheckboxController', ['$scope', '$attrs', '$element', PianoForte.Controllers.Widgets.MyCheckboxController]);
 PianoForte.App.controller('MyDialogBoxController', ['$scope', '$attrs', '$element', '$rootScope', PianoForte.Controllers.Widgets.MyDialogBoxController]);
-PianoForte.App.controller('MyDropdownMenuController', ['$scope', '$attrs', '$element', '$document', PianoForte.Controllers.Widgets.MyDropdownMenuController]);
+PianoForte.App.controller('MyDropdownMenuController', ['$scope', '$attrs', '$element', '$document', 'filterFilter', PianoForte.Controllers.Widgets.MyDropdownMenuController]);
 PianoForte.App.controller('MyLeftMenuController', ['$scope', '$attrs', '$element', PianoForte.Controllers.Widgets.MyLeftMenuController]);
 PianoForte.App.controller('MySearchBoxController', ['$scope', '$attrs', '$element', PianoForte.Controllers.Widgets.MySearchBoxController]);
 PianoForte.App.controller('MySelectController', ['$scope', '$attrs', '$element', '$document', PianoForte.Controllers.Widgets.MySelectController]);

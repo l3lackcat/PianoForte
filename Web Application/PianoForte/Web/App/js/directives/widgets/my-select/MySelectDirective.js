@@ -8,6 +8,7 @@ PianoForte.Directives.Widgets.MySelectDirective = function () {
         replace: true,
         scope: {                   
             disabled: '=',
+            filterable: '=',
             items: '=',
             maximumDisplayedItems: '=',
             onChanged: '&',

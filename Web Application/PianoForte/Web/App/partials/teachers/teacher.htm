@@ -158,11 +158,12 @@
                     <div class="col col-span label-value">
                         <my-select 
                             data-disabled="isOnUpdateEdittedTeachedCourseInfo"
+                            data-filterable="true"
                             data-items="teachedCourse.courseNameList"
                             data-maximum-displayed-items="5"                            
                             data-placeholder="'Please select...'"
                             data-selected-item-id="teachedCourse.selectedId"
-                            data-theme="'teacher'"></my-select>
+                            data-theme="'theme-teacher'"></my-select>
                     </div>
                     <div class="col col-trash" ng-hide="isOnUpdateEdittedTeachedCourseInfo" ng-click="removeTeachedCourse($index)" title="ลบ"></div>
                     <div class="clear-fix"></div>

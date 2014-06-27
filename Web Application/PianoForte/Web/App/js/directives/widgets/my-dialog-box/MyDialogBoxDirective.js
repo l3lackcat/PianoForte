@@ -8,6 +8,7 @@ PianoForte.Directives.Widgets.MyDialogBoxDirective = function () {
         transclude: true,
         scope: {
             disabled: '=',
+            filterable: '=',
             title: '=',
             submit: '&',
             close: '&',

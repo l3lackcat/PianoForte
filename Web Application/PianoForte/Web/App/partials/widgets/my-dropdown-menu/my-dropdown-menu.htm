@@ -1,10 +1,16 @@
 ﻿<div class="widget-dropdown-menu overlay" ng-show="visible">
 	<div class="dropdown-menu">	
-		<!-- <input type="text" ng-model="" ng-show="" /> -->
+		<div class="filter-wrapper" ng-show="filterable">
+	        <input type="text" ng-model="filter.text" placeholder="Search..." />
+	        <div class="icon-search"><i class="fa fa-search"></i></div>
+		</div>
 		<div class="items">
-			<div class="item" ng-repeat="item in items" ng-click="select(item)" ng-switch on="item.excluded">
+			<div class="item" ng-repeat="item in filter.result" ng-click="select(item)" ng-switch on="item.excluded">
 	            <span ng-switch-when="false">{{item.text}}</span>
-	        </div>
+	        </div>	        
 		</div> 
+		<div class="no-result" ng-show="filter.result.length == 0">
+        	<span>No results match {{'"' + filter.text + '"'}}</span>
+        </div>
 	</div>
 </div>	

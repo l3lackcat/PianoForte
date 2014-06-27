@@ -1,19 +1,65 @@
 ﻿.widget-dropdown-menu {
+	font-family: inherit;
+	font-size: @fontSizeM;
+
 	&.overlay {
 		background: rgba(255,255,55,0);
 	}
 
 	.dropdown-menu {
-		padding: 5px 0;
+		font-family: inherit;
+		font-size: inherit;
+		padding: 3px 0;
 		position: relative;		
-		opacity: 0.9;
-		overflow-y: auto;
+		opacity: 0.9;		
 		z-index: 10;
 
+		.filter-wrapper {
+			background-color: #FFF;
+			font-family: inherit;
+			font-size: inherit;
+			margin: 0 3px 3px 3px;
+			padding: 0 0 0 3px;
+			opacity: 0.8;
+
+			&:hover {					
+				cursor: default;
+			}
+
+			input[type="text"] {
+				background-color: transparent;
+				border: 0;
+				color: #707070;
+				display: inline-block;
+				font-family: inherit;
+				font-size: inherit;
+				margin: 0;
+				opacity: 1.0;
+				padding: 0 0 0 0;
+				width: calc(~'100% - 25px');
+				
+				&::-webkit-input-placeholder {
+					font-style: italic;
+				}
+			}
+
+			.icon-search {
+				display: inline-block;				
+				font-size: inherit;	
+				line-height: 26px;			
+				opacity: 1.0;
+				text-align: right;
+			}
+		}
+
 		.items {
+			font-size: inherit;
+			overflow-y: auto;
+			margin: 0 3px;
+
 			.item {
 				color: #FFF;
-				font-size: @fontSizeM;
+				font-size: inherit;
 				overflow: hidden;
 				padding: 5px;
 				text-overflow: ellipsis;
@@ -25,8 +71,25 @@
 			}
 		}
 
+		.no-result {
+			color: #FFF;
+			font-family: inherit;
+			font-size: inherit;
+			margin: 0 3px;
+			overflow: hidden;
+			padding: 5px;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+
 		&.theme-teacher {
 			background-color: @teacherThemeColor;
+
+			.filter-wrapper {
+				.icon-search {
+					color: @teacherThemeColor;
+				}				
+			}
 
 			.items {
 				.item:hover { background-color: @teacherThemeColor2; }
@@ -35,6 +98,12 @@
 
 		&.theme-book {
 			background-color: @bookThemeColor;
+
+			.filter-wrapper {
+				.icon-search {
+					color: @bookThemeColor;
+				}				
+			}
 
 			.items {
 				.item:hover { background-color: @bookThemeColor2; }

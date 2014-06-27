@@ -2,41 +2,64 @@
 
 goog.provide('PianoForte.Controllers.Widgets.MyDropdownMenuController');
 
-PianoForte.Controllers.Widgets.MyDropdownMenuController = function ($scope, $attrs, $element, $document) {
+PianoForte.Controllers.Widgets.MyDropdownMenuController = function ($scope, $attrs, $element, $document, filterFilter) {
     $scope['element'] = null;
-
-    var dropdownMenuElement = null;
+    $scope['filter'] = {
+        'result': [],
+        'text': '',
+    };
+    
+    var selectController = null;
 
     $scope.initialize = function (selectCtrl) {
         $scope['element'] = $element[0];
+        selectController = selectCtrl;
 
-        dropdownMenuElement = $element[0].children[0];
-
-        selectCtrl.setDropdownMenu($scope);
+        selectController.setDropdownMenu($scope);
     };
 
     $scope.select = function (selectedItem) {
-        $scope.selectedItemId = selectedItem.id;
-        $scope.hideDropdownMenu();
+        selectController.onSelectedDropdownMenu(selectedItem.id);
     };
 
     $scope.setTheme = function(theme) {
-        dropdownMenuElement.className = dropdownMenuElement.className + ' ' + theme;
+        var dropdownMenuElement = $element[0].children[0];
+        if (dropdownMenuElement !== undefined) {
+            dropdownMenuElement.className = dropdownMenuElement.className + ' ' + theme;
+        }        
     }
 
     $scope.setWidth = function(width) {
-        dropdownMenuElement.style.width = width + 'px';
+        var dropdownMenuElement = $element[0].children[0];
+        if (dropdownMenuElement !== undefined) {
+            dropdownMenuElement.style.width = width + 'px';
+        }        
     };
 
     $scope.updateHeight = function() {
-        var maximumDisplayedItems = $scope['maximumDisplayedItems'];
-        if (maximumDisplayedItems !== undefined) {
-            var numberOfItems = $scope['items'].length;
-            if (numberOfItems < maximumDisplayedItems) {
-                dropdownMenuElement.style.height = (numberOfItems * 26) + 'px';
-            } else {
-                dropdownMenuElement.style.height = (maximumDisplayedItems * 26) + 'px';
-            }
-        }
+        var dropdownMenuElement = $element[0].children[0];
+        if (dropdownMenuElement !== undefined) {
+            var itemWrapperElement = dropdownMenuElement.children[1];
+            if (itemWrapperElement !== undefined) {
+                var maximumDisplayedItems = $scope['maximumDisplayedItems'];
+                if (maximumDisplayedItems !== undefined) {
+                    var numberOfItems = $scope['filter']['result'].length;
+                    if (numberOfItems < maximumDisplayedItems) {
+                        itemWrapperElement.style.height = (numberOfItems * 26) + 'px';
+                    } else {
+                        itemWrapperElement.style.height = (maximumDisplayedItems * 26) + 'px';
+                    }
+                }
+            }                
+        }             
+    };
+
+    $scope.$watch('filter.text', function (newInput, oldInput) {
+        updateFilteredResult($scope['items'], newInput);
+        $scope.updateHeight();
+    });
+
+    function updateFilteredResult(menuList, filteredText) {
+        $scope['filter']['result'] = filterFilter(menuList, filteredText);
     };
 };
