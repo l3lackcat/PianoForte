@@ -276,8 +276,12 @@ namespace PianoForte.View
                     this.enableDiscountBox(true);                    
                     this.enableComboBoxNumberOfClassroomDetail(true);
                     this.enableGroupBoxClassroomFrequency(true);
+
                     this.enableGroupBoxClassroom1(true);
+                    this.updateGroupBoxClassroom1(this.course.ClassroomDuration);
+
                     this.enableGroupBoxClassroom2(true);
+                    this.updateGroupBoxClassroom2(this.course.ClassroomDuration);
                 }
             }
         }
@@ -372,6 +376,11 @@ namespace PianoForte.View
             }
         }
 
+        private void updateGroupBoxClassroom1(int duration)
+        {
+            this.TextBox_Classroom1_Duration.Text = duration.ToString();
+        }
+
         private void updateGroupBoxClassroom1(Enrollment enrollment)
         {
             if (enrollment != null)
@@ -422,6 +431,11 @@ namespace PianoForte.View
             {
                 this.ComboBox_Classroom1_Time.SelectedIndex = 0;
             }
+        }
+
+        private void updateGroupBoxClassroom2(int duration)
+        {
+            this.TextBox_Classroom2_Duration.Text = duration.ToString();
         }
 
         private void updateGroupBoxClassroom2(Enrollment enrollment)
@@ -799,6 +813,40 @@ namespace PianoForte.View
         private void TextBox_Classroom2_Duration_TextChanged(object sender, EventArgs e)
         {
             this.updateButtonSubmit();
+        }
+
+        private void ComboBox_Classroom1_Teacher_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Teacher teacher = this.teacherList[this.ComboBox_Classroom1_Teacher.SelectedIndex];
+
+            if (teacher != null)
+            {
+                if ((teacher.Settings & Teacher.TeacherSettings.TEACHES_45_MIN) != 0)
+                {
+                    this.updateGroupBoxClassroom1(45);
+                }
+                else
+                {
+                    this.updateGroupBoxClassroom1(this.course.ClassroomDuration);
+                }
+            }
+        }
+
+        private void ComboBox_Classroom2_Teacher_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Teacher teacher = this.teacherList[this.ComboBox_Classroom2_Teacher.SelectedIndex];
+
+            if (teacher != null)
+            {
+                if ((teacher.Settings & Teacher.TeacherSettings.TEACHES_45_MIN) != 0)
+                {
+                    this.updateGroupBoxClassroom2(45);
+                }
+                else
+                {
+                    this.updateGroupBoxClassroom2(this.course.ClassroomDuration);
+                }
+            }
         }                                        
     }
 }

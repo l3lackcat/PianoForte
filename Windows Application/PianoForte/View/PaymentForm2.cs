@@ -229,6 +229,7 @@ namespace PianoForte.View
             this.TextBox_PaymentDate.Text = DateTime.Today.ToShortDateString();
 
             this.TextBox_Barcode.Text = "";
+            this.Button_SelectCourse.Enabled = true;
 
             this.TextBox_GrandTotalText.Text = "";
             this.TextBox_GrandTotal.Text = "0.00";

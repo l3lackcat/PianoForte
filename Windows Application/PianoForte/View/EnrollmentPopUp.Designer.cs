@@ -59,6 +59,7 @@
             this.Label_Prefix_DateTimePicker_Classroom2_StartDate = new System.Windows.Forms.Label();
             this.Button_SearchCourse = new System.Windows.Forms.Button();
             this.GroupBox_CourseDetail = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.TextBox_CourseName = new System.Windows.Forms.TextBox();
             this.TextBox_CourseCategoryName = new System.Windows.Forms.TextBox();
             this.TextBox_CourseFee = new System.Windows.Forms.TextBox();
@@ -72,7 +73,6 @@
             this.Button_Cancel = new System.Windows.Forms.Button();
             this.TextBox_CourseBarcode = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.GroupBox_Classroom_Frequency.SuspendLayout();
             this.GroupBox_Classroom1.SuspendLayout();
@@ -263,6 +263,7 @@
             this.ComboBox_Classroom1_Teacher.Name = "ComboBox_Classroom1_Teacher";
             this.ComboBox_Classroom1_Teacher.Size = new System.Drawing.Size(244, 24);
             this.ComboBox_Classroom1_Teacher.TabIndex = 7;
+            this.ComboBox_Classroom1_Teacher.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Classroom1_Teacher_SelectedIndexChanged);
             // 
             // ComboBox_Classroom1_Time
             // 
@@ -383,6 +384,7 @@
             this.ComboBox_Classroom2_Teacher.Name = "ComboBox_Classroom2_Teacher";
             this.ComboBox_Classroom2_Teacher.Size = new System.Drawing.Size(244, 24);
             this.ComboBox_Classroom2_Teacher.TabIndex = 11;
+            this.ComboBox_Classroom2_Teacher.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Classroom2_Teacher_SelectedIndexChanged);
             // 
             // ComboBox_Classroom2_Time
             // 
@@ -451,6 +453,16 @@
             this.GroupBox_CourseDetail.Size = new System.Drawing.Size(866, 54);
             this.GroupBox_CourseDetail.TabIndex = 46;
             this.GroupBox_CourseDetail.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label2.Location = new System.Drawing.Point(829, 21);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(31, 16);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "บาท";
             // 
             // TextBox_CourseName
             // 
@@ -593,16 +605,6 @@
             this.label1.Size = new System.Drawing.Size(50, 16);
             this.label1.TabIndex = 57;
             this.label1.Text = "บาร์โค้ด";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label2.Location = new System.Drawing.Point(829, 21);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(31, 16);
-            this.label2.TabIndex = 19;
-            this.label2.Text = "บาท";
             // 
             // label3
             // 
