@@ -1,0 +1,90 @@
+﻿<div id="book" ng-controller="BookController" ng-init="initialize()">
+    <my-tabs ng-show="!isReady">
+        <my-pane data-title="Loading">
+            Now Loading...
+        </my-pane>
+    </my-tabs>
+    <my-tabs ng-show="isReady">
+        <my-pane data-title="about">
+            <div class="tube-50-percent">
+                <my-box data-title="'ข้อมูลหนังสือ'" data-editable="true" data-edit="onEditGeneralInfo()">
+                    <div class="rows">
+                        <div class="row">
+                            <div class="col col-label">รหัสหนังสือ :</div>
+                            <div class="col col-value">{{book.id}}</div>
+                            <div class="clear-fix"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-label">บาร์โค้ด :</div>
+                            <div class="col col-value">{{book.barcode}}</div>
+                            <div class="clear-fix"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-label">ชื่อหนังสือ :</div>
+                            <div class="col col-value">{{book.name}}</div>
+                            <div class="clear-fix"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-label">ราคา (บาท) :</div>
+                            <div class="col col-value">{{book.unitPrice}}</div>
+                            <div class="clear-fix"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-label">คงเหลือ :</div>
+                            <div class="col col-value">{{book.quzntity}}</div>
+                            <div class="clear-fix"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-label">สถานะ :</div>
+                            <div class="col col-value">{{book.status.text}}</div>
+                            <div class="clear-fix"></div>
+                        </div>
+                    </div>
+                </my-box>
+            </div>
+        </my-pane>
+    </my-tabs>
+    <my-dialog-box data-title="'teacher > edit > ข้อมูลทั่วไป'" data-submit="onSubmitEditGeneralInfo()" data-disabled="isOnSaveEdittedGeneralInfo" data-close="onCancelEditGeneralInfo()" data-visible="isOnEditGeneralInfo">
+        <div class="wrapper">
+            <div class="rows">
+                <div class="row">
+                    <div class="col col-label"><span ng-show="edittedGeneralInfo.id.isRequired" class="required">*</span>รหัสประจำตัว</div>
+                    <div class="col col-value">     
+                        <my-text-box data-text="edittedGeneralInfo.id.value" data-disabled="true"></my-text-box>
+                    </div>
+                    <div class="clear-fix"></div>
+                </div>
+                <div class="row">
+                    <div class="col col-label"><span ng-show="edittedGeneralInfo.firstname.isRequired" class="required">*</span>ชื่อ</div>
+                    <div class="col col-value">
+                        <my-text-box data-text="edittedGeneralInfo.firstname.value" data-disabled="isOnSaveEdittedGeneralInfo"></my-text-box>
+                        <label ng-hide="edittedGeneralInfo.firstname.isValid">*กรุณากรอกชื่อจริง</label>
+                    </div>
+                    <div class="clear-fix"></div>
+                </div>
+                <div class="row">
+                    <div class="col col-label"><span ng-show="edittedGeneralInfo.lastname.isRequired" class="required">*</span>นามสกุล</div>
+                    <div class="col col-value">
+                        <my-text-box data-text="edittedGeneralInfo.lastname.value" data-disabled="isOnSaveEdittedGeneralInfo"></my-text-box>
+                        <label ng-hide="edittedGeneralInfo.lastname.isValid">*กรุณากรอกนามสกุล</label>
+                    </div>
+                    <div class="clear-fix"></div>
+                </div>
+                <div class="row">
+                    <div class="col col-label"><span ng-show="edittedGeneralInfo.nickname.isRequired" class="required">*</span>ชื่อเล่น</div>
+                    <div class="col col-value">
+                        <my-text-box data-text="edittedGeneralInfo.nickname.value" data-disabled="isOnSaveEdittedGeneralInfo"></my-text-box>
+                    </div>
+                    <div class="clear-fix"></div>
+                </div>
+                <div class="row">
+                    <div class="col col-label"><span ng-show="edittedGeneralInfo.status.isRequired" class="required">*</span>สถานะ</div>
+                    <div class="col col-value">
+                        <my-text-box data-text="edittedGeneralInfo.status.value.text" data-disabled="true"></my-text-box>
+                    </div>
+                    <div class="clear-fix"></div>
+                </div>
+            </div>
+        </div>
+    </my-dialog-box>
+</div>
