@@ -1,4 +1,4 @@
-﻿<div id="book" ng-controller="BookController" ng-init="initialize()">
+<div id="book" ng-controller="BookController" ng-init="initialize()">
     <my-tabs ng-show="!isReady">
         <my-pane data-title="Loading">
             Now Loading...
@@ -44,7 +44,7 @@
             </div>
         </my-pane>
     </my-tabs>
-    <my-dialog-box data-title="'teacher > edit > ข้อมูลทั่วไป'" data-submit="onSubmitEditGeneralInfo()" data-disabled="isOnSaveEdittedGeneralInfo" data-close="onCancelEditGeneralInfo()" data-visible="isOnEditGeneralInfo">
+    <my-dialog-box data-title="'book > edit > ข้อมูลทั่วไป'" data-submit="onSubmitEditGeneralInfo()" data-disabled="isOnSaveEdittedGeneralInfo" data-close="onCancelEditGeneralInfo()" data-visible="isOnEditGeneralInfo">
         <div class="wrapper">
             <div class="rows">
                 <div class="row">
