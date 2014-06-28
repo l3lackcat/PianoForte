@@ -54,6 +54,7 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="WebServices\BookWebService.asmx" />
+    <Content Include="WebServices\CdWebService.asmx" />
     <Content Include="WebServices\CourseWebService.asmx" />
     <Content Include="WebServices\TeacherWebService.asmx" />
     <Content Include="Web\App\css\style.css" />
@@ -125,6 +126,7 @@
     <Content Include="Web\App\js\directives\widgets\my-tabs\MyTabsDirective.js" />
     <Content Include="Web\App\js\enum.js" />
     <Content Include="Web\App\js\services\books\BookService.js" />
+    <Content Include="Web\App\js\services\cds\CdService.js" />
     <Content Include="Web\App\js\services\courses\CourseService.js" />
     <Content Include="Web\App\js\services\teachers\TeacherService.js" />
     <Content Include="Web\App\js\utilities\FormatManager.js" />
@@ -2332,6 +2334,10 @@
       <DependentUpon>BookWebService.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="WebServices\CdWebService.asmx.cs">
+      <DependentUpon>CdWebService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="WebServices\CourseWebService.asmx.cs">
       <DependentUpon>CourseWebService.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -2508,6 +2514,7 @@
     <None Include="Web\App\less\fontawesome\spinning.less" />
     <None Include="Web\App\less\fontawesome\stacked.less" />
     <None Include="Web\App\less\fontawesome\variables.less" />
+    <None Include="Web\App\less\layouts\dashboard.less" />
     <None Include="Web\App\less\students\student-main.less" />
     <None Include="Web\App\less\students\student.less" />
     <None Include="Web\App\less\layouts\content.less" />

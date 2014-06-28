@@ -24,9 +24,9 @@
 			}			
 		}
 
-		> .btn-search {	
-			background-color: transparent;								
-			background-repeat: no-repeat;
+		> .btn-search,
+		> .icon-search {	
+			background-color: transparent;
 			border: 0;
 			display: inline-block;
 			height: 14px;
@@ -34,30 +34,12 @@
 			padding: 0;
 			position: absolute;
 			right: 5px;
-			width: 15px;
-
-			&:hover {
-				cursor: pointer;
-			}
+			width: 13px;
 		}
+
+		> .btn-search:hover { cursor: pointer; }
+		> .icon-search:hover { cursor: default; }
 	}	
-}
-
-#teacher,
-#teachers {
-	.widget-search-box {
-		> .wrapper {
-			> input[type="text"] {
-				&:focus { border-bottom-color: @teacherThemeColor; }
-				&:hover { border-bottom-color: @teacherThemeColor; }	
-				&:disabled { border-bottom-color: transparent; }	
-			}
-
-			> .btn-search {
-				background-image: url('../images/icons/eyeglass_15_green.png');
-			}
-		}
-	}
 }
 
 #book,
@@ -70,9 +52,43 @@
 				&:disabled { border-bottom-color: transparent; }	
 			}
 
-			> .btn-search {
-				background-image: url('../images/icons/eyeglass_15_yellow.png');
+			> .btn-search { color: @bookThemeColor; }
+
+			> .icon-search { color: @bookThemeColor; }
+		}
+	}
+}
+
+#cd,
+#cds {
+	.widget-search-box {
+		> .wrapper {
+			> input[type="text"] {
+				&:focus { border-bottom-color: @cdThemeColor; }
+				&:hover { border-bottom-color: @cdThemeColor; }	
+				&:disabled { border-bottom-color: transparent; }	
 			}
+
+			> .btn-search { color: @cdThemeColor; }
+
+			> .icon-search { color: @cdThemeColor; }
+		}
+	}
+}
+
+#teacher,
+#teachers {
+	.widget-search-box {
+		> .wrapper {
+			> input[type="text"] {
+				&:focus { border-bottom-color: @teacherThemeColor; }
+				&:hover { border-bottom-color: @teacherThemeColor; }	
+				&:disabled { border-bottom-color: transparent; }	
+			}
+
+			> .btn-search { color: @teacherThemeColor; }
+
+			> .icon-search { color: @teacherThemeColor; }
 		}
 	}
 }

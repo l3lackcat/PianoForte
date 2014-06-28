@@ -44,6 +44,30 @@
 	}	
 }
 
+#book {
+	.widget-text-box {
+		> .wrapper {
+			> input[type="text"] {
+				&:focus { border-bottom-color: @bookThemeColor; }
+				&:hover { border-bottom-color: @bookThemeColor; }	
+				&:disabled { border-bottom-color: transparent; }	
+			}	
+		}
+	}
+} 
+
+#cd {
+	.widget-text-box {
+		> .wrapper {
+			> input[type="text"] {
+				&:focus { border-bottom-color: @cdThemeColor; }
+				&:hover { border-bottom-color: @cdThemeColor; }	
+				&:disabled { border-bottom-color: transparent; }	
+			}	
+		}
+	}
+} 
+
 #teacher {
 	.widget-text-box {
 		> .wrapper {

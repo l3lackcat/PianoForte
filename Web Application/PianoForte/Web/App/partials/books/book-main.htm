@@ -1,11 +1,11 @@
-﻿<div id="books" ng-controller="BookMainController" ng-init="initialize()">
+﻿<div id="books" class="dashboard" ng-controller="BookMainController" ng-init="initialize()">
     <my-tabs>
         <my-pane data-title="dashboard">
         	<div class="tube width-100-percent no-margin-bottom">
         		<div class="tube width-25-percent">
 	                <my-box class="no-margin-bottom">                    
 	                    <ul class="widget-breadcrumb">
-	                        <li>books</li>
+	                        <li>Books</li>
 	                        <li class="seperator">&gt;</li>
 	                        <li>dashboard</li>
 	                    </ul>
@@ -13,19 +13,18 @@
 	            </div>
 	            <div class="tube width-75-percent">
 	                <div class="tube width-25-percent">
-	                    <!-- <my-select 
+	                    <my-select 
 	                        data-items="filter.dropdownList" 
 	                        data-selected-item-id="filter.dropdownSelectedId"
 	                        data-show-max-items="5"
 	                        data-placeholder="'Please select...'"
-	                        data-theme="'book'"></my-select> -->
-	                    <my-select></my-select>
+	                        data-theme="'theme-book'"></my-select>
 	                </div>
 	                <div class="tube width-30-percent">
-	                    <my-search-box data-text="filter.text" data-placeholder="'ค้นหาหนังสือ...'"></my-search-box>
+	                    <my-search-box data-is-filter-box="true" data-text="filter.text" data-placeholder="'ค้นหา...'"></my-search-box>
 	                </div>
 	                <div class="tube width-20-percent">
-	                    <my-button data-text="'Stock'"></my-button>
+	                    <my-button data-text="'Stock'" data-disabled="true"></my-button>
 	                </div>
 	                <div class="tube width-25-percent">
 	                    <my-button data-text="'เพิ่มหนังสือ'"></my-button>
@@ -34,13 +33,13 @@
         	</div>	            
             <div class="clear-fix"></div>
             <div class="tube width-100-percent no-margin-bottom">
-                <my-box class="header no-padding-right">
+                <my-box class="header no-padding-right no-padding-left">
                     <div class="rows">
                         <div class="row">
                         	<div class="col col-barcode">หมายเลขบาร์โค้ด</div>
-                            <div class="col col-name">ชื่อหนังสือ</div>
-                            <div class="col col-unitprice">ราคา</div>
-                            <div class="col col-quantity">คงเหลือ</div>
+                            <div class="col col-name align-center">ชื่อหนังสือ</div>
+                            <div class="col col-unitprice align-center">ราคา</div>
+                            <div class="col col-quantity align-center">คงเหลือ</div>
                             <div class="col col-status">&nbsp;</div>
                             <div class="col col-view">&nbsp;</div>
                             <div class="col col-upd-stock">&nbsp;</div>
@@ -51,17 +50,16 @@
             </div> 
             <div class="clear-fix"></div>
             <div class="tube width-100-percent no-margin-bottom fix-height">
-                <my-box class="content no-margin-bottom no-padding-top no-padding-bottom no-padding-right">
+                <my-box class="content no-margin-bottom no-padding-top no-padding-bottom no-padding-right no-padding-left">
                     <div class="rows">
                         <div class="row" ng-repeat="book in filter.result | orderBy:'name' | startFrom:(currentPage-1)*showPerPage | limitTo:showPerPage">
                             <div class="col col-barcode">{{book.barcode}}</div>
-                            <div class="col col-name" title="{{book.name}}">{{book.name}}</div>
-                            <div class="col col-unitprice">{{book.unitPrice.raw}}</div>
-                            <div class="col col-quantity">{{book.quantity}}</div>
-                            <div class="col col-status status-{{book.status}}"><i class="fa fa-circle"></i></div>
-                            <div class="col col-view"><a href="#/books/{{book.id}}"><i class="fa fa-th-list"></i></a></div>
-                            <div class="col col-upd-stock"><i class="fa fa-archive"></i></div>
-                            <!-- <div class="col col-view-icon"></div> -->
+                            <div class="col col-name clipped-text" title="{{book.name}}">{{book.name}}</div>
+                            <div class="col col-unitprice align-right">{{book.unitPrice.raw}}</div>
+                            <div class="col col-quantity align-center">{{book.quantity}}</div>
+                            <div class="col col-status align-center status-{{book.status}}"><i class="fa fa-circle"></i></div>
+                            <div class="col col-view align-center" title="View"><a href="#/books/{{book.id}}"><i class="fa fa-th-list"></i></a></div>
+                            <div class="col col-upd-stock align-center" title="Update stock"><i class="fa fa-archive"></i></div>
                             <div class="clear-fix"></div>
                         </div>
                     </div>

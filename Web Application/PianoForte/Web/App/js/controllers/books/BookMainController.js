@@ -10,9 +10,7 @@ PianoForte.Controllers.Books.BookMainController = function ($scope, $rootScope, 
     $scope['showPerPage'] = 20;
     $scope['filter'] = {        
         'dropdownList': [
-            { 'id': 0, 'text': 'ดูทั้งหมด', 'excluded': false },
-            { 'id': 1, 'text': 'Item 2', 'excluded': false },
-            { 'id': 2, 'text': 'Item 3', 'excluded': false }
+            { 'id': 0, 'text': 'ดูทั้งหมด', 'excluded': false }
         ],
         'dropdownSelectedId': 0,
         'result': [],

@@ -8,6 +8,7 @@ PianoForte.Directives.Widgets.MySearchBoxDirective = function () {
         replace: true,
         scope: {
             disabled: '=',
+            isFilterBox: '=',
             placeholder: '=',            
             text: '=',            
             width: '='

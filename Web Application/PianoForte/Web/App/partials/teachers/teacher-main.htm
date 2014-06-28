@@ -1,69 +1,76 @@
-﻿<div id="teachers" ng-controller="TeacherMainController" ng-init="initialize()">
+﻿<div id="teachers" class="dashboard" ng-controller="TeacherMainController" ng-init="initialize()">
     <my-tabs>        
         <my-pane data-title="dashboard">
-            <div class="tube width-50-percent">
-                <my-box class="no-margin-bottom">                    
-                    <ul class="widget-breadcrumb">
-                        <li>teachers</li>
-                        <li class="seperator">&gt;</li>
-                        <li>dashboard</li>
-                    </ul>
-                </my-box>
-            </div>
-            <div class="tube width-50-percent">
-                <div class="tube width-50-percent">
-                    <my-select 
-                        data-items="filter.dropdownList"                        
-                        data-selected-item-id="filter.dropdownSelectedId"
-                        data-show-max-items="5"
-                        data-placeholder="'Please select...'"
-                        data-theme="'theme-teacher'"></my-select>
+            <div class="tube width-100-percent no-margin-bottom">
+                <div class="tube width-40-percent">
+                    <my-box class="no-margin-bottom">                    
+                        <ul class="widget-breadcrumb">
+                            <li>teachers</li>
+                            <li class="seperator">&gt;</li>
+                            <li>dashboard</li>
+                        </ul>
+                    </my-box>
                 </div>
-                <div class="tube width-50-percent">
-                    <my-search-box data-text="filter.text" data-placeholder="'ค้นหาครู...'"></my-search-box>
+                <div class="tube width-60-percent">
+                    <div class="tube width-30-percent">
+                        <my-select 
+                            data-items="filter.dropdownList"                        
+                            data-selected-item-id="filter.dropdownSelectedId"
+                            data-show-max-items="5"
+                            data-placeholder="'Please select...'"
+                            data-theme="'theme-teacher'"></my-select>
+                    </div>
+                    <div class="tube width-40-percent">
+                        <my-search-box data-is-filter-box="true" data-text="filter.text" data-placeholder="'ค้นหา...'"></my-search-box>
+                    </div>
+                    <div class="tube width-30-percent">
+                        <my-button data-text="'เพิ่มครู'"></my-button>
+                    </div>
                 </div>
             </div>
             <div class="clear-fix"></div>
-            <div class="tube width-100-percent">
-                <div class="pagination">
-                    <ul>
-                        <li ng-show="pageNumbers.length > 1">
-                            <span class="btn-prev" ng-click="goToPrevPage(pageNumber)" title="ก่อนหน้า">&#9664;</span>
-                        </li>
-                        <li ng-repeat="pageNumber in pageNumbers" ng-switch on="!$last">
-                            <span class="{{pageNumber.className}}" ng-click="goToPage(pageNumber.index)">{{pageNumber.index}}</span>
-                            <span class="seperator" ng-switch-when="true">.</span>
-                        </li>
-                        <li ng-show="pageNumbers.length > 1">
-                            <span class="btn-next" ng-click="goToNextPage(pageNumber)" title="ถัดไป">&#9654;</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="tube width-100-percent">
-                <my-box class="header no-padding-right">
+            <div class="tube width-100-percent no-margin-bottom">
+                <my-box class="header no-padding-right no-padding-left">
                     <div class="rows">
                         <div class="row">
                             <div class="col col-name">ชื่อ - นามสกุล</div>
-                            <div class="col col-nickname">ชื่อเล่น</div>
+                            <div class="col col-nickname align-center">ชื่อเล่น</div>
                             <div class="col col-phone">เบอร์โทรศัพท์</div>
-                            <div class="col col-view-icon">&nbsp;</div>
+                            <div class="col col-status">&nbsp;</div>
+                            <div class="col col-view">&nbsp;</div>
+                            <div class="col col-view-calendar">&nbsp;</div>
                             <div class="clear-fix"></div>
                         </div>
                     </div>
                 </my-box>
             </div> 
-            <div class="tube width-100-percent fix-height">
-                <my-box class="content no-margin-bottom no-padding-top no-padding-bottom no-padding-right">
+            <div class="tube width-100-percent no-margin-bottom fix-height">
+                <my-box class="content no-margin-bottom no-padding-top no-padding-bottom no-padding-right no-padding-left">
                     <div class="rows">
                         <div class="row" ng-repeat="teacher in filter.result | orderBy:'name' | startFrom:(currentPage-1)*showPerPage | limitTo:showPerPage">
                             <div class="col col-name">{{teacher.name}}</div>
-                            <div class="col col-nickname">{{teacher.nickname}}</div>
+                            <div class="col col-nickname align-center">{{teacher.nickname}}</div>
                             <div class="col col-phone">{{teacher.phoneNumber}}</div>
-                            <div class="col col-view-icon"><a href="#/teachers/{{teacher.id}}">view</a></div>
+                            <div class="col col-status align-center status-{{teacher.status}}"><i class="fa fa-circle"></i></div>
+                            <div class="col col-view align-center" title="View"><a href="#/teachers/{{teacher.id}}"><i class="fa fa-th-list"></i></a></div>
+                            <div class="col col-view-calendar align-center" title="Calendar"><i class="fa fa-calendar"></i></div>
                             <div class="clear-fix"></div>
                         </div>
-                    </div>                       
+                    </div> 
+                    <div class="pagination">
+                        <ul>
+                            <li ng-show="pageNumbers.length > 1">
+                                <span class="btn-prev" ng-click="goToPrevPage(pageNumber)" title="ก่อนหน้า">&#9664;</span>
+                            </li>
+                            <li ng-repeat="pageNumber in pageNumbers" ng-switch on="!$last">
+                                <span class="{{pageNumber.className}}" ng-click="goToPage(pageNumber.index)">{{pageNumber.index}}</span>
+                                <span class="seperator" ng-switch-when="true">.</span>
+                            </li>
+                            <li ng-show="pageNumbers.length > 1">
+                                <span class="btn-next" ng-click="goToNextPage(pageNumber)" title="ถัดไป">&#9654;</span>
+                            </li>
+                        </ul>
+                    </div>                      
                 </my-box>
             </div>            
         </my-pane>

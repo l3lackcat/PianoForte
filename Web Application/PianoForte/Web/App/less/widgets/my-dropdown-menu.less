@@ -13,7 +13,7 @@
 		position: relative;		
 		opacity: 0.9;		
 		z-index: 10;
-
+		
 		.filter-wrapper {
 			background-color: #FFF;
 			font-family: inherit;
@@ -51,7 +51,7 @@
 				text-align: right;
 			}
 		}
-
+		
 		.items {
 			font-size: inherit;
 			overflow-y: auto;
@@ -82,20 +82,6 @@
 			white-space: nowrap;
 		}
 
-		&.theme-teacher {
-			background-color: @teacherThemeColor;
-
-			.filter-wrapper {
-				.icon-search {
-					color: @teacherThemeColor;
-				}				
-			}
-
-			.items {
-				.item:hover { background-color: @teacherThemeColor2; }
-			}
-		}
-
 		&.theme-book {
 			background-color: @bookThemeColor;
 
@@ -109,5 +95,33 @@
 				.item:hover { background-color: @bookThemeColor2; }
 			}
 		}
+
+		&.theme-cd {
+			background-color: @cdThemeColor;
+
+			.filter-wrapper {
+				.icon-search {
+					color: @cdThemeColor;
+				}				
+			}
+
+			.items {
+				.item:hover { background-color: @bookThemeColor2; }
+			}
+		}
+
+		&.theme-teacher {
+			background-color: @teacherThemeColor;
+
+			.filter-wrapper {
+				.icon-search {
+					color: @teacherThemeColor;
+				}				
+			}
+
+			.items {
+				.item:hover { background-color: @teacherThemeColor2; }
+			}
+		}		
 	}
 }	

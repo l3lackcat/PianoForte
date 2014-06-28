@@ -52,7 +52,8 @@ namespace PianoForte.WebServices
                     id = teacher.Id,
                     name = teacher.Firstname + " " + teacher.Lastname,
                     nickname = teacher.Nickname,
-                    phoneNumber = phoneNumber
+                    phoneNumber = phoneNumber,
+                    status = teacher.Status
                 });
             }
 
