@@ -104,7 +104,7 @@ namespace PianoForte.Dao.MySql
         {
             string sql = "SELECT * " +
                          "FROM " + Cd.tableName + " " +
-                         "ORDER BY " + Cd.columnCdBarcode + " ASC";
+                         "ORDER BY " + Cd.columnCdId + " ASC";
 
             return this.processSelectCommand(sql);
         }
@@ -119,7 +119,7 @@ namespace PianoForte.Dao.MySql
                          "SELECT " + Cd.columnCdId + " " +
                          "FROM " + Cd.tableName + " " +
                          "LIMIT " + startIndex + "," + offset + ") ALIAS)" +
-                         "ORDER BY " + Cd.columnCdBarcode + " ASC";
+                         "ORDER BY " + Cd.columnCdId + " ASC";
 
             return this.processSelectCommand(sql);
         }
@@ -129,7 +129,7 @@ namespace PianoForte.Dao.MySql
             string sql = "SELECT * " +
                          "FROM " + Cd.tableName + " " +
                          "WHERE " + Cd.columnStatus + " LIKE '%" + status.ToString() + "%' " +
-                         "ORDER BY " + Cd.columnCdBarcode + " ASC";
+                         "ORDER BY " + Cd.columnCdId + " ASC";
 
             return this.processSelectCommand(sql);
         }
@@ -145,7 +145,7 @@ namespace PianoForte.Dao.MySql
                          "FROM " + Cd.tableName + " " +
                          "WHERE " + Cd.columnStatus + " LIKE '%" + status.ToString() + "%' " +
                          "LIMIT " + startIndex + "," + offset + ") ALIAS)" +
-                         "ORDER BY " + Cd.columnCdBarcode + " ASC";
+                         "ORDER BY " + Cd.columnCdId + " ASC";
 
             return this.processSelectCommand(sql);
         }
@@ -159,7 +159,7 @@ namespace PianoForte.Dao.MySql
             string sql = "SELECT * " +
                          "FROM " + Cd.tableName + " " +
                          "WHERE " + Cd.columnCdBarcode + " LIKE '" + barcode + "' " +
-                         "ORDER BY " + Cd.columnCdBarcode + " ASC";
+                         "ORDER BY " + Cd.columnCdId + " ASC";
 
             List<Cd> cdList = this.processSelectCommand(sql);
             if (cdList.Count > 0)
@@ -221,7 +221,7 @@ namespace PianoForte.Dao.MySql
             string sql = "SELECT * " +
                          "FROM " + Cd.tableName + " " +
                          "WHERE " + Cd.columnCdName + " LIKE '%" + cdName + "%' " +
-                         "ORDER BY " + Cd.columnCdBarcode + " ASC";
+                         "ORDER BY " + Cd.columnCdId + " ASC";
 
             return this.processSelectCommand(sql);
         }
@@ -237,7 +237,7 @@ namespace PianoForte.Dao.MySql
                          "FROM " + Cd.tableName + " " +
                          "WHERE " + Cd.columnCdName + " LIKE '%" + cdName + "%' " +
                          "LIMIT " + startIndex + "," + offset + ") ALIAS)" +
-                         "ORDER BY " + Cd.columnCdBarcode + " ASC";
+                         "ORDER BY " + Cd.columnCdId + " ASC";
 
             return this.processSelectCommand(sql);
         }
@@ -248,7 +248,7 @@ namespace PianoForte.Dao.MySql
                          "FROM " + Cd.tableName + " " +
                          "WHERE " + Cd.columnCdName + " LIKE '%" + cdName + "%' " +
                          "AND " + Cd.columnStatus + " = '" + status.ToString() + "' " +
-                         "ORDER BY " + Cd.columnCdBarcode + " ASC";
+                         "ORDER BY " + Cd.columnCdId + " ASC";
 
             return this.processSelectCommand(sql);
         }
@@ -265,7 +265,7 @@ namespace PianoForte.Dao.MySql
                          "WHERE " + Cd.columnCdName + " LIKE '%" + cdName + "%' " +
                          "AND " + Cd.columnStatus + " = '" + status.ToString() + "' " +
                          "LIMIT " + startIndex + "," + offset + ") ALIAS)" +
-                         "ORDER BY " + Cd.columnCdBarcode + " ASC";
+                         "ORDER BY " + Cd.columnCdId + " ASC";
 
             return this.processSelectCommand(sql);
         }

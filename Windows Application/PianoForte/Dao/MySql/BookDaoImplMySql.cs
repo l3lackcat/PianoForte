@@ -106,7 +106,7 @@ namespace PianoForte.Dao.MySql
         {
             string sql = "SELECT * " +
                          "FROM " + Book.tableName + " " +
-                         "ORDER BY " + Book.columnBookBarcode + " ASC";
+                         "ORDER BY " + Book.columnBookId + " ASC";
 
             return this.processSelectCommand(sql);
         }
@@ -121,7 +121,7 @@ namespace PianoForte.Dao.MySql
                          "SELECT " + Book.columnBookId + " " +
                          "FROM " + Book.tableName + " " +
                          "LIMIT " + startIndex + "," + offset + ") ALIAS)" +
-                         "ORDER BY " + Book.columnBookBarcode + " ASC";
+                         "ORDER BY " + Book.columnBookId + " ASC";
 
             return this.processSelectCommand(sql);
         }
@@ -131,7 +131,7 @@ namespace PianoForte.Dao.MySql
             string sql = "SELECT * " +
                          "FROM " + Book.tableName + " " +
                          "WHERE " + Book.columnStatus + " = '" + status.ToString() + "' " +
-                         "ORDER BY " + Book.columnBookBarcode + " ASC";
+                         "ORDER BY " + Book.columnBookId + " ASC";
 
             return this.processSelectCommand(sql);
         }
@@ -147,7 +147,7 @@ namespace PianoForte.Dao.MySql
                          "FROM " + Book.tableName + " " +
                          "WHERE " + Book.columnStatus + " = '" + status + "' " +
                          "LIMIT " + startIndex + "," + offset + ") ALIAS)" +
-                         "ORDER BY " + Book.columnBookBarcode + " ASC";
+                         "ORDER BY " + Book.columnBookId + " ASC";
 
             return this.processSelectCommand(sql);
         }
@@ -161,7 +161,7 @@ namespace PianoForte.Dao.MySql
             string sql = "SELECT * " +
                          "FROM " + Book.tableName + " " +
                          "WHERE " + Book.columnBookBarcode + " LIKE '" + barcode + "' " +
-                         "ORDER BY " + Book.columnBookBarcode + " ASC";
+                         "ORDER BY " + Book.columnBookId + " ASC";
 
             List<Book> bookList = this.processSelectCommand(sql);
             if (bookList.Count > 0)
@@ -223,7 +223,7 @@ namespace PianoForte.Dao.MySql
             string sql = "SELECT * " +
                          "FROM " + Book.tableName + " " +
                          "WHERE " + Book.columnBookName + " LIKE '%" + bookName + "%' " +
-                         "ORDER BY " + Book.columnBookBarcode + " ASC";
+                         "ORDER BY " + Book.columnBookId + " ASC";
 
             return this.processSelectCommand(sql);
         }
@@ -239,7 +239,7 @@ namespace PianoForte.Dao.MySql
                          "FROM " + Book.tableName + " " +
                          "WHERE " + Book.columnBookName + " LIKE '%" + bookName + "%' " +
                          "LIMIT " + startIndex + "," + offset + ") ALIAS)" +
-                         "ORDER BY " + Book.columnBookBarcode + " ASC";
+                         "ORDER BY " + Book.columnBookId + " ASC";
 
             return this.processSelectCommand(sql);
         }
@@ -250,7 +250,7 @@ namespace PianoForte.Dao.MySql
                          "FROM " + Book.tableName + " " +
                          "WHERE " + Book.columnBookName + " LIKE '%" + bookName + "%' " +
                          "AND " + Book.columnStatus + " = '" + status.ToString() + "' " +
-                         "ORDER BY " + Book.columnBookBarcode + " ASC";
+                         "ORDER BY " + Book.columnBookId + " ASC";
 
             return this.processSelectCommand(sql);
         }
@@ -267,7 +267,7 @@ namespace PianoForte.Dao.MySql
                          "WHERE " + Book.columnBookName + " LIKE '%" + bookName + "%' " +
                          "AND " + Book.columnStatus + " = '" + status.ToString() + "' " +
                          "LIMIT " + startIndex + "," + offset + ") ALIAS)" +
-                         "ORDER BY " + Book.columnBookBarcode + " ASC";
+                         "ORDER BY " + Book.columnBookId + " ASC";
 
             return this.processSelectCommand(sql);
         }
