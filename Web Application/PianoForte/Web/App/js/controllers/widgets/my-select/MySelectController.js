@@ -12,6 +12,8 @@ PianoForte.Controllers.Widgets.MySelectController = function ($scope, $attrs, $e
     var placeHolderElement = null;
     var caretElement = null;
 
+    var selectElementWidth = 0;
+
     $scope.initialize = function () {
         selectElement = $element[0];
         buttonElement = selectElement.children[0];
@@ -100,7 +102,7 @@ PianoForte.Controllers.Widgets.MySelectController = function ($scope, $attrs, $e
             $scope['dropdownMenu']['visible'] = false;
 
             $scope['dropdownMenu'].setTheme($scope['theme']);
-            $scope['dropdownMenu'].setWidth($element[0].clientWidth);
+            $scope['dropdownMenu'].setWidth(selectElementWidth);
             $scope['dropdownMenu'].updateHeight();
         }
     };
@@ -119,11 +121,13 @@ PianoForte.Controllers.Widgets.MySelectController = function ($scope, $attrs, $e
         var textElementWidth = selectElement.clientWidth - caretElement.clientWidth - 12;
 
         setTextElementWidth(textElementWidth);
-        setPlaceHolderElementWidth(textElementWidth)
+        setPlaceHolderElementWidth(textElementWidth);
     };
 
     function setSelectElementWidth(width) {
         selectElement.style.width = width + 'px';
+
+        selectElementWidth = width;
     };
 
     function setTextElementWidth(width) {

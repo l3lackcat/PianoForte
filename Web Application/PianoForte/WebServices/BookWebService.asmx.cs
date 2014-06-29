@@ -31,10 +31,7 @@ namespace PianoForte.WebServices
                     id = book.Id,
                     barcode = book.Barcode,
                     name = book.Name,
-                    unitPrice = new{
-                        raw = book.UnitPrice,
-                        formatted = book.UnitPrice.ToString("N", new CultureInfo("en-US"))
-                    },
+                    unitPrice = book.UnitPrice,
                     quantity = book.Quantity,
                     status = book.Status
                 });
@@ -56,11 +53,7 @@ namespace PianoForte.WebServices
                     id = book.Id,
                     barcode = book.Barcode,
                     name = book.Name,
-                    unitPrice = new
-                    {
-                        raw = book.UnitPrice,
-                        formatted = book.UnitPrice.ToString("N", new CultureInfo("en-US"))
-                    },
+                    unitPrice = book.UnitPrice,
                     quantity = book.Quantity,
                     status = book.Status
                 };
@@ -83,17 +76,20 @@ namespace PianoForte.WebServices
                     id = book.Id,
                     barcode = book.Barcode,
                     name = book.Name,
-                    unitPrice = new
-                    {
-                        raw = book.UnitPrice,
-                        formatted = book.UnitPrice.ToString("N", new CultureInfo("en-US"))
-                    },
+                    unitPrice = book.UnitPrice,
                     quantity = book.Quantity,
                     status = book.Status
                 };
             }
 
             return displayedBook;
+        }
+
+        [WebMethod]
+        public bool insertBookInfo(string databaseName, Book book)
+        {
+            System.Threading.Thread.Sleep(1500);
+            return BookService.insertBook(databaseName, book);
         }
 
         [WebMethod]

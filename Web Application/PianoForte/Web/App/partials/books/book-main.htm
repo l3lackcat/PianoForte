@@ -55,7 +55,7 @@
                         <div class="row" ng-repeat="book in filter.result | orderBy:'name' | startFrom:(currentPage-1)*showPerPage | limitTo:showPerPage">
                             <div class="col col-barcode">{{book.barcode}}</div>
                             <div class="col col-name clipped-text" title="{{book.name}}">{{book.name}}</div>
-                            <div class="col col-unitprice align-right">{{book.unitPrice.raw}}</div>
+                            <div class="col col-unitprice align-right">{{book.unitPrice}}</div>
                             <div class="col col-quantity align-center">{{book.quantity}}</div>
                             <div class="col col-status align-center status-{{book.status}}"><i class="fa fa-circle"></i></div>
                             <div class="col col-view align-center" title="View"><a href="#/books/{{book.id}}"><i class="fa fa-th-list"></i></a></div>
