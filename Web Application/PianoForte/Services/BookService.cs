@@ -45,6 +45,11 @@ namespace PianoForte.Services
             return bookDao.getBook(databaseName, bookId);
         }
 
+        public static Book getBook(string databaseName, string bookBarcode)
+        {
+            return bookDao.getBook(databaseName, bookBarcode);
+        }
+
         public static Book getLastBook(string databaseName)
         {
             return bookDao.getLastBook(databaseName);

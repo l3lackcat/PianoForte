@@ -33,8 +33,7 @@ namespace PianoForte.Dao
 
                         MySqlCommand command = new MySqlCommand(sql, conn);
                         command.Parameters.AddWithValue(Cds.ColumnCdId, cd.Id);
-                        command.Parameters.AddWithValue(Cds.ColumnCdInternalBarcode, cd.InternalBarcode);
-                        command.Parameters.AddWithValue(Cds.ColumnCdOriginalBarcode, cd.OriginalBarcode);
+                        command.Parameters.AddWithValue(Cds.ColumnCdBarcode, cd.Barcode);
                         command.Parameters.AddWithValue(Cds.ColumnCdName, cd.Name);
                         command.Parameters.AddWithValue(Cds.ColumnCdUnitPrice, cd.UnitPrice);
                         command.Parameters.AddWithValue(Cds.ColumnCdQuantity, cd.Quantity);
@@ -85,8 +84,7 @@ namespace PianoForte.Dao
                         conn.Open();
 
                         MySqlCommand command = new MySqlCommand(sql, conn);
-                        command.Parameters.AddWithValue(Cds.ColumnCdInternalBarcode, cd.InternalBarcode);
-                        command.Parameters.AddWithValue(Cds.ColumnCdOriginalBarcode, cd.OriginalBarcode);
+                        command.Parameters.AddWithValue(Cds.ColumnCdBarcode, cd.Barcode);
                         command.Parameters.AddWithValue(Cds.ColumnCdName, cd.Name);
                         command.Parameters.AddWithValue(Cds.ColumnCdUnitPrice, cd.UnitPrice);
                         command.Parameters.AddWithValue(Cds.ColumnCdQuantity, cd.Quantity);
@@ -144,8 +142,7 @@ namespace PianoForte.Dao
                     {
                         cd = new Cd();
                         cd.Id = Convert.ToInt32(data.Tables[Cds.TableName].Rows[i][Cds.ColumnCdId].ToString());
-                        cd.InternalBarcode = data.Tables[Cds.TableName].Rows[i][Cds.ColumnCdInternalBarcode].ToString();
-                        cd.OriginalBarcode = data.Tables[Cds.TableName].Rows[i][Cds.ColumnCdOriginalBarcode].ToString();
+                        cd.Barcode = data.Tables[Cds.TableName].Rows[i][Cds.ColumnCdBarcode].ToString();
                         cd.Name = data.Tables[Cds.TableName].Rows[i][Cds.ColumnCdName].ToString();
                         cd.UnitPrice = Convert.ToDouble(data.Tables[Cds.TableName].Rows[i][Cds.ColumnCdUnitPrice].ToString());
                         cd.Quantity = Convert.ToInt32(data.Tables[Cds.TableName].Rows[i][Cds.ColumnCdQuantity].ToString());
@@ -196,8 +193,7 @@ namespace PianoForte.Dao
                     {
                         Cd cd = new Cd();
                         cd.Id = Convert.ToInt32(data.Tables[Cds.TableName].Rows[i][Cds.ColumnCdId].ToString());
-                        cd.InternalBarcode = data.Tables[Cds.TableName].Rows[i][Cds.ColumnCdInternalBarcode].ToString();
-                        cd.OriginalBarcode = data.Tables[Cds.TableName].Rows[i][Cds.ColumnCdOriginalBarcode].ToString();
+                        cd.Barcode = data.Tables[Cds.TableName].Rows[i][Cds.ColumnCdBarcode].ToString();
                         cd.Name = data.Tables[Cds.TableName].Rows[i][Cds.ColumnCdName].ToString();
                         cd.UnitPrice = Convert.ToDouble(data.Tables[Cds.TableName].Rows[i][Cds.ColumnCdUnitPrice].ToString());
                         cd.Quantity = Convert.ToInt32(data.Tables[Cds.TableName].Rows[i][Cds.ColumnCdQuantity].ToString());
@@ -232,16 +228,14 @@ namespace PianoForte.Dao
             string sql = "INSERT INTO " +
                          Cds.TableName + " (" +
                          Cds.ColumnCdId + ", " +
-                         Cds.ColumnCdInternalBarcode + ", " +
-                         Cds.ColumnCdOriginalBarcode + ", " +
+                         Cds.ColumnCdBarcode + ", " +
                          Cds.ColumnCdName + ", " +
                          Cds.ColumnCdUnitPrice + ", " +
                          Cds.ColumnCdQuantity + ", " +
                          Cds.ColumnCdStatus + ") " +
                          "VALUES(" +
                          "?" + Cds.ColumnCdId + ", " +
-                         "?" + Cds.ColumnCdInternalBarcode + ", " +
-                         "?" + Cds.ColumnCdOriginalBarcode + ", " +
+                         "?" + Cds.ColumnCdBarcode + ", " +
                          "?" + Cds.ColumnCdName + ", " +
                          "?" + Cds.ColumnCdUnitPrice + ", " +
                          "?" + Cds.ColumnCdQuantity + ", " +
@@ -254,8 +248,7 @@ namespace PianoForte.Dao
         {
             string sql = "UPDATE " +
                          Cds.TableName + " SET " +
-                         Cds.ColumnCdInternalBarcode + " = ?" + Cds.ColumnCdInternalBarcode + ", " +
-                         Cds.ColumnCdOriginalBarcode + " = ?" + Cds.ColumnCdOriginalBarcode + ", " +
+                         Cds.ColumnCdBarcode + " = ?" + Cds.ColumnCdBarcode + ", " +
                          Cds.ColumnCdName + " = ?" + Cds.ColumnCdName + ", " +
                          Cds.ColumnCdUnitPrice + " = ?" + Cds.ColumnCdUnitPrice + ", " +
                          Cds.ColumnCdQuantity + " = ?" + Cds.ColumnCdQuantity + ", " +

@@ -33,8 +33,7 @@ namespace PianoForte.Dao
 
                         MySqlCommand command = new MySqlCommand(sql, conn);
                         command.Parameters.AddWithValue(Books.ColumnBookId, book.Id);
-                        command.Parameters.AddWithValue(Books.ColumnBookInternalBarcode, book.InternalBarcode);
-                        command.Parameters.AddWithValue(Books.ColumnBookOriginalBarcode, book.OriginalBarcode);
+                        command.Parameters.AddWithValue(Books.ColumnBookBarcode, book.Barcode);
                         command.Parameters.AddWithValue(Books.ColumnBookName, book.Name);
                         command.Parameters.AddWithValue(Books.ColumnBookUnitPrice, book.UnitPrice);
                         command.Parameters.AddWithValue(Books.ColumnBookQuantity, book.Quantity);
@@ -85,8 +84,7 @@ namespace PianoForte.Dao
                         conn.Open();
 
                         MySqlCommand command = new MySqlCommand(sql, conn);
-                        command.Parameters.AddWithValue(Books.ColumnBookInternalBarcode, book.InternalBarcode);
-                        command.Parameters.AddWithValue(Books.ColumnBookOriginalBarcode, book.OriginalBarcode);
+                        command.Parameters.AddWithValue(Books.ColumnBookBarcode, book.Barcode);
                         command.Parameters.AddWithValue(Books.ColumnBookName, book.Name);
                         command.Parameters.AddWithValue(Books.ColumnBookUnitPrice, book.UnitPrice);
                         command.Parameters.AddWithValue(Books.ColumnBookQuantity, book.Quantity);
@@ -144,8 +142,7 @@ namespace PianoForte.Dao
                     {
                         book = new Book();
                         book.Id = Convert.ToInt32(data.Tables[Books.TableName].Rows[i][Books.ColumnBookId].ToString());
-                        book.InternalBarcode = data.Tables[Books.TableName].Rows[i][Books.ColumnBookInternalBarcode].ToString();
-                        book.OriginalBarcode = data.Tables[Books.TableName].Rows[i][Books.ColumnBookOriginalBarcode].ToString();
+                        book.Barcode = data.Tables[Books.TableName].Rows[i][Books.ColumnBookBarcode].ToString();
                         book.Name = data.Tables[Books.TableName].Rows[i][Books.ColumnBookName].ToString();
                         book.UnitPrice = Convert.ToDouble(data.Tables[Books.TableName].Rows[i][Books.ColumnBookUnitPrice].ToString());
                         book.Quantity = Convert.ToInt32(data.Tables[Books.TableName].Rows[i][Books.ColumnBookQuantity].ToString());
@@ -196,8 +193,7 @@ namespace PianoForte.Dao
                     {
                         Book book = new Book();
                         book.Id = Convert.ToInt32(data.Tables[Books.TableName].Rows[i][Books.ColumnBookId].ToString());
-                        book.InternalBarcode = data.Tables[Books.TableName].Rows[i][Books.ColumnBookInternalBarcode].ToString();
-                        book.OriginalBarcode = data.Tables[Books.TableName].Rows[i][Books.ColumnBookOriginalBarcode].ToString();
+                        book.Barcode = data.Tables[Books.TableName].Rows[i][Books.ColumnBookBarcode].ToString();
                         book.Name = data.Tables[Books.TableName].Rows[i][Books.ColumnBookName].ToString();
                         book.UnitPrice = Convert.ToDouble(data.Tables[Books.TableName].Rows[i][Books.ColumnBookUnitPrice].ToString());
                         book.Quantity = Convert.ToInt32(data.Tables[Books.TableName].Rows[i][Books.ColumnBookQuantity].ToString());
@@ -232,16 +228,14 @@ namespace PianoForte.Dao
             string sql = "INSERT INTO " +
                          Books.TableName + " (" +
                          Books.ColumnBookId + ", " +
-                         Books.ColumnBookInternalBarcode + ", " +
-                         Books.ColumnBookOriginalBarcode + ", " +
+                         Books.ColumnBookBarcode + ", " +
                          Books.ColumnBookName + ", " +
                          Books.ColumnBookUnitPrice + ", " +
                          Books.ColumnBookQuantity + ", " +
                          Books.ColumnBookStatus + ") " +
                          "VALUES(" +
                          "?" + Books.ColumnBookId + ", " +
-                         "?" + Books.ColumnBookInternalBarcode + ", " +
-                         "?" + Books.ColumnBookOriginalBarcode + ", " +
+                         "?" + Books.ColumnBookBarcode + ", " +
                          "?" + Books.ColumnBookName + ", " +
                          "?" + Books.ColumnBookUnitPrice + ", " +
                          "?" + Books.ColumnBookQuantity + ", " +
@@ -254,8 +248,7 @@ namespace PianoForte.Dao
         {
             string sql = "UPDATE " +
                          Books.TableName + " SET " +
-                         Books.ColumnBookInternalBarcode + " = ?" + Books.ColumnBookInternalBarcode + ", " +
-                         Books.ColumnBookOriginalBarcode + " = ?" + Books.ColumnBookOriginalBarcode + ", " +
+                         Books.ColumnBookBarcode + " = ?" + Books.ColumnBookBarcode + ", " +
                          Books.ColumnBookName + " = ?" + Books.ColumnBookName + ", " +
                          Books.ColumnBookUnitPrice + " = ?" + Books.ColumnBookUnitPrice + ", " +
                          Books.ColumnBookQuantity + " = ?" + Books.ColumnBookQuantity + ", " +
@@ -270,6 +263,15 @@ namespace PianoForte.Dao
             string sql = "SELECT * " +
                          "FROM " + Books.TableName + " " +
                          "WHERE " + Books.ColumnBookId + " = " + bookId;
+
+            return this.selectBook(databaseName, sql);
+        }
+
+        public Book getBook(string databaseName, string bookBarcode)
+        {
+            string sql = "SELECT * " +
+                         "FROM " + Books.TableName + " " +
+                         "WHERE " + Books.ColumnBookBarcode + " = " + bookBarcode;
 
             return this.selectBook(databaseName, sql);
         }

@@ -61,6 +61,15 @@ namespace PianoForte.Resourses.DatabaseStructure.MySqlTable {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to cd_internal_barcode.
+        /// </summary>
+        internal static string ColumnCdBarcode {
+            get {
+                return ResourceManager.GetString("ColumnCdBarcode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to cd_id.
         /// </summary>
         internal static string ColumnCdId {
@@ -70,29 +79,11 @@ namespace PianoForte.Resourses.DatabaseStructure.MySqlTable {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to cd_internal_barcode.
-        /// </summary>
-        internal static string ColumnCdInternalBarcode {
-            get {
-                return ResourceManager.GetString("ColumnCdInternalBarcode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to cd_name.
         /// </summary>
         internal static string ColumnCdName {
             get {
                 return ResourceManager.GetString("ColumnCdName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to cd_original_barcode.
-        /// </summary>
-        internal static string ColumnCdOriginalBarcode {
-            get {
-                return ResourceManager.GetString("ColumnCdOriginalBarcode", resourceCulture);
             }
         }
         

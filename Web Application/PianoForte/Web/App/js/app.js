@@ -80,6 +80,10 @@ PianoForte.App.config(['$routeProvider', function ($routeProvider) {
 		    controller: 'TeacherMainController',
 		    templateUrl: 'partials/teachers/teacher-main.htm'
 		})
+        .when('/books/:bookId', {
+            controller: 'BookController',
+            templateUrl: 'partials/books/book.htm'
+        })
         .when('/teachers/:teacherId', {
             controller: 'TeacherController',
             templateUrl: 'partials/teachers/teacher.htm'
@@ -98,10 +102,15 @@ PianoForte.App.filter('startFrom', function() {
     }
 });
 
+PianoForte.App.controller('BookController', ['$scope', '$rootScope', '$routeParams', 'BookService', 'Enum', 'EnumConverter', 'ValidationManager', 'FormatManager', PianoForte.Controllers.Books.BookController]);
 PianoForte.App.controller('BookMainController', ['$scope', '$rootScope', 'filterFilter', 'BookService', 'FormatManager', PianoForte.Controllers.Books.BookMainController]);
+
 PianoForte.App.controller('CdMainController', ['$scope', '$rootScope', 'filterFilter', 'CdService', 'FormatManager', PianoForte.Controllers.Cds.CdMainController]);
+
 PianoForte.App.controller('CourseMainController', ['$scope', '$rootScope', PianoForte.Controllers.Courses.CourseMainController]);
+
 PianoForte.App.controller('StudentMainController', ['$scope', '$rootScope', PianoForte.Controllers.Students.StudentMainController]);
+
 PianoForte.App.controller('TeacherController', ['$scope', '$rootScope', '$routeParams', 'TeacherService', 'CourseService', 'Enum', 'EnumConverter', 'ValidationManager', 'FormatManager', PianoForte.Controllers.Teachers.TeacherController]);
 PianoForte.App.controller('TeacherMainController', ['$scope', '$rootScope', 'filterFilter', 'TeacherService', 'FormatManager', PianoForte.Controllers.Teachers.TeacherMainController]);
 

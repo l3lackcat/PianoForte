@@ -15,6 +15,8 @@ namespace PianoForte.Dao
 
         Book getBook(string databaseName, int bookId);
 
+        Book getBook(string databaseName, string bookBarcode);
+
         Book getLastBook(string databaseName);
 
         List<Book> getBookList(string databaseName);

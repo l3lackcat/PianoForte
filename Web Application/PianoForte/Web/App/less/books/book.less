@@ -1,7 +1,47 @@
 ﻿#book {
-	height: inherit;
+	my-box {
+		.widget-box {
+			margin-bottom: 12px;
 
-	my-tabs {
-		height: inherit;		
+			.box-header {
+				color: #636363;
+			}
+
+			.box-content {
+				.rows {
+					color: #636363;
+					font-family: inherit;
+
+					.row {
+						color: inherit;
+						font-family: inherit;
+						font-size: inherit;
+						padding: 8px 0;					
+
+						.col {							
+							float: left;													
+
+							&.col-label {									
+								margin-right: 5px;
+								text-align: right;
+								width: 100px;
+							}
+
+							&.col-value {
+								width: calc(~'100% - 105px');
+							}
+						}
+
+						&.no-data { 
+							text-align: center; 
+						}
+
+						&:last-child {
+							margin-bottom: 0;	
+						}
+					}
+				}
+			}
+		}			
 	}
 }

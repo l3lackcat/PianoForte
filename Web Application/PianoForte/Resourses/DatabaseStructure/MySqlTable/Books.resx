@@ -117,17 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ColumnBookBarcode" xml:space="preserve">
+    <value>book_barcode</value>
+  </data>
   <data name="ColumnBookId" xml:space="preserve">
     <value>book_id</value>
   </data>
-  <data name="ColumnBookInternalBarcode" xml:space="preserve">
-    <value>book_internal_barcode</value>
-  </data>
   <data name="ColumnBookName" xml:space="preserve">
     <value>book_name</value>
-  </data>
-  <data name="ColumnBookOriginalBarcode" xml:space="preserve">
-    <value>book_original_barcode</value>
   </data>
   <data name="ColumnBookQuantity" xml:space="preserve">
     <value>book_quantity</value>

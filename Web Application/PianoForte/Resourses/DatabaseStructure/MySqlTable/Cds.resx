@@ -117,17 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ColumnCdBarcode" xml:space="preserve">
+    <value>cd_internal_barcode</value>
+  </data>
   <data name="ColumnCdId" xml:space="preserve">
     <value>cd_id</value>
   </data>
-  <data name="ColumnCdInternalBarcode" xml:space="preserve">
-    <value>cd_internal_barcode</value>
-  </data>
   <data name="ColumnCdName" xml:space="preserve">
     <value>cd_name</value>
-  </data>
-  <data name="ColumnCdOriginalBarcode" xml:space="preserve">
-    <value>cd_original_barcode</value>
   </data>
   <data name="ColumnCdQuantity" xml:space="preserve">
     <value>cd_quantity</value>

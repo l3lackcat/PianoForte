@@ -29,7 +29,7 @@ namespace PianoForte.WebServices
                 displayedCdList.Add(new
                 {
                     id = cd.Id,
-                    barcode = cd.OriginalBarcode != "" ? cd.OriginalBarcode : cd.InternalBarcode,
+                    barcode = cd.Barcode,
                     name = cd.Name,
                     unitPrice = new
                     {
