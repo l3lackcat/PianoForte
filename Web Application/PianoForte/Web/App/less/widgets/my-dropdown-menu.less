@@ -65,7 +65,8 @@
 				text-overflow: ellipsis;
 				white-space: nowrap;
 
-				&:hover {					
+				&:hover {	
+					background-color: rgba(255, 255, 255, 0.2);
 					cursor: default;
 				}
 			}
@@ -90,10 +91,6 @@
 					color: @bookThemeColor;
 				}				
 			}
-
-			.items {
-				.item:hover { background-color: @bookThemeColor2; }
-			}
 		}
 
 		&.theme-cd {
@@ -104,10 +101,6 @@
 					color: @cdThemeColor;
 				}				
 			}
-
-			.items {
-				.item:hover { background-color: @bookThemeColor2; }
-			}
 		}
 
 		&.theme-teacher {
@@ -117,10 +110,6 @@
 				.icon-search {
 					color: @teacherThemeColor;
 				}				
-			}
-
-			.items {
-				.item:hover { background-color: @teacherThemeColor2; }
 			}
 		}		
 	}

@@ -65,14 +65,14 @@
         <div class="wrapper">
             <div class="rows">
                 <div class="row">
-                    <div class="col col-label"><span ng-show="edittedBookInfo.id.isRequired" class="required">*</span>รหัสหนังสือ</div>
+                    <div class="col col-label"><span ng-show="edittedBookInfo.id.isRequired" class="required">*</span>รหัสหนังสือ :</div>
                     <div class="col col-value">     
                         <my-text-box data-text="edittedBookInfo.id.value" data-disabled="true"></my-text-box>
                     </div>
                     <div class="clear-fix"></div>
                 </div>
                 <div class="row">
-                    <div class="col col-label"><span ng-show="edittedBookInfo.barcode.isRequired" class="required">*</span>บาร์โค้ด</div>
+                    <div class="col col-label"><span ng-show="edittedBookInfo.barcode.isRequired" class="required">*</span>บาร์โค้ด :</div>
                     <div class="col col-value">
                         <my-text-box data-text="edittedBookInfo.barcode.value" data-disabled="isOnUpdateEdittedBookInfo"></my-text-box>
                         <label ng-hide="edittedBookInfo.barcode.isValid">*กรุณากรอกหมายเลขบาร์โค้ด</label>
@@ -80,7 +80,7 @@
                     <div class="clear-fix"></div>
                 </div>
                 <div class="row">
-                    <div class="col col-label"><span ng-show="edittedBookInfo.name.isRequired" class="required">*</span>ชื่อหนังสือ</div>
+                    <div class="col col-label"><span ng-show="edittedBookInfo.name.isRequired" class="required">*</span>ชื่อหนังสือ :</div>
                     <div class="col col-value">
                         <my-text-box data-text="edittedBookInfo.name.value" data-disabled="isOnUpdateEdittedBookInfo"></my-text-box>
                         <label ng-hide="edittedBookInfo.name.isValid">*กรุณากรอกชื่อหนังสือ</label>
@@ -88,23 +88,23 @@
                     <div class="clear-fix"></div>
                 </div>
                 <div class="row">
-                    <div class="col col-label"><span ng-show="edittedBookInfo.unitPrice.isRequired" class="required">*</span>ราคา (บาท)</div>
+                    <div class="col col-label"><span ng-show="edittedBookInfo.unitPrice.isRequired" class="required">*</span>ราคา (บาท) :</div>
                     <div class="col col-value">
-                        <my-text-box data-text="edittedBookInfo.unitPrice.value" data-disabled="isOnUpdateEdittedBookInfo" data-width="150"></my-text-box>
+                        <my-numeric-box data-disabled="isOnUpdateEdittedBookInfo" data-precision="true" data-text="edittedBookInfo.unitPrice.value" data-width="100"></my-numeric-box>
                         <label ng-hide="edittedBookInfo.unitPrice.isValid">*กรุณากรอกราคาหนังสือ</label>
                     </div>
                     <div class="clear-fix"></div>
                 </div>
                 <div class="row">
-                    <div class="col col-label"><span ng-show="edittedBookInfo.quantity.isRequired" class="required">*</span>คงเหลือ (เล่ม)</div>
+                    <div class="col col-label"><span ng-show="edittedBookInfo.quantity.isRequired" class="required">*</span>คงเหลือ (เล่ม) :</div>
                     <div class="col col-value">
-                        <my-text-box data-text="edittedBookInfo.quantity.value" data-disabled="isOnUpdateEdittedBookInfo" data-width="150"></my-text-box>
+                        <my-numeric-box data-disabled="isOnUpdateEdittedBookInfo" data-text="edittedBookInfo.quantity.value" data-width="100"></my-numeric-box>
                         <label ng-hide="edittedBookInfo.quantity.isValid">*กรุณากรอกราคาหนังสือ</label>
                     </div>
                     <div class="clear-fix"></div>
                 </div>
                 <div class="row">
-                    <div class="col col-label"><span ng-show="edittedBookInfo.status.isRequired" class="required">*</span>สถานะ</div>
+                    <div class="col col-label"><span ng-show="edittedBookInfo.status.isRequired" class="required">*</span>สถานะ :</div>
                     <div class="col col-value">
                         <my-select 
                             data-disabled="isOnUpdateEdittedBookInfo"
@@ -112,7 +112,7 @@
                             data-selected-item-id="edittedBookInfo.status.value"
                             data-placeholder="'Please select...'"
                             data-theme="'theme-book'"
-                            data-width="150"></my-select>
+                            data-width="100"></my-select>
                     </div>
                     <div class="clear-fix"></div>
                 </div>

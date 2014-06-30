@@ -27,14 +27,14 @@ PianoForte.Controllers.Widgets.MyDropdownMenuController = function ($scope, $att
         if (dropdownMenuElement !== undefined) {
             dropdownMenuElement.className = dropdownMenuElement.className + ' ' + theme;
         }        
-    }
-
-    $scope.setWidth = function(width) {
-        var dropdownMenuElement = $element[0].children[0];
-        if (dropdownMenuElement !== undefined) {
-            dropdownMenuElement.style.width = width + 'px';
-        }        
     };
+
+    // $scope.setWidth = function(width) {
+    //     var dropdownMenuElement = $element[0].children[0];
+    //     if (dropdownMenuElement !== undefined) {
+    //         dropdownMenuElement.style.width = width + 'px';
+    //     }        
+    // };
 
     $scope.updateHeight = function() {
         var dropdownMenuElement = $element[0].children[0];

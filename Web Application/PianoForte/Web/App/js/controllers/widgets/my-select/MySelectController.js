@@ -12,8 +12,6 @@ PianoForte.Controllers.Widgets.MySelectController = function ($scope, $attrs, $e
     var placeHolderElement = null;
     var caretElement = null;
 
-    var selectElementWidth = 0;
-
     $scope.initialize = function () {
         selectElement = $element[0];
         buttonElement = selectElement.children[0];
@@ -44,6 +42,11 @@ PianoForte.Controllers.Widgets.MySelectController = function ($scope, $attrs, $e
                         if (dropdownMenuElement !== undefined) {
                             dropdownMenuElement.style.top = (selectElementOffset.top + selectElement.clientHeight) + 'px';
                             dropdownMenuElement.style.left = selectElementOffset.left + 'px';
+
+                            var selectElementWidth = selectElement.clientWidth;
+                            if (selectElementWidth !== dropdownMenuElement.clientWidth) {
+                                dropdownMenuElement.style.width = selectElementWidth + 'px';
+                            }
                         }
 
                         document.body.appendChild(widgetDropdownMenuElement);
@@ -102,8 +105,8 @@ PianoForte.Controllers.Widgets.MySelectController = function ($scope, $attrs, $e
             $scope['dropdownMenu']['visible'] = false;
 
             $scope['dropdownMenu'].setTheme($scope['theme']);
-            $scope['dropdownMenu'].setWidth(selectElementWidth);
-            $scope['dropdownMenu'].updateHeight();
+            // $scope['dropdownMenu'].setWidth(selectElementWidth);
+            $scope['dropdownMenu'].updateHeight();          
         }
     };
 
@@ -112,7 +115,7 @@ PianoForte.Controllers.Widgets.MySelectController = function ($scope, $attrs, $e
         $scope.hideDropdownMenu();
     }
 
-    function updateLayout() {
+    function updateLayout () {
         var customizedWidth = $scope['width'];       
         if (customizedWidth !== undefined) {
             setSelectElementWidth(customizedWidth);
@@ -126,8 +129,6 @@ PianoForte.Controllers.Widgets.MySelectController = function ($scope, $attrs, $e
 
     function setSelectElementWidth(width) {
         selectElement.style.width = width + 'px';
-
-        selectElementWidth = width;
     };
 
     function setTextElementWidth(width) {

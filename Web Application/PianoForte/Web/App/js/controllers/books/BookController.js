@@ -46,7 +46,7 @@ PianoForte.Controllers.Books.BookController = function ($scope, $rootScope, $rou
             },
             unitPrice: {
                 value: $scope['book']['unitPrice'],
-                isRequired: false,
+                isRequired: true,
                 isValid: true
             },
             quantity: {

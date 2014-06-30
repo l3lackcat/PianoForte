@@ -71,11 +71,6 @@
     <Content Include="Web\App\fonts\thaisansneue\thaisansneue-ultralight-webfont.svg" />
     <Content Include="Web\App\images\icons\checkbox_checked.png" />
     <Content Include="Web\App\images\icons\checkbox_unchecked.png" />
-    <Content Include="Web\App\images\icons\droptri_10_green.png" />
-    <Content Include="Web\App\images\icons\eyeglass_15_blue.png" />
-    <Content Include="Web\App\images\icons\eyeglass_15_green.png" />
-    <Content Include="Web\App\images\icons\eyeglass_15_red.png" />
-    <Content Include="Web\App\images\icons\eyeglass_15_yellow.png" />
     <Content Include="Web\App\images\icons\left_menu_books.png" />
     <Content Include="Web\App\images\icons\left_menu_books_bw.png" />
     <Content Include="Web\App\images\icons\left_menu_cds.png" />
@@ -86,9 +81,6 @@
     <Content Include="Web\App\images\icons\left_menu_students_bw.png" />
     <Content Include="Web\App\images\icons\left_menu_teachers.png" />
     <Content Include="Web\App\images\icons\left_menu_teachers_bw.png" />
-    <Content Include="Web\App\images\icons\trashcan_12_grey.png" />
-    <Content Include="Web\App\images\icons\x_close_10_gray.png" />
-    <Content Include="Web\App\images\icons\x_close_10_green.png" />
     <Content Include="Web\App\images\logo\logo.png" />
     <Content Include="Web\App\index.htm" />
     <Content Include="Web\App\js\app.js" />
@@ -100,6 +92,7 @@
     <Content Include="Web\App\js\controllers\courses\CourseController.js" />
     <Content Include="Web\App\js\controllers\students\StudentMainController.js" />
     <Content Include="Web\App\js\controllers\students\StudentController.js" />
+    <Content Include="Web\App\js\controllers\widgets\my-numeric-box\MyNumericBoxController.js" />
     <Content Include="Web\App\js\controllers\widgets\my-checkbox\MyCheckboxController.js" />
     <Content Include="Web\App\js\controllers\widgets\my-button\MyButtonController.js" />
     <Content Include="Web\App\js\controllers\widgets\my-dropdown-menu\MyDropdownMenuController.js" />
@@ -112,6 +105,7 @@
     <Content Include="Web\App\js\controllers\widgets\my-dialog-box\MyDialogBoxController.js" />
     <Content Include="Web\App\js\controllers\widgets\my-box\MyBoxController.js" />
     <Content Include="Web\App\js\controllers\widgets\my-tabs\MyTabsController.js" />
+    <Content Include="Web\App\js\directives\widgets\my-numeric-box\MyNumericBoxDirective.js" />
     <Content Include="Web\App\js\directives\widgets\my-checkbox\MyCheckboxDirective.js" />
     <Content Include="Web\App\js\directives\widgets\my-button\MyButtonDirective.js" />
     <Content Include="Web\App\js\directives\widgets\my-dropdown-menu\MyDropdownMenuDirective.js" />
@@ -2060,6 +2054,7 @@
     <Content Include="Web\App\partials\cds\cd-main.htm" />
     <Content Include="Web\App\partials\courses\course-main.htm" />
     <Content Include="Web\App\partials\students\student-main.htm" />
+    <Content Include="Web\App\partials\widgets\my-numeric-box\my-numeric-box.htm" />
     <Content Include="Web\App\partials\widgets\my-checkbox\my-checkbox.htm" />
     <Content Include="Web\App\partials\widgets\my-button\my-button.htm" />
     <Content Include="Web\App\partials\widgets\my-dropdown-menu\my-dropdown-menu.htm" />
@@ -2521,6 +2516,7 @@
     <None Include="Web\App\less\students\student.less" />
     <None Include="Web\App\less\layouts\content.less" />
     <None Include="Web\App\less\layouts\content-col.less" />
+    <None Include="Web\App\less\widgets\my-numeric-box.less" />
     <None Include="Web\App\less\widgets\my-dialog-box.less" />
     <None Include="Web\App\less\widgets\my-overlay.less" />
     <None Include="Web\App\less\widgets\my-checkbox.less" />
