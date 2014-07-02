@@ -1,4 +1,4 @@
-<div id="book" class="individual-info" ng-controller="BookController" ng-init="initialize()">
+<div id="cd" class="individual-info" ng-controller="CdController" ng-init="initialize()">
     <my-tabs ng-show="!isReady">
         <my-pane data-title="Loading">
             Now Loading...
@@ -10,7 +10,7 @@
                 <div class="tube width-85-percent">
                     <my-box class="no-margin-bottom">                    
                         <ul class="widget-breadcrumb">
-                            <li>Books</li>
+                            <li>Cds</li>
                             <li class="seperator">&gt;</li>
                             <li>dashboard</li>
                         </ul>
@@ -22,36 +22,36 @@
             </div>
             <div class="tube width-100-percent no-margin-bottom">
                 <div class="tube width-85-percent no-margin-left">
-                    <my-box data-title="'ข้อมูลหนังสือ'" data-editable="true" data-edit="onEditBookInfo()">
+                    <my-box data-title="'ข้อมูลหนังสือ'" data-editable="true" data-edit="onEditCdInfo()">
                         <div class="rows">
                             <div class="row">
                                 <div class="col col-label">รหัสหนังสือ :</div>
-                                <div class="col col-value">{{book.id}}</div>
+                                <div class="col col-value">{{cd.id}}</div>
                                 <div class="clear-fix"></div>
                             </div>
                             <div class="row">
                                 <div class="col col-label">บาร์โค้ด :</div>
-                                <div class="col col-value">{{book.barcode}}</div>
+                                <div class="col col-value">{{cd.barcode}}</div>
                                 <div class="clear-fix"></div>
                             </div>
                             <div class="row">
                                 <div class="col col-label">ชื่อหนังสือ :</div>
-                                <div class="col col-value">{{book.name}}</div>
+                                <div class="col col-value">{{cd.name}}</div>
                                 <div class="clear-fix"></div>
                             </div>
                             <div class="row">
                                 <div class="col col-label">ราคา (บาท) :</div>
-                                <div class="col col-value">{{book.unitPrice}}</div>
+                                <div class="col col-value">{{cd.unitPrice}}</div>
                                 <div class="clear-fix"></div>
                             </div>
                             <div class="row">
                                 <div class="col col-label">คงเหลือ (เล่ม) :</div>
-                                <div class="col col-value">{{book.quantity}}</div>
+                                <div class="col col-value">{{cd.quantity}}</div>
                                 <div class="clear-fix"></div>
                             </div>
                             <div class="row">
                                 <div class="col col-label">สถานะ :</div>
-                                <div class="col col-value">{{book.status.text}}</div>
+                                <div class="col col-value">{{cd.status.text}}</div>
                                 <div class="clear-fix"></div>
                             </div>
                         </div>
@@ -61,57 +61,57 @@
         </my-pane>
     </my-tabs>
 
-    <my-dialog-box data-title="'ข้อมูลหนังสือ'" data-submit="onSubmitEditBookInfo()" data-disabled="isOnUpdateEdittedBookInfo" data-close="onCancelEditBookInfo()" data-visible="isOnEditBookInfo">
+    <my-dialog-box data-title="'ข้อมูลหนังสือ'" data-submit="onSubmitEditCdInfo()" data-disabled="isOnUpdateEdittedCdInfo" data-close="onCancelEditCdInfo()" data-visible="isOnEditCdInfo">
         <div class="wrapper">
             <div class="rows">
                 <div class="row">
-                    <div class="col col-label"><span ng-show="edittedBookInfo.id.isRequired" class="required">*</span>รหัสหนังสือ :</div>
+                    <div class="col col-label"><span ng-show="edittedCdInfo.id.isRequired" class="required">*</span>รหัสหนังสือ :</div>
                     <div class="col col-value">     
-                        <my-text-box data-text="edittedBookInfo.id.value" data-disabled="true"></my-text-box>
+                        <my-text-box data-text="edittedCdInfo.id.value" data-disabled="true"></my-text-box>
                     </div>
                     <div class="clear-fix"></div>
                 </div>
                 <div class="row">
-                    <div class="col col-label"><span ng-show="edittedBookInfo.barcode.isRequired" class="required">*</span>บาร์โค้ด :</div>
+                    <div class="col col-label"><span ng-show="edittedCdInfo.barcode.isRequired" class="required">*</span>บาร์โค้ด :</div>
                     <div class="col col-value">
-                        <my-text-box data-text="edittedBookInfo.barcode.value" data-disabled="isOnUpdateEdittedBookInfo"></my-text-box>
-                        <label ng-hide="edittedBookInfo.barcode.isValid">*กรุณากรอกหมายเลขบาร์โค้ด</label>
+                        <my-text-box data-text="edittedCdInfo.barcode.value" data-disabled="isOnUpdateEdittedCdInfo"></my-text-box>
+                        <label ng-hide="edittedCdInfo.barcode.isValid">*กรุณากรอกหมายเลขบาร์โค้ด</label>
                     </div>
                     <div class="clear-fix"></div>
                 </div>
                 <div class="row">
-                    <div class="col col-label"><span ng-show="edittedBookInfo.name.isRequired" class="required">*</span>ชื่อหนังสือ :</div>
+                    <div class="col col-label"><span ng-show="edittedCdInfo.name.isRequired" class="required">*</span>ชื่อหนังสือ :</div>
                     <div class="col col-value">
-                        <my-text-box data-text="edittedBookInfo.name.value" data-disabled="isOnUpdateEdittedBookInfo"></my-text-box>
-                        <label ng-hide="edittedBookInfo.name.isValid">*กรุณากรอกชื่อหนังสือ</label>
+                        <my-text-box data-text="edittedCdInfo.name.value" data-disabled="isOnUpdateEdittedCdInfo"></my-text-box>
+                        <label ng-hide="edittedCdInfo.name.isValid">*กรุณากรอกชื่อหนังสือ</label>
                     </div>
                     <div class="clear-fix"></div>
                 </div>
                 <div class="row">
-                    <div class="col col-label"><span ng-show="edittedBookInfo.unitPrice.isRequired" class="required">*</span>ราคา (บาท) :</div>
+                    <div class="col col-label"><span ng-show="edittedCdInfo.unitPrice.isRequired" class="required">*</span>ราคา (บาท) :</div>
                     <div class="col col-value">
-                        <my-numeric-box data-disabled="isOnUpdateEdittedBookInfo" data-text="edittedBookInfo.unitPrice.value" data-width="100"></my-numeric-box>
-                        <label ng-hide="edittedBookInfo.unitPrice.isValid">*กรุณากรอกราคาหนังสือ</label>
+                        <my-numeric-box data-disabled="isOnUpdateEdittedCdInfo" data-text="edittedCdInfo.unitPrice.value" data-width="100"></my-numeric-box>
+                        <label ng-hide="edittedCdInfo.unitPrice.isValid">*กรุณากรอกราคาหนังสือ</label>
                     </div>
                     <div class="clear-fix"></div>
                 </div>
                 <div class="row">
-                    <div class="col col-label"><span ng-show="edittedBookInfo.quantity.isRequired" class="required">*</span>คงเหลือ (เล่ม) :</div>
+                    <div class="col col-label"><span ng-show="edittedCdInfo.quantity.isRequired" class="required">*</span>คงเหลือ (เล่ม) :</div>
                     <div class="col col-value">
-                        <my-numeric-box data-disabled="isOnUpdateEdittedBookInfo" data-text="edittedBookInfo.quantity.value" data-width="100"></my-numeric-box>
-                        <label ng-hide="edittedBookInfo.quantity.isValid">*กรุณากรอกราคาหนังสือ</label>
+                        <my-numeric-box data-disabled="isOnUpdateEdittedCdInfo" data-text="edittedCdInfo.quantity.value" data-width="100"></my-numeric-box>
+                        <label ng-hide="edittedCdInfo.quantity.isValid">*กรุณากรอกราคาหนังสือ</label>
                     </div>
                     <div class="clear-fix"></div>
                 </div>
                 <div class="row">
-                    <div class="col col-label"><span ng-show="edittedBookInfo.status.isRequired" class="required">*</span>สถานะ :</div>
+                    <div class="col col-label"><span ng-show="edittedCdInfo.status.isRequired" class="required">*</span>สถานะ :</div>
                     <div class="col col-value">
                         <my-select 
-                            data-disabled="isOnUpdateEdittedBookInfo"
+                            data-disabled="isOnUpdateEdittedCdInfo"
                             data-items="statusList" 
-                            data-selected-item-id="edittedBookInfo.status.value"
+                            data-selected-item-id="edittedCdInfo.status.value"
                             data-placeholder="'Please select...'"
-                            data-theme="'theme-book'"
+                            data-theme="'theme-cd'"
                             data-width="100"></my-select>
                     </div>
                     <div class="clear-fix"></div>

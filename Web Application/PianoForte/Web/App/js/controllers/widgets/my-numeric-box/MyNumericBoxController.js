@@ -32,13 +32,18 @@ PianoForte.Controllers.Widgets.MyNumericBoxController = function ($scope, $attrs
         var inputElement = $element[0].children[0].children[0];
         if (inputElement !== undefined) {
             inputElement.addEventListener('blur', onBlur);
+            inputElement.addEventListener('focus', onFocus);
             inputElement.addEventListener('keypress', onKeyDown);
             inputElement.addEventListener('keyUp', onKeyUp);
         }
     };
 
     function onBlur(e) {
-        // Formating
+        $scope['text'] = accounting.formatNumber($scope['text']);
+    };
+
+    function onFocus(e) {
+        $scope['text'] = accounting.unformat($scope['text']);
     };
 
     function onKeyDown(e) {

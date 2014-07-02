@@ -258,11 +258,20 @@ namespace PianoForte.Dao
             return this.update(databaseName, cd, sql);
         }
 
-        public Cd getCd(string databaseName, int cdId)
+        public Cd getCd(string databaseName, int id)
         {
             string sql = "SELECT * " +
                          "FROM " + Cds.TableName + " " +
-                         "WHERE " + Cds.ColumnCdId + " = " + cdId;
+                         "WHERE " + Cds.ColumnCdId + " = " + id;
+
+            return this.selectCd(databaseName, sql);
+        }
+
+        public Cd getCd(string databaseName, string barcode)
+        {
+            string sql = "SELECT * " +
+                         "FROM " + Cds.TableName + " " +
+                         "WHERE " + Cds.ColumnCdBarcode + " = " + barcode;
 
             return this.selectCd(databaseName, sql);
         }
@@ -307,11 +316,11 @@ namespace PianoForte.Dao
             return this.selectCdList(databaseName, sql);
         }
 
-        public List<Cd> getCdListByName(string databaseName, string cdName)
+        public List<Cd> getCdListByName(string databaseName, string name)
         {
             string sql = "SELECT * " +
                          "FROM " + Cds.TableName + " " +
-                         "WHERE " + Cds.ColumnCdName + " = '" + cdName + "' " +
+                         "WHERE " + Cds.ColumnCdName + " = '" + name + "' " +
                          "ORDER BY " + Cds.ColumnCdId + " ASC";
 
             return this.selectCdList(databaseName, sql);

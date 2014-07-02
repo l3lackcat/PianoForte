@@ -61,7 +61,7 @@ namespace PianoForte.Resourses.DatabaseStructure.MySqlTable {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to cd_internal_barcode.
+        ///   Looks up a localized string similar to cd_barcode.
         /// </summary>
         internal static string ColumnCdBarcode {
             get {

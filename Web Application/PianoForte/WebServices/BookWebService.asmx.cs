@@ -41,12 +41,12 @@ namespace PianoForte.WebServices
         }
 
         [WebMethod]
-        public Object getBookById(string databaseName, int bookId)
+        public Object getBookById(string databaseName, int id)
         {
             System.Threading.Thread.Sleep(1500);
 
             Object displayedBook = null;
-            Book book = BookService.getBook(databaseName, bookId);
+            Book book = BookService.getBook(databaseName, id);
             if (book != null)
             {
                 displayedBook = new {
@@ -63,12 +63,12 @@ namespace PianoForte.WebServices
         }
 
         [WebMethod]
-        public Object getBookByBarcode(string databaseName, string bookBarcode)
+        public Object getBookByBarcode(string databaseName, string barcode)
         {
             System.Threading.Thread.Sleep(1500);
 
             Object displayedBook = null;
-            Book book = BookService.getBook(databaseName, bookBarcode);
+            Book book = BookService.getBook(databaseName, barcode);
             if (book != null)
             {
                 displayedBook = new

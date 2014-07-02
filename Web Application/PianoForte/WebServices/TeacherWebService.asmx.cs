@@ -61,7 +61,7 @@ namespace PianoForte.WebServices
         }
 
         [WebMethod]
-        public Object getTeacherById(string databaseName, int teacherId)
+        public Object getTeacherById(string databaseName, int id)
         {
             System.Threading.Thread.Sleep(1500);
 
@@ -69,7 +69,7 @@ namespace PianoForte.WebServices
             List<Object> phoneList = new List<Object>();
             List<Object> emailList = new List<Object>();            
 
-            Teacher tempTeacher = TeacherService.getTeacher(databaseName, teacherId);
+            Teacher tempTeacher = TeacherService.getTeacher(databaseName, id);
             if (tempTeacher != null)
             {      
                 //Contact list

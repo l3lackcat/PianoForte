@@ -55,7 +55,7 @@
                         <div class="row" ng-repeat="cd in filter.result | orderBy:'name' | startFrom:(currentPage-1)*showPerPage | limitTo:showPerPage">
                             <div class="col col-barcode">{{cd.barcode}}</div>
                             <div class="col col-name clipped-text" title="{{cd.name}}">{{cd.name}}</div>
-                            <div class="col col-unitprice align-right">{{cd.unitPrice.raw}}</div>
+                            <div class="col col-unitprice align-right">{{cd.unitPrice}}</div>
                             <div class="col col-quantity align-center">{{cd.quantity}}</div>
                             <div class="col col-status align-center status-{{cd.status}}"><i class="fa fa-circle"></i></div>
                             <div class="col col-view align-center" title="View"><a href="#/cds/{{cd.id}}"><i class="fa fa-th-list"></i></a></div>

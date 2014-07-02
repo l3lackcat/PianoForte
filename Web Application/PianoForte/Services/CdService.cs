@@ -39,9 +39,14 @@ namespace PianoForte.Services
             return cdDao.updateCd(databaseName, cd);
         }
 
-        public static Cd getCd(string databaseName, int cdId)
+        public static Cd getCd(string databaseName, int id)
         {
-            return cdDao.getCd(databaseName, cdId);
+            return cdDao.getCd(databaseName, id);
+        }
+
+        public static Cd getCd(string databaseName, string barcode)
+        {
+            return cdDao.getCd(databaseName, barcode);
         }
 
         public static Cd getLastCd(string databaseName)
@@ -64,9 +69,9 @@ namespace PianoForte.Services
             return cdDao.getCdList(databaseName, startIndex, offset, keyword);
         }
 
-        public static List<Cd> getCdListByName(string databaseName, string cdName)
+        public static List<Cd> getCdListByName(string databaseName, string name)
         {
-            return cdDao.getCdListByName(databaseName, cdName);
+            return cdDao.getCdListByName(databaseName, name);
         }
     }
 }

@@ -22,9 +22,9 @@ namespace PianoForte.Services
             return teacherDao.updateTeacher(databaseName, teacher);
         }
 
-        public static Teacher getTeacher(string databaseName, int teacherId)
+        public static Teacher getTeacher(string databaseName, int id)
         {
-            return teacherDao.getTeacher(databaseName, teacherId);
+            return teacherDao.getTeacher(databaseName, id);
         }
 
         public static List<Teacher> getTeacherList(string databaseName)

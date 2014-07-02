@@ -1,7 +1,134 @@
 ﻿#cd {
-	height: inherit;
+	my-box {
+		.widget-box {
+			margin-bottom: 12px;
 
-	my-tabs {
-		height: inherit;		
+			.box-header {
+				color: #636363;
+			}
+
+			.box-content {
+				.rows {
+					color: #636363;
+					font-family: inherit;
+
+					.row {
+						color: inherit;
+						font-family: inherit;
+						font-size: inherit;
+						padding: 8px 0;					
+
+						.col {							
+							float: left;													
+
+							&.col-label {									
+								margin-right: 5px;
+								text-align: right;
+								width: 100px;
+							}
+
+							&.col-value {
+								width: calc(~'100% - 105px');
+							}
+						}
+
+						&.no-data { 
+							text-align: center; 
+						}
+
+						&:last-child {
+							margin-bottom: 0;	
+						}
+					}
+				}
+			}
+		}			
+	}
+
+	my-dialog-box {
+		.widget-dialog-box {
+			.dialog-box-content {												
+				> .wrapper {
+					margin: 0 auto;
+					width: 560px;				
+
+					> h4 {
+						color: @cdThemeColor;
+						font-family: inherit;
+						font-size: @fontSizeL;
+						margin: 10px 0;
+
+						&:first-child {
+							margin-top: 0;
+						}
+
+						&:hover {
+							cursor: default;
+						}
+					}
+
+					.rows {
+						color: #636363;
+						font-family: inherit;
+						width: inherit;
+																	
+						.row {
+							color: inherit;
+							font-family: inherit;
+							font-size: inherit;
+							margin-bottom: 5px;
+							width: inherit;							
+
+							.col {
+								color: inherit;
+								float: left;
+								font-family: inherit;
+								font-size: inherit;
+								width: inherit;
+
+								&.col-label {									
+									margin-right: 20px;
+									padding: 10px 0;
+									text-align: right;
+									width: 100px;
+
+									.required {
+										color: @cdThemeColor;
+									}									
+								}
+
+								&.col-value {
+									width: calc(~'100% - 146px');
+
+									label {
+										display: block;
+										color: @cdThemeColor;
+										font-size: @fontSizeXS;
+										font-style: italic;
+										margin: 7px 0;
+										padding: 0;
+									}
+								}
+
+
+								&.col-span {
+									&.label-value {
+										width: calc(~'100% - 26px');
+									}
+								}
+																		
+								&.no-padding-top {
+									padding-top: 0;
+								}
+
+								&.no-padding-bottom {
+									padding-bottom: 0;
+								}
+							}
+						}
+					}					
+				}					
+			}
+		}
 	}
 }

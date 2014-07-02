@@ -13,9 +13,9 @@ namespace PianoForte.Dao
 
         bool updateBook(string databaseName, Book book);
 
-        Book getBook(string databaseName, int bookId);
+        Book getBook(string databaseName, int id);
 
-        Book getBook(string databaseName, string bookBarcode);
+        Book getBook(string databaseName, string barcode);
 
         Book getLastBook(string databaseName);
 
@@ -25,6 +25,6 @@ namespace PianoForte.Dao
 
         List<Book> getBookList(string databaseName, int startIndex, int offset, string keyword);
 
-        List<Book> getBookListByName(string databaseName, string bookName);
+        List<Book> getBookListByName(string databaseName, string name);
     }
 }

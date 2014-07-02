@@ -258,20 +258,20 @@ namespace PianoForte.Dao
             return this.update(databaseName, book, sql);
         }
 
-        public Book getBook(string databaseName, int bookId)
+        public Book getBook(string databaseName, int id)
         {
             string sql = "SELECT * " +
                          "FROM " + Books.TableName + " " +
-                         "WHERE " + Books.ColumnBookId + " = " + bookId;
+                         "WHERE " + Books.ColumnBookId + " = " + id;
 
             return this.selectBook(databaseName, sql);
         }
 
-        public Book getBook(string databaseName, string bookBarcode)
+        public Book getBook(string databaseName, string barcode)
         {
             string sql = "SELECT * " +
                          "FROM " + Books.TableName + " " +
-                         "WHERE " + Books.ColumnBookBarcode + " = " + bookBarcode;
+                         "WHERE " + Books.ColumnBookBarcode + " = " + barcode;
 
             return this.selectBook(databaseName, sql);
         }
@@ -316,11 +316,11 @@ namespace PianoForte.Dao
             return this.selectBookList(databaseName, sql);
         }
 
-        public List<Book> getBookListByName(string databaseName, string bookName)
+        public List<Book> getBookListByName(string databaseName, string name)
         {
             string sql = "SELECT * " +
                          "FROM " + Books.TableName + " " +
-                         "WHERE " + Books.ColumnBookName + " = '" + bookName + "' " +
+                         "WHERE " + Books.ColumnBookName + " = '" + name + "' " +
                          "ORDER BY " + Books.ColumnBookId + " ASC";
 
             return this.selectBookList(databaseName, sql);

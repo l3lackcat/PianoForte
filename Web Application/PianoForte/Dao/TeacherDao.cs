@@ -13,7 +13,7 @@ namespace PianoForte.Dao
 
         bool updateTeacher(string databaseName, Teacher teacher);
 
-        Teacher getTeacher(string databaseName, int teacherId);
+        Teacher getTeacher(string databaseName, int id);
 
         List<Teacher> getTeacherList(string databaseName);
 

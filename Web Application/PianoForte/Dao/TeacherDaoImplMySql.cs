@@ -315,11 +315,11 @@ namespace PianoForte.Dao
             return this.update(databaseName, teacher, sql);
         }
 
-        public Teacher getTeacher(string databaseName, int teacherId)
+        public Teacher getTeacher(string databaseName, int id)
         {
             string sql = "SELECT * " +
                          "FROM " + Teachers.TableName + " " +
-                         "WHERE " + Teachers.ColumnTeacherId + " = " + teacherId;
+                         "WHERE " + Teachers.ColumnTeacherId + " = " + id;
 
             return this.selectTeacher(databaseName, sql);
         }

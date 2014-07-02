@@ -73,9 +73,9 @@ PianoForte.Controllers.Books.BookController = function ($scope, $rootScope, $rou
                     $scope['edittedBookInfo']['quantity']['value'] = 0;                    
                 }
 
-                if ($scope['edittedBookInfo']['quantity']['value'] === 0) {
+                if ($scope['edittedBookInfo']['quantity']['value'] == 0) {
                     $scope['edittedBookInfo']['status']['value'] = Enum.Status.Empty;
-                } else {
+                } else {                   
                     if ($scope['edittedBookInfo']['status']['value'] === Enum.Status.Empty) {
                         $scope['edittedBookInfo']['status']['value'] = Enum.Status.Available;
                     }

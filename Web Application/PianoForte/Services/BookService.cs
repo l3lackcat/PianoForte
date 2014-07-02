@@ -40,14 +40,14 @@ namespace PianoForte.Services
             return bookDao.updateBook(databaseName, book);
         }
 
-        public static Book getBook(string databaseName, int bookId)
+        public static Book getBook(string databaseName, int id)
         {
-            return bookDao.getBook(databaseName, bookId);
+            return bookDao.getBook(databaseName, id);
         }
 
-        public static Book getBook(string databaseName, string bookBarcode)
+        public static Book getBook(string databaseName, string barcode)
         {
-            return bookDao.getBook(databaseName, bookBarcode);
+            return bookDao.getBook(databaseName, barcode);
         }
 
         public static Book getLastBook(string databaseName)
@@ -70,9 +70,9 @@ namespace PianoForte.Services
             return bookDao.getBookList(databaseName, startIndex, offset, keyword);
         }
 
-        public static List<Book> getBookListByName(string databaseName, string bookName)
+        public static List<Book> getBookListByName(string databaseName, string name)
         {
-            return bookDao.getBookListByName(databaseName, bookName);
+            return bookDao.getBookListByName(databaseName, name);
         }
     }
 }

@@ -13,7 +13,9 @@ namespace PianoForte.Dao
 
         bool updateCd(string databaseName, Cd cd);
 
-        Cd getCd(string databaseName, int cdId);
+        Cd getCd(string databaseName, int id);
+
+        Cd getCd(string databaseName, string barcode);
 
         Cd getLastCd(string databaseName);
 
@@ -23,6 +25,6 @@ namespace PianoForte.Dao
 
         List<Cd> getCdList(string databaseName, int startIndex, int offset, string keyword);
 
-        List<Cd> getCdListByName(string databaseName, string cdName);
+        List<Cd> getCdListByName(string databaseName, string name);
     }
 }

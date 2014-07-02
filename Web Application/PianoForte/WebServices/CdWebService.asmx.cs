@@ -31,17 +31,73 @@ namespace PianoForte.WebServices
                     id = cd.Id,
                     barcode = cd.Barcode,
                     name = cd.Name,
-                    unitPrice = new
-                    {
-                        raw = cd.UnitPrice,
-                        formatted = cd.UnitPrice.ToString("N", new CultureInfo("en-US"))
-                    },
+                    unitPrice = cd.UnitPrice,
                     quantity = cd.Quantity,
                     status = cd.Status
                 });
             }
 
             return displayedCdList;
+        }
+
+        [WebMethod]
+        public Object getCdById(string databaseName, int id)
+        {
+            System.Threading.Thread.Sleep(1500);
+
+            Object displayedCd = null;
+            Cd cd = CdService.getCd(databaseName, id);
+            if (cd != null)
+            {
+                displayedCd = new
+                {
+                    id = cd.Id,
+                    barcode = cd.Barcode,
+                    name = cd.Name,
+                    unitPrice = cd.UnitPrice,
+                    quantity = cd.Quantity,
+                    status = cd.Status
+                };
+            }
+
+            return displayedCd;
+        }
+
+        [WebMethod]
+        public Object getCdByBarcode(string databaseName, string barcode)
+        {
+            System.Threading.Thread.Sleep(1500);
+
+            Object displayedCd = null;
+            Cd cd = CdService.getCd(databaseName, barcode);
+            if (cd != null)
+            {
+                displayedCd = new
+                {
+                    id = cd.Id,
+                    barcode = cd.Barcode,
+                    name = cd.Name,
+                    unitPrice = cd.UnitPrice,
+                    quantity = cd.Quantity,
+                    status = cd.Status
+                };
+            }
+
+            return displayedCd;
+        }
+
+        [WebMethod]
+        public bool insertCdInfo(string databaseName, Cd cd)
+        {
+            System.Threading.Thread.Sleep(1500);
+            return CdService.insertCd(databaseName, cd);
+        }
+
+        [WebMethod]
+        public bool updateCdInfo(string databaseName, Cd cd)
+        {
+            System.Threading.Thread.Sleep(1500);
+            return CdService.updateCd(databaseName, cd);
         }
     }
 }

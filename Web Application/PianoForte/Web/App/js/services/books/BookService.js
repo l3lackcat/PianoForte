@@ -14,19 +14,19 @@ PianoForte.Services.BookService = function($http) {
             $http.post('/WebServices/BookWebService.asmx/getBookList', data).success(onSuccess).error(onError);
         },
 
-        getBookInfoById: function(bookId, onSuccess, onError) {
+        getBookInfoById: function(id, onSuccess, onError) {
         	var data = {
                 databaseName: databaseName,
-                bookId: bookId
+                id: id
             };
 
             $http.post('/WebServices/BookWebService.asmx/getBookById', data).success(onSuccess).error(onError);
         },
 
-        getBookInfoByBarcode: function(bookBarcode, onSuccess, onError) {
+        getBookInfoByBarcode: function(barcode, onSuccess, onError) {
         	var data = {
                 databaseName: databaseName,
-                bookBarcode: bookBarcode
+                barcode: barcode
             };
 
             $http.post('/WebServices/BookWebService.asmx/getBookByBarcode', data).success(onSuccess).error(onError);

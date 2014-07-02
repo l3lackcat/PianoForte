@@ -126,6 +126,7 @@
     <Content Include="Web\App\js\utilities\FormatManager.js" />
     <Content Include="Web\App\js\utilities\ValidationManager.js" />
     <Content Include="Web\App\js\utilities\EnumConverter.js" />
+    <Content Include="Web\App\libs\accounting\0.3.2\accounting.min.js" />
     <Content Include="Web\App\libs\angular-ui\utils\0.1.1\ui-utils-ieshiv.js" />
     <Content Include="Web\App\libs\angular-ui\utils\0.1.1\ui-utils-ieshiv.min.js" />
     <Content Include="Web\App\libs\angular-ui\utils\0.1.1\ui-utils.js" />
@@ -2051,6 +2052,7 @@
     <Content Include="Web\App\libs\underscore\1.5.2\underscore.min.js" />
     <Content Include="Web\App\partials\books\book-main.htm" />
     <Content Include="Web\App\partials\books\book.htm" />
+    <Content Include="Web\App\partials\cds\cd.htm" />
     <Content Include="Web\App\partials\cds\cd-main.htm" />
     <Content Include="Web\App\partials\courses\course-main.htm" />
     <Content Include="Web\App\partials\students\student-main.htm" />
