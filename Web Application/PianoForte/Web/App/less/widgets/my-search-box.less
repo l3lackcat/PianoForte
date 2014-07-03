@@ -76,6 +76,23 @@
 	}
 }
 
+#course,
+#courses {
+	.widget-search-box {
+		> .wrapper {
+			> input[type="text"] {
+				&:focus { border-bottom-color: @courseThemeColor; }
+				&:hover { border-bottom-color: @courseThemeColor; }	
+				&:disabled { border-bottom-color: transparent; }	
+			}
+
+			> .btn-search { color: @courseThemeColor; }
+
+			> .icon-search { color: @courseThemeColor; }
+		}
+	}
+}
+
 #teacher,
 #teachers {
 	.widget-search-box {

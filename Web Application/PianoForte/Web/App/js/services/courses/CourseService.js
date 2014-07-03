@@ -13,6 +13,14 @@ PianoForte.Services.CourseService = function ($http) {
             };
 
             $http.post('/WebServices/CourseWebService.asmx/getCourseNameList', data).success(onSuccess).error(onError);
+        },
+
+        getCourseList: function(onSuccess, onError) {
+            var data = {
+                databaseName: databaseName
+            };
+
+            $http.post('/WebServices/CourseWebService.asmx/getCourseList', data).success(onSuccess).error(onError);
         }
     }
 };

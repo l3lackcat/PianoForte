@@ -19,18 +19,22 @@
 goog.provide('goog.ui.ModalPopup');
 
 goog.require('goog.Timer');
+goog.require('goog.a11y.aria');
+goog.require('goog.a11y.aria.State');
 goog.require('goog.asserts');
 goog.require('goog.dom');
+goog.require('goog.dom.NodeType');
 goog.require('goog.dom.TagName');
-goog.require('goog.dom.classes');
+goog.require('goog.dom.classlist');
 goog.require('goog.dom.iframe');
 goog.require('goog.events');
 goog.require('goog.events.EventType');
 goog.require('goog.events.FocusHandler');
 goog.require('goog.fx.Transition');
+goog.require('goog.string');
 goog.require('goog.style');
 goog.require('goog.ui.Component');
-goog.require('goog.ui.PopupBase.EventType');
+goog.require('goog.ui.PopupBase');
 goog.require('goog.userAgent');
 
 
@@ -68,6 +72,13 @@ goog.ui.ModalPopup = function(opt_useIframeMask, opt_domHelper) {
    * @private
    */
   this.useIframeMask_ = !!opt_useIframeMask;
+
+  /**
+   * The element that had focus before the popup was displayed.
+   * @type {Element}
+   * @private
+   */
+  this.lastFocus_ = null;
 };
 goog.inherits(goog.ui.ModalPopup, goog.ui.Component);
 
@@ -192,7 +203,8 @@ goog.ui.ModalPopup.prototype.createDom = function() {
   goog.base(this, 'createDom');
 
   var element = this.getElement();
-  goog.dom.classes.add(element, this.getCssClass());
+  var allClasses = goog.string.trim(this.getCssClass()).split(' ');
+  goog.dom.classlist.addAll(element, allClasses);
   goog.dom.setFocusableTabIndex(element, true);
   goog.style.setElementShown(element, false);
 
@@ -296,7 +308,8 @@ goog.ui.ModalPopup.prototype.canDecorate = function(element) {
 goog.ui.ModalPopup.prototype.decorateInternal = function(element) {
   // Decorate the modal popup area element.
   goog.base(this, 'decorateInternal', element);
-  goog.dom.classes.add(this.getElement(), this.getCssClass());
+  var allClasses = goog.string.trim(this.getCssClass()).split(' ');
+  goog.dom.classlist.addAll(this.getElement(), allClasses);
 
   // Create the background mask...
   this.manageBackgroundDom_();
@@ -322,6 +335,7 @@ goog.ui.ModalPopup.prototype.enterDocument = function() {
   this.getHandler().listen(
       this.focusHandler_, goog.events.FocusHandler.EventType.FOCUSIN,
       this.onFocus_);
+  this.setA11YDetectBackground_(false);
 };
 
 
@@ -358,11 +372,46 @@ goog.ui.ModalPopup.prototype.setVisible = function(visible) {
   if (this.popupHideTransition_) this.popupHideTransition_.stop();
   if (this.bgHideTransition_) this.bgHideTransition_.stop();
 
+  if (this.isInDocument()) {
+    this.setA11YDetectBackground_(visible);
+  }
   if (visible) {
     this.show_();
   } else {
     this.hide_();
   }
+};
+
+
+/**
+ * Sets the aria-hidden value for an element.
+ * Removes the aria-hidden attribute if false.
+ * @param {!Element} element DOM node to set aria-hidden to.
+ * @param {boolean} hide Boolean being set as aria-hidden.
+ * @private
+ */
+goog.ui.ModalPopup.setAriaHidden_ = function(element, hide) {
+  if (hide) {
+    goog.a11y.aria.setState(element, goog.a11y.aria.State.HIDDEN, hide);
+  } else {
+    goog.a11y.aria.removeState(element, goog.a11y.aria.State.HIDDEN);
+  }
+};
+
+
+/**
+ * Sets aria-hidden of the rest of the page to restrict keyboard focus.
+ * @param {boolean} hide Whether to hide or show the rest of the page.
+ * @private
+ */
+goog.ui.ModalPopup.prototype.setA11YDetectBackground_ = function(hide) {
+  for (var child = this.getDomHelper().getDocument().body.firstChild; child;
+      child = child.nextSibling) {
+    if (child.nodeType == goog.dom.NodeType.ELEMENT) {
+      goog.ui.ModalPopup.setAriaHidden_(/** @type {!Element}*/ (child), hide);
+    }
+  }
+  goog.ui.ModalPopup.setAriaHidden_(this.getElementStrict(), !hide);
 };
 
 
@@ -395,6 +444,12 @@ goog.ui.ModalPopup.prototype.show_ = function() {
     return;
   }
 
+  try {
+    this.lastFocus_ = this.getDomHelper().getDocument().activeElement;
+  } catch (e) {
+    // Focus-related actions often throw exceptions.
+    // Sample past issue: https://bugzilla.mozilla.org/show_bug.cgi?id=656283
+  }
   this.resizeBackground_();
   this.reposition();
 
@@ -451,6 +506,18 @@ goog.ui.ModalPopup.prototype.hide_ = function() {
   } else {
     this.onHide();
   }
+  try {
+    var body = this.getDomHelper().getDocument().body;
+    var active = this.getDomHelper().getDocument().activeElement || body;
+    if (this.lastFocus_ && active == body && this.lastFocus_ != body) {
+      this.lastFocus_.focus();
+    }
+  } catch (e) {
+    // Swallow this. IE can throw an error if the element can not be focused.
+  }
+  // Explicitly want to null this out even if there was an error focusing to
+  // avoid bleed over between dialog invocations.
+  this.lastFocus_ = null;
 };
 
 

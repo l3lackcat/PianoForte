@@ -16,13 +16,5 @@ namespace PianoForte.Dao
         Teacher getTeacher(string databaseName, int id);
 
         List<Teacher> getTeacherList(string databaseName);
-
-        List<Teacher> getTeacherList(string databaseName, string keyword);
-
-        List<ShortTeacher> getShortTeacherList(string databaseName);
-
-        List<ShortTeacher> getShortTeacherList(string databaseName, string keyword);
-
-        List<ShortTeacher> getShortTeacherList(string databaseName, string keyword, int startIndex, int offset);
     }
 }

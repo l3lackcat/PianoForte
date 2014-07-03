@@ -14,15 +14,15 @@ namespace PianoForte.Dao
 
         bool updateCourse(string databaseName, Course course);
 
-        Course getCourse(string databaseName, int courseId);
+        Course getCourse(string databaseName, int id);
 
         List<Course> getCourseList(string databaseName);
 
-        List<Course> getCourseList(string databaseName, string keyword);
+        List<Course> getCourseList(string databaseName, Status status);
 
-        List<Course> getCourseListByName(string databaseName, string courseName);
+        List<Course> getCourseListByName(string databaseName, string name);
 
-        List<Course> getCourseListByName(string databaseName, string courseName, Status status);
+        List<Course> getCourseListByName(string databaseName, string name, Status status);
 
         List<string> getCourseNameList(string databaseName);
 

@@ -322,11 +322,11 @@ namespace PianoForte.Dao
             return this.update(databaseName, course, sql);
         }
 
-        public Course getCourse(string databaseName, int courseId)
+        public Course getCourse(string databaseName, int id)
         {
             string sql = "SELECT * " +
                          "FROM " + Courses.TableName + " " +
-                         "WHERE " + Courses.ColumnCourseId + " = " + courseId;
+                         "WHERE " + Courses.ColumnCourseId + " = " + id;
 
             return this.selectCourse(databaseName, sql);
         }
@@ -340,31 +340,31 @@ namespace PianoForte.Dao
             return this.selectCourseList(databaseName, sql);
         }
 
-        public List<Course> getCourseList(string databaseName, string keyword)
+        public List<Course> getCourseList(string databaseName, Status status)
         {
             string sql = "SELECT * " +
                          "FROM " + Courses.TableName + " " +
-                         "WHERE " + Courses.ColumnCourseName + " LIKE '%" + keyword + "%' " +
+                         "WHERE " + Courses.ColumnCourseStatus + " = " + (int)status + " " +
                          "ORDER BY " + Courses.ColumnCourseId + " ASC";
 
             return this.selectCourseList(databaseName, sql);
         }
 
-        public List<Course> getCourseListByName(string databaseName, string courseName)
+        public List<Course> getCourseListByName(string databaseName, string name)
         {
             string sql = "SELECT * " +
                          "FROM " + Courses.TableName + " " +
-                         "WHERE " + Courses.ColumnCourseName + " = '" + courseName + "' " +
+                         "WHERE " + Courses.ColumnCourseName + " = '" + name + "' " +
                          "ORDER BY " + Courses.ColumnCourseId + " ASC";
 
             return this.selectCourseList(databaseName, sql);
         }
 
-        public List<Course> getCourseListByName(string databaseName, string courseName, Status status)
+        public List<Course> getCourseListByName(string databaseName, string name, Status status)
         {
             string sql = "SELECT * " +
                          "FROM " + Courses.TableName + " " +
-                         "WHERE " + Courses.ColumnCourseName + " = '" + courseName + "' " +
+                         "WHERE " + Courses.ColumnCourseName + " = '" + name + "' " +
                          "AND " + Courses.ColumnCourseStatus + " = " + (int)status + " " +
                          "ORDER BY " + Courses.ColumnCourseId + " ASC";
 

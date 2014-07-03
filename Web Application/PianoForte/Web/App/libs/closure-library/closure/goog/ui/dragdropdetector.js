@@ -44,6 +44,7 @@ goog.require('goog.userAgent');
  *     the demos directory.
  * @constructor
  * @extends {goog.events.EventTarget}
+ * @final
  */
 goog.ui.DragDropDetector = function(opt_filePath) {
   goog.base(this);
@@ -217,7 +218,7 @@ goog.ui.DragDropDetector.prototype.window_ = null;
 
 /**
  * The iframe's document, null if the iframe hasn't loaded yet.
- * @type {HTMLDocument}
+ * @type {Document}
  * @private
  */
 goog.ui.DragDropDetector.prototype.document_ = null;
@@ -573,6 +574,7 @@ goog.ui.DragDropDetector.prototype.disposeInternal = function() {
  *     occurred.
  * @constructor
  * @extends {goog.events.Event}
+ * @final
  */
 goog.ui.DragDropDetector.ImageDropEvent = function(url, position) {
   goog.base(this, goog.ui.DragDropDetector.EventType.IMAGE_DROPPED);
@@ -619,6 +621,7 @@ goog.ui.DragDropDetector.ImageDropEvent.prototype.getPosition = function() {
  * @param {string} url The url of the dropped link.
  * @constructor
  * @extends {goog.events.Event}
+ * @final
  */
 goog.ui.DragDropDetector.LinkDropEvent = function(url) {
   goog.base(this, goog.ui.DragDropDetector.EventType.LINK_DROPPED);

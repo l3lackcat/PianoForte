@@ -140,7 +140,6 @@ var _displayStringForValue = function(aVar) {
   return result;
 };
 
-/** @param {string=} failureMessage */
 var fail = function(failureMessage) {
   goog.testing.asserts.raiseException('Call to fail()', failureMessage);
 };
@@ -1185,6 +1184,7 @@ goog.testing.asserts.isArrayIndexProp_ = function(prop) {
  * @param {?string=} opt_message A description of the exception.
  * @constructor
  * @extends {Error}
+ * @final
  */
 goog.testing.JsUnitException = function(comment, opt_message) {
   this.isJsUnitException = true;

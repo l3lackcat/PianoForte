@@ -1,7 +1,83 @@
-﻿<div id="courses" ng-controller="CourseMainController" ng-init="init()">
+﻿<div id="courses" class="dashboard" ng-controller="CourseMainController" ng-init="initialize()">
     <my-tabs>
         <my-pane data-title="dashboard">
-            Courses
+        	<div class="tube width-100-percent no-margin-bottom">
+        		<div class="tube width-25-percent">
+	                <my-box class="no-margin-bottom">                    
+	                    <ul class="widget-breadcrumb">
+	                        <li>Courses</li>
+	                        <li class="seperator">&gt;</li>
+	                        <li>dashboard</li>
+	                    </ul>
+	                </my-box>
+	            </div>
+	            <div class="tube width-75-percent">
+	                <div class="tube width-25-percent">
+	                    <my-select 
+	                        data-items="filter.dropdownList" 
+	                        data-selected-item-id="filter.dropdownSelectedId"
+	                        data-show-max-items="5"
+	                        data-placeholder="'Please select...'"
+	                        data-theme="'theme-course'"></my-select>
+	                </div>
+	                <div class="tube width-30-percent">
+	                    <my-search-box data-is-filter-box="true" data-text="filter.text" data-placeholder="'ค้นหา...'"></my-search-box>
+	                </div>
+	                <div class="tube width-20-percent">
+	                    <my-button data-text="'Stock'" data-disabled="true"></my-button>
+	                </div>
+	                <div class="tube width-25-percent">
+	                    <my-button data-text="'เพิ่มหนังสือ'"></my-button>
+	                </div>
+	            </div>
+        	</div>	            
+            <div class="clear-fix"></div>
+            <div class="tube width-100-percent no-margin-bottom">
+                <my-box class="header no-padding-right no-padding-left">
+                    <div class="rows">
+                        <div class="row">
+                        	<div class="col col-id">ID</div>
+                            <div class="col col-name">ชื่อวิชา</div>
+                            <div class="col col-level">ระดับ</div>
+                            <div class="col col-unitprice align-center">ราคา</div>
+                            <div class="col col-status">&nbsp;</div>
+                            <div class="col col-view">&nbsp;</div>
+                            <div class="clear-fix"></div>
+                        </div>
+                    </div>
+                </my-box>
+            </div> 
+            <div class="clear-fix"></div>
+            <div class="tube width-100-percent no-margin-bottom fix-height">
+                <my-box class="content no-margin-bottom no-padding-top no-padding-bottom no-padding-right no-padding-left">
+                    <div class="rows">
+                        <div class="row" ng-repeat="course in filter.result | orderBy:'name' | startFrom:(currentPage-1)*showPerPage | limitTo:showPerPage">
+                            <div class="col col-id clipped-text" title="{{course.name}}">{{course.id}}</div>
+                            <div class="col col-name clipped-text" title="{{course.name}}">{{course.name}}</div>
+                            <div class="col col-level clipped-text" title="{{course.level}}" ng-hide="course.level == ''">{{course.level}}</div>
+                            <div class="col col-level clipped-text" ng-show="course.level == ''">&nbsp;</div>
+                            <div class="col col-unitprice align-right">{{course.unitPrice}}</div>
+                            <div class="col col-status align-center status-{{course.status}}"><i class="fa fa-circle"></i></div>
+                            <div class="col col-view align-center" title="View"><a href="#/courses/{{course.id}}"><i class="fa fa-th-list"></i></a></div>
+                            <div class="clear-fix"></div>
+                        </div>
+                    </div>
+                    <div class="pagination">
+	                    <ul>
+	                        <li ng-show="pageNumbers.length > 1">
+	                            <span class="btn-prev" ng-click="goToPrevPage(pageNumber)" title="ก่อนหน้า">&#9664;</span>
+	                        </li>
+	                        <li ng-repeat="pageNumber in pageNumbers" ng-switch on="!$last">
+	                            <span class="{{pageNumber.className}}" ng-click="goToPage(pageNumber.index)">{{pageNumber.index}}</span>
+	                            <span class="seperator" ng-switch-when="true">.</span>
+	                        </li>
+	                        <li ng-show="pageNumbers.length > 1">
+	                            <span class="btn-next" ng-click="goToNextPage(pageNumber)" title="ถัดไป">&#9654;</span>
+	                        </li>
+	                    </ul>
+	                </div>                      
+                </my-box>
+            </div>
         </my-pane>
     </my-tabs>
 </div>

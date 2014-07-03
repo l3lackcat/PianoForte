@@ -142,6 +142,7 @@ goog.labs.mock.formatMethodCall_ = function(methodName, opt_args) {
  * @param {!Array} args The expected arguments.
  * @constructor
  * @extends {goog.debug.Error}
+ * @final
  */
 goog.labs.mock.VerificationError = function(recordedCalls, methodName, args) {
   var msg = goog.labs.mock.VerificationError.getVerificationErrorMsg_(
@@ -213,6 +214,7 @@ goog.labs.mock.VerificationError.getVerificationErrorMsg_ =
  * other things.
  *
  * @constructor
+ * @struct
  * @private
  */
 goog.labs.mock.MockManager_ = function() {
@@ -220,7 +222,6 @@ goog.labs.mock.MockManager_ = function() {
    * Proxies the methods for the mocked object or class to execute the stubs.
    * @type {!Object}
    * @protected
-   * TODO(user): make instanceof work.
    */
   this.mockedItem = {};
 
@@ -369,7 +370,6 @@ goog.labs.mock.MockManager_.prototype.recordCall_ =
  *
  * @param {string} methodName The name of the method.
  * @param {...} var_args The arguments passed.
- * @return {!Function} The stub, if defined, or the spy method.
  * @protected
  */
 goog.labs.mock.MockManager_.prototype.verifyInvocation =
@@ -396,6 +396,7 @@ goog.labs.mock.MockManager_.prototype.verifyInvocation =
  *     for. A class is a constructor function.
  *
  * @constructor
+ * @struct
  * @extends {goog.labs.mock.MockManager_}
  * @private
  */
@@ -423,13 +424,26 @@ goog.labs.mock.MockObjectManager_ = function(objOrClass) {
   if (goog.isFunction(objOrClass)) {
     // Create a temporary subclass with a no-op constructor so that we can
     // create an instance and determine what methods it has.
-    /** @constructor */
+    /**
+ * @constructor
+ * @final
+ */
     var tempCtor = function() {};
     goog.inherits(tempCtor, objOrClass);
     obj = new tempCtor();
   } else {
     obj = objOrClass;
   }
+
+  // Put the object being mocked in the prototype chain of the mock so that
+  // it has all the correct properties and instanceof works.
+  /**
+ * @constructor
+ * @final
+ */
+  var mockedItemCtor = function() {};
+  mockedItemCtor.prototype = obj;
+  this.mockedItem = new mockedItemCtor();
 
   var enumerableProperties = goog.object.getKeys(obj);
   // The non enumerable properties are added due to the fact that IE8 does not
@@ -473,6 +487,7 @@ goog.inherits(goog.labs.mock.MockObjectManager_,
  * @param {!Object} obj The object to be spied on.
  *
  * @constructor
+ * @struct
  * @extends {goog.labs.mock.MockObjectManager_}
  * @private
  */
@@ -511,6 +526,7 @@ goog.labs.mock.MockSpyManager_.prototype.findBinding =
  * @param {!Function} func The function to set up the mock for.
  *
  * @constructor
+ * @struct
  * @extends {goog.labs.mock.MockManager_}
  * @private
  */
@@ -573,6 +589,7 @@ goog.labs.mock.MockFunctionManager_.prototype.useMockedFunctionName_ =
  * @param {!Array} args The other arguments to the method.
  *
  * @constructor
+ * @struct
  * @private
  */
 goog.labs.mock.StubBinder_ = function(mockManager, name, args) {
@@ -646,6 +663,7 @@ goog.labs.mock.when = function(mockObject) {
  * @param {!Array} args The arguments passed to the method.
  * @param {!Function} stub The stub function to be called for the given method.
  * @constructor
+ * @struct
  * @private
  */
 goog.labs.mock.MethodBinding_ = function(methodName, args, stub) {

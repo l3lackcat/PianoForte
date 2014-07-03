@@ -22,42 +22,14 @@ namespace PianoForte.Services
             return studentDao.updateStudent(databaseName, student);
         }
 
-        public static Student getStudent(string databaseName, int studentId)
+        public static Student getStudent(string databaseName, int id)
         {
-            Student student = null;
-
-            List<Student> tempStudentList = studentDao.getStudentList(databaseName, studentId);
-            if (tempStudentList.Count == 1)
-            {
-                student = tempStudentList[0];
-            }
-
-            return student;
+            return studentDao.getStudent(databaseName, id);;
         }
 
-        public static List<Student> getStudentList(string databaseName, int startIndex, int offset)
+        public static List<Student> getStudentList(string databaseName)
         {
-            return studentDao.getStudentList(databaseName, startIndex, offset);
-        }
-
-        public static List<Student> getStudentList(string databaseName, int startIndex, int offset, string keyword)
-        {
-            return studentDao.getStudentList(databaseName, startIndex, offset, keyword);
-        }
-
-        public static List<ShortStudent> getShortStudentList(string databaseName)
-        {
-            return studentDao.getShortStudentList(databaseName);
-        }
-
-        public static List<ShortStudent> getShortStudentList(string databaseName, string keyword)
-        {
-            return studentDao.getShortStudentList(databaseName, keyword);
-        }
-
-        public static List<ShortStudent> getShortStudentList(string databaseName, string keyword, int startIndex, int offset)
-        {
-            return studentDao.getShortStudentList(databaseName, keyword, startIndex, offset);
+            return studentDao.getStudentList(databaseName);
         }
     }
 }

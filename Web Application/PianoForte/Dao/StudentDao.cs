@@ -13,16 +13,8 @@ namespace PianoForte.Dao
 
         bool updateStudent(string databaseName, Student student);
 
-        List<Student> getStudentList(string databaseName, int studentId);
+        Student getStudent(string databaseName, int id);
 
-        List<Student> getStudentList(string databaseName, int startIndex, int offset);
-
-        List<Student> getStudentList(string databaseName, int startIndex, int offset, string keyword);
-
-        List<ShortStudent> getShortStudentList(string databaseName);
-
-        List<ShortStudent> getShortStudentList(string databaseName, string keyword);
-
-        List<ShortStudent> getShortStudentList(string databaseName, string keyword, int startIndex, int offset);
+        List<Student> getStudentList(string databaseName);
     }
 }

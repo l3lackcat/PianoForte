@@ -57,6 +57,10 @@ goog.require('goog.userAgent');
  *     document we want to render in.
  * @constructor
  * @extends {goog.graphics.AbstractGraphics}
+ * @deprecated goog.graphics is deprecated. It existed to abstract over browser
+ *     differences before the canvas tag was widely supported.  See
+ *     http://en.wikipedia.org/wiki/Canvas_element for details.
+ * @final
  */
 goog.graphics.SvgGraphics = function(width, height,
                                      opt_coordWidth, opt_coordHeight,
@@ -83,11 +87,11 @@ goog.graphics.SvgGraphics = function(width, height,
    * @private
    */
   this.useManualViewbox_ = goog.userAgent.WEBKIT &&
-                           !goog.userAgent.isVersion(526);
+                           !goog.userAgent.isVersionOrHigher(526);
 
   /**
    * Event handler.
-   * @type {goog.events.EventHandler}
+   * @type {goog.events.EventHandler.<!goog.graphics.SvgGraphics>}
    * @private
    */
   this.handler_ = new goog.events.EventHandler(this);
@@ -652,6 +656,7 @@ goog.graphics.SvgGraphics.prototype.drawPath = function(
  *
  * @param {goog.graphics.Path} path The logical path.
  * @return {string} The SVG path representation.
+ * @suppress {deprecated} goog.graphics is deprecated.
  */
 goog.graphics.SvgGraphics.getSvgPath = function(path) {
   var list = [];

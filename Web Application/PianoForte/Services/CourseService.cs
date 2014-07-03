@@ -23,9 +23,9 @@ namespace PianoForte.Services
             return courseDao.updateCourse(databaseName, course);
         }
 
-        public static Course getCourse(string databaseName, int courseId)
+        public static Course getCourse(string databaseName, int id)
         {
-            return courseDao.getCourse(databaseName, courseId);
+            return courseDao.getCourse(databaseName, id);
         }
 
         public static List<Course> getCourseList(string databaseName)
@@ -33,19 +33,19 @@ namespace PianoForte.Services
             return courseDao.getCourseList(databaseName);
         }
 
-        public static List<Course> getCourseList(string databaseName, string keyword)
+        public static List<Course> getCourseList(string databaseName, Status status)
         {
-            return courseDao.getCourseList(databaseName, keyword);
+            return courseDao.getCourseList(databaseName, status);
         }
 
-        public static List<Course> getCourseListByName(string databaseName, string courseName)
+        public static List<Course> getCourseListByName(string databaseName, string name)
         {
-            return courseDao.getCourseListByName(databaseName, courseName);
+            return courseDao.getCourseListByName(databaseName, name);
         }
 
-        public static List<Course> getCourseListByName(string databaseName, string courseName, Status status)
+        public static List<Course> getCourseListByName(string databaseName, string name, Status status)
         {
-            return courseDao.getCourseListByName(databaseName, courseName, status);
+            return courseDao.getCourseListByName(databaseName, name, status);
         }
 
         public static List<string> getCourseNameList(string databaseName)

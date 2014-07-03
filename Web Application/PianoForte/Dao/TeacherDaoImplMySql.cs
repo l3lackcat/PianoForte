@@ -135,14 +135,15 @@ namespace PianoForte.Dao
                     DataSet data = new DataSet();
                     dataAdapter.Fill(data, Teachers.TableName);
 
-                    for (int i = 0; i < data.Tables[Teachers.TableName].Rows.Count; i++)
+                    if (data.Tables[Teachers.TableName].Rows.Count > 0)
                     {
+                        int index = 0;
                         teacher = new Teacher();
-                        teacher.Id = Convert.ToInt32(data.Tables[Teachers.TableName].Rows[i][Teachers.ColumnTeacherId].ToString());
-                        teacher.Firstname = data.Tables[Teachers.TableName].Rows[i][Teachers.ColumnFirstname].ToString();
-                        teacher.Lastname = data.Tables[Teachers.TableName].Rows[i][Teachers.ColumnLastname].ToString();
-                        teacher.Nickname = data.Tables[Teachers.TableName].Rows[i][Teachers.ColumnNickname].ToString();
-                        teacher.Status = EnumConverter.ToStatus(data.Tables[Teachers.TableName].Rows[i][Teachers.ColumnTeacherStatus].ToString());
+                        teacher.Id = Convert.ToInt32(data.Tables[Teachers.TableName].Rows[index][Teachers.ColumnTeacherId].ToString());
+                        teacher.Firstname = data.Tables[Teachers.TableName].Rows[index][Teachers.ColumnFirstname].ToString();
+                        teacher.Lastname = data.Tables[Teachers.TableName].Rows[index][Teachers.ColumnLastname].ToString();
+                        teacher.Nickname = data.Tables[Teachers.TableName].Rows[index][Teachers.ColumnNickname].ToString();
+                        teacher.Status = EnumConverter.ToStatus(data.Tables[Teachers.TableName].Rows[index][Teachers.ColumnTeacherStatus].ToString());
                     }
                 }
             }
@@ -218,73 +219,6 @@ namespace PianoForte.Dao
             return teacherList;
         }
 
-        private List<ShortTeacher> selectShortTeacherList(string databaseName, string sql)
-        {
-            List<ShortTeacher> shortTeacherList = new List<ShortTeacher>();
-
-            MySqlConnection conn = null;
-            try
-            {
-                string connectionString = ConfigurationManager.ConnectionStrings[databaseName].ConnectionString;
-
-                conn = new MySqlConnection(connectionString);
-                if (conn != null)
-                {
-                    conn.Open();
-                    MySqlCommand command = new MySqlCommand(sql, conn);
-                    MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command);
-
-                    DataSet data = new DataSet();
-                    dataAdapter.Fill(data, Teachers.TableName);
-
-                    for (int i = 0; i < data.Tables[Teachers.TableName].Rows.Count; i++)
-                    {
-                        ShortTeacher shortTeacher = new ShortTeacher();
-
-                        if (data.Tables[Teachers.TableName].Columns.Contains(Teachers.ColumnTeacherId))
-                        {
-                            shortTeacher.Id = Convert.ToInt32(data.Tables[Teachers.TableName].Rows[i][Teachers.ColumnTeacherId].ToString());
-                        }
-
-                        if (data.Tables[Teachers.TableName].Columns.Contains(Teachers.ColumnFirstname))
-                        {
-                            shortTeacher.Firstname = data.Tables[Teachers.TableName].Rows[i][Teachers.ColumnFirstname].ToString();
-                        }
-
-                        if (data.Tables[Teachers.TableName].Columns.Contains(Teachers.ColumnLastname))
-                        {
-                            shortTeacher.Lastname = data.Tables[Teachers.TableName].Rows[i][Teachers.ColumnLastname].ToString();
-                        }
-
-                        if (data.Tables[Teachers.TableName].Columns.Contains(Teachers.ColumnNickname))
-                        {
-                            shortTeacher.Nickname = data.Tables[Teachers.TableName].Rows[i][Teachers.ColumnNickname].ToString();
-                        }
-
-                        shortTeacherList.Add(shortTeacher);
-                    }
-                }
-            }
-            catch (System.InvalidOperationException e)
-            {
-                Console.Write(e.Message);
-            }
-            catch (MySqlException e)
-            {
-                Console.Write(e.Message);
-            }
-            catch (System.SystemException e)
-            {
-                Console.Write(e.Message);
-            }
-            finally
-            {
-                conn.Close();
-            }
-
-            return shortTeacherList;
-        }
-
         public bool insertTeacher(string databaseName, Teacher teacher)
         {
             string sql = "INSERT INTO " +
@@ -331,66 +265,6 @@ namespace PianoForte.Dao
                          "ORDER BY " + Teachers.ColumnTeacherId + " ASC";
 
             return this.selectTeacherList(databaseName, sql);
-        }
-
-        public List<Teacher> getTeacherList(string databaseName, string keyword)
-        {
-            string sql = "SELECT * " +
-                         "FROM " + Teachers.TableName + " " +
-                         "WHERE " + Teachers.ColumnFirstname + " LIKE '%" + keyword + "%' " +
-                         "OR " + Teachers.ColumnLastname + " LIKE '%" + keyword + "%' " +
-                         "OR " + Teachers.ColumnNickname + " LIKE '%" + keyword + "%' " +
-                         "ORDER BY " + Teachers.ColumnTeacherId + " ASC";
-
-            return this.selectTeacherList(databaseName, sql);
-        }
-
-        public List<ShortTeacher> getShortTeacherList(string databaseName)
-        {
-            string sql = "SELECT " +
-                         Teachers.ColumnTeacherId + ", " +
-                         Teachers.ColumnFirstname + ", " +
-                         Teachers.ColumnLastname + ", " +
-                         Teachers.ColumnNickname + " " +
-                         "FROM " + Teachers.TableName + " " +
-                         "ORDER BY " + Teachers.ColumnTeacherId + " ASC";
-
-            return this.selectShortTeacherList(databaseName, sql);
-        }
-
-        public List<ShortTeacher> getShortTeacherList(string databaseName, string keyword)
-        {
-            string sql = "SELECT " +
-                         Teachers.ColumnTeacherId + ", " +
-                         Teachers.ColumnFirstname + ", " +
-                         Teachers.ColumnLastname + ", " +
-                         Teachers.ColumnNickname + " " +
-                         "FROM " + Teachers.TableName + " " +
-                         "WHERE " + Teachers.ColumnTeacherId + " LIKE '%" + keyword + "%' " +
-                         "OR " + Teachers.ColumnFirstname + " LIKE '%" + keyword + "%' " +
-                         "OR " + Teachers.ColumnLastname + " LIKE '%" + keyword + "%' " +
-                         "OR " + Teachers.ColumnNickname + " LIKE '%" + keyword + "%' " +
-                         "ORDER BY " + Teachers.ColumnTeacherId + " ASC";
-
-            return this.selectShortTeacherList(databaseName, sql);
-        }
-
-        public List<ShortTeacher> getShortTeacherList(string databaseName, string keyword, int startIndex, int offset)
-        {
-            string sql = "SELECT " +
-                         Teachers.ColumnTeacherId + ", " +
-                         Teachers.ColumnFirstname + ", " +
-                         Teachers.ColumnLastname + ", " +
-                         Teachers.ColumnNickname + " " +
-                         "FROM " + Teachers.TableName + " " +
-                         "WHERE " + Teachers.ColumnTeacherId + " LIKE '%" + keyword + "%' " +
-                         "OR " + Teachers.ColumnFirstname + " LIKE '%" + keyword + "%' " +
-                         "OR " + Teachers.ColumnLastname + " LIKE '%" + keyword + "%' " +
-                         "OR " + Teachers.ColumnNickname + " LIKE '%" + keyword + "%' " +
-                         "ORDER BY " + Teachers.ColumnTeacherId + " ASC " +
-                         "LIMIT " + startIndex + "," + offset;
-
-            return this.selectShortTeacherList(databaseName, sql);
         }
     }
 }

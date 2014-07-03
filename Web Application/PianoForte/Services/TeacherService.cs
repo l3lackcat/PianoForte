@@ -31,25 +31,5 @@ namespace PianoForte.Services
         {
             return teacherDao.getTeacherList(databaseName);
         }
-
-        public static List<Teacher> getTeacherList(string databaseName, string keyword)
-        {
-            return teacherDao.getTeacherList(databaseName, keyword);
-        }
-
-        public static List<ShortTeacher> getShortTeacherList(string databaseName)
-        {
-            return teacherDao.getShortTeacherList(databaseName);
-        }
-
-        public static List<ShortTeacher> getShortTeacherList(string databaseName, string keyword)
-        {
-            return teacherDao.getShortTeacherList(databaseName, keyword);
-        }
-
-        public static List<ShortTeacher> getShortTeacherList(string databaseName, string keyword, int startIndex, int offset)
-        {
-            return teacherDao.getShortTeacherList(databaseName, keyword, startIndex, offset);
-        }
     }
 }

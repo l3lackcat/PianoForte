@@ -120,7 +120,58 @@ namespace PianoForte.Dao
             return returnFlag;
         }
 
-        private List<Student> select(string databaseName, string sql)
+        private Student selectStudent(string databaseName, string sql)
+        {
+            Student student = null;
+
+            MySqlConnection conn = null;
+            try
+            {
+                string connectionString = ConfigurationManager.ConnectionStrings[databaseName].ConnectionString;
+
+                conn = new MySqlConnection(connectionString);
+                if (conn != null)
+                {
+                    conn.Open();
+                    MySqlCommand command = new MySqlCommand(sql, conn);
+                    MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command);
+
+                    DataSet data = new DataSet();
+                    dataAdapter.Fill(data, Students.TableName);
+
+                    if (data.Tables[Students.TableName].Rows.Count > 0)
+                    {
+                        int index = 0;
+                        student = new Student();
+                        student.Id = Convert.ToInt32(data.Tables[Students.TableName].Rows[index][Students.ColumnStudentId].ToString());
+                        student.Firstname = data.Tables[Students.TableName].Rows[index][Students.ColumnFirstname].ToString();
+                        student.Lastname = data.Tables[Students.TableName].Rows[index][Students.ColumnLastname].ToString();
+                        student.Nickname = data.Tables[Students.TableName].Rows[index][Students.ColumnNickname].ToString();
+                        student.Status = EnumConverter.ToStatus(data.Tables[Students.TableName].Rows[index][Students.ColumnStudentStatus].ToString());
+                    }
+                }
+            }
+            catch (System.InvalidOperationException e)
+            {
+                Console.Write(e.Message);
+            }
+            catch (MySqlException e)
+            {
+                Console.Write(e.Message);
+            }
+            catch (System.SystemException e)
+            {
+                Console.Write(e.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return student;
+        }
+
+        private List<Student> selectStudentList(string databaseName, string sql)
         {
             List<Student> studentList = new List<Student>();
 
@@ -202,73 +253,6 @@ namespace PianoForte.Dao
             return studentList;
         }
 
-        private List<ShortStudent> selectShortStudentList(string databaseName, string sql)
-        {
-            List<ShortStudent> shortStudentList = new List<ShortStudent>();
-
-            MySqlConnection conn = null;
-            try
-            {
-                string connectionString = ConfigurationManager.ConnectionStrings[databaseName].ConnectionString;
-
-                conn = new MySqlConnection(connectionString);
-                if (conn != null)
-                {
-                    conn.Open();
-                    MySqlCommand command = new MySqlCommand(sql, conn);
-                    MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command);
-
-                    DataSet data = new DataSet();
-                    dataAdapter.Fill(data, Students.TableName);
-
-                    for (int i = 0; i < data.Tables[Students.TableName].Rows.Count; i++)
-                    {
-                        ShortStudent shortStudent = new ShortStudent();
-
-                        if (data.Tables[Students.TableName].Columns.Contains(Students.ColumnStudentId))
-                        {
-                            shortStudent.Id = Convert.ToInt32(data.Tables[Students.TableName].Rows[i][Students.ColumnStudentId].ToString());
-                        }
-
-                        if (data.Tables[Students.TableName].Columns.Contains(Students.ColumnFirstname))
-                        {
-                            shortStudent.Firstname = data.Tables[Students.TableName].Rows[i][Students.ColumnFirstname].ToString();
-                        }
-
-                        if (data.Tables[Students.TableName].Columns.Contains(Students.ColumnLastname))
-                        {
-                            shortStudent.Lastname = data.Tables[Students.TableName].Rows[i][Students.ColumnLastname].ToString();
-                        }
-
-                        if (data.Tables[Students.TableName].Columns.Contains(Students.ColumnNickname))
-                        {
-                            shortStudent.Nickname = data.Tables[Students.TableName].Rows[i][Students.ColumnNickname].ToString();
-                        }                                                  
-
-                        shortStudentList.Add(shortStudent);
-                    }
-                }
-            }
-            catch (System.InvalidOperationException e)
-            {
-                Console.Write(e.Message);
-            }
-            catch (MySqlException e)
-            {
-                Console.Write(e.Message);
-            }
-            catch (System.SystemException e)
-            {
-                Console.Write(e.Message);
-            }
-            finally
-            {
-                conn.Close();
-            }
-
-            return shortStudentList;
-        }
-
         public bool insertStudent(string databaseName, Student student)
         {
             string sql = "INSERT INTO " +
@@ -305,84 +289,22 @@ namespace PianoForte.Dao
             return this.update(databaseName, student, sql);
         }
 
-        public List<Student> getStudentList(string databaseName, int studentId)
+        public Student getStudent(string databaseName, int id)
         {
             string sql = "SELECT * " +
                          "FROM " + Students.TableName + " " +
-                         "WHERE " + Students.ColumnStudentId + " = " + studentId;
+                         "WHERE " + Students.ColumnStudentId + " = " + id;
 
-            return this.select(databaseName, sql);
+            return this.selectStudent(databaseName, sql);
         }
 
-        public List<Student> getStudentList(string databaseName, int startIndex, int offset)
+        public List<Student> getStudentList(string databaseName)
         {
             string sql = "SELECT * " +
                          "FROM " + Students.TableName + " " +
-                         "ORDER BY " + Students.ColumnStudentId + " ASC " +
-                         "LIMIT " + startIndex + "," + offset;
+                         "ORDER BY " + Students.ColumnStudentId + " ASC ";
 
-            return this.select(databaseName, sql);
-        }
-
-        public List<Student> getStudentList(string databaseName, int startIndex, int offset, string keyword)
-        {
-            string sql = "SELECT * " +
-                         "FROM " + Students.TableName + " " +
-                         "WHERE " + Students.ColumnFirstname + " LIKE '%" + keyword + "%' " +
-                         "OR " + Students.ColumnLastname + " LIKE '%" + keyword + "%' " +
-                         "OR " + Students.ColumnNickname + " LIKE '%" + keyword + "%' " +
-                         "ORDER BY " + Students.ColumnStudentId + " ASC " +
-                         "LIMIT " + startIndex + "," + offset;
-
-            return this.select(databaseName, sql);
-        }
-
-        public List<ShortStudent> getShortStudentList(string databaseName)
-        {
-            string sql = "SELECT " +
-                         Students.ColumnStudentId + ", " +
-                         Students.ColumnFirstname + ", " +
-                         Students.ColumnLastname + ", " +
-                         Students.ColumnNickname + " " +
-                         "FROM " + Students.TableName + " " +
-                         "ORDER BY " + Students.ColumnStudentId + " ASC";                         
-
-            return this.selectShortStudentList(databaseName, sql);
-        }
-
-        public List<ShortStudent> getShortStudentList(string databaseName, string keyword)
-        {
-            string sql = "SELECT " +
-                         Students.ColumnStudentId + ", " +
-                         Students.ColumnFirstname + ", " +
-                         Students.ColumnLastname + ", " +
-                         Students.ColumnNickname + " " +
-                         "FROM " + Students.TableName + " " +
-                         "WHERE " + Students.ColumnStudentId + " LIKE '%" + keyword + "%' " +
-                         "OR " + Students.ColumnFirstname + " LIKE '%" + keyword + "%' " +
-                         "OR " + Students.ColumnLastname + " LIKE '%" + keyword + "%' " +
-                         "OR " + Students.ColumnNickname + " LIKE '%" + keyword + "%' " +
-                         "ORDER BY " + Students.ColumnStudentId + " ASC";
-
-            return this.selectShortStudentList(databaseName, sql);
-        }
-
-        public List<ShortStudent> getShortStudentList(string databaseName, string keyword, int startIndex, int offset)
-        {
-            string sql = "SELECT " +
-                         Students.ColumnStudentId + ", " +
-                         Students.ColumnFirstname + ", " +
-                         Students.ColumnLastname + ", " +
-                         Students.ColumnNickname + " " +
-                         "FROM " + Students.TableName + " " +
-                         "WHERE " + Students.ColumnStudentId + " LIKE '%" + keyword + "%' " +
-                         "OR " + Students.ColumnFirstname + " LIKE '%" + keyword + "%' " +
-                         "OR " + Students.ColumnLastname + " LIKE '%" + keyword + "%' " +
-                         "OR " + Students.ColumnNickname + " LIKE '%" + keyword + "%' " +
-                         "ORDER BY " + Students.ColumnStudentId + " ASC " +
-                         "LIMIT " + startIndex + "," + offset;
-
-            return this.selectShortStudentList(databaseName, sql);
+            return this.selectStudentList(databaseName, sql);
         }
     }
 }
