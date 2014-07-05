@@ -35,7 +35,7 @@ namespace PianoForte.Dao
                         command.Parameters.AddWithValue(Students.ColumnFirstname, student.Firstname);
                         command.Parameters.AddWithValue(Students.ColumnLastname, student.Lastname);
                         command.Parameters.AddWithValue(Students.ColumnNickname, student.Nickname);
-                        command.Parameters.AddWithValue(Students.ColumnBirthday, student.Birthdate.ToString("yyyy-MM-dd"));
+                        command.Parameters.AddWithValue(Students.ColumnBirthday, student.BirthDate.ToString("yyyy-MM-dd"));
                         command.Parameters.AddWithValue(Students.ColumnRegisteredDate, student.RegisteredDate.ToString("yyyy-MM-dd HH:mm:ss"));
                         command.Parameters.AddWithValue(Students.ColumnStudentStatus, (int)student.Status);
 
@@ -87,7 +87,7 @@ namespace PianoForte.Dao
                         command.Parameters.AddWithValue(Students.ColumnFirstname, student.Firstname);
                         command.Parameters.AddWithValue(Students.ColumnLastname, student.Lastname);
                         command.Parameters.AddWithValue(Students.ColumnNickname, student.Nickname);
-                        command.Parameters.AddWithValue(Students.ColumnBirthday, student.Birthdate.ToString("yyyy-MM-dd"));
+                        command.Parameters.AddWithValue(Students.ColumnBirthday, student.BirthDate.ToString("yyyy-MM-dd"));
                         command.Parameters.AddWithValue(Students.ColumnRegisteredDate, student.RegisteredDate.ToString("yyyy-MM-dd HH:mm:ss"));
                         command.Parameters.AddWithValue(Students.ColumnStudentStatus, (int)student.Status);
                         command.Parameters.AddWithValue(Students.ColumnStudentId, student.Id);
@@ -147,6 +147,8 @@ namespace PianoForte.Dao
                         student.Firstname = data.Tables[Students.TableName].Rows[index][Students.ColumnFirstname].ToString();
                         student.Lastname = data.Tables[Students.TableName].Rows[index][Students.ColumnLastname].ToString();
                         student.Nickname = data.Tables[Students.TableName].Rows[index][Students.ColumnNickname].ToString();
+                        student.BirthDate = Convert.ToDateTime(data.Tables[Students.TableName].Rows[index][Students.ColumnBirthday].ToString());
+                        student.RegisteredDate = Convert.ToDateTime(data.Tables[Students.TableName].Rows[index][Students.ColumnRegisteredDate].ToString());
                         student.Status = EnumConverter.ToStatus(data.Tables[Students.TableName].Rows[index][Students.ColumnStudentStatus].ToString());
                     }
                 }
@@ -194,40 +196,48 @@ namespace PianoForte.Dao
                     {
                         Student student = new Student();
 
-                        if (data.Tables[Students.TableName].Columns.Contains(Students.ColumnStudentId))
-                        {
-                            student.Id = Convert.ToInt32(data.Tables[Students.TableName].Rows[i][Students.ColumnStudentId].ToString());
-                        }
+                        student.Id = Convert.ToInt32(data.Tables[Students.TableName].Rows[i][Students.ColumnStudentId].ToString());
+                        student.Firstname = data.Tables[Students.TableName].Rows[i][Students.ColumnFirstname].ToString();
+                        student.Lastname = data.Tables[Students.TableName].Rows[i][Students.ColumnLastname].ToString();
+                        student.Nickname = data.Tables[Students.TableName].Rows[i][Students.ColumnNickname].ToString();
+                        student.BirthDate = Convert.ToDateTime(data.Tables[Students.TableName].Rows[i][Students.ColumnBirthday].ToString());
+                        student.RegisteredDate = Convert.ToDateTime(data.Tables[Students.TableName].Rows[i][Students.ColumnRegisteredDate].ToString());
+                        student.Status = EnumConverter.ToStatus(data.Tables[Students.TableName].Rows[i][Students.ColumnStudentStatus].ToString());
 
-                        if (data.Tables[Students.TableName].Columns.Contains(Students.ColumnFirstname))
-                        {
-                            student.Firstname = data.Tables[Students.TableName].Rows[i][Students.ColumnFirstname].ToString();
-                        }
+                        //if (data.Tables[Students.TableName].Columns.Contains(Students.ColumnStudentId))
+                        //{
+                        //    student.Id = Convert.ToInt32(data.Tables[Students.TableName].Rows[i][Students.ColumnStudentId].ToString());
+                        //}
 
-                        if (data.Tables[Students.TableName].Columns.Contains(Students.ColumnLastname))
-                        {
-                            student.Lastname = data.Tables[Students.TableName].Rows[i][Students.ColumnLastname].ToString();
-                        }
+                        //if (data.Tables[Students.TableName].Columns.Contains(Students.ColumnFirstname))
+                        //{
+                        //    student.Firstname = data.Tables[Students.TableName].Rows[i][Students.ColumnFirstname].ToString();
+                        //}
 
-                        if (data.Tables[Students.TableName].Columns.Contains(Students.ColumnNickname))
-                        {
-                            student.Nickname = data.Tables[Students.TableName].Rows[i][Students.ColumnNickname].ToString();
-                        }
+                        //if (data.Tables[Students.TableName].Columns.Contains(Students.ColumnLastname))
+                        //{
+                        //    student.Lastname = data.Tables[Students.TableName].Rows[i][Students.ColumnLastname].ToString();
+                        //}
 
-                        if (data.Tables[Students.TableName].Columns.Contains(Students.ColumnBirthday))
-                        {
-                            student.Birthdate = Convert.ToDateTime(data.Tables[Students.TableName].Rows[i][Students.ColumnBirthday].ToString());
-                        }
+                        //if (data.Tables[Students.TableName].Columns.Contains(Students.ColumnNickname))
+                        //{
+                        //    student.Nickname = data.Tables[Students.TableName].Rows[i][Students.ColumnNickname].ToString();
+                        //}
 
-                        if (data.Tables[Students.TableName].Columns.Contains(Students.ColumnRegisteredDate))
-                        {
-                            student.RegisteredDate = Convert.ToDateTime(data.Tables[Students.TableName].Rows[i][Students.ColumnRegisteredDate].ToString());
-                        }
+                        //if (data.Tables[Students.TableName].Columns.Contains(Students.ColumnBirthday))
+                        //{
+                        //    student.Birthdate = Convert.ToDateTime(data.Tables[Students.TableName].Rows[i][Students.ColumnBirthday].ToString());
+                        //}
 
-                        if (data.Tables[Students.TableName].Columns.Contains(Students.ColumnStudentStatus))
-                        {
-                            student.Status = EnumConverter.ToStatus(data.Tables[Students.TableName].Rows[i][Students.ColumnStudentStatus].ToString());
-                        }                                                                                                                      
+                        //if (data.Tables[Students.TableName].Columns.Contains(Students.ColumnRegisteredDate))
+                        //{
+                        //    student.RegisteredDate = Convert.ToDateTime(data.Tables[Students.TableName].Rows[i][Students.ColumnRegisteredDate].ToString());
+                        //}
+
+                        //if (data.Tables[Students.TableName].Columns.Contains(Students.ColumnStudentStatus))
+                        //{
+                        //    student.Status = EnumConverter.ToStatus(data.Tables[Students.TableName].Rows[i][Students.ColumnStudentStatus].ToString());
+                        //}                                                                                                                      
 
                         studentList.Add(student);
                     }
@@ -303,6 +313,16 @@ namespace PianoForte.Dao
             string sql = "SELECT * " +
                          "FROM " + Students.TableName + " " +
                          "ORDER BY " + Students.ColumnStudentId + " ASC ";
+
+            return this.selectStudentList(databaseName, sql);
+        }
+
+        public List<Student> getStudentList(string databaseName, int startIndex, int offset)
+        {
+            string sql = "SELECT * " +
+                         "FROM " + Students.TableName + " " +
+                         "ORDER BY " + Students.ColumnStudentId + " ASC " +
+                         "LIMIT " + startIndex + "," + offset;
 
             return this.selectStudentList(databaseName, sql);
         }

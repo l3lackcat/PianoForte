@@ -18,30 +18,37 @@ namespace PianoForte.WebServices
     public class StudentWebService : System.Web.Services.WebService
     {
         [WebMethod]
-        public List<Object> getStudentList(string databaseName)
+        public int getStudentListSize(string databaseName)
+        {
+            List<Student> studentList = StudentService.getStudentList(databaseName);
+            return studentList.Count;
+        }
+
+        [WebMethod]
+        public List<Object> getStudentList(string databaseName, int startIndex, int offset)
         {
             System.Threading.Thread.Sleep(1500);
 
             List<Object> displayedStudentList = new List<Object>();
-            List<Student> studentList = StudentService.getStudentList(databaseName);
+            List<Student> studentList = StudentService.getStudentList(databaseName, startIndex, offset);
             foreach (Student student in studentList)
             {
-                student.ContactList = StudentContactService.getStudentContactList(databaseName, student.Id, Status.ACTIVE);
+                List<StudentContact> studentContactList = StudentContactService.getStudentContactList(databaseName, student.Id, Status.ACTIVE);
 
                 string phoneNumber = "-";
-                foreach (StudentContact contact in student.ContactList)
+                foreach (StudentContact contact in studentContactList)
                 {
                     if (contact.Type == ContactType.PHONE)
                     {
                         if (phoneNumber == "-")
                         {
-                            phoneNumber = FormatManager.toDisplayedPhoneNumber(contact.Content);
+                            phoneNumber = contact.Content;
                         }
                         else
                         {
                             if (contact.IsPrimary)
                             {
-                                phoneNumber = FormatManager.toDisplayedPhoneNumber(contact.Content);
+                                phoneNumber = contact.Content;
                                 break;
                             }
                         }

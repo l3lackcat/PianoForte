@@ -3,7 +3,10 @@
 goog.provide('PianoForte.Controllers.Cds.CdController');
 
 PianoForte.Controllers.Cds.CdController = function ($scope, $rootScope, $routeParams, CdService, Enum, EnumConverter, ValidationManager, FormatManager) {
-	$scope['isReady'] = false;
+	$scope['EnumConverter'] = EnumConverter;
+    $scope['FormatManager'] = FormatManager;
+
+    $scope['isReady'] = false;
     $scope['cd'] = null;
 
     $scope['edittedCdInfo'] = null;
@@ -24,40 +27,40 @@ PianoForte.Controllers.Cds.CdController = function ($scope, $rootScope, $routePa
 
         initStatusList();
 
-        CdService.getCdInfoById($routeParams.cdId, onSuccessReceiveCdInfoById, onErrorReceiveCdInfoById);
+        CdService.getCdInfoById($routeParams['cdId'], onSuccessReceiveCdInfoById, onErrorReceiveCdInfoById);
     };
 
     $scope.onEditCdInfo = function () {
         $scope['edittedCdInfo'] = {
-            id: {
-                value: $scope['cd']['id'],
-                isRequired: false,
-                isValid: true
+            'id': {
+                'value': $scope['cd']['id'],
+                'isRequired': false,
+                'isValid': true
             },
-            barcode: {
-                value: $scope['cd']['barcode'],
-                isRequired: true,
-                isValid: true
+            'barcode': {
+                'value': $scope['cd']['barcode'],
+                'isRequired': true,
+                'isValid': true
             },
-            name: {
-                value: $scope['cd']['name'],
-                isRequired: true,
-                isValid: true
+            'name': {
+                'value': $scope['cd']['name'],
+                'isRequired': true,
+                'isValid': true
             },
-            unitPrice: {
-                value: $scope['cd']['unitPrice'],
-                isRequired: true,
-                isValid: true
+            'unitPrice': {
+                'value': $scope['cd']['unitPrice'],
+                'isRequired': true,
+                'isValid': true
             },
-            quantity: {
-                value: $scope['cd']['quantity'],
-                isRequired: false,
-                isValid: true
+            'quantity': {
+                'value': $scope['cd']['quantity'],
+                'isRequired': false,
+                'isValid': true
             },
-            status: {
-                value: $scope['cd']['status']['key'],
-                isRequired: false,
-                isValid: true
+            'status': {
+                'value': $scope['cd']['status'],
+                'isRequired': false,
+                'isValid': true
             }
         }
 
@@ -134,7 +137,7 @@ PianoForte.Controllers.Cds.CdController = function ($scope, $rootScope, $routePa
             ($scope['cd']['name'] !== $scope['edittedCdInfo']['name']['value']) ||
             ($scope['cd']['unitPrice'] !== $scope['edittedCdInfo']['unitPrice']['value']) ||
             ($scope['cd']['quantity'] !== $scope['edittedCdInfo']['quantity']['value']) ||
-            ($scope['cd']['status']['key'] !== $scope['edittedCdInfo']['status']['value'])) {
+            ($scope['cd']['status'] !== $scope['edittedCdInfo']['status']['value'])) {
             isChanged = true;
         }
 
@@ -152,15 +155,12 @@ PianoForte.Controllers.Cds.CdController = function ($scope, $rootScope, $routePa
 
         if (tempCd !== null) {
             $scope['cd'] = {
-                id: tempCd.id,
-                barcode: tempCd.barcode,
-                name: tempCd.name,
-                unitPrice: tempCd.unitPrice,
-                quantity: tempCd.quantity,
-                status: {
-                    key: tempCd.status,
-                    text: EnumConverter.Status.toString(tempCd.status)
-                }                
+                'id': tempCd.id,
+                'barcode': tempCd.barcode,
+                'name': tempCd.name,
+                'unitPrice': tempCd.unitPrice,
+                'quantity': tempCd.quantity,
+                'status': tempCd.status
             };
 			
 			$scope['isReady'] = true;           
@@ -179,8 +179,7 @@ PianoForte.Controllers.Cds.CdController = function ($scope, $rootScope, $routePa
             $scope['cd']['name'] = $scope['edittedCdInfo']['name']['value'];
             $scope['cd']['unitPrice'] = $scope['edittedCdInfo']['unitPrice']['value'];
             $scope['cd']['quantity'] = $scope['edittedCdInfo']['quantity']['value'];
-            $scope['cd']['status']['key'] = $scope['edittedCdInfo']['status']['value'];
-            $scope['cd']['status']['text'] = EnumConverter.Status.toString($scope['edittedCdInfo']['status']['value']);
+            $scope['cd']['status'] = $scope['edittedCdInfo']['status']['value'];
 
             hideCdInfoDialogBox();
         } else {

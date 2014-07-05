@@ -16,5 +16,7 @@ namespace PianoForte.Dao
         Student getStudent(string databaseName, int id);
 
         List<Student> getStudentList(string databaseName);
+
+        List<Student> getStudentList(string databaseName, int startIndex, int offset);
     }
 }

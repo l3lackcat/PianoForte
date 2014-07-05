@@ -1,8 +1,8 @@
 ﻿'use strict';
 
-goog.provide('PianoForte.Controllers.Widgets.MyNumericBoxController');
+goog.provide('PianoForte.Controllers.Widgets.MyPhoneBoxController');
 
-PianoForte.Controllers.Widgets.MyNumericBoxController = function ($scope, $attrs, $element, FormatManager) {
+PianoForte.Controllers.Widgets.MyPhoneBoxController = function ($scope, $attrs, $element, FormatManager) {
     var hasSetFirstText = false;
 
     $scope.initialize = function () {        
@@ -17,7 +17,7 @@ PianoForte.Controllers.Widgets.MyNumericBoxController = function ($scope, $attrs
 
     $scope.$watch('text', function (newInput, oldInput) {
         if ((hasSetFirstText === false) && (newInput !== null)) {
-            $scope['text'] = FormatManager.formatNumber($scope['text']);
+            $scope['text'] = FormatManager.formatPhoneNumber($scope['text']);
             hasSetFirstText = true;
         }
     });
@@ -48,12 +48,12 @@ PianoForte.Controllers.Widgets.MyNumericBoxController = function ($scope, $attrs
     };
 
     function onBlur(e) {
-        $scope['text'] = FormatManager.formatNumber($scope['text']);
+        $scope['text'] = FormatManager.formatPhoneNumber($scope['text']);
         $scope.$apply();
     };
 
     function onFocus(e) {
-        $scope['text'] = FormatManager.unformatNumber($scope['text']);
+        $scope['text'] = FormatManager.unformatPhoneNumber($scope['text']);
         $scope.$apply();
     };
 
@@ -66,16 +66,6 @@ PianoForte.Controllers.Widgets.MyNumericBoxController = function ($scope, $attrs
 
         if (allowedCharCodeList.indexOf(charCode) !== -1) {
             isKeyCodeAllowed = true;
-        } else if (charCode === 46) {
-            if ($scope['precision'] === true) {
-                var text = $scope['text'].toString();
-                if (text !== '') {
-                    var dotIndex = text.indexOf('.');
-                    if (dotIndex === -1) {
-                        isKeyCodeAllowed = true;
-                    }
-                }
-            }                            
         }
 
         if (isKeyCodeAllowed === false) {

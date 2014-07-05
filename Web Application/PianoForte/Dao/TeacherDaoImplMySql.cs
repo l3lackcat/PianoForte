@@ -32,6 +32,7 @@ namespace PianoForte.Dao
                         conn.Open();
 
                         MySqlCommand command = new MySqlCommand(sql, conn);
+                        command.Parameters.AddWithValue(Teachers.ColumnTeacherId, teacher.Id);
                         command.Parameters.AddWithValue(Teachers.ColumnFirstname, teacher.Firstname);
                         command.Parameters.AddWithValue(Teachers.ColumnLastname, teacher.Lastname);
                         command.Parameters.AddWithValue(Teachers.ColumnNickname, teacher.Nickname);
@@ -223,11 +224,13 @@ namespace PianoForte.Dao
         {
             string sql = "INSERT INTO " +
                          Teachers.TableName + " (" +
+                         Teachers.ColumnTeacherId + ", " +
                          Teachers.ColumnFirstname + ", " +
                          Teachers.ColumnLastname + ", " +
                          Teachers.ColumnNickname + ", " +
                          Teachers.ColumnTeacherStatus + ") " +
                          "VALUES(" +
+                         "?" + Teachers.ColumnTeacherId + ", " +
                          "?" + Teachers.ColumnFirstname + ", " +
                          "?" + Teachers.ColumnLastname + ", " +
                          "?" + Teachers.ColumnNickname + ", " +
@@ -247,6 +250,16 @@ namespace PianoForte.Dao
                          "WHERE " + Teachers.ColumnTeacherId + " = ?" + Teachers.ColumnTeacherId;
 
             return this.update(databaseName, teacher, sql);
+        }
+
+        public Teacher getLastTeacher(string databaseName)
+        {
+            string sql = "SELECT * " +
+                         "FROM " + Teachers.TableName + " " +
+                         "ORDER BY " + Teachers.ColumnTeacherId + " DESC " +
+                         "LIMIT 1";
+
+            return this.selectTeacher(databaseName, sql);
         }
 
         public Teacher getTeacher(string databaseName, int id)

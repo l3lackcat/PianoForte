@@ -26,10 +26,15 @@ namespace PianoForte.Services
         {
             return studentDao.getStudent(databaseName, id);;
         }
-
+        
         public static List<Student> getStudentList(string databaseName)
         {
             return studentDao.getStudentList(databaseName);
+        }
+
+        public static List<Student> getStudentList(string databaseName, int startIndex, int offset)
+        {
+            return studentDao.getStudentList(databaseName, startIndex, offset);
         }
     }
 }

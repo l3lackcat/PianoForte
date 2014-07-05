@@ -36,7 +36,7 @@
                 <my-box class="header no-padding-right no-padding-left">
                     <div class="rows">
                         <div class="row">
-                        	<div class="col col-id">ID</div>
+                        	<div class="col col-id align-center">ID</div>
                             <div class="col col-name">ชื่อวิชา</div>
                             <div class="col col-level">ระดับ</div>
                             <div class="col col-unitprice align-center">ราคา</div>
@@ -51,13 +51,13 @@
             <div class="tube width-100-percent no-margin-bottom fix-height">
                 <my-box class="content no-margin-bottom no-padding-top no-padding-bottom no-padding-right no-padding-left">
                     <div class="rows">
-                        <div class="row" ng-repeat="course in filter.result | orderBy:'name' | startFrom:(currentPage-1)*showPerPage | limitTo:showPerPage">
-                            <div class="col col-id clipped-text" title="{{course.name}}">{{course.id}}</div>
+                        <div class="row" ng-repeat="course in filter.result | orderBy:'id' | startFrom:(currentPage-1)*showPerPage | limitTo:showPerPage">
+                            <div class="col col-id  align-center" title="{{course.name}}">{{course.id}}</div>
                             <div class="col col-name clipped-text" title="{{course.name}}">{{course.name}}</div>
                             <div class="col col-level clipped-text" title="{{course.level}}" ng-hide="course.level == ''">{{course.level}}</div>
                             <div class="col col-level clipped-text" ng-show="course.level == ''">&nbsp;</div>
-                            <div class="col col-unitprice align-right">{{course.unitPrice}}</div>
-                            <div class="col col-status align-center status-{{course.status}}"><i class="fa fa-circle"></i></div>
+                            <div class="col col-unitprice align-right">{{FormatManager.formatNumber(course.unitPrice)}}</div>
+                            <div class="col col-status align-center status-{{course.status}}" title="{{EnumConverter.Status.toString(course.status)}}"><i class="fa fa-circle"></i></div>
                             <div class="col col-view align-center" title="View"><a href="#/courses/{{course.id}}"><i class="fa fa-th-list"></i></a></div>
                             <div class="clear-fix"></div>
                         </div>

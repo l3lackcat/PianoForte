@@ -93,6 +93,7 @@
     <Content Include="Web\App\js\controllers\courses\CourseController.js" />
     <Content Include="Web\App\js\controllers\students\StudentMainController.js" />
     <Content Include="Web\App\js\controllers\students\StudentController.js" />
+    <Content Include="Web\App\js\controllers\widgets\my-phone-box\MyPhoneBoxController.js" />
     <Content Include="Web\App\js\controllers\widgets\my-numeric-box\MyNumericBoxController.js" />
     <Content Include="Web\App\js\controllers\widgets\my-checkbox\MyCheckboxController.js" />
     <Content Include="Web\App\js\controllers\widgets\my-button\MyButtonController.js" />
@@ -106,6 +107,7 @@
     <Content Include="Web\App\js\controllers\widgets\my-dialog-box\MyDialogBoxController.js" />
     <Content Include="Web\App\js\controllers\widgets\my-box\MyBoxController.js" />
     <Content Include="Web\App\js\controllers\widgets\my-tabs\MyTabsController.js" />
+    <Content Include="Web\App\js\directives\widgets\my-phone-box\MyPhoneBoxDirective.js" />
     <Content Include="Web\App\js\directives\widgets\my-numeric-box\MyNumericBoxDirective.js" />
     <Content Include="Web\App\js\directives\widgets\my-checkbox\MyCheckboxDirective.js" />
     <Content Include="Web\App\js\directives\widgets\my-button\MyButtonDirective.js" />
@@ -2059,6 +2061,8 @@
     <Content Include="Web\App\partials\courses\course.htm" />
     <Content Include="Web\App\partials\courses\course-main.htm" />
     <Content Include="Web\App\partials\students\student-main.htm" />
+    <Content Include="Web\App\partials\students\student.htm" />
+    <Content Include="Web\App\partials\widgets\my-phone-box\my-phone-box.htm" />
     <Content Include="Web\App\partials\widgets\my-numeric-box\my-numeric-box.htm" />
     <Content Include="Web\App\partials\widgets\my-checkbox\my-checkbox.htm" />
     <Content Include="Web\App\partials\widgets\my-button\my-button.htm" />
@@ -2529,6 +2533,7 @@
     <None Include="Web\App\less\students\student.less" />
     <None Include="Web\App\less\layouts\content.less" />
     <None Include="Web\App\less\layouts\content-col.less" />
+    <None Include="Web\App\less\widgets\my-phone-box.less" />
     <None Include="Web\App\less\widgets\my-numeric-box.less" />
     <None Include="Web\App\less\widgets\my-dialog-box.less" />
     <None Include="Web\App\less\widgets\my-overlay.less" />

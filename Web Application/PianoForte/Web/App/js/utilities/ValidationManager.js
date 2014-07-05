@@ -5,6 +5,8 @@ goog.provide('PianoForte.Utilities.ValidationManager');
 PianoForte.Utilities.ValidationManager = function () {
     return {
         isPhoneNumber: function (input) {
+            if (input == null) { return false; };
+
             var isValid = false;
 
             input = input.replace(/-/g, '');
@@ -26,6 +28,8 @@ PianoForte.Utilities.ValidationManager = function () {
         },
 
         isEmail: function (input) {
+            if (input == null) { return false; };
+
             var isValid = false;
 
             var emailRegEx = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;

@@ -52,12 +52,12 @@
             <div class="tube width-100-percent no-margin-bottom fix-height">
                 <my-box class="content no-margin-bottom no-padding-top no-padding-bottom no-padding-right no-padding-left">
                     <div class="rows">
-                        <div class="row" ng-repeat="book in filter.result | orderBy:'name' | startFrom:(currentPage-1)*showPerPage | limitTo:showPerPage">
+                        <div class="row" ng-repeat="book in filter.result | orderBy:'id' | startFrom:(currentPage-1)*showPerPage | limitTo:showPerPage">
                             <div class="col col-barcode">{{book.barcode}}</div>
                             <div class="col col-name clipped-text" title="{{book.name}}">{{book.name}}</div>
-                            <div class="col col-unitprice align-right">{{book.unitPrice}}</div>
+                            <div class="col col-unitprice align-right">{{FormatManager.formatNumber(book.unitPrice)}}</div>
                             <div class="col col-quantity align-center">{{book.quantity}}</div>
-                            <div class="col col-status align-center status-{{book.status}}"><i class="fa fa-circle"></i></div>
+                            <div class="col col-status align-center status-{{book.status}}" title="{{EnumConverter.Status.toString(book.status)}}"><i class="fa fa-circle"></i></div>
                             <div class="col col-view align-center" title="View"><a href="#/books/{{book.id}}"><i class="fa fa-th-list"></i></a></div>
                             <div class="col col-upd-stock align-center" title="Update stock"><i class="fa fa-archive"></i></div>
                             <div class="clear-fix"></div>

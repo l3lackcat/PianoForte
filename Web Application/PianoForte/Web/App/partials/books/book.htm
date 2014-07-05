@@ -10,9 +10,9 @@
                 <div class="tube width-85-percent">
                     <my-box class="no-margin-bottom">                    
                         <ul class="widget-breadcrumb">
-                            <li>Books</li>
+                            <li><a href="#/books">Books</a></li>
                             <li class="seperator">&gt;</li>
-                            <li>dashboard</li>
+                            <li>{{book.name}}</li>
                         </ul>
                     </my-box>
                 </div>
@@ -41,17 +41,17 @@
                             </div>
                             <div class="row">
                                 <div class="col col-label">ราคา (บาท) :</div>
-                                <div class="col col-value">{{book.unitPrice}}</div>
+                                <div class="col col-value">{{FormatManager.formatNumber(book.unitPrice)}}</div>
                                 <div class="clear-fix"></div>
                             </div>
                             <div class="row">
                                 <div class="col col-label">คงเหลือ (เล่ม) :</div>
-                                <div class="col col-value">{{book.quantity}}</div>
+                                <div class="col col-value">{{FormatManager.formatNumber(book.quantity)}}</div>
                                 <div class="clear-fix"></div>
                             </div>
                             <div class="row">
                                 <div class="col col-label">สถานะ :</div>
-                                <div class="col col-value">{{book.status.text}}</div>
+                                <div class="col col-value">{{EnumConverter.Status.toString(book.status)}}</div>
                                 <div class="clear-fix"></div>
                             </div>
                         </div>

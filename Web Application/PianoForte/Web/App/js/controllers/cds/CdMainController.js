@@ -2,7 +2,10 @@
 
 goog.provide('PianoForte.Controllers.Cds.CdMainController');
 
-PianoForte.Controllers.Cds.CdMainController = function ($scope, $rootScope, filterFilter, CdService, FormatManager) {
+PianoForte.Controllers.Cds.CdMainController = function ($scope, $rootScope, filterFilter, CdService, EnumConverter, FormatManager) {
+    $scope['EnumConverter'] = EnumConverter;
+    $scope['FormatManager'] = FormatManager;
+    
     $scope['isReady'] = false;
     $scope['cdList'] = [];
     $scope['pageNumbers'] = [];

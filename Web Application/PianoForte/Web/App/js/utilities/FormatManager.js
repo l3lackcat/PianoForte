@@ -2,12 +2,15 @@
 
 goog.provide('PianoForte.Utilities.FormatManager');
 
-PianoForte.Utilities.FormatManager = function () {
+PianoForte.Utilities.FormatManager = function(ValidationManager) {
     return {
-        toDisplayedPhoneNumber: function (input) {
-            var displayedPhoneNumber = false;
+        formatPhoneNumber: function(input) {
+            if (input == null) { return input; };
 
-            if (input !== '') {
+            var formattedPhoneNumber = input;
+            var isPhoneNumber = ValidationManager.isPhoneNumber(input);
+
+            if ((input !== '') && (isPhoneNumber === true)) {
                 var part1;
                 var part2;
                 var part3;
@@ -26,11 +29,31 @@ PianoForte.Utilities.FormatManager = function () {
                 }
 
                 if ((part1 !== '') && (part1 !== '') && (part1 !== '')) {
-                    displayedPhoneNumber = part1 + '-' + part2 + '-' + part3;
+                    formattedPhoneNumber = part1 + '-' + part2 + '-' + part3;
                 }
             }
 
-            return displayedPhoneNumber;
+            return formattedPhoneNumber;
+        },
+
+        unformatPhoneNumber: function(input) {
+            if (input == null) { return input; };
+            
+            var unformattedPhoneNumber = input;
+
+            if (input !== '') {
+                unformattedPhoneNumber = input.replace(/-/g, '');
+            }
+
+            return unformattedPhoneNumber;
+        },
+
+        formatNumber: function(input) {
+            return accounting.formatNumber(input);
+        },
+
+        unformatNumber: function(input) {
+            return accounting.unformat(input);
         }
     };
 };

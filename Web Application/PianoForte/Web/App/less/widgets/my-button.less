@@ -53,6 +53,50 @@
 	}
 }
 
+#course,
+#courses {
+	.widget-button {
+		background-color: @courseThemeColor;
+		border-bottom-color: @courseThemeColor;
+		color: #FEFEFE;
+		opacity: 1.0;
+
+		&:hover { 
+			background-color: @courseThemeColor2; 
+			cursor: pointer;
+			opacity: 1.0;
+		}
+
+		&:disabled {
+			background-color: @courseThemeColor; 
+			cursor: default;
+			opacity: 0.5;
+		}
+	}
+}
+
+#student,
+#students {
+	.widget-button {
+		background-color: @studentThemeColor;
+		border-bottom-color: @studentThemeColor;
+		color: #FEFEFE;
+		opacity: 1.0;
+
+		&:hover { 
+			background-color: @studentThemeColor2; 
+			cursor: pointer;
+			opacity: 1.0;
+		}
+
+		&:disabled {
+			background-color: @studentThemeColor; 
+			cursor: default;
+			opacity: 0.5;
+		}
+	}
+}
+
 #teacher,
 #teachers {
 	.widget-button {

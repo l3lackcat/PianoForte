@@ -42,7 +42,8 @@
 	}	
 }
 
-#book {
+#book,
+#books {
 	.widget-numeric-box {
 		> .wrapper {
 			> input[type="text"] {
@@ -60,7 +61,8 @@
 	}
 } 
 
-#cd {
+#cd,
+#cds {
 	.widget-numeric-box {
 		> .wrapper {
 			> input[type="text"] {
@@ -78,7 +80,8 @@
 	}
 } 
 
-#course {
+#course,
+#courses {
 	.widget-numeric-box {
 		> .wrapper {
 			> input[type="text"] {
@@ -96,7 +99,27 @@
 	}
 } 
 
-#teacher {
+#student,
+#students {
+	.widget-numeric-box {
+		> .wrapper {
+			> input[type="text"] {
+				&:focus { border-bottom-color: @studentThemeColor; }
+				&:hover { border-bottom-color: @studentThemeColor; }
+				&:disabled { border-bottom-color: transparent; }
+			}
+
+			> .btn-reset-text {
+				color: @studentThemeColor;
+
+				&:hover { color: @studentThemeColor2; }
+			}	
+		}
+	}
+} 
+
+#teacher,
+#teachers {
 	.widget-numeric-box {
 		> .wrapper {
 			> input[type="text"] {

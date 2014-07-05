@@ -93,6 +93,23 @@
 	}
 }
 
+#student,
+#students {
+	.widget-search-box {
+		> .wrapper {
+			> input[type="text"] {
+				&:focus { border-bottom-color: @studentThemeColor; }
+				&:hover { border-bottom-color: @studentThemeColor; }	
+				&:disabled { border-bottom-color: transparent; }	
+			}
+
+			> .btn-search { color: @studentThemeColor; }
+
+			> .icon-search { color: @studentThemeColor; }
+		}
+	}
+}
+
 #teacher,
 #teachers {
 	.widget-search-box {

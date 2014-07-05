@@ -2,8 +2,11 @@
 
 goog.provide('PianoForte.Controllers.Books.BookMainController');
 
-PianoForte.Controllers.Books.BookMainController = function ($scope, $rootScope, filterFilter, BookService, FormatManager) {
-	$scope['isReady'] = false;
+PianoForte.Controllers.Books.BookMainController = function ($scope, $rootScope, filterFilter, BookService, EnumConverter, FormatManager) {
+	$scope['EnumConverter'] = EnumConverter;
+    $scope['FormatManager'] = FormatManager;
+
+    $scope['isReady'] = false;
     $scope['bookList'] = [];
     $scope['pageNumbers'] = [];
     $scope['currentPage'] = 1;

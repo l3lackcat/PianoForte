@@ -35,13 +35,13 @@ namespace PianoForte.WebServices
                     {
                         if (phoneNumber == "-")
                         {
-                            phoneNumber = FormatManager.toDisplayedPhoneNumber(contact.Content);
+                            phoneNumber = contact.Content;
                         }
                         else
                         {
                             if (contact.IsPrimary)
                             {
-                                phoneNumber = FormatManager.toDisplayedPhoneNumber(contact.Content);
+                                phoneNumber = contact.Content;
                                 break;
                             }
                         }                        
@@ -125,6 +125,22 @@ namespace PianoForte.WebServices
             }
 
             return teacher;
+        }
+
+        [WebMethod]
+        public int insertTeacherGeneralInfo(string databaseName, Teacher teacher)
+        {
+            System.Threading.Thread.Sleep(1500);
+            
+            teacher.Id = TeacherService.generateNextTeacherId(databaseName);
+
+            bool isInsertSuccess = TeacherService.insertTeacher(databaseName, teacher);
+            if (isInsertSuccess == false)
+            {
+                teacher.Id = 0;
+            }
+
+            return teacher.Id;
         }
 
         [WebMethod]

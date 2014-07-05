@@ -7,6 +7,10 @@ PianoForte.Controllers.Widgets.MyButtonController = function ($scope, $attrs, $e
     	adjustWidth();
     };
 
+    $scope.click = function () {
+        $scope.onClick();
+    };
+
     function adjustWidth () {
     	if ($scope.width !== undefined) {
     		$element[0].style.width = $scope.width;

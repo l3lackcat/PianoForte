@@ -3,7 +3,10 @@
 goog.provide('PianoForte.Controllers.Books.BookController');
 
 PianoForte.Controllers.Books.BookController = function ($scope, $rootScope, $routeParams, BookService, Enum, EnumConverter, ValidationManager, FormatManager) {
-	$scope['isReady'] = false;
+    $scope['EnumConverter'] = EnumConverter;
+	$scope['FormatManager'] = FormatManager;
+
+    $scope['isReady'] = false;
     $scope['book'] = null;
 
     $scope['edittedBookInfo'] = null;
@@ -24,42 +27,44 @@ PianoForte.Controllers.Books.BookController = function ($scope, $rootScope, $rou
 
         initStatusList();
 
-        BookService.getBookInfoById($routeParams.bookId, onSuccessReceiveBookInfoById, onErrorReceiveBookInfoById);
+        BookService.getBookInfoById($routeParams['bookId'], onSuccessReceiveBookInfoById, onErrorReceiveBookInfoById);
     };
 
     $scope.onEditBookInfo = function () {
         $scope['edittedBookInfo'] = {
-            id: {
-                value: $scope['book']['id'],
-                isRequired: false,
-                isValid: true
+            'id': {
+                'value': $scope['book']['id'],
+                'isRequired': false,
+                'isValid': true
             },
-            barcode: {
-                value: $scope['book']['barcode'],
-                isRequired: true,
-                isValid: true
+            'barcode': {
+                'value': $scope['book']['barcode'],
+                'isRequired': true,
+                'isValid': true
             },
-            name: {
-                value: $scope['book']['name'],
-                isRequired: true,
-                isValid: true
+            'name': {
+                'value': $scope['book']['name'],
+                'isRequired': true,
+                'isValid': true
             },
-            unitPrice: {
-                value: $scope['book']['unitPrice'],
-                isRequired: true,
-                isValid: true
+            'unitPrice': {
+                'value': $scope['book']['unitPrice'],
+                'isRequired': true,
+                'isValid': true
             },
-            quantity: {
-                value: $scope['book']['quantity'],
-                isRequired: false,
-                isValid: true
+            'quantity': {
+                'value': $scope['book']['quantity'],
+                'isRequired': false,
+                'isValid': true
             },
-            status: {
-                value: $scope['book']['status']['key'],
-                isRequired: false,
-                isValid: true
+            'status': {
+                'value': $scope['book']['status'],
+                'isRequired': false,
+                'isValid': true
             }
         }
+
+        console.log($scope['edittedBookInfo']);
 
         $scope['isOnEditBookInfo'] = true;
     };
@@ -134,7 +139,7 @@ PianoForte.Controllers.Books.BookController = function ($scope, $rootScope, $rou
             ($scope['book']['name'] !== $scope['edittedBookInfo']['name']['value']) ||
             ($scope['book']['unitPrice'] !== $scope['edittedBookInfo']['unitPrice']['value']) ||
             ($scope['book']['quantity'] !== $scope['edittedBookInfo']['quantity']['value']) ||
-            ($scope['book']['status']['key'] !== $scope['edittedBookInfo']['status']['value'])) {
+            ($scope['book']['status'] !== $scope['edittedBookInfo']['status']['value'])) {
             isChanged = true;
         }
 
@@ -152,15 +157,12 @@ PianoForte.Controllers.Books.BookController = function ($scope, $rootScope, $rou
 
         if (tempBook !== null) {
             $scope['book'] = {
-                id: tempBook.id,
-                barcode: tempBook.barcode,
-                name: tempBook.name,
-                unitPrice: tempBook.unitPrice,
-                quantity: tempBook.quantity,
-                status: {
-                    key: tempBook.status,
-                    text: EnumConverter.Status.toString(tempBook.status)
-                }                
+                'id': tempBook.id,
+                'barcode': tempBook.barcode,
+                'name': tempBook.name,
+                'unitPrice': tempBook.unitPrice,
+                'quantity': tempBook.quantity,
+                'status': tempBook.status               
             };
 			
 			$scope['isReady'] = true;           
@@ -179,8 +181,7 @@ PianoForte.Controllers.Books.BookController = function ($scope, $rootScope, $rou
             $scope['book']['name'] = $scope['edittedBookInfo']['name']['value'];
             $scope['book']['unitPrice'] = $scope['edittedBookInfo']['unitPrice']['value'];
             $scope['book']['quantity'] = $scope['edittedBookInfo']['quantity']['value'];
-            $scope['book']['status']['key'] = $scope['edittedBookInfo']['status']['value'];
-            $scope['book']['status']['text'] = EnumConverter.Status.toString($scope['edittedBookInfo']['status']['value']);
+            $scope['book']['status']= $scope['edittedBookInfo']['status']['value'];
 
             hideBookInfoDialogBox();
         } else {

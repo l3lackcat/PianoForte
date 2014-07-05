@@ -8,30 +8,45 @@ PianoForte.Services.TeacherService = function ($http) {
     return {
         getTeacherList: function (onSuccess, onError) {
             var data = {
-                databaseName: databaseName
+                'databaseName': databaseName
             };
 
             $http.post('/WebServices/TeacherWebService.asmx/getTeacherList', data).success(onSuccess).error(onError);
         },
 
-        getTeacherInfoById: function (teacherId, onSuccess, onError) {
+        getTeacherInfoById: function (id, onSuccess, onError) {
             var data = {
-                databaseName: databaseName,
-                teacherId: teacherId
+                'databaseName': databaseName,
+                'id': id
             };
 
             $http.post('/WebServices/TeacherWebService.asmx/getTeacherById', data).success(onSuccess).error(onError);
         },
 
+        insertTeacherGeneralInfo: function (teacher, onSuccess, onError) {
+            var data = {
+                'databaseName': databaseName,
+                'teacher': {
+                    'Id': teacher.id.value,
+                    'Firstname': teacher.firstname.value,
+                    'Lastname': teacher.lastname.value,
+                    'Nickname': teacher.nickname.value,
+                    'Status': teacher.status.value
+                }
+            };
+
+            $http.post('/WebServices/TeacherWebService.asmx/insertTeacherGeneralInfo', data).success(onSuccess).error(onError);
+        },        
+
         updateTeacherGeneralInfo: function (teacher, onSuccess, onError) {
             var data = {
-                databaseName: databaseName,
-                teacher: {
-                    Id: teacher.id.value,
-                    Firstname: teacher.firstname.value,
-                    Lastname: teacher.lastname.value,
-                    Nickname: teacher.nickname.value,
-                    Status: teacher.status.value.key
+                'databaseName': databaseName,
+                'teacher': {
+                    'Id': teacher.id.value,
+                    'Firstname': teacher.firstname.value,
+                    'Lastname': teacher.lastname.value,
+                    'Nickname': teacher.nickname.value,
+                    'Status': teacher.status.value
                 }
             };
 
@@ -40,15 +55,15 @@ PianoForte.Services.TeacherService = function ($http) {
 
         insertTeacherContactInfo: function (contact, onSuccess, onError) {
             var data = {
-                databaseName: databaseName,
-                teacherContact: {
-                    Id: contact.id,
-                    Type: contact.type,
-                    Label: contact.label,
-                    Content: contact.value,
-                    Status: contact.status,
-                    IsPrimary: contact.isPrimary,
-                    TeacherId: contact.teacherId
+                'databaseName': databaseName,
+                'teacherContact': {
+                    'Id': contact.id,
+                    'Type': contact.type,
+                    'Label': contact.label,
+                    'Content': contact.value,
+                    'Status': contact.status,
+                    'IsPrimary': contact.isPrimary,
+                    'TeacherId': contact.teacherId
                 }
             };
 
@@ -57,15 +72,15 @@ PianoForte.Services.TeacherService = function ($http) {
 
         updateTeacherContactInfo: function (contact, onSuccess, onError) {
             var data = {
-                databaseName: databaseName,
-                teacherContact: {
-                    Id: contact.id,
-                    Type: contact.type,
-                    Label: contact.label,
-                    Content: contact.value,
-                    Status: contact.status,
-                    IsPrimary: contact.isPrimary,
-                    TeacherId: contact.teacherId
+                'databaseName': databaseName,
+                'teacherContact': {
+                    'Id': contact.id,
+                    'Type': contact.type,
+                    'Label': contact.label,
+                    'Content': contact.value,
+                    'Status': contact.status,
+                    'IsPrimary': contact.isPrimary,
+                    'TeacherId': contact.teacherId
                 }
             };
 
@@ -74,15 +89,15 @@ PianoForte.Services.TeacherService = function ($http) {
 
         deleteTeacherContactInfo: function (contact, onSuccess, onError) {
             var data = {
-                databaseName: databaseName,
-                teacherContact: {
-                    Id: contact.id,
-                    Type: contact.type,
-                    Label: contact.label,
-                    Content: contact.value,
-                    Status: contact.status,
-                    IsPrimary: contact.isPrimary,
-                    TeacherId: contact.teacherId
+                'databaseName': databaseName,
+                'teacherContact': {
+                    'Id': contact.id,
+                    'Type': contact.type,
+                    'Label': contact.label,
+                    'Content': contact.value,
+                    'Status': contact.status,
+                    'IsPrimary': contact.isPrimary,
+                    'TeacherId': contact.teacherId
                 }
             };
 
@@ -91,9 +106,9 @@ PianoForte.Services.TeacherService = function ($http) {
 
         updateTeachedCourseInfo: function (teacherId, teachedCourseNameList, onSuccess, onError) {
             var data = {
-                databaseName: databaseName,
-                teacherId: teacherId,
-                teachedCourseNameList: teachedCourseNameList
+                'databaseName': databaseName,
+                'teacherId': teacherId,
+                'teachedCourseNameList': teachedCourseNameList
             };
 
             $http.post('/WebServices/TeacherWebService.asmx/updateTeachedCourseInfo', data).success(onSuccess).error(onError);

@@ -2,8 +2,11 @@
 
 goog.provide('PianoForte.Controllers.Courses.CourseMainController');
 
-PianoForte.Controllers.Courses.CourseMainController = function ($scope, $rootScope, filterFilter, CourseService, FormatManager) {
-	$scope['isReady'] = false;
+PianoForte.Controllers.Courses.CourseMainController = function ($scope, $rootScope, filterFilter, CourseService, EnumConverter, FormatManager) {
+	$scope['EnumConverter'] = EnumConverter;
+    $scope['FormatManager'] = FormatManager;
+
+    $scope['isReady'] = false;
     $scope['courseList'] = [];
     $scope['pageNumbers'] = [];
     $scope['currentPage'] = 1;

@@ -5,7 +5,7 @@
                 <div class="tube width-40-percent">
                     <my-box class="no-margin-bottom">                    
                         <ul class="widget-breadcrumb">
-                            <li>teachers</li>
+                            <li>Teachers</li>
                             <li class="seperator">&gt;</li>
                             <li>dashboard</li>
                         </ul>
@@ -24,7 +24,7 @@
                         <my-search-box data-is-filter-box="true" data-text="filter.text" data-placeholder="'ค้นหา...'"></my-search-box>
                     </div>
                     <div class="tube width-30-percent">
-                        <my-button data-text="'เพิ่มครู'"></my-button>
+                        <my-button data-text="'เพิ่มครู'" data-on-click="onInsertNewTeacher()"></my-button>
                     </div>
                 </div>
             </div>
@@ -33,6 +33,7 @@
                 <my-box class="header no-padding-right no-padding-left">
                     <div class="rows">
                         <div class="row">
+                            <div class="col col-id align-center">ID</div>
                             <div class="col col-name">ชื่อ - นามสกุล</div>
                             <div class="col col-nickname align-center">ชื่อเล่น</div>
                             <div class="col col-phone">เบอร์โทรศัพท์</div>
@@ -47,11 +48,12 @@
             <div class="tube width-100-percent no-margin-bottom fix-height">
                 <my-box class="content no-margin-bottom no-padding-top no-padding-bottom no-padding-right no-padding-left">
                     <div class="rows">
-                        <div class="row" ng-repeat="teacher in filter.result | orderBy:'name' | startFrom:(currentPage-1)*showPerPage | limitTo:showPerPage">
+                        <div class="row" ng-repeat="teacher in filter.result | orderBy:'id' | startFrom:(currentPage-1)*showPerPage | limitTo:showPerPage">
+                            <div class="col col-id align-center">{{teacher.id}}</div>
                             <div class="col col-name">{{teacher.name}}</div>
                             <div class="col col-nickname align-center">{{teacher.nickname}}</div>
-                            <div class="col col-phone">{{teacher.phoneNumber}}</div>
-                            <div class="col col-status align-center status-{{teacher.status}}"><i class="fa fa-circle"></i></div>
+                            <div class="col col-phone">{{FormatManager.formatPhoneNumber(teacher.phoneNumber)}}</div>
+                            <div class="col col-status align-center status-{{teacher.status}}" title="{{EnumConverter.Status.toString(teacher.status)}}"><i class="fa fa-circle"></i></div>
                             <div class="col col-view align-center" title="View"><a href="#/teachers/{{teacher.id}}"><i class="fa fa-th-list"></i></a></div>
                             <div class="col col-view-calendar align-center" title="Calendar"><i class="fa fa-calendar"></i></div>
                             <div class="clear-fix"></div>
@@ -75,4 +77,35 @@
             </div>            
         </my-pane>
     </my-tabs>
+
+    <my-dialog-box data-title="'Teacher > New'" data-submit="onSubmitNewTeacher()" data-disabled="isOnInsertNewTeacher" data-close="onCancelNewTeacher()" data-visible="showNewTeacherDialogBox">
+        <div class="wrapper">
+            <div class="rows">
+                <div class="row">
+                    <div class="col col-label"><span ng-show="newTeacherGeneralInfo.firstname.isRequired" class="required">*</span>ชื่อ :</div>
+                    <div class="col col-value">
+                        <my-text-box data-text="newTeacherGeneralInfo.firstname.value" data-disabled="isOnInsertNewTeacher"></my-text-box>
+                        <label ng-hide="newTeacherGeneralInfo.firstname.isValid">*กรุณากรอกชื่อจริง</label>
+                    </div>
+                    <div class="clear-fix"></div>
+                </div>
+                <div class="row">
+                    <div class="col col-label"><span ng-show="newTeacherGeneralInfo.lastname.isRequired" class="required">*</span>นามสกุล :</div>
+                    <div class="col col-value">
+                        <my-text-box data-text="newTeacherGeneralInfo.lastname.value" data-disabled="isOnInsertNewTeacher"></my-text-box>
+                        <label ng-hide="newTeacherGeneralInfo.lastname.isValid">*กรุณากรอกนามสกุล</label>
+                    </div>
+                    <div class="clear-fix"></div>
+                </div>
+                <div class="row">
+                    <div class="col col-label"><span ng-show="newTeacherGeneralInfo.nickname.isRequired" class="required">*</span>ชื่อเล่น :</div>
+                    <div class="col col-value">
+                        <my-text-box data-text="newTeacherGeneralInfo.nickname.value" data-disabled="isOnInsertNewTeacher"></my-text-box>
+                        <label ng-hide="newTeacherGeneralInfo.nickname.isValid">*กรุณากรอกชื่อเล่น</label>
+                    </div>
+                    <div class="clear-fix"></div>
+                </div>
+            </div>
+        </div>
+    </my-dialog-box>
 </div>

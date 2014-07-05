@@ -10,9 +10,9 @@
                 <div class="tube width-85-percent">
                     <my-box class="no-margin-bottom">                    
                         <ul class="widget-breadcrumb">
-                            <li>Cds</li>
+                            <li><a href="#/cds">CDs</a></li>
                             <li class="seperator">&gt;</li>
-                            <li>dashboard</li>
+                            <li>{{cd.name}}</li>
                         </ul>
                     </my-box>
                 </div>
@@ -41,17 +41,17 @@
                             </div>
                             <div class="row">
                                 <div class="col col-label">ราคา (บาท) :</div>
-                                <div class="col col-value">{{cd.unitPrice}}</div>
+                                <div class="col col-value">{{FormatManager.formatNumber(cd.unitPrice)}}</div>
                                 <div class="clear-fix"></div>
                             </div>
                             <div class="row">
                                 <div class="col col-label">คงเหลือ (เล่ม) :</div>
-                                <div class="col col-value">{{cd.quantity}}</div>
+                                <div class="col col-value">{{FormatManager.formatNumber(cd.quantity)}}</div>
                                 <div class="clear-fix"></div>
                             </div>
                             <div class="row">
                                 <div class="col col-label">สถานะ :</div>
-                                <div class="col col-value">{{cd.status.text}}</div>
+                                <div class="col col-value">{{EnumConverter.Status.toString(cd.status)}}</div>
                                 <div class="clear-fix"></div>
                             </div>
                         </div>
@@ -61,7 +61,7 @@
         </my-pane>
     </my-tabs>
 
-    <my-dialog-box data-title="'ข้อมูลหนังสือ'" data-submit="onSubmitEditCdInfo()" data-disabled="isOnUpdateEdittedCdInfo" data-close="onCancelEditCdInfo()" data-visible="isOnEditCdInfo">
+    <my-dialog-box data-title="'ข้อมูลซีดี'" data-submit="onSubmitEditCdInfo()" data-disabled="isOnUpdateEdittedCdInfo" data-close="onCancelEditCdInfo()" data-visible="isOnEditCdInfo">
         <div class="wrapper">
             <div class="rows">
                 <div class="row">

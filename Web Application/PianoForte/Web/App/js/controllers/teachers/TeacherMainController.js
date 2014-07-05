@@ -2,7 +2,10 @@
 
 goog.provide('PianoForte.Controllers.Teachers.TeacherMainController');
 
-PianoForte.Controllers.Teachers.TeacherMainController = function ($scope, $rootScope, filterFilter, TeacherService, FormatManager) {
+PianoForte.Controllers.Teachers.TeacherMainController = function ($scope, $rootScope, $location, filterFilter, TeacherService, Enum, EnumConverter, FormatManager) {
+    $scope['EnumConverter'] = EnumConverter;
+    $scope['FormatManager'] = FormatManager;
+
     $scope['isReady'] = false;
     $scope['teacherList'] = [];
     $scope['pageNumbers'] = [];
@@ -16,6 +19,10 @@ PianoForte.Controllers.Teachers.TeacherMainController = function ($scope, $rootS
         'result': [],
         'text': '',
     };
+
+    $scope['newTeacherGeneralInfo'] = null;
+    $scope['showNewTeacherDialogBox'] = false;
+    $scope['isOnInsertNewTeacher'] = false;
 
     $scope.initialize = function () {
         $rootScope.$broadcast('SelectMenuItem', 'teachers');
@@ -61,6 +68,49 @@ PianoForte.Controllers.Teachers.TeacherMainController = function ($scope, $rootS
         updatePageNumbers();
     });
 
+    $scope.onInsertNewTeacher = function () {
+        $scope['newTeacherGeneralInfo'] = {
+            'id': {
+                'value': 0,
+                'isRequired': false,
+                'isValid': true
+            },
+            'firstname': {
+                'value': '',
+                'isRequired': true,
+                'isValid': true
+            },
+            'lastname': {
+                'value': '',
+                'isRequired': true,
+                'isValid': true
+            },
+            'nickname': {
+                'value': '',
+                'isRequired': true,
+                'isValid': true
+            },
+            'status': {
+                'value': Enum.Status.Active,
+                'isRequired': false,
+                'isValid': true
+            }
+        }
+
+        $scope['showNewTeacherDialogBox'] = true;
+    };
+
+    $scope.onSubmitNewTeacher = function () {
+        if (validateGeneralInfo() === true) {
+            $scope['isOnInsertNewTeacher'] = true;
+            TeacherService.insertTeacherGeneralInfo($scope['newTeacherGeneralInfo'], onSuccessInsertNewTeacher, onErrorInsertNewTeacher);
+        }
+    };
+
+    $scope.onCancelNewTeacher = function () {
+        hideNewTeacherGeneralInfo();
+    };
+
     function updateFilteredResult(teacherList, filteredText) {
         $scope['filter']['result'] = filterFilter(teacherList, filteredText);
     };
@@ -77,6 +127,39 @@ PianoForte.Controllers.Teachers.TeacherMainController = function ($scope, $rootS
         };
     };
 
+    function hideNewTeacherGeneralInfo() {
+        $scope['newTeacherGeneralInfo'] = null;
+        $scope['isOnInsertNewTeacher'] = false;
+        $scope['showNewTeacherDialogBox'] = false;        
+    };
+
+    function validateGeneralInfo() {
+        var isValid = true;
+
+        if ($scope['newTeacherGeneralInfo']['firstname']['value'] === '') {
+            $scope['newTeacherGeneralInfo']['firstname']['isValid'] = false;
+            isValid = false;
+        } else {
+            $scope['newTeacherGeneralInfo']['firstname']['isValid'] = true;
+        }
+
+        if ($scope['newTeacherGeneralInfo']['lastname']['value'] === '') {
+            $scope['newTeacherGeneralInfo']['lastname']['isValid'] = false;
+            isValid = false;
+        } else {
+            $scope['newTeacherGeneralInfo']['lastname']['isValid'] = true;
+        }
+
+        if ($scope['newTeacherGeneralInfo']['nickname']['value'] === '') {
+            $scope['newTeacherGeneralInfo']['nickname']['isValid'] = false;
+            isValid = false;
+        } else {
+            $scope['newTeacherGeneralInfo']['nickname']['isValid'] = true;
+        }
+
+        return isValid;
+    };
+
     var onSuccessReceiveTeacherList = function (data, status, headers, config) {
         if (data.d !== null) {
             $scope['teacherList'] = data.d;
@@ -89,6 +172,21 @@ PianoForte.Controllers.Teachers.TeacherMainController = function ($scope, $rootS
     };
 
     var onErrorReceiveTeacherList = function (data, status, headers, config) {
-        // To do
+        console.log('onErrorReceiveTeacherList');
+    };
+
+    var onSuccessInsertNewTeacher = function (data, status, headers, config) {
+        var teacherId = data.d;
+
+        if (teacherId !== 0) {
+            $location.path("/teachers/" + teacherId);
+        } else {
+            onErrorInsertNewTeacher(data, status, headers, config);
+        }        
+    };
+
+    var onErrorInsertNewTeacher = function (data, status, headers, config) {
+        $scope['isOnInsertNewTeacher'] = false;
+        console.log('onErrorInsertNewTeacher');
     };
 };

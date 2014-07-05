@@ -13,7 +13,7 @@ namespace PianoForte.Models
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public string Nickname { get; set; }
-        public DateTime Birthdate { get; set; }
+        public DateTime BirthDate { get; set; }
         public DateTime RegisteredDate { get; set; }
         public Status Status { get; set; }
     }
