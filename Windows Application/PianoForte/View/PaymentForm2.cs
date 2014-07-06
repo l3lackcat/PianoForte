@@ -76,9 +76,10 @@ namespace PianoForte.View
             {
                 this.student = student;
 
+                this.TextBox_StudentId.Text = student.Id.ToString();
                 this.TextBox_StudentNickname.Text = student.Nickname;
                 this.TextBox_StudentFullName.Text = student.Firstname + " " + student.Lastname;
-                this.TextBox_StudentPhoneNumber.Text = student.Phone1;
+                this.TextBox_StudentPhoneNumber.Text = student.Phone2;
 
                 this.TextBox_Barcode.Focus();
             }
