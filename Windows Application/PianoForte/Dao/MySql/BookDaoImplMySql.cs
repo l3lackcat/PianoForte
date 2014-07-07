@@ -366,15 +366,15 @@ namespace PianoForte.Dao.MySql
                 }
                 catch (System.InvalidOperationException e)
                 {
-                    Console.Write(e.Message);
+                    LogManager.writeLog(e.Message);
                 }
                 catch (MySqlException e)
                 {
-                    Console.Write(e.Message);
+                    LogManager.writeLog(e.Message);
                 }
                 catch (System.SystemException e)
                 {
-                    Console.Write(e.Message);
+                    LogManager.writeLog(e.Message);
                 }
                 finally
                 {
@@ -417,15 +417,15 @@ namespace PianoForte.Dao.MySql
                 }
                 catch (System.InvalidOperationException e)
                 {
-                    Console.Write(e.Message);
+                    LogManager.writeLog(e.Message);
                 }
                 catch (MySqlException e)
                 {
-                    Console.Write(e.Message);
+                    LogManager.writeLog(e.Message);
                 }
                 catch (System.SystemException e)
                 {
-                    Console.Write(e.Message);
+                    LogManager.writeLog(e.Message);
                 }
                 finally
                 {
@@ -458,15 +458,15 @@ namespace PianoForte.Dao.MySql
             }
             catch (System.InvalidOperationException e)
             {
-                Console.Write(e.Message);
+                LogManager.writeLog(e.Message);
             }
             catch (MySqlException e)
             {
-                Console.Write(e.Message);
+                LogManager.writeLog(e.Message);
             }
             catch (System.SystemException e)
             {
-                Console.Write(e.Message);
+                LogManager.writeLog(e.Message);
             }
             finally
             {
@@ -501,15 +501,15 @@ namespace PianoForte.Dao.MySql
             }
             catch (System.InvalidOperationException e)
             {
-                Console.Write(e.Message);
+                LogManager.writeLog(e.Message);
             }
             catch (MySqlException e)
             {
-                Console.Write(e.Message);
+                LogManager.writeLog(e.Message);
             }
             catch (System.SystemException e)
             {
-                Console.Write(e.Message);
+                LogManager.writeLog(e.Message);
             }
             finally
             {
@@ -573,15 +573,15 @@ namespace PianoForte.Dao.MySql
             }
             catch (System.InvalidOperationException e)
             {
-                Console.Write(e.Message);
+                LogManager.writeLog(e.Message);
             }
             catch (MySqlException e)
             {
-                Console.Write(e.Message);
+                LogManager.writeLog(e.Message);
             }
             catch (System.SystemException e)
             {
-                Console.Write(e.Message);
+                LogManager.writeLog(e.Message);
             }
             finally
             {
@@ -616,15 +616,15 @@ namespace PianoForte.Dao.MySql
             }
             catch (System.InvalidOperationException e)
             {
-                Console.Write(e.Message);
+                LogManager.writeLog(e.Message);
             }
             catch (MySqlException e)
             {
-                Console.Write(e.Message);
+                LogManager.writeLog(e.Message);
             }
             catch (System.SystemException e)
             {
-                Console.Write(e.Message);
+                LogManager.writeLog(e.Message);
             }
             finally
             {

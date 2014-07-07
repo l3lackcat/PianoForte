@@ -52,7 +52,7 @@ namespace PianoForte.Manager
             }
             catch (System.Exception exception)
             {
-                Console.Write(exception.Message);
+                LogManager.writeLog(exception.Message);
             }                       
 
             return displayPhoneNumber;
@@ -89,7 +89,7 @@ namespace PianoForte.Manager
             }
             catch (System.Exception exception)
             {
-                Console.Write(exception.Message);
+                LogManager.writeLog(exception.Message);
             }            
 
             return inputPhoneNumberList;

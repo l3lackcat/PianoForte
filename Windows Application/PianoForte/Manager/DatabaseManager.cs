@@ -74,21 +74,37 @@ namespace PianoForte.Manager
 
         public static void backup()
         {
-            string constring = DatabaseManager.getMySqlConnectionString();
-            string file = PianoForte.Constant.Constant.STARTUP_PATH + "\\Database\\Backup\\" + DateTime.Now.ToLocalTime().ToString("yyyyMMddHHmmss") + ".sql";
-            using (MySqlConnection conn = new MySqlConnection(constring))
+            MySqlConnection conn = null;
+            try
             {
-                using (MySqlCommand cmd = new MySqlCommand())
-                {
-                    using (MySqlBackup mb = new MySqlBackup(cmd))
-                    {
-                        cmd.Connection = conn;
-                        conn.Open();
-                        mb.ExportToFile(file);
-                        conn.Close();
-                    }
-                }
+                string constring = DatabaseManager.getMySqlConnectionString();
+                string file = PianoForte.Constant.Constant.STARTUP_PATH + "\\Database\\Backup\\" + DateTime.Now.ToLocalTime().ToString("yyyyMMddHHmmss") + ".sql";
+
+                conn = new MySqlConnection(constring);
+                MySqlCommand cmd = new MySqlCommand();
+                MySqlBackup mb = new MySqlBackup(cmd);
+
+                cmd.Connection = conn;
+                conn.Open();
+                mb.ExportToFile(file);
+                conn.Close();
             }
+            catch (System.InvalidOperationException e)
+            {
+                LogManager.writeLog(e.Message);
+            }
+            catch (MySqlException e)
+            {
+                LogManager.writeLog(e.Message);
+            }
+            catch (System.SystemException e)
+            {
+                LogManager.writeLog(e.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }            
         }
     }
 }

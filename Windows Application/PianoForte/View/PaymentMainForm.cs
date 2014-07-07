@@ -950,9 +950,7 @@ namespace PianoForte.View
             }
             catch (Exception exception)
             {
-                //Console.WriteLine("The file could not be read:");
-                //LogManager.writeLog(exception.Message);
-                Console.WriteLine(exception.Message);
+                LogManager.writeLog(exception.Message);
             }            
         }
 

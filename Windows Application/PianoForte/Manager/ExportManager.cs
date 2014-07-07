@@ -772,7 +772,7 @@ namespace PianoForte.Manager
             catch (Exception ex)
             {
                 obj = null;
-                Console.WriteLine(ex.Message);
+                LogManager.writeLog(ex.Message);
             }
             finally
             {

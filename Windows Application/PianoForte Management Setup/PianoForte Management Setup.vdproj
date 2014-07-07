@@ -3288,7 +3288,7 @@
                     }
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_6BFFBCC08FE44B758EC95BCB2A3B8E7A"
                     {
-                    "Name" = "8:Databse"
+                    "Name" = "8:Database"
                     "AlwaysCreate" = "11:TRUE"
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
@@ -3349,7 +3349,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:PianoForte Management Setup"
         "ProductCode" = "8:{4B017888-394E-4ABF-8295-0FEEA2A2DF1A}"
-        "PackageCode" = "8:{8C1DAA6A-063F-46D6-9F03-816A2B7CE26C}"
+        "PackageCode" = "8:{BB44033E-FF94-4FD8-A6BC-BE7713F1DDBD}"
         "UpgradeCode" = "8:{BE54E5C5-65ED-4053-9D7F-D65C5813931C}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"

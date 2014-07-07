@@ -332,7 +332,7 @@ namespace PianoForte.Manager
                     }
                     catch (System.Exception e)
                     {
-                        Console.Write(e.Message);
+                        LogManager.writeLog(e.Message);
                         error = ErrorMeaning.INVALID_EMAIL;
                         break;
                     }

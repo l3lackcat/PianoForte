@@ -146,7 +146,7 @@ namespace PianoForte.View
             }
             catch (System.Exception exception)
             {
-                Console.Write(exception.Message);
+                LogManager.writeLog(exception.Message);
             }
         }
 

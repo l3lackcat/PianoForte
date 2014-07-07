@@ -374,7 +374,7 @@ namespace PianoForte.Manager
             }
             catch (System.Exception exception)
             {
-                Console.Write(exception.Message);
+                LogManager.writeLog(exception.Message);
                 isPrintSuccess = false;
             }
 
@@ -421,7 +421,7 @@ namespace PianoForte.Manager
             }
             catch (System.Exception exception)
             {
-                Console.Write(exception.Message);
+                LogManager.writeLog(exception.Message);
                 isPrintSuccess = false;
             }
 

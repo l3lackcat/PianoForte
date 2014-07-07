@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{243000DD-FF1B-4721-9E0D-B5CA80F87C31}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -451,6 +451,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\PaymentForm2.resx">
       <DependentUpon>PaymentForm2.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="View\PaymentForm_Course.resx">
       <DependentUpon>PaymentForm_Course.cs</DependentUpon>
