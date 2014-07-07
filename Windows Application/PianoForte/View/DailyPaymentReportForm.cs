@@ -254,6 +254,7 @@ namespace PianoForte.View
             ExportManager exportManager = new ExportManager();
             if (exportManager.createMonthlyIncomeSummary(e.Argument as string, paymentList))
             {
+                monthlyIncomeSummary.ReportProgress(100, ProgressBarManager.ProgressBarState.CREATE_FILE);
                 MessageBox.Show("สร้างไฟล์เรียบร้อยแล้ว");
             }
         }
@@ -265,7 +266,7 @@ namespace PianoForte.View
         }
 
         private void monthlyIncomeSummary_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
+        {            
             ProgressBarManager.showProgressBar(false);
         }
 
@@ -280,6 +281,7 @@ namespace PianoForte.View
             ExportManager exportManager = new ExportManager();
             if (exportManager.createCourseIncomeSummary(e.Argument as string, enrollmentList))
             {
+                courseIncomeSummary.ReportProgress(100, ProgressBarManager.ProgressBarState.CREATE_FILE);
                 MessageBox.Show("สร้างไฟล์เรียบร้อยแล้ว");
             }
         }
@@ -306,6 +308,7 @@ namespace PianoForte.View
             ExportManager exportManager = new ExportManager();
             if (exportManager.createTotalIncomeSummary(e.Argument as string, paymentList))
             {
+                totalIncomeSummary.ReportProgress(100, ProgressBarManager.ProgressBarState.CREATE_FILE);
                 MessageBox.Show("สร้างไฟล์เรียบร้อยแล้ว");
             }
         }

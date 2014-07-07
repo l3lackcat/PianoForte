@@ -48,6 +48,7 @@
             this.ToolStripButton_Logout = new System.Windows.Forms.ToolStripButton();
             this.StatusStrip = new System.Windows.Forms.StatusStrip();
             this.classroomDetailtimer = new System.Windows.Forms.Timer(this.components);
+            this.BackupDatabase = new System.ComponentModel.BackgroundWorker();
             this.Panel_Menu.SuspendLayout();
             this.ToolStrip.SuspendLayout();
             this.SuspendLayout();
@@ -269,6 +270,14 @@
             this.classroomDetailtimer.Interval = 5000;
             this.classroomDetailtimer.Tick += new System.EventHandler(this.classroomDetailtimer_Tick);
             // 
+            // BackupDatabase
+            // 
+            this.BackupDatabase.WorkerReportsProgress = true;
+            this.BackupDatabase.WorkerSupportsCancellation = true;
+            this.BackupDatabase.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackupDatabase_DoWork);
+            this.BackupDatabase.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackupDatabase_RunWorkerCompleted);
+            this.BackupDatabase.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.BackupDatabase_ProgressChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -284,6 +293,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PianoForte Management System";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Panel_Menu.ResumeLayout(false);
             this.Panel_Menu.PerformLayout();
             this.ToolStrip.ResumeLayout(false);
@@ -313,6 +323,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButton_CheckIn;
         private System.Windows.Forms.StatusStrip StatusStrip;
         private System.Windows.Forms.Timer classroomDetailtimer;
+        public System.ComponentModel.BackgroundWorker BackupDatabase;
 
     }
 }

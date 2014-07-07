@@ -17,9 +17,9 @@ namespace PianoForte.View
         }
 
         public void show()
-        {
+        {            
             this.ShowDialog();
-        }     
+        }
 
         public void update(string text)
         {

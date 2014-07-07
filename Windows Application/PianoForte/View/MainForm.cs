@@ -308,5 +308,28 @@ namespace PianoForte.View
         {
             //To Do
         }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            BackupDatabase.RunWorkerAsync();
+            ProgressBarManager.showProgressBar(true);
+        }
+
+        private void BackupDatabase_DoWork(object sender, DoWorkEventArgs e)
+        {
+            BackupDatabase.ReportProgress(0, ProgressBarManager.ProgressBarState.BACKUP_DATABASE);
+            DatabaseManager.backup();
+        }
+
+        private void BackupDatabase_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            ProgressBarManager.ProgressBarState progressBarState = (ProgressBarManager.ProgressBarState)e.UserState;
+            ProgressBarManager.updateProgressBar(e.ProgressPercentage, progressBarState); 
+        }
+
+        private void BackupDatabase_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            ProgressBarManager.showProgressBar(false);
+        }
     }
 }

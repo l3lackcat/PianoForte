@@ -15,6 +15,7 @@ namespace PianoForte.Manager
             QUERY,
             CREATE_FILE,
             GENERATE_DATE,
+            BACKUP_DATABASE
         }
 
         public static void showProgressBar(bool isVisible)
@@ -46,6 +47,11 @@ namespace PianoForte.Manager
                 case ProgressBarState.GENERATE_DATE:
                     progressBarDialogBox.setProgressBarStyle(System.Windows.Forms.ProgressBarStyle.Continuous);
                     progressBarDialogBox.update("Generating data " + progressPercentage.ToString() + "% Complete");
+                    progressBarDialogBox.update(progressPercentage);
+                    break;
+                case ProgressBarState.BACKUP_DATABASE:
+                    progressBarDialogBox.setProgressBarStyle(System.Windows.Forms.ProgressBarStyle.Marquee);
+                    progressBarDialogBox.update("Backing up Database");
                     progressBarDialogBox.update(progressPercentage);
                     break;
             }
