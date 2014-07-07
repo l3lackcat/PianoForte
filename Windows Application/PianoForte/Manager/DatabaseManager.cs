@@ -19,6 +19,7 @@ namespace PianoForte.Manager
         public static string DATABASE_USERNAME;
         public static string DATABASE_PASSWORD;
         public static string DATABASE_DATE_FORMAT = "yyyy-MM-dd";
+        public static bool DATABASE_BACKUP;
 
         public static void readDatabaseConfiguration()
         {
@@ -53,6 +54,12 @@ namespace PianoForte.Manager
                         {
                             DATABASE_PASSWORD = reader.Value;
                         }
+
+                        if (elementName == "Backup")
+                        {
+                            DATABASE_BACKUP = Convert.ToBoolean(reader.Value);
+                        }
+
                         break;
                     case XmlNodeType.EndElement:
                         elementName = "";
@@ -74,37 +81,39 @@ namespace PianoForte.Manager
 
         public static void backup()
         {
-            MySqlConnection conn = null;
-            try
-            {
-                string constring = DatabaseManager.getMySqlConnectionString();
-                string file = PianoForte.Constant.Constant.STARTUP_PATH + "\\Database\\Backup\\" + DateTime.Now.ToLocalTime().ToString("yyyyMMddHHmmss") + ".sql";
+            if (DATABASE_BACKUP == true) {
+                MySqlConnection conn = null;
+                try
+                {
+                    string constring = DatabaseManager.getMySqlConnectionString();
+                    string file = PianoForte.Constant.Constant.STARTUP_PATH + "\\Database\\Backup\\" + DateTime.Now.ToLocalTime().ToString("yyyyMMddHHmmss") + ".sql";
 
-                conn = new MySqlConnection(constring);
-                MySqlCommand cmd = new MySqlCommand();
-                MySqlBackup mb = new MySqlBackup(cmd);
+                    conn = new MySqlConnection(constring);
+                    MySqlCommand cmd = new MySqlCommand();
+                    MySqlBackup mb = new MySqlBackup(cmd);
 
-                cmd.Connection = conn;
-                conn.Open();
-                mb.ExportToFile(file);
-                conn.Close();
-            }
-            catch (System.InvalidOperationException e)
-            {
-                LogManager.writeLog(e.Message);
-            }
-            catch (MySqlException e)
-            {
-                LogManager.writeLog(e.Message);
-            }
-            catch (System.SystemException e)
-            {
-                LogManager.writeLog(e.Message);
-            }
-            finally
-            {
-                conn.Close();
-            }            
+                    cmd.Connection = conn;
+                    conn.Open();
+                    mb.ExportToFile(file);
+                    conn.Close();
+                }
+                catch (System.InvalidOperationException e)
+                {
+                    LogManager.writeLog(e.Message);
+                }
+                catch (MySqlException e)
+                {
+                    LogManager.writeLog(e.Message);
+                }
+                catch (System.SystemException e)
+                {
+                    LogManager.writeLog(e.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }                    
         }
     }
 }
