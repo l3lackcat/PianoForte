@@ -8,6 +8,9 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
     $scope['isReady'] = false;
     $scope['teacher'] = null;
     $scope['courseNameList'] = null;
+    $scope['subDistrictList'] = null;
+    $scope['districtList'] = null;
+    $scope['provinceList'] = null;
 
     $scope['edittedGeneralInfo'] = null;
     $scope['isOnEditGeneralInfo'] = false;
@@ -16,6 +19,10 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
     $scope['edittedContactInfo'] = null;
     $scope['isOnEditContactInfo'] = false;
     $scope['isOnUpdateEdittedContactInfo'] = false;
+
+    $scope['edittedAddressInfo'] = null;
+    $scope['isOnEditAddressInfo'] = false;
+    $scope['isOnUpdateEdittedAddressInfo'] = false;
 
     $scope['edittedTeachedCourseInfo'] = null;
     $scope['isOnEditTeachedCourseInfo'] = false;
@@ -33,7 +40,10 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
 
         $scope['isReady'] = false;
         $scope['teacher'] = null;
-        $scope['courseNameList'] = null;        
+        $scope['courseNameList'] = null;
+        $scope['subDistrictList'] = null;
+        $scope['districtList'] = null;
+        $scope['provinceList'] = null;        
 
         TeacherService.getTeacherInfoById($routeParams['teacherId'], onSuccessReceiveTeacherInfoById, onErrorReceiveTeacherInfoById);
         CourseService.getCourseNameList(Enum.Status.Active, onSuccessReceiveCourseNameList, onErrorReceiveCourseNameList);
@@ -119,6 +129,55 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
 
             $scope['isOnEditContactInfo'] = true;
         }            
+    };
+
+    $scope.onEditAddressInfo = function () {
+        $scope['edittedAddressInfo'] = {
+            'id': {
+                // 'value': $scope['teacher']['address']['id'],
+                'value': 0,
+                'isRequired': false,
+                'isValid': true
+            },
+            'buildingName': {
+                // 'value': $scope['teacher']['address']['buildingName'],
+                'value': '',
+                'isRequired': true,
+                'isValid': true
+            },
+            'streetAddress': {
+                // 'value': $scope['teacher']['address']['streetAddress'],
+                'value': '',
+                'isRequired': true,
+                'isValid': true
+            },
+            'subDistrict': {
+                // 'value': $scope['teacher']['address']['subDistrict'],
+                'value': '',
+                'isRequired': true,
+                'isValid': true
+            },
+            'district': {
+                // 'value': $scope['teacher']['address']['district'],
+                'value': '',
+                'isRequired': true,
+                'isValid': true
+            },
+            'province': {
+                // 'value': $scope['teacher']['address']['province'],
+                'value': '',
+                'isRequired': true,
+                'isValid': true
+            },
+            'postcode': {
+                // 'value': $scope['teacher']['address']['postcode'],
+                'value': '',
+                'isRequired': true,
+                'isValid': true
+            }
+        }
+
+        $scope['isOnEditAddressInfo'] = true;
     };
 
     $scope.onEditTeachedCourseInfo = function () {
@@ -267,6 +326,10 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
 
     $scope.onCancelEditContactInfo = function () {
         hideContactInfoDialogBox();
+    };
+
+    $scope.onCancelEditAddressInfo = function () {
+        hideAddressInfoDialogBox();
     };
 
     $scope.onSubmitEditTeachedCourseInfo = function () {
@@ -492,6 +555,12 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
         $scope['numberOfActivePhones'] = 0;
         $scope['numberOfActiveEmails'] = 0;
     };
+
+    function hideAddressInfoDialogBox() {
+        $scope['edittedAddressInfo'] = null;
+        $scope['isOnEditAddressInfo'] = false;
+        $scope['isOnUpdateEdittedAddressInfo'] = false;
+    }
 
     function hideTeachedCourseInfoDialogBox() {
         $scope['edittedTeachedCourseInfo'] = null;

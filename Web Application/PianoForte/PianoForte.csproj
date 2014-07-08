@@ -2503,10 +2503,10 @@
     <None Include="Web\App\fonts\thaisansneue\thaisansneue-ultralight-webfont.eot" />
     <None Include="Web\App\fonts\thaisansneue\thaisansneue-ultralight-webfont.ttf" />
     <None Include="Web\App\fonts\thaisansneue\thaisansneue-ultralight-webfont.woff" />
-    <None Include="Web\App\json\district.json" />
-    <None Include="Web\App\json\postcode.json" />
-    <None Include="Web\App\json\province.json" />
-    <None Include="Web\App\json\sub-district.json" />
+    <Content Include="Web\App\js\models\district.js" />
+    <Content Include="Web\App\js\models\postcode.js" />
+    <Content Include="Web\App\js\models\province.js" />
+    <Content Include="Web\App\js\models\sub-district.js" />
     <None Include="Web\App\less\config.less" />
     <None Include="Web\App\less\books\book-main.less" />
     <None Include="Web\App\less\books\book.less" />

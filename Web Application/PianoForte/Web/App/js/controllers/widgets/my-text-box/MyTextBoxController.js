@@ -14,6 +14,7 @@ PianoForte.Controllers.Widgets.MyTextBoxController = function ($scope, $attrs, $
 
     function adjustWidth () {
         if ($scope.width !== undefined) {
+            $element.css('display', 'inline-block');
             $element.css('width', $scope.width + 'px');
         }
     };

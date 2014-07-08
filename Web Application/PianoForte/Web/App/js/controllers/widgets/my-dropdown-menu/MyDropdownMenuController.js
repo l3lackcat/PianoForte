@@ -43,7 +43,12 @@ PianoForte.Controllers.Widgets.MyDropdownMenuController = function ($scope, $att
             if (itemWrapperElement !== undefined) {
                 var maximumDisplayedItems = $scope['maximumDisplayedItems'];
                 if (maximumDisplayedItems !== undefined) {
-                    var numberOfItems = $scope['filter']['result'].length;
+                    var numberOfItems = 0;
+
+                    if ($scope['filter']['result'] !== undefined) {
+                        numberOfItems = $scope['filter']['result'].length;
+                    }
+                    
                     if (numberOfItems < maximumDisplayedItems) {
                         itemWrapperElement.style.height = (numberOfItems * 26) + 'px';
                     } else {

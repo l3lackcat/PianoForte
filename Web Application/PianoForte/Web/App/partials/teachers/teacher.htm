@@ -83,12 +83,12 @@
                                 <div class="clear-fix"></div>
                             </div>
                             <div class="row" ng-hide="teacher.address == undefined">
-                                <div class="col col-label">ตำบล / แขวง :</div>
+                                <div class="col col-label">ตำบล/แขวง :</div>
                                 <div class="col col-value"></div>
                                 <div class="clear-fix"></div>
                             </div>
                             <div class="row" ng-hide="teacher.address == undefined">
-                                <div class="col col-label">อำเภอ / เขต :</div>
+                                <div class="col col-label">อำเภอ/เขต :</div>
                                 <div class="col col-value"></div>
                                 <div class="clear-fix"></div>
                             </div>
@@ -117,8 +117,10 @@
             </div>                
         </my-pane>
         <my-pane data-title="calendar"></my-pane>
-    </my-tabs>
-    <my-dialog-box data-title="'teacher > edit > ข้อมูลทั่วไป'" data-submit="onSubmitEditGeneralInfo()" data-disabled="isOnUpdateEdittedGeneralInfo" data-close="onCancelEditGeneralInfo()" data-visible="isOnEditGeneralInfo">
+    </my-tabs>    
+
+    <!-- General Info -->
+    <my-dialog-box data-title="'Edit > General Info'" data-submit="onSubmitEditGeneralInfo()" data-disabled="isOnUpdateEdittedGeneralInfo" data-close="onCancelEditGeneralInfo()" data-visible="isOnEditGeneralInfo">
         <div class="wrapper">
             <div class="rows">
                 <div class="row">
@@ -162,7 +164,9 @@
             </div>
         </div>
     </my-dialog-box>
-    <my-dialog-box data-title="'teacher > edit > ข้อมูลการติดต่อ'" data-submit="onSubmitEditContactInfo()" data-disabled="isOnUpdateEdittedContactInfo" data-close="onCancelEditContactInfo()" data-visible="isOnEditContactInfo">        
+
+    <!-- Contact Info -->
+    <my-dialog-box data-title="'Edit > Contact Info'" data-submit="onSubmitEditContactInfo()" data-disabled="isOnUpdateEdittedContactInfo" data-close="onCancelEditContactInfo()" data-visible="isOnEditContactInfo">        
         <div class="wrapper">
             <h4>เบอร์โทรศัพท์</h4>
             <div class="rows">
@@ -195,7 +199,7 @@
                     </div>
                     <div class="col col-trash" ng-hide="isOnUpdateEdittedContactInfo" ng-click="removeEmail(contact)" title="ลบ"><i class="fa fa-trash-o"></i></div>
                     <div class="col col-primary" ng-hide="isOnUpdateEdittedContactInfo">
-                        <my-checkbox data-text="'primary'" data-checked="contact.isPrimary" data-on-changed="test()"></my-checkbox>
+                        <my-checkbox data-name="contact.id" data-text="'primary'" data-checked="contact.isPrimary" data-on-changed="onCheckedPrimaryEmail(e)"></my-checkbox>
                     </div>
                     <div class="clear-fix"></div>
                 </div>
@@ -204,7 +208,81 @@
             </div>
         </div>
     </my-dialog-box>
-    <my-dialog-box data-title="'teacher > edit > วิชาที่สอน'" data-submit="onSubmitEditTeachedCourseInfo()" data-disabled="isOnUpdateEdittedTeachedCourseInfo" data-close="onCancelEditTeachedCourseInfo()" data-visible="isOnEditTeachedCourseInfo">
+
+    <!-- Address Info -->
+    <my-dialog-box data-title="'Edit > Address Info'" data-submit="onSubmitEditAddressInfo()" data-disabled="isOnUpdateEdittedAddressInfo" data-close="onCancelEditAddressInfo()" data-visible="isOnEditAddressInfo">
+        <div class="wrapper">
+            <div class="rows">
+                <div class="row">
+                    <div class="col col-label"><span ng-show="edittedAddressInfo.buildingName.isRequired" class="required">*</span>ชื่ออาคาร :</div>
+                    <div class="col col-value">     
+                        <my-text-box data-text="edittedAddressInfo.buildingName.value" data-disabled="isOnUpdateEdittedAddressInfo"></my-text-box>
+                        <label ng-hide="edittedAddressInfo.buildingName.isValid">*กรุณากรอกชื่ออาคาร</label>
+                    </div>
+                    <div class="clear-fix"></div>
+                </div>
+                <div class="row">
+                    <div class="col col-label"><span ng-show="edittedAddressInfo.streetAddress.isRequired" class="required">*</span>ที่อยู่ :</div>
+                    <div class="col col-value">
+                        <my-text-box data-text="edittedAddressInfo.streetAddress.value" data-disabled="isOnUpdateEdittedAddressInfo"></my-text-box>
+                        <label ng-hide="edittedAddressInfo.streetAddress.isValid">*กรุณากรอกที่อยู่</label>
+                    </div>
+                    <div class="clear-fix"></div>
+                </div>
+                <div class="row">
+                    <div class="col col-label"><span ng-show="edittedAddressInfo.postcode.isRequired" class="required">*</span>รหัสไปรษณีย์ :</div>
+                    <div class="col col-value">
+                        <my-text-box data-text="edittedAddressInfo.postcode.value" data-disabled="isOnUpdateEdittedAddressInfo" data-width="125"></my-text-box>
+                        <my-checkbox data-text="'ใช้ข้อมูลรหัสไปรษณีย์'"></my-checkbox>
+                        <label ng-hide="edittedAddressInfo.postcode.isValid">*กรุณากรอกรหัสไปรษณีย์</label>
+                    </div>
+                    <div class="clear-fix"></div>
+                </div>
+                <div class="row">
+                    <div class="col col-label"><span ng-show="edittedAddressInfo.subDistrict.isRequired" class="required">*</span>ตำบล/แขวง :</div>
+                    <div class="col col-value">
+                        <my-select 
+                            data-disabled="isOnUpdateEdittedAddressInfo"
+                            data-filterable="true"
+                            data-maximum-displayed-items="5"                            
+                            data-placeholder="'Please select...'"
+                            data-theme="'theme-teacher'"></my-select>
+                        <label ng-hide="edittedAddressInfo.subDistrict.isValid">*กรุณาเลือกตำบล/แขวง</label>
+                    </div>
+                    <div class="clear-fix"></div>
+                </div>
+                <div class="row">
+                    <div class="col col-label"><span ng-show="edittedAddressInfo.district.isRequired" class="required">*</span>อำเภอ/เขต :</div>
+                    <div class="col col-value">
+                        <my-select 
+                            data-disabled="isOnUpdateEdittedAddressInfo"
+                            data-filterable="true"
+                            data-maximum-displayed-items="5"                            
+                            data-placeholder="'Please select...'"
+                            data-theme="'theme-teacher'"></my-select>
+                        <label ng-hide="edittedAddressInfo.district.isValid">*กรุณาเลือกอำเภอ/เขต</label>
+                    </div>
+                    <div class="clear-fix"></div>
+                </div>
+                <div class="row">
+                    <div class="col col-label"><span ng-show="edittedAddressInfo.province.isRequired" class="required">*</span>จังหวัด :</div>
+                    <div class="col col-value">
+                        <my-select 
+                            data-disabled="isOnUpdateEdittedAddressInfo"
+                            data-filterable="true"
+                            data-maximum-displayed-items="5"                            
+                            data-placeholder="'Please select...'"
+                            data-theme="'theme-teacher'"></my-select>
+                        <label ng-hide="edittedAddressInfo.province.isValid">*กรุณาเลือกจังหวัด</label>
+                    </div>
+                    <div class="clear-fix"></div>
+                </div>                
+            </div>
+        </div>
+    </my-dialog-box>
+
+    <!-- Teached Course Info -->
+    <my-dialog-box data-title="'Edit > Teached Course Info'" data-submit="onSubmitEditTeachedCourseInfo()" data-disabled="isOnUpdateEdittedTeachedCourseInfo" data-close="onCancelEditTeachedCourseInfo()" data-visible="isOnEditTeachedCourseInfo">
         <div class="wrapper">
             <div class="rows">
                 <div class="row" ng-repeat="teachedCourse in edittedTeachedCourseInfo">
