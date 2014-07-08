@@ -13,7 +13,8 @@ PianoForte.Controllers.Teachers.TeacherMainController = function ($scope, $rootS
     $scope['showPerPage'] = 20;
     $scope['filter'] = {        
         'dropdownList': [
-            { 'id': 0, 'text': 'ดูทั้งหมด', 'excluded': false }
+            { 'id': 0, 'text': 'ดูทั้งหมด', 'excluded': false },
+            { 'id': 1, 'text': 'Custom', 'excluded': false }
         ],
         'dropdownSelectedId': 0,
         'result': [],

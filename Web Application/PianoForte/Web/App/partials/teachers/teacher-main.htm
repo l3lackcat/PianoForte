@@ -51,6 +51,7 @@
                         <div class="row" ng-repeat="teacher in filter.result | orderBy:'id' | startFrom:(currentPage-1)*showPerPage | limitTo:showPerPage">
                             <div class="col col-id align-center">{{teacher.id}}</div>
                             <div class="col col-name">{{teacher.name}}</div>
+                            <!-- <div class="col col-name"><span ng-bind-html-unsafe="teacher.name | highlight:filter.text"></span></div> -->
                             <div class="col col-nickname align-center">{{teacher.nickname}}</div>
                             <div class="col col-phone">{{FormatManager.formatPhoneNumber(teacher.phoneNumber)}}</div>
                             <div class="col col-status align-center status-{{teacher.status}}" title="{{EnumConverter.Status.toString(teacher.status)}}"><i class="fa fa-circle"></i></div>

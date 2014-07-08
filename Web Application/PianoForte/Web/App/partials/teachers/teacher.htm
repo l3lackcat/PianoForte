@@ -70,6 +70,41 @@
                             <div class="row no-data" ng-show="teacher.contacts.phones.length == 0 && teacher.contacts.emails.length == 0">*** ไม่มีข้อมูล ***</div>
                         </div>
                     </my-box>
+                    <my-box data-title="'ข้อมูลที่อยู่'" data-editable="true" data-edit="onEditAddressInfo()">
+                        <div class="rows">
+                            <div class="row" ng-hide="teacher.address == undefined">
+                                <div class="col col-label">ชื่ออาคาร :</div>
+                                <div class="col col-value"></div>
+                                <div class="clear-fix"></div>
+                            </div>
+                            <div class="row" ng-hide="teacher.address == undefined">
+                                <div class="col col-label">ที่อยู่ :</div>
+                                <div class="col col-value"></div>
+                                <div class="clear-fix"></div>
+                            </div>
+                            <div class="row" ng-hide="teacher.address == undefined">
+                                <div class="col col-label">ตำบล / แขวง :</div>
+                                <div class="col col-value"></div>
+                                <div class="clear-fix"></div>
+                            </div>
+                            <div class="row" ng-hide="teacher.address == undefined">
+                                <div class="col col-label">อำเภอ / เขต :</div>
+                                <div class="col col-value"></div>
+                                <div class="clear-fix"></div>
+                            </div>
+                            <div class="row" ng-hide="teacher.address == undefined">
+                                <div class="col col-label">จังหวัด :</div>
+                                <div class="col col-value"></div>
+                                <div class="clear-fix"></div>
+                            </div>
+                            <div class="row" ng-hide="teacher.address == undefined">
+                                <div class="col col-label">รหัสไปรษณีย์ :</div>
+                                <div class="col col-value"></div>
+                                <div class="clear-fix"></div>
+                            </div>
+                            <div class="row no-data" ng-show="teacher.address == undefined">*** ไม่มีข้อมูล ***</div>
+                        </div>
+                    </my-box>
                 </div>
                 <div class="tube-50-percent">
                     <my-box data-title="'วิชาที่สอน'" data-editable="true" data-edit="onEditTeachedCourseInfo()">
