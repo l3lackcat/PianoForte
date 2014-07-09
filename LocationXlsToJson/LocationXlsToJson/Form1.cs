@@ -16,10 +16,14 @@ namespace LocationXlsToJson
 {
     public partial class Form1 : Form
     {
-        private Dictionary<string, LocationData> postcodeDictionary = new Dictionary<string, LocationData>();
+        private List<string> postcodeList = new List<string>();
         private List<string> provinceList = new List<string>();
         private List<string> districtList = new List<string>();
         private List<string> subDistrictList = new List<string>();
+
+        private Dictionary<string, List<string>> postCodeToProvinceDictionary = new Dictionary<string, List<string>>();
+        private Dictionary<string, List<string>> provinceToDistrictDictionary = new Dictionary<string, List<string>>();
+        private Dictionary<string, List<string>> districtToSubDistrictDictionary = new Dictionary<string, List<string>>();
 
         public Form1()
         {
@@ -47,7 +51,10 @@ namespace LocationXlsToJson
                 string district = xlRange.Cells[i, 3].Value2.ToString();
                 string subDistrict = xlRange.Cells[i, 4].Value2.ToString();
 
-                updatePostcodeDictionary(postcode, province, district, subDistrict);
+                updatePostCodeToProvinceDictionary(postcode, province);
+                updateProvinceToDistrictDictionary(province, district);
+                updateDistrictToSubDistrictDictionary(district, subDistrict);
+                updatePostcodeList(postcode);
                 updateProvinceList(province);
                 updateDistrictList(district);
                 updateSubDistrictList(subDistrict);                
@@ -55,10 +62,14 @@ namespace LocationXlsToJson
                 this.ProgressBar.Value = i;
             }
 
-            createPostcodeJsonFile(this.postcodeDictionary);
-            createProvinceJsonFile(this.provinceList);
-            createDistrictJsonFile(this.districtList);
-            createSubDistrictJsonFile(this.subDistrictList);
+            createPath("json");
+            createPostCodeToProvinceDictionaryJsonFile();
+            createProvinceToDistrictDictionaryJsonFile();
+            createDistrictToSubDistrictDictionaryJsonFile();
+            createPostcodeJsonFile();
+            createProvinceJsonFile();
+            createDistrictJsonFile();
+            createSubDistrictJsonFile();
 
             //cleanup
             GC.Collect();
@@ -81,39 +92,77 @@ namespace LocationXlsToJson
             Marshal.ReleaseComObject(xlApp);
         }
 
-        private void updatePostcodeDictionary(string postcode, string province, string district, string subDistrict)
+        private void updatePostCodeToProvinceDictionary(string postcode, string province)
         {
-            if (this.postcodeDictionary.ContainsKey(postcode) == false)
+            if (this.postCodeToProvinceDictionary.ContainsKey(postcode) == false)
             {
-                LocationData locationData = new LocationData();
-
-                locationData.Provinces.Add(province);
-                locationData.Districts.Add(district);
-                locationData.SubDistricts.Add(subDistrict);
-
-                this.postcodeDictionary.Add(postcode, locationData);
+                List<string> provinceList = new List<string>();
+                provinceList.Add(province);
+                this.postCodeToProvinceDictionary.Add(postcode, provinceList);
             }
             else
             {
-                LocationData locationData = this.postcodeDictionary[postcode];
+                List<string> provinceList = this.postCodeToProvinceDictionary[postcode];
 
-                if (locationData != null)
+                if (provinceList != null)
                 {
-                    if (locationData.Provinces.Contains(province) == false)
+                    if (provinceList.Contains(province) == false)
                     {
-                        locationData.Provinces.Add(province);
-                    }
-
-                    if (locationData.Districts.Contains(district) == false)
-                    {
-                        locationData.Districts.Add(district);
-                    }
-
-                    if (locationData.SubDistricts.Contains(subDistrict) == false)
-                    {
-                        locationData.SubDistricts.Add(subDistrict);
+                        provinceList.Add(province);
                     }
                 }
+            }
+        }
+
+        private void updateProvinceToDistrictDictionary(string province, string district)
+        {
+            if (this.provinceToDistrictDictionary.ContainsKey(province) == false)
+            {
+                List<string> districtList = new List<string>();
+                districtList.Add(district);
+                this.provinceToDistrictDictionary.Add(province, districtList);
+            }
+            else
+            {
+                List<string> districtList = this.provinceToDistrictDictionary[province];
+
+                if (districtList != null)
+                {
+                    if (districtList.Contains(district) == false)
+                    {
+                        districtList.Add(district);
+                    }
+                }
+            }
+        }
+
+        private void updateDistrictToSubDistrictDictionary(string district, string subDistrict)
+        {
+            if (this.districtToSubDistrictDictionary.ContainsKey(district) == false)
+            {
+                List<string> subDistrictList = new List<string>();
+                subDistrictList.Add(subDistrict);
+                this.districtToSubDistrictDictionary.Add(district, subDistrictList);
+            }
+            else
+            {
+                List<string> subDistrictList = this.districtToSubDistrictDictionary[district];
+
+                if (subDistrictList != null)
+                {
+                    if (subDistrictList.Contains(subDistrict) == false)
+                    {
+                        subDistrictList.Add(subDistrict);
+                    }
+                }
+            }
+        }
+
+        private void updatePostcodeList(string postcode)
+        {
+            if (this.postcodeList.Contains(postcode) == false)
+            {
+                this.postcodeList.Add(postcode);
             }
         }
 
@@ -141,32 +190,61 @@ namespace LocationXlsToJson
             }
         }
 
-        private void createPostcodeJsonFile(Dictionary<string, LocationData> postcodeDictionary)
+        private void createPath(string path)
         {
-            string postcodeJson = JsonConvert.SerializeObject(this.postcodeDictionary);
-
-            System.IO.File.WriteAllText(@"postcode.json", postcodeJson);
+            if (Directory.Exists(path) == false)
+            {
+                Directory.CreateDirectory(path);
+            }                
         }
 
-        private void createProvinceJsonFile(List<string> provinceList)
+        private void createPostCodeToProvinceDictionaryJsonFile()
         {
-            string provinceJson = JsonConvert.SerializeObject(this.provinceList);
+            string json = JsonConvert.SerializeObject(this.postCodeToProvinceDictionary);
 
-            System.IO.File.WriteAllText(@"province.json", provinceJson);
+            System.IO.File.WriteAllText(@"json\\PostcodeToProvince.json", json);
         }
 
-        private void createDistrictJsonFile(List<string> districtList)
+        private void createProvinceToDistrictDictionaryJsonFile()
         {
-            string districtJson = JsonConvert.SerializeObject(this.districtList);
+            string json = JsonConvert.SerializeObject(this.provinceToDistrictDictionary);
 
-            System.IO.File.WriteAllText(@"district.json", districtJson);
+            System.IO.File.WriteAllText(@"json\\ProvinceToDistrict.json", json);
         }
 
-        private void createSubDistrictJsonFile(List<string> subDistrictList)
+        private void createDistrictToSubDistrictDictionaryJsonFile()
         {
-            string subDistrictJson = JsonConvert.SerializeObject(this.subDistrictList);
+            string json = JsonConvert.SerializeObject(this.districtToSubDistrictDictionary);
 
-            System.IO.File.WriteAllText(@"sub-district.json", subDistrictJson);
+            System.IO.File.WriteAllText(@"json\\DistrictToSubDistrictDictionary.json", json);
+        }
+
+        private void createPostcodeJsonFile()
+        {
+            string json = JsonConvert.SerializeObject(this.postcodeList);
+
+            System.IO.File.WriteAllText(@"json\\Postcode.json", json);
+        }
+
+        private void createProvinceJsonFile()
+        {
+            string json = JsonConvert.SerializeObject(this.provinceList);
+
+            System.IO.File.WriteAllText(@"json\\Province.json", json);
+        }
+
+        private void createDistrictJsonFile()
+        {
+            string json = JsonConvert.SerializeObject(this.districtList);
+
+            System.IO.File.WriteAllText(@"json\\District.json", json);
+        }
+
+        private void createSubDistrictJsonFile()
+        {
+            string json = JsonConvert.SerializeObject(this.subDistrictList);
+
+            System.IO.File.WriteAllText(@"json\\SubDistrict.json", json);
         }
 
         private void BrowseButton_Click(object sender, EventArgs e)

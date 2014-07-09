@@ -7,15 +7,15 @@ namespace LocationXlsToJson
 {
     public class LocationData
     {
-        public List<string> Provinces { get; set; }
-        public List<string> Districts { get; set; }
-        public List<string> SubDistricts { get; set; }
+        public Dictionary<string, List<string>> PostCodeToProvinceDictionary { get; set; }
+        public Dictionary<string, List<string>> ProvinceToDistrictDictionary { get; set; }
+        public Dictionary<string, List<string>> DistrictToSubDistrictDictionary { get; set; }
 
         public LocationData()
         {
-            this.Provinces = new List<string>();
-            this.Districts = new List<string>();
-            this.SubDistricts = new List<string>();
+            PostCodeToProvinceDictionary = new Dictionary<string, List<string>>();
+            ProvinceToDistrictDictionary = new Dictionary<string, List<string>>();
+            DistrictToSubDistrictDictionary = new Dictionary<string, List<string>>();
         }
     }
 }
