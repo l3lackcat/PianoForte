@@ -12,8 +12,8 @@
 			font-family: inherit;
 			font-size: inherit;
 			margin: 0;
-			padding: 3px 20px 3px 5px;
-			width: calc(~'100% - 25px');
+			padding: 8px 30px 8px 10px;
+			width: calc(~'100% - 40px');
 			
 			&::-webkit-input-placeholder {
 				font-style: italic;
@@ -29,12 +29,13 @@
 			background-color: transparent;
 			border: 0;
 			display: inline-block;
-			height: 14px;
+			// height: 14px;
 			margin: 0;
 			padding: 0;
 			position: absolute;
-			right: 5px;
-			width: 13px;
+			right: 10px;
+			// width: 13px;
+			line-height: 19px;
 		}
 
 		> .btn-search:hover { cursor: pointer; }
@@ -46,6 +47,7 @@
 #books {
 	.widget-search-box {
 		> .wrapper {
+
 			> input[type="text"] {
 				&:focus { border-bottom-color: @bookThemeColor; }
 				&:hover { border-bottom-color: @bookThemeColor; }	

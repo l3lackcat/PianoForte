@@ -3,6 +3,7 @@
 goog.provide('PianoForte.Controllers.Teachers.TeacherController');
 
 PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope, $routeParams, TeacherService, CourseService, Enum, EnumConverter, ValidationManager, FormatManager) {
+    $scope['EnumConverter'] = EnumConverter;
     $scope['FormatManager'] = FormatManager;
 
     $scope['isReady'] = false;
@@ -50,38 +51,40 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
     };
 
     $scope.onEditGeneralInfo = function () {
-        $scope['edittedGeneralInfo'] = {
-            'id': {
-                'value': $scope['teacher']['id'],
-                'isRequired': false,
-                'isValid': true
-            },
-            'firstname': {
-                'value': $scope['teacher']['firstname'],
-                'isRequired': true,
-                'isValid': true
-            },
-            'lastname': {
-                'value': $scope['teacher']['lastname'],
-                'isRequired': true,
-                'isValid': true
-            },
-            'nickname': {
-                'value': $scope['teacher']['nickname'],
-                'isRequired': true,
-                'isValid': true
-            },
-            'status': {
-                'value': {
-                    'key': $scope['teacher']['status']['key'],
-                    'text': $scope['teacher']['status']['text']
-                },
-                'isRequired': false,
-                'isValid': true
-            }
-        }
+        // $scope['edittedGeneralInfo'] = {
+        //     'id': {
+        //         'value': $scope['teacher']['id'],
+        //         'isRequired': false,
+        //         'isValid': true
+        //     },
+        //     'firstname': {
+        //         'value': $scope['teacher']['firstname'],
+        //         'isRequired': true,
+        //         'isValid': true
+        //     },
+        //     'lastname': {
+        //         'value': $scope['teacher']['lastname'],
+        //         'isRequired': true,
+        //         'isValid': true
+        //     },
+        //     'nickname': {
+        //         'value': $scope['teacher']['nickname'],
+        //         'isRequired': true,
+        //         'isValid': true
+        //     },
+        //     'status': {
+        //         'value': {
+        //             'key': $scope['teacher']['status']['key'],
+        //             'text': $scope['teacher']['status']['text']
+        //         },
+        //         'isRequired': false,
+        //         'isValid': true
+        //     }
+        // }
 
-        $scope['isOnEditGeneralInfo'] = true;
+        // $scope['isOnEditGeneralInfo'] = true;
+
+        $rootScope.$broadcast('EditTeacherGeneralInfo', $scope['teacher']);
     };
 
     $scope.onEditContactInfo = function () {
@@ -679,10 +682,7 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
                 'firstname': tempTeacher.firstname,
                 'lastname': tempTeacher.lastname,
                 'nickname': tempTeacher.nickname,
-                'status': {
-                    'key': tempTeacher.status,
-                    'text': EnumConverter.Status.toString(tempTeacher.status)
-                },
+                'status': tempTeacher.status,
                 'contacts': {
                     'phones': tempTeacher.phoneList,
                     'emails': tempTeacher.emailList

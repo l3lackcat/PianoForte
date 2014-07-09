@@ -121,7 +121,7 @@ PianoForte.Controllers.Widgets.MySelectController = function ($scope, $attrs, $e
             setSelectElementWidth(customizedWidth);
         }
 
-        var textElementWidth = selectElement.clientWidth - caretElement.clientWidth - 12;
+        var textElementWidth = selectElement.offsetWidth - caretElement.offsetWidth - 21;
 
         setTextElementWidth(textElementWidth);
         setPlaceHolderElementWidth(textElementWidth);

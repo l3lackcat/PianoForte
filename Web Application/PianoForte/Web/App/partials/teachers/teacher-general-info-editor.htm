@@ -1,0 +1,46 @@
+﻿<div>	
+	<my-dialog-box data-title="'Edit > General Info'" data-submit="submit()" data-disabled="isOnUpdateEdittedGeneralInfo" data-close="cancel()" data-visible="visible">
+		<div class="wrapper">
+			<div class="rows">
+				<div class="row">
+					<div class="col col-label"><span ng-show="edittedGeneralInfo.id.isRequired" class="required">*</span>รหัสประจำตัว :</div>
+					<div class="col col-value">     
+						<my-text-box data-text="edittedGeneralInfo.id.value" data-disabled="true"></my-text-box>
+					</div>
+					<div class="clear-fix"></div>
+				</div>
+				<div class="row">
+					<div class="col col-label"><span ng-show="edittedGeneralInfo.firstname.isRequired" class="required">*</span>ชื่อ :</div>
+					<div class="col col-value">
+						<my-text-box data-text="edittedGeneralInfo.firstname.value" data-disabled="isOnUpdateEdittedGeneralInfo"></my-text-box>
+						<label ng-hide="edittedGeneralInfo.firstname.isValid">*กรุณากรอกชื่อจริง</label>
+					</div>
+					<div class="clear-fix"></div>
+				</div>
+				<div class="row">
+					<div class="col col-label"><span ng-show="edittedGeneralInfo.lastname.isRequired" class="required">*</span>นามสกุล :</div>
+					<div class="col col-value">
+						<my-text-box data-text="edittedGeneralInfo.lastname.value" data-disabled="isOnUpdateEdittedGeneralInfo"></my-text-box>
+						<label ng-hide="edittedGeneralInfo.lastname.isValid">*กรุณากรอกนามสกุล</label>
+					</div>
+					<div class="clear-fix"></div>
+				</div>
+				<div class="row">
+					<div class="col col-label"><span ng-show="edittedGeneralInfo.nickname.isRequired" class="required">*</span>ชื่อเล่น :</div>
+					<div class="col col-value">
+						<my-text-box data-text="edittedGeneralInfo.nickname.value" data-disabled="isOnUpdateEdittedGeneralInfo"></my-text-box>
+						<label ng-hide="edittedGeneralInfo.nickname.isValid">*กรุณากรอกชื่อเล่น</label>
+					</div>
+					<div class="clear-fix"></div>
+				</div>
+				<div class="row">
+					<div class="col col-label"><span ng-show="edittedGeneralInfo.status.isRequired" class="required">*</span>สถานะ :</div>
+					<div class="col col-value">
+						<my-text-box data-text="edittedGeneralInfo.status.value.text" data-disabled="true"></my-text-box>
+					</div>
+					<div class="clear-fix"></div>
+				</div>
+			</div>
+		</div>
+	</my-dialog-box>
+</div>

@@ -1,5 +1,5 @@
 ﻿<div class="widget-select">
-    <button class="btn-toggle" ng-click="toggleDropdownMenu()">
+    <div class="btn-toggle" ng-click="toggleDropdownMenu()">
     	<div class="text" ng-show="selectedItem != null">{{selectedItem.text}}</div>
         <div class="text placeholder" ng-show="selectedItem == null">
             <span ng-show="placeholder != undefined">{{placeholder}}</span>
@@ -8,5 +8,5 @@
     	<div class="caret" ng-hide="disabled">&#9660;</div>
     	<div class="clear-fix"></div>
         <my-dropdown-menu data-visible="isDropdownMenuVisible"></my-dropdown-menu>
-    </button>    
+    </div>    
 </div>

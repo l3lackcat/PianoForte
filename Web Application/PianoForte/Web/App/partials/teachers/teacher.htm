@@ -46,7 +46,7 @@
                             </div>
                             <div class="row">
                                 <div class="col col-label">สถานะ :</div>
-                                <div class="col col-value">{{teacher.status.text}}</div>
+                                <div class="col col-value">{{EnumConverter.Status.toString(teacher.status)}}</div>
                                 <div class="clear-fix"></div>
                             </div>
                         </div>
@@ -120,7 +120,7 @@
     </my-tabs>    
 
     <!-- General Info -->
-    <my-dialog-box data-title="'Edit > General Info'" data-submit="onSubmitEditGeneralInfo()" data-disabled="isOnUpdateEdittedGeneralInfo" data-close="onCancelEditGeneralInfo()" data-visible="isOnEditGeneralInfo">
+    <!-- <my-dialog-box data-title="'Edit > General Info'" data-submit="onSubmitEditGeneralInfo()" data-disabled="isOnUpdateEdittedGeneralInfo" data-close="onCancelEditGeneralInfo()" data-visible="isOnEditGeneralInfo">
         <div class="wrapper">
             <div class="rows">
                 <div class="row">
@@ -163,7 +163,9 @@
                 </div>
             </div>
         </div>
-    </my-dialog-box>
+    </my-dialog-box> -->
+
+    <teacher-general-info-editor></teacher-general-info-editor>
 
     <!-- Contact Info -->
     <my-dialog-box data-title="'Edit > Contact Info'" data-submit="onSubmitEditContactInfo()" data-disabled="isOnUpdateEdittedContactInfo" data-close="onCancelEditContactInfo()" data-visible="isOnEditContactInfo">        
