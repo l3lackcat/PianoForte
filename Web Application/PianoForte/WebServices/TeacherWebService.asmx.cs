@@ -17,10 +17,12 @@ namespace PianoForte.WebServices
     [System.Web.Script.Services.ScriptService]
     public class TeacherWebService : System.Web.Services.WebService
     {
+        private int delay = 1500;
+
         [WebMethod]
         public List<Object> getTeacherList(string databaseName)
         {
-            System.Threading.Thread.Sleep(1500);
+            System.Threading.Thread.Sleep(delay);
 
             List<Object> displayedTeacherList = new List<Object>();
             List<Teacher> teacherList = TeacherService.getTeacherList(databaseName);
@@ -63,7 +65,7 @@ namespace PianoForte.WebServices
         [WebMethod]
         public Object getTeacherById(string databaseName, int id)
         {
-            System.Threading.Thread.Sleep(1500);
+            System.Threading.Thread.Sleep(delay);
 
             Object teacher = null;
             List<Object> phoneList = new List<Object>();
@@ -130,7 +132,7 @@ namespace PianoForte.WebServices
         [WebMethod]
         public int insertTeacherGeneralInfo(string databaseName, Teacher teacher)
         {
-            System.Threading.Thread.Sleep(1500);
+            System.Threading.Thread.Sleep(delay);
             
             teacher.Id = TeacherService.generateNextTeacherId(databaseName);
 
@@ -146,14 +148,14 @@ namespace PianoForte.WebServices
         [WebMethod]
         public bool updateTeacherGeneralInfo(string databaseName, Teacher teacher)
         {
-            System.Threading.Thread.Sleep(1500);
+            System.Threading.Thread.Sleep(delay);
             return TeacherService.updateTeacher(databaseName, teacher);
         }
 
         [WebMethod]
         public int insertTeacherContactInfo(string databaseName, TeacherContact teacherContact)
         {
-            System.Threading.Thread.Sleep(1500);
+            System.Threading.Thread.Sleep(delay);
 
             int contactId = 0;
 
@@ -180,14 +182,14 @@ namespace PianoForte.WebServices
         [WebMethod]
         public bool deleteTeacherContactInfo(string databaseName, TeacherContact teacherContact)
         {
-            System.Threading.Thread.Sleep(1500);
+            System.Threading.Thread.Sleep(delay);
             return TeacherContactService.deleteTeacherContact(databaseName, teacherContact.Id);
         }
 
         [WebMethod]
         public bool updateTeachedCourseInfo(int teacherId, string databaseName, List<string> teachedCourseNameList)
         {
-            System.Threading.Thread.Sleep(1500);
+            System.Threading.Thread.Sleep(delay);
 
             bool isUpdateSuccess = true;
 

@@ -127,6 +127,7 @@
     <Content Include="Web\App\js\services\students\StudentService.js" />
     <Content Include="Web\App\js\services\courses\CourseService.js" />
     <Content Include="Web\App\js\services\teachers\TeacherService.js" />
+    <Content Include="Web\App\js\utilities\LocationManager.js" />
     <Content Include="Web\App\js\utilities\FormatManager.js" />
     <Content Include="Web\App\js\utilities\ValidationManager.js" />
     <Content Include="Web\App\js\utilities\EnumConverter.js" />
@@ -2503,10 +2504,7 @@
     <None Include="Web\App\fonts\thaisansneue\thaisansneue-ultralight-webfont.eot" />
     <None Include="Web\App\fonts\thaisansneue\thaisansneue-ultralight-webfont.ttf" />
     <None Include="Web\App\fonts\thaisansneue\thaisansneue-ultralight-webfont.woff" />
-    <Content Include="Web\App\js\models\district.js" />
-    <Content Include="Web\App\js\models\postcode.js" />
-    <Content Include="Web\App\js\models\province.js" />
-    <Content Include="Web\App\js\models\sub-district.js" />
+    <Content Include="Web\App\js\models\LocationDataModel.js" />
     <None Include="Web\App\less\config.less" />
     <None Include="Web\App\less\books\book-main.less" />
     <None Include="Web\App\less\books\book.less" />

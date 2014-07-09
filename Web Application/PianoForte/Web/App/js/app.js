@@ -56,6 +56,8 @@ goog.require('PianoForte.Controllers.Widgets.MyTextBoxController');
 
 goog.require('PianoForte.Enum');
 
+goog.require('PianoForte.Models.LocationDataModel');
+
 goog.require('PianoForte.Services.BookService');
 goog.require('PianoForte.Services.CdService');
 goog.require('PianoForte.Services.CourseService');
@@ -64,6 +66,7 @@ goog.require('PianoForte.Services.TeacherService');
 
 goog.require('PianoForte.Utilities.EnumConverter');
 goog.require('PianoForte.Utilities.FormatManager');
+goog.require('PianoForte.Utilities.LocationManager');
 goog.require('PianoForte.Utilities.ValidationManager');
 
 PianoForte.App = angular.module('PianoForteApplication', ['ngRoute']);
@@ -168,6 +171,7 @@ PianoForte.App.directive('myTextBox', PianoForte.Directives.Widgets.MyTextBoxDir
 PianoForte.App.service('Enum', [PianoForte.Enum]);
 PianoForte.App.service('EnumConverter', ['Enum', PianoForte.Utilities.EnumConverter]);
 PianoForte.App.service('FormatManager', ['ValidationManager', PianoForte.Utilities.FormatManager]);
+PianoForte.App.service('LocationManager', ['LocationDataModel', PianoForte.Utilities.LocationManager]);
 PianoForte.App.service('ValidationManager', [PianoForte.Utilities.ValidationManager]);
 
 PianoForte.App.service('BookService', ['$http', PianoForte.Services.BookService]);

@@ -8,12 +8,16 @@ PianoForte.Controllers.Widgets.MyCheckboxController = function ($scope, $attrs, 
     };
 
     $scope.toggleCheck = function () {
-    	$scope.checked = !$scope.checked;
+        if ($scope['checked'] === undefined) {
+            $scope['checked'] = false;
+        }
+
+    	$scope['checked'] = !$scope['checked'];
 
         $scope.onChanged({ 
             e: {
-                checked: $scope.checked,
-                name: $scope.name
+                'checked': $scope['checked'],
+                'name': $scope['name']
             }
         });
     };
