@@ -8,9 +8,9 @@ PianoForte.Utilities.FormatManager = function(ValidationManager) {
             if (input == null) { return input; };
 
             var formattedPhoneNumber = input;
-            var isPhoneNumber = ValidationManager.isPhoneNumber(input);
+            var isValid = ValidationManager.validate('phone', input)
 
-            if ((input !== '') && (isPhoneNumber === true)) {
+            if ((input !== '') && (isValid === true)) {
                 var part1;
                 var part2;
                 var part3;

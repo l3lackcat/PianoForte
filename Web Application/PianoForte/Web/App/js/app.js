@@ -151,7 +151,7 @@ PianoForte.App.controller('TeacherMainController', ['$scope', '$rootScope', '$lo
 
 // TeacherGeneralInfoEditor
 PianoForte.App.directive('teacherGeneralInfoEditor', PianoForte.Directives.Teachers.TeacherGeneralInfoEditorDirective);
-PianoForte.App.controller('TeacherGeneralInfoEditorController', ['$scope', PianoForte.Controllers.Teachers.TeacherGeneralInfoEditorController]);
+PianoForte.App.controller('TeacherGeneralInfoEditorController', ['$scope', 'ValidationManager', PianoForte.Controllers.Teachers.TeacherGeneralInfoEditorController]);
 
 // MyBox
 PianoForte.App.directive('myBox', PianoForte.Directives.Widgets.MyBoxDirective);

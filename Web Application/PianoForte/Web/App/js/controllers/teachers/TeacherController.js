@@ -620,7 +620,7 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
 
             if (phone.id > 0) {
                 if (phone.status === Enum.Status.Active) {
-                    if (ValidationManager.isPhoneNumber(phone.value) === false) {
+                    if (ValidationManager.validate('phone', phone.value) === false) {
                         phone.isValid = false;
                         isValid = false;
                     }
@@ -629,7 +629,7 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
                 }                                
             } else {
                 if (phone.value !== '') {
-                    if (ValidationManager.isPhoneNumber(phone.value) === false) {
+                    if (ValidationManager.validate('phone', phone.value) === false) {
                         phone.isValid = false;
                         isValid = false;
                     }
@@ -647,7 +647,7 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
 
             if (email.id > 0) {
                 if (email.status === Enum.Status.Active) {
-                    if (ValidationManager.isEmail(email.value) === false) {
+                    if (ValidationManager.validate('email', email.value) === false) {
                         email.isValid = false;
                         isValid = false;
                     } 
@@ -656,7 +656,7 @@ PianoForte.Controllers.Teachers.TeacherController = function ($scope, $rootScope
                 }
             } else {
                 if (email.value !== '') {
-                    if (ValidationManager.isEmail(email.value) === false) {
+                    if (ValidationManager.validate('email', email.value) === false) {
                         email.isValid = false;
                         isValid = false;
                     }

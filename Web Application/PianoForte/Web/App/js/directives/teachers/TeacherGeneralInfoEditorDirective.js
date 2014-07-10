@@ -7,7 +7,9 @@ PianoForte.Directives.Teachers.TeacherGeneralInfoEditorDirective = function () {
 		restrict: 'E',
 		require: "MyDialogBoxDirective",
 		replace: true,
-		scope: {},
+		scope: {
+			title: '@'
+		},
 		controller: 'TeacherGeneralInfoEditorController',
 		templateUrl: 'partials/teachers/teacher-general-info-editor.htm'
 	};
