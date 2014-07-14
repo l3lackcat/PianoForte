@@ -3,7 +3,7 @@
 goog.provide('PianoForte.Directives.Widgets.MyDialogBoxDirective');
 
 PianoForte.Directives.Widgets.MyDialogBoxDirective = function () {
-    return {
+    return {        
         restrict: 'E',
         transclude: true,
         scope: {

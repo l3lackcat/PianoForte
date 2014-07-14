@@ -17,6 +17,9 @@ goog.require('PianoForte.Controllers.Students.StudentMainController');
 goog.require('PianoForte.Controllers.Teachers.TeacherController');
 goog.require('PianoForte.Controllers.Teachers.TeacherMainController');
 
+goog.require('PianoForte.Directives.Teachers.TeacherContactInfoEditorDirective');
+goog.require('PianoForte.Controllers.Teachers.TeacherContactInfoEditorController');
+
 goog.require('PianoForte.Directives.Teachers.TeacherGeneralInfoEditorDirective');
 goog.require('PianoForte.Controllers.Teachers.TeacherGeneralInfoEditorController');
 
@@ -131,27 +134,31 @@ PianoForte.App.filter('startFrom', function() {
 });
 
 // Book
-PianoForte.App.controller('BookController', ['$scope', '$rootScope', '$routeParams', 'BookService', 'Enum', 'EnumConverter', 'ValidationManager', 'FormatManager', PianoForte.Controllers.Books.BookController]);
+PianoForte.App.controller('BookController', ['$scope', '$rootScope', '$routeParams', 'BookService', 'Enum', 'EnumConverter', 'FormatManager', 'ValidationManager', PianoForte.Controllers.Books.BookController]);
 PianoForte.App.controller('BookMainController', ['$scope', '$rootScope', 'filterFilter', 'BookService', 'EnumConverter', 'FormatManager', PianoForte.Controllers.Books.BookMainController]);
 
 // Cd
-PianoForte.App.controller('CdController', ['$scope', '$rootScope', '$routeParams', 'CdService', 'Enum', 'EnumConverter', 'ValidationManager', 'FormatManager', PianoForte.Controllers.Cds.CdController]);
+PianoForte.App.controller('CdController', ['$scope', '$rootScope', '$routeParams', 'CdService', 'Enum', 'EnumConverter', 'FormatManager', 'ValidationManager', PianoForte.Controllers.Cds.CdController]);
 PianoForte.App.controller('CdMainController', ['$scope', '$rootScope', 'filterFilter', 'CdService', 'EnumConverter', 'FormatManager', PianoForte.Controllers.Cds.CdMainController]);
 
 // Course
 PianoForte.App.controller('CourseMainController', ['$scope', '$rootScope', 'filterFilter', 'CourseService', 'EnumConverter', 'FormatManager', PianoForte.Controllers.Courses.CourseMainController]);
 
 // Student
-PianoForte.App.controller('StudentController', ['$scope', '$rootScope', '$routeParams', 'StudentService', 'Enum', 'EnumConverter', 'ValidationManager', 'FormatManager', PianoForte.Controllers.Students.TeacherController]);
+PianoForte.App.controller('StudentController', ['$scope', '$rootScope', '$routeParams', 'StudentService', 'Enum', 'EnumConverter', 'FormatManager', 'ValidationManager', PianoForte.Controllers.Students.TeacherController]);
 PianoForte.App.controller('StudentMainController', ['$scope', '$rootScope', 'filterFilter', 'StudentService', 'EnumConverter', 'FormatManager', PianoForte.Controllers.Students.StudentMainController]);
 
 // Teacher
-PianoForte.App.controller('TeacherController', ['$scope', '$rootScope', '$routeParams', 'TeacherService', 'CourseService', 'Enum', 'EnumConverter', 'ValidationManager', 'FormatManager', PianoForte.Controllers.Teachers.TeacherController]);
+PianoForte.App.controller('TeacherController', ['$scope', '$rootScope', '$routeParams', 'TeacherService', 'CourseService', 'Enum', 'EnumConverter', 'FormatManager', 'ValidationManager', PianoForte.Controllers.Teachers.TeacherController]);
 PianoForte.App.controller('TeacherMainController', ['$scope', '$rootScope', '$location', 'filterFilter', 'TeacherService', 'Enum', 'EnumConverter', 'FormatManager', PianoForte.Controllers.Teachers.TeacherMainController]);
+
+// TeacherContactInfoEditor
+PianoForte.App.directive('teacherContactInfoEditor', PianoForte.Directives.Teachers.TeacherContactInfoEditorDirective);
+PianoForte.App.controller('TeacherContactInfoEditorController', ['$scope', '$rootScope', 'TeacherService', 'Enum', 'EnumConverter', 'FormatManager', 'ValidationManager', PianoForte.Controllers.Teachers.TeacherContactInfoEditorController]);
 
 // TeacherGeneralInfoEditor
 PianoForte.App.directive('teacherGeneralInfoEditor', PianoForte.Directives.Teachers.TeacherGeneralInfoEditorDirective);
-PianoForte.App.controller('TeacherGeneralInfoEditorController', ['$scope', 'ValidationManager', PianoForte.Controllers.Teachers.TeacherGeneralInfoEditorController]);
+PianoForte.App.controller('TeacherGeneralInfoEditorController', ['$scope', '$rootScope', 'TeacherService', 'Enum', 'EnumConverter', 'ValidationManager', PianoForte.Controllers.Teachers.TeacherGeneralInfoEditorController]);
 
 // MyBox
 PianoForte.App.directive('myBox', PianoForte.Directives.Widgets.MyBoxDirective);

@@ -40,6 +40,18 @@ PianoForte.Utilities.ValidationManager = function () {
         return isValid;
     };
 
+    function validateName (input) {
+        if (input == null) { return false; };
+
+        var isValid = false;
+
+        if (input !== '') {
+            isValid = true;
+        }
+
+        return isValid;
+    };
+
     return {
         validate: function (type, input) {
             var isValid = false;
@@ -49,9 +61,9 @@ PianoForte.Utilities.ValidationManager = function () {
             if (type === 'phone') {
                 isValid = validatePhoneNumber(input);
             } else if (type === 'email') {
-                isValid = validateEmail(input)
+                isValid = validateEmail(input);
             } else if (type === 'name') {
-
+                isValid = validateName(input);
             }
 
             return isValid;

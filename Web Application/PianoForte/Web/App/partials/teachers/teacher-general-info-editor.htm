@@ -36,7 +36,13 @@
 				<div class="row">
 					<div class="col col-label"><span ng-show="edittedData.status.isRequired" class="required">*</span>สถานะ :</div>
 					<div class="col col-value">
-						<my-text-box data-text="edittedData.status.value" data-disabled="true"></my-text-box>
+						<my-select 
+                            data-disabled="isOnUpdateEdittedData"
+                            data-items="statusList" 
+                            data-selected-item-id="edittedData.status.value"
+                            data-placeholder="'Please select...'"
+                            data-theme="'theme-teacher'"
+                            data-width="125"></my-select>
 					</div>
 					<div class="clear-fix"></div>
 				</div>

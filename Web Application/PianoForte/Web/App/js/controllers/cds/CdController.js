@@ -2,7 +2,7 @@
 
 goog.provide('PianoForte.Controllers.Cds.CdController');
 
-PianoForte.Controllers.Cds.CdController = function ($scope, $rootScope, $routeParams, CdService, Enum, EnumConverter, ValidationManager, FormatManager) {
+PianoForte.Controllers.Cds.CdController = function ($scope, $rootScope, $routeParams, CdService, Enum, EnumConverter, FormatManager, ValidationManager) {
 	$scope['EnumConverter'] = EnumConverter;
     $scope['FormatManager'] = FormatManager;
 

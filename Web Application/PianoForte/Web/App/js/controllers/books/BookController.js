@@ -2,7 +2,7 @@
 
 goog.provide('PianoForte.Controllers.Books.BookController');
 
-PianoForte.Controllers.Books.BookController = function ($scope, $rootScope, $routeParams, BookService, Enum, EnumConverter, ValidationManager, FormatManager) {
+PianoForte.Controllers.Books.BookController = function ($scope, $rootScope, $routeParams, BookService, Enum, EnumConverter, FormatManager, ValidationManager) {
     $scope['EnumConverter'] = EnumConverter;
 	$scope['FormatManager'] = FormatManager;
 
@@ -102,7 +102,7 @@ PianoForte.Controllers.Books.BookController = function ($scope, $rootScope, $rou
             var status = $scope['statusList'][i];
 
             status.text = EnumConverter.Status.toString(status.id);
-        };
+        }
     }
 
     function validateBookInfo() {
