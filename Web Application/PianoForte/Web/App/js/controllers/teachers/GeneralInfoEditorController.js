@@ -1,9 +1,8 @@
 ﻿'use strict';
 
-goog.provide('PianoForte.Controllers.Teachers.TeacherGeneralInfoEditorController');
+goog.provide('PianoForte.Controllers.Teachers.GeneralInfoEditorController');
 
-PianoForte.Controllers.Teachers.TeacherGeneralInfoEditorController = function ($scope, $rootScope, TeacherService, Enum, EnumConverter, ValidationManager) {
-    $scope['originalData'] = null;
+PianoForte.Controllers.Teachers.GeneralInfoEditorController = function ($scope, $rootScope, TeacherService, Enum, EnumConverter, ValidationManager) {    
     $scope['edittedData'] = null;
     $scope['visible'] = false;
     $scope['isOnUpdateEdittedData'] = false;
@@ -13,10 +12,12 @@ PianoForte.Controllers.Teachers.TeacherGeneralInfoEditorController = function ($
         { 'id': Enum.Status.Resigned, 'text': '', 'excluded': false }
     ];
 
+    var _generalInfo = null;
+
     $scope.$on('EditTeacherGeneralInfo', function (scope, teacher) {
         initStatusList();
 
-        $scope['originalData'] = teacher;
+        _generalInfo = teacher;
         $scope['edittedData'] = {
             'id': {
                 'value': teacher.id,
@@ -50,7 +51,8 @@ PianoForte.Controllers.Teachers.TeacherGeneralInfoEditorController = function ($
 
     $scope.submit = function () {
         if (validateEdittedData() === true) {
-            if (isEdittedDataChanged() === true) {
+            var isDifferent = compare(_generalInfo, $scope['edittedData']);
+            if (isDifferent === true) {
                 $scope['isOnUpdateEdittedData'] = true;
                 TeacherService.updateTeacherGeneralInfo($scope['edittedData'], onSuccessUpdateEdittedData, onErrorUpdateEdittedData);
             } else {
@@ -71,11 +73,12 @@ PianoForte.Controllers.Teachers.TeacherGeneralInfoEditorController = function ($
         }
     };
 
-    function hideDialogBox() {
-        $scope['originalData'] = null;
+    function hideDialogBox() {        
         $scope['edittedData'] = null;
         $scope['visible'] = false;
         $scope['isOnUpdateEdittedData'] = false;
+
+        _generalInfo = null;
     };
 
     function validateEdittedData () {
@@ -91,13 +94,13 @@ PianoForte.Controllers.Teachers.TeacherGeneralInfoEditorController = function ($
         return firstnameObj.isValid && lastnameObj.isValid && nicknameObj.isValid;
     };
 
-    function isEdittedDataChanged() {
+    function compare(oldGeneralInfo, newGeneralInfo) {
         var isChanged = false;
 
-        if (($scope['originalData']['firstname'] !== $scope['edittedData']['firstname']['value']) ||
-            ($scope['originalData']['lastname'] !== $scope['edittedData']['lastname']['value']) ||
-            ($scope['originalData']['nickname'] !== $scope['edittedData']['nickname']['value']) ||
-            ($scope['originalData']['status'] !== $scope['edittedData']['status']['value'])) {
+        if ((oldGeneralInfo.firstname !== newGeneralInfo.firstname.value) ||
+            (oldGeneralInfo.lastname !== newGeneralInfo.lastname.value) ||
+            (oldGeneralInfo.nickname !== newGeneralInfo.nickname.value) ||
+            (oldGeneralInfo.status !== newGeneralInfo.status.value)) {
             isChanged = true;
         }
 
@@ -108,12 +111,12 @@ PianoForte.Controllers.Teachers.TeacherGeneralInfoEditorController = function ($
         var isSuccess = data.d;
 
         if (isSuccess === true) {
-            $scope['originalData']['firstname'] = $scope['edittedData']['firstname']['value'];
-            $scope['originalData']['lastname'] = $scope['edittedData']['lastname']['value'];
-            $scope['originalData']['nickname'] = $scope['edittedData']['nickname']['value'];
-            $scope['originalData']['status'] = $scope['edittedData']['status']['value'];
+            _generalInfo.firstname = $scope['edittedData']['firstname']['value'];
+            _generalInfo.lastname = $scope['edittedData']['lastname']['value'];
+            _generalInfo.nickname = $scope['edittedData']['nickname']['value'];
+            _generalInfo.status = $scope['edittedData']['status']['value'];
 
-            $rootScope.$broadcast('UpdateTeacherGeneralInfo', $scope['originalData']);
+            $rootScope.$broadcast('UpdateTeacherGeneralInfo', _generalInfo);
 
             hideDialogBox();
         } else {

@@ -121,6 +121,7 @@
 
     <teacher-general-info-editor data-title="Edit > General Info"></teacher-general-info-editor>
     <teacher-contact-info-editor data-title="Edit > Contact Info"></teacher-contact-info-editor>
+    <teacher-teached-course-info-editor data-title="Edit > Teached Course Info"></teacher-teached-course-info-info-editor>
 
     <!-- Address Info -->
     <my-dialog-box data-title="'Edit > Address Info'" data-submit="onSubmitEditAddressInfo()" data-disabled="isOnUpdateEdittedAddressInfo" data-close="onCancelEditAddressInfo()" data-visible="isOnEditAddressInfo">
@@ -190,30 +191,6 @@
                     </div>
                     <div class="clear-fix"></div>
                 </div>                
-            </div>
-        </div>
-    </my-dialog-box>
-
-    <!-- Teached Course Info -->
-    <my-dialog-box data-title="'Edit > Teached Course Info'" data-submit="onSubmitEditTeachedCourseInfo()" data-disabled="isOnUpdateEdittedTeachedCourseInfo" data-close="onCancelEditTeachedCourseInfo()" data-visible="isOnEditTeachedCourseInfo">
-        <div class="wrapper">
-            <div class="rows">
-                <div class="row" ng-repeat="teachedCourse in edittedTeachedCourseInfo">
-                    <div class="col col-span label-value">
-                        <my-select 
-                            data-disabled="isOnUpdateEdittedTeachedCourseInfo"
-                            data-filterable="true"
-                            data-items="teachedCourse.courseNameList"
-                            data-maximum-displayed-items="5"                            
-                            data-placeholder="'กรุณาเลือก'"
-                            data-selected-item-id="teachedCourse.selectedId"
-                            data-theme="'theme-teacher'"></my-select>
-                    </div>
-                    <div class="col col-trash" ng-hide="isOnUpdateEdittedTeachedCourseInfo" ng-click="removeTeachedCourse($index)" title="ลบ"><i class="fa fa-trash-o"></i></div>
-                    <div class="clear-fix"></div>
-                </div>
-                <div class="row no-data align-center" ng-show="isOnUpdateEdittedTeachedCourseInfo && edittedTeachedCourseInfo.length == 0">*** ไม่มีข้อมูล ***</div>
-                <button class="btn-add-course" ng-hide="isOnUpdateEdittedTeachedCourseInfo" ng-click="addTeachedCourse()">+ add</button>
             </div>
         </div>
     </my-dialog-box>

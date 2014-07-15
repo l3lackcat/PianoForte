@@ -1,0 +1,24 @@
+﻿<div>	
+	<my-dialog-box data-title="title" data-submit="submit()" data-disabled="isOnUpdateEdittedData" data-close="cancel()" data-visible="visible">
+        <div class="wrapper">
+            <div class="rows">
+                <div class="row" ng-repeat="teachedCourse in edittedData">
+                    <div class="col col-span label-value">
+                        <my-select 
+                            data-disabled="isOnUpdateEdittedData"
+                            data-filterable="true"
+                            data-items="teachedCourse.courseNameList"
+                            data-maximum-displayed-items="5"                            
+                            data-placeholder="'กรุณาเลือก'"
+                            data-selected-item-id="teachedCourse.selectedId"
+                            data-theme="'theme-teacher'"></my-select>
+                    </div>
+                    <div class="col col-trash" ng-hide="isOnUpdateEdittedData" ng-click="removeTeachedCourse($index)" title="ลบ"><i class="fa fa-trash-o"></i></div>
+                    <div class="clear-fix"></div>
+                </div>
+                <div class="row no-data align-center" ng-show="isOnUpdateEdittedData && edittedTeachedCourseInfo.length == 0">*** ไม่มีข้อมูล ***</div>
+                <button class="btn-add-course" ng-hide="isOnUpdateEdittedData" ng-click="addTeachedCourse()">+ add</button>
+            </div>
+        </div>
+    </my-dialog-box>
+</div>
