@@ -5,6 +5,7 @@ using System.Text;
 
 using PianoForte.Dao;
 using PianoForte.Model;
+using System.Globalization;
 
 namespace PianoForte.Manager
 {
@@ -51,9 +52,36 @@ namespace PianoForte.Manager
             return paymentDao.findLastPayment();
         }
 
-        public static Payment findLastPrintedPayment()
+        public static int generateNextPrintedPaymentId(DateTime date)
         {
-            return paymentDao.findLastPrintedPayment();
+            int nextPrintPaymentId = 0;
+            int currentPrintPaymentId = PaymentManager.findLastPrintedPayment(date).PrintPaymentId;
+
+            if (currentPrintPaymentId == 0)
+            {
+                if (date.Year == 2011)
+                {
+                    currentPrintPaymentId = 389;
+                }
+
+                CultureInfo cultureInfo = new CultureInfo("th-TH");
+                String sDate = date.ToString("yy", cultureInfo);
+
+                nextPrintPaymentId = Convert.ToInt32(sDate) * 100000;   // First 2 digits
+                nextPrintPaymentId += 10000;                            // Third digit
+                nextPrintPaymentId += ++currentPrintPaymentId;          // Last 4 digits
+            }
+            else
+            {
+                nextPrintPaymentId = currentPrintPaymentId + 1;
+            }            
+
+            return nextPrintPaymentId;
+        }
+
+        public static Payment findLastPrintedPayment(DateTime date)
+        {
+            return paymentDao.findLastPrintedPayment(date);
         }
 
         //--------------------------------------------------------------------------------

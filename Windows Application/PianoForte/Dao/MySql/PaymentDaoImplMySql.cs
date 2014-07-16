@@ -104,7 +104,7 @@ namespace PianoForte.Dao.MySql
             return payment;
         }        
 
-        public Payment findLastPrintedPayment()
+        public Payment findLastPrintedPayment(DateTime date)
         {
             Payment payment = null;
 
@@ -112,7 +112,8 @@ namespace PianoForte.Dao.MySql
                          "FROM " + Payment.tableName + " " +
                          "WHERE " + Payment.columnPrintPaymentId + " = " +
                          "(SELECT max(" + Payment.columnPrintPaymentId + ") " +
-                         "FROM " + Payment.tableName + ") " +
+                         "FROM " + Payment.tableName + " " +
+                         "WHERE YEAR(" + Payment.columnPaymentDate + ") = " + date.Year + ") " +
                          "ORDER BY " + Payment.columnPaymentId + " ASC";
 
             List<Payment> paymentList = this.processSelectCommand(sql);

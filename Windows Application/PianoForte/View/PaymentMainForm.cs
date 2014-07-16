@@ -159,7 +159,7 @@ namespace PianoForte.View
                 this.DataGridView_PaymentInfo.Rows[n].Cells["TotalPrice"].Value = this.paymentList1[i].TotalPrice;
                 this.DataGridView_PaymentInfo.Rows[n].Cells["PaymentType"].Value = this.paymentList1[i].PaymentType;
                 this.DataGridView_PaymentInfo.Rows[n].Cells["PaymentDate"].Value = this.paymentList1[i].PaymentDate;
-                this.DataGridView_PaymentInfo.Rows[n].Cells["ClassroomStartDate"].Value = this.paymentList1[i].ClassroomStartDate;
+                //this.DataGridView_PaymentInfo.Rows[n].Cells["ClassroomStartDate"].Value = this.paymentList1[i].ClassroomStartDate;
                 this.DataGridView_PaymentInfo.Rows[n].Cells["ReceiverName"].Value = this.paymentList1[i].ReceiverName;
                 this.DataGridView_PaymentInfo.Rows[n].Cells["Status"].Value = this.paymentList1[i].Status;
             }
@@ -181,7 +181,7 @@ namespace PianoForte.View
                 this.DataGridView_PrintTab_PaymentInfo.Rows[n].Cells[4].Value = this.paymentList2[i].PaymentType;
                 this.DataGridView_PrintTab_PaymentInfo.Rows[n].Cells[5].Value = this.paymentList2[i].PaymentDate;
                 //this.DataGridView_PrintTab_PaymentInfo.Rows[n].Cells[6].Value = this.paymentList2[i].ClassroomStartDate;
-                //this.DataGridView_PrintTab_PaymentInfo.Rows[n].Cells[7].Value = this.paymentList2[i].ReceiverName;
+                this.DataGridView_PrintTab_PaymentInfo.Rows[n].Cells[7].Value = this.paymentList2[i].ReceiverName;
                 this.DataGridView_PrintTab_PaymentInfo.Rows[n].Cells[8].Value = this.paymentList2[i].Status;
 
                 if (this.paymentList2[i].PrintPaymentId > 0)
@@ -861,9 +861,7 @@ namespace PianoForte.View
         private void Button_PrintTab_Print_Click(object sender, EventArgs e)
         {
             if (ConfirmDialogBox.show("คุณต้องการปริ้นใบเสร็จใช่หรือไม่"))
-            {
-                int currentPrintPaymentId = PaymentManager.findLastPrintedPayment().PrintPaymentId;
-
+            {                
                 List<int> paymentIdList = new List<int>();
                 foreach (DataGridViewRow dataGridViewRow in this.DataGridView_PrintTab_PaymentInfo.Rows)
                 {
@@ -878,7 +876,7 @@ namespace PianoForte.View
                             {
                                 if (tempPayment.PrintPaymentId == 0)
                                 {
-                                    tempPayment.PrintPaymentId = ++currentPrintPaymentId;
+                                    tempPayment.PrintPaymentId = PaymentManager.generateNextPrintedPaymentId(tempPayment.PaymentDate);
 
                                     bool isUpdateComplete = PaymentManager.updatePayment(tempPayment);
                                     if (isUpdateComplete)

@@ -15,7 +15,7 @@ namespace PianoForte.Dao
 
         Payment findPayment(int paymentId);
         Payment findLastPayment();        
-        Payment findLastPrintedPayment();
+        Payment findLastPrintedPayment(DateTime date);
 
         List<Payment> findAllPayment();
         List<Payment> findAllPayment(int startIndex, int offset);
