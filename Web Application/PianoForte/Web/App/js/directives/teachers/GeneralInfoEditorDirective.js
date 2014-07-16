@@ -9,7 +9,7 @@ PianoForte.Directives.Teachers.GeneralInfoEditorDirective = function () {
 		scope: {
 			title: '@'
 		},
-		controller: 'GeneralInfoEditorController',
+		controller: 'Teacher.GeneralInfoEditorController',
 		templateUrl: 'partials/teachers/general-info-editor.htm'
 	};
 };

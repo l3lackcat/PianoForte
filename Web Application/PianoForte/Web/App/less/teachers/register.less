@@ -1,0 +1,221 @@
+﻿#teacher {
+	font-size: @fontSizeM;
+	height: inherit;
+
+	my-tabs {
+		height: inherit;
+	}
+
+	.tube-50-percent {
+		float: left;
+		width: calc(~'50% - 6px');
+
+		&:first-child {
+			margin-right: 12px;
+		}
+	}
+
+	my-box {
+		.widget-box {
+			margin-bottom: 12px;
+
+			.box-header {
+				color: #636363;
+			}
+
+			.box-content {
+				.rows {
+					color: #636363;
+					font-family: inherit;
+
+					.row {
+						color: inherit;
+						font-family: inherit;
+						font-size: inherit;
+						padding: 8px 0;					
+
+						.col {							
+							float: left;													
+
+							&.col-label {									
+								margin-right: 5px;
+								text-align: right;
+								width: 100px;
+							}
+
+							&.col-value {
+								width: calc(~'100% - 105px');
+							}
+						}
+
+						&.no-data { 
+							text-align: center; 
+						}
+
+						&:last-child {
+							margin-bottom: 0;	
+						}
+					}
+				}
+			}
+		}			
+	}
+
+	my-dialog-box {
+		.widget-dialog-box {
+			.dialog-box-content {												
+				> .wrapper {
+					margin: 0 auto;
+					width: 460px;				
+
+					> h4 {
+						color: @teacherThemeColor;
+						font-family: inherit;
+						font-size: @fontSizeL;
+						margin: 10px 0;
+
+						&:first-child {
+							margin-top: 0;
+						}
+
+						&:hover {
+							cursor: default;
+						}
+					}
+
+					.rows {
+						color: #636363;
+						font-family: inherit;
+						width: inherit;
+																	
+						.row {
+							color: inherit;
+							font-family: inherit;
+							font-size: inherit;
+							margin-bottom: 5px;
+							width: inherit;							
+
+							.col {
+								color: inherit;
+								float: left;
+								font-family: inherit;
+								font-size: inherit;
+								width: inherit;
+
+								&.col-label {									
+									margin-right: 20px;
+									padding: 10px 0;
+									text-align: right;
+									width: 100px;
+
+									.required {
+										color: @teacherThemeColor;
+									}									
+								}
+
+								&.col-value {
+									width: calc(~'100% - 146px');
+
+									label {
+										display: block;
+										color: @teacherThemeColor;
+										font-size: @fontSizeS;
+										font-style: italic;
+										margin: 7px 0;
+										padding: 0;
+									}
+								}
+
+								&.col-trash {
+									background-color: transparent;
+									line-height: 34px;
+									margin: 0 6px;
+									width: 14px;
+
+									&:hover {
+										cursor: pointer;
+									}
+								}
+
+								&.col-span {
+									&.label-value {
+										width: calc(~'100% - 26px');
+									}
+								}
+																		
+								&.no-padding-top {
+									padding-top: 0;
+								}
+
+								&.no-padding-bottom {
+									padding-bottom: 0;
+								}
+							}
+
+							&.editted-contact {
+								.col {
+									&.col-label { 
+										margin-right: 10px;
+										width: 140px;
+									}
+
+									&.col-value { 
+										width: calc(~'100% - 256px'); 
+									}								
+
+									&.col-primary {
+										line-height: 34px;
+										margin: 0;
+										width: 80px;
+
+										.widget-checkbox {
+											color: #939393;
+											font-size: @fontSizeS;
+										}
+									}
+								}
+
+								&:hover {
+									.col {
+										&.col-primary {
+											visibility: visible;
+										}
+									}
+								}
+							}
+
+							&:last-child {
+								margin-bottom: 0;	
+							}
+
+							&.no-data {
+								text-align: left;
+
+								&.align-center {
+									text-align: center;
+								}
+							}
+						}
+
+						.btn-add-phone,
+						.btn-add-email,
+						.btn-add-course {
+							background-color: transparent;
+							border: 0;
+							color: @teacherThemeColor;
+							font-family: inherit;
+							font-size: @fontSizeM;
+							margin: 0 0 1px 0;
+							padding: 0;
+
+							&:hover {
+								cursor: pointer;
+								text-decoration: underline;
+							}
+						}
+					}					
+				}					
+			}
+		}
+	}	
+}

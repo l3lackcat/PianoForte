@@ -2,7 +2,7 @@
 
 goog.provide('PianoForte.Services.CdService');
 
-PianoForte.Services.CdService = function($http) {
+PianoForte.Services.CdService = function($http, FormatManager) {
     var databaseName = 'pianoforte_b01';
     
     return {
@@ -39,8 +39,8 @@ PianoForte.Services.CdService = function($http) {
                     Id: cd.id.value,
                     Barcode: cd.barcode.value,
                     Name: cd.name.value,
-                    UnitPrice: cd.unitPrice.value,
-                    Quantity: cd.quantity.value,
+                    UnitPrice: FormatManager.unformatNumber(cd.unitPrice.value),
+                    Quantity: FormatManager.unformatNumber(cd.quantity.value),
                     Status: cd.status.value
                 }
             };

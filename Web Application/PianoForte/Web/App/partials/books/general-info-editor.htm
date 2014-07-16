@@ -1,0 +1,60 @@
+﻿<div>	
+	<my-dialog-box data-title="title" data-submit="submit()" data-disabled="isOnUpdateEdittedData" data-close="cancel()" data-visible="visible">
+		<div class="wrapper">
+			<div class="rows">
+				<div class="row">
+					<div class="col col-label"><span ng-show="edittedData.id.isRequired" class="required">*</span>รหัสหนังสือ :</div>
+					<div class="col col-value">     
+						<my-text-box data-text="edittedData.id.value" data-disabled="true"></my-text-box>
+					</div>
+					<div class="clear-fix"></div>
+				</div>
+				<div class="row">
+					<div class="col col-label"><span ng-show="edittedData.barcode.isRequired" class="required">*</span>บาร์โค้ด :</div>
+					<div class="col col-value">
+						<my-text-box data-text="edittedData.barcode.value" data-disabled="isOnUpdateEdittedData"></my-text-box>
+						<label ng-hide="edittedData.barcode.isValid">*กรุณากรอกหมายเลขบาร์โค้ด</label>
+					</div>
+					<div class="clear-fix"></div>
+				</div>
+				<div class="row">
+					<div class="col col-label"><span ng-show="edittedData.name.isRequired" class="required">*</span>ชื่อหนังสือ :</div>
+					<div class="col col-value">
+						<my-text-box data-text="edittedData.name.value" data-disabled="isOnUpdateEdittedData"></my-text-box>
+						<label ng-hide="edittedData.name.isValid">*กรุณากรอกชื่อหนังสือ</label>
+					</div>
+					<div class="clear-fix"></div>
+				</div>
+				<div class="row">
+					<div class="col col-label"><span ng-show="edittedData.unitPrice.isRequired" class="required">*</span>ราคา (บาท) :</div>
+					<div class="col col-value">
+						<my-numeric-box data-disabled="isOnUpdateEdittedData" data-text="edittedData.unitPrice.value" data-width="125"></my-numeric-box>
+						<label ng-hide="edittedData.unitPrice.isValid">*กรุณากรอกราคาหนังสือ</label>
+					</div>
+					<div class="clear-fix"></div>
+				</div>
+				<div class="row">
+					<div class="col col-label"><span ng-show="edittedData.quantity.isRequired" class="required">*</span>คงเหลือ (เล่ม) :</div>
+					<div class="col col-value">
+						<my-numeric-box data-disabled="isOnUpdateEdittedData" data-text="edittedData.quantity.value" data-width="125"></my-numeric-box>
+						<label ng-hide="edittedData.quantity.isValid">*กรุณากรอกราคาหนังสือ</label>
+					</div>
+					<div class="clear-fix"></div>
+				</div>
+				<div class="row">
+					<div class="col col-label"><span ng-show="edittedData.status.isRequired" class="required">*</span>สถานะ :</div>
+					<div class="col col-value">
+						<my-select 
+							data-disabled="isOnUpdateEdittedData"
+							data-items="statusList" 
+							data-selected-item-id="edittedData.status.value"
+							data-placeholder="'Please select...'"
+							data-theme="'theme-book'"
+							data-width="125"></my-select>
+					</div>
+					<div class="clear-fix"></div>
+				</div>
+			</div>
+		</div>
+	</my-dialog-box>
+</div>

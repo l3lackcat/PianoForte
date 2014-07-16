@@ -9,7 +9,7 @@ PianoForte.Directives.Teachers.TeachedCourseInfoEditorDirective = function () {
 		scope: {
 			title: '@'
 		},
-		controller: 'TeachedCourseInfoEditorController',
+		controller: 'Teacher.TeachedCourseInfoEditorController',
 		templateUrl: 'partials/teachers/teached-course-info-editor.htm'
 	};
 };

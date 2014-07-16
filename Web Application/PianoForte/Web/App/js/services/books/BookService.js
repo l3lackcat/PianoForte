@@ -2,7 +2,7 @@
 
 goog.provide('PianoForte.Services.BookService');
 
-PianoForte.Services.BookService = function($http) {
+PianoForte.Services.BookService = function($http, FormatManager) {
     var databaseName = 'pianoforte_b01';
     
     return {
@@ -39,8 +39,8 @@ PianoForte.Services.BookService = function($http) {
                     Id: book.id.value,
                     Barcode: book.barcode.value,
                     Name: book.name.value,
-                    UnitPrice: book.unitPrice.value,
-                    Quantity: book.quantity.value,
+                    UnitPrice: FormatManager.unformatNumber(book.unitPrice.value),
+                    Quantity: FormatManager.unformatNumber(book.quantity.value),
                     Status: book.status.value
                 }
             };
