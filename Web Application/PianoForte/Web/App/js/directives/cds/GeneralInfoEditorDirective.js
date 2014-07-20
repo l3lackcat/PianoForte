@@ -6,10 +6,8 @@ PianoForte.Directives.Cds.GeneralInfoEditorDirective = function () {
 	return {
 		restrict: 'E',
 		replace: true,
-		scope: {
-			title: '@'
-		},
-		controller: 'Cd.GeneralInfoEditorController',
+		scope: {},
+		controller: 'Cds.GeneralInfoEditorController',
 		templateUrl: 'partials/cds/general-info-editor.htm'
 	};
 };

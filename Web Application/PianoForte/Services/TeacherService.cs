@@ -12,7 +12,7 @@ namespace PianoForte.Services
     {
         private static TeacherDao teacherDao = DaoFactory.getDaoFactory(DaoFactory.FactoryType.MYSQL).getTeacherDao();
 
-        public static int generateNextTeacherId(string databaseName)
+        public static int getNextTeacherId(string databaseName)
         {
             int teacherId = 1001;
 

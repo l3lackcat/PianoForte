@@ -2,45 +2,35 @@
 
 goog.provide('PianoForte.Controllers.Teachers.RegisterController');
 
-PianoForte.Controllers.Teachers.RegisterController = function ($scope, $rootScope, TeacherService, Enum, EnumConverter, ValidationManager) {    
+PianoForte.Controllers.Teachers.RegisterController = function ($scope, $rootScope, $location, TeacherService, Enum, ValidationManager) {    
     $scope['data'] = null;
     $scope['visible'] = false;
-    $scope['isOnUpdateEdittedData'] = false;
-    $scope['statusList'] = [
-        { 'id': Enum.Status.Active, 'text': '', 'excluded': false },
-        { 'id': Enum.Status.Inactive, 'text': '', 'excluded': false },
-        { 'id': Enum.Status.Resigned, 'text': '', 'excluded': false }
-    ];
+    $scope['isOnInsertData'] = false;
 
-    var _generalInfo = null;
-
-    $scope.$on('EditTeacherGeneralInfo', function (scope, teacher) {
-        initStatusList();
-
-        _generalInfo = teacher;
-        $scope['edittedData'] = {
+    $scope.$on('InsertNewTeacher', function (scope) {
+        $scope['data'] = {
             'id': {
-                'value': teacher.id,
+                'value': 0,
                 'isRequired': false,
                 'isValid': true
             },
             'firstname': {
-                'value': teacher.firstname,
+                'value': '',
                 'isRequired': true,
                 'isValid': true
             },
             'lastname': {
-                'value': teacher.lastname,
+                'value': '',
                 'isRequired': true,
                 'isValid': true
             },
             'nickname': {
-                'value': teacher.nickname,
+                'value': '',
                 'isRequired': true,
                 'isValid': true
             },
             'status': {
-                'value': teacher.status,
+                'value': Enum.Status.Inactive,
                 'isRequired': false,
                 'isValid': true
             }
@@ -50,14 +40,9 @@ PianoForte.Controllers.Teachers.RegisterController = function ($scope, $rootScop
     } .bind(this), true);
 
     $scope.submit = function () {
-        if (validateEdittedData() === true) {
-            var isDifferent = compare(_generalInfo, $scope['edittedData']);
-            if (isDifferent === true) {
-                $scope['isOnUpdateEdittedData'] = true;
-                TeacherService.updateTeacherGeneralInfo($scope['edittedData'], onSuccessUpdateEdittedData, onErrorUpdateEdittedData);
-            } else {
-                hideDialogBox();
-            }
+        if (validateData() === true) {
+            $scope['isOnInsertData'] = true;
+            TeacherService.insertTeacherGeneralInfo($scope['data'], onSuccessInsertData, onErrorInsertData);
         }
     };
 
@@ -65,27 +50,17 @@ PianoForte.Controllers.Teachers.RegisterController = function ($scope, $rootScop
         hideDialogBox();
     };    
 
-    function initStatusList() {
-        for(var i = $scope['statusList'].length - 1; i >= 0; i--) {
-            var status = $scope['statusList'][i];
-
-            status.text = EnumConverter.Status.toString(status.id);
-        }
-    };
-
     function hideDialogBox() {        
-        $scope['edittedData'] = null;
+        $scope['data'] = null;
         $scope['visible'] = false;
-        $scope['isOnUpdateEdittedData'] = false;
-
-        _generalInfo = null;
+        $scope['isOnInsertData'] = false;
     };
 
-    function validateEdittedData () {
+    function validateData () {
         var isValid = true;
-        var firstnameObj = $scope['edittedData']['firstname'];
-        var lastnameObj = $scope['edittedData']['lastname'];
-        var nicknameObj = $scope['edittedData']['nickname'];
+        var firstnameObj = $scope['data']['firstname'];
+        var lastnameObj = $scope['data']['lastname'];
+        var nicknameObj = $scope['data']['nickname'];
 
         firstnameObj.isValid = ValidationManager.validate('name', firstnameObj.value);
         lastnameObj.isValid = ValidationManager.validate('name', lastnameObj.value);
@@ -94,38 +69,19 @@ PianoForte.Controllers.Teachers.RegisterController = function ($scope, $rootScop
         return firstnameObj.isValid && lastnameObj.isValid && nicknameObj.isValid;
     };
 
-    function compare(oldGeneralInfo, newGeneralInfo) {
-        var isChanged = false;
+    var onSuccessInsertData = function (data, status, headers, config) {
+        var teacherId = data.d;
 
-        if ((oldGeneralInfo.firstname !== newGeneralInfo.firstname.value) ||
-            (oldGeneralInfo.lastname !== newGeneralInfo.lastname.value) ||
-            (oldGeneralInfo.nickname !== newGeneralInfo.nickname.value) ||
-            (oldGeneralInfo.status !== newGeneralInfo.status.value)) {
-            isChanged = true;
-        }
-
-        return isChanged;
-    };
-
-    var onSuccessUpdateEdittedData = function (data, status, headers, config) {
-        var isSuccess = data.d;
-
-        if (isSuccess === true) {
-            _generalInfo.firstname = $scope['edittedData']['firstname']['value'];
-            _generalInfo.lastname = $scope['edittedData']['lastname']['value'];
-            _generalInfo.nickname = $scope['edittedData']['nickname']['value'];
-            _generalInfo.status = $scope['edittedData']['status']['value'];
-
-            $rootScope.$broadcast('UpdateTeacherGeneralInfo', _generalInfo);
-
-            hideDialogBox();
+        if (teacherId !== 0) {
+            $location.path("/teachers/" + teacherId);
+            $scope.$apply();
         } else {
-            onErrorUpdateEdittedData(data, status, headers, config);
+            onErrorInsertData(data, status, headers, config);
         }        
     };
 
-    var onErrorUpdateEdittedData = function (data, status, headers, config) {
-        $scope['isOnUpdateEdittedData'] = false;
-        console.log('onErrorUpdateEdittedData');
+    var onErrorInsertData = function (data, status, headers, config) {
+        $scope['isOnInsertData'] = false;
+        console.log('onErrorInsertData');
     };
 };

@@ -1,19 +1,19 @@
-﻿<div>	
-	<my-dialog-box data-title="title" data-submit="submit()" data-disabled="isOnUpdateEdittedData" data-close="cancel()" data-visible="visible">
+﻿<div class="contact-info-editor theme-teacher">	
+	<widget-dialog-box data-title="Edit > Contact Info" data-submit="submit()" data-disabled="isOnUpdateEdittedData" data-close="cancel()" data-visible="visible">
         <div class="wrapper">
             <h4>เบอร์โทรศัพท์</h4>
             <div class="rows">
                 <div class="row editted-contact" ng-repeat="contact in edittedData.phones" ng-hide="contact.status == Enum.Status.Deleted">
                     <div class="col col-label no-padding-top no-padding-bottom">
-                        <my-text-box data-text="contact.label" data-placeholder="'เบอร์โทร'" data-disabled="isOnUpdateEdittedData"></my-text-box>
+                        <widget-text-box data-text="contact.label" data-placeholder="เบอร์โทร" data-disabled="isOnUpdateEdittedData"></widget-text-box>
                     </div>
                     <div class="col col-value">
-                        <my-phone-box data-text="contact.value" data-placeholder="'Ex: 089-999-9999'" data-disabled="isOnUpdateEdittedData"></my-phone-box>
+                        <widget-phone-box data-text="contact.value" data-placeholder="Ex: 089-999-9999" data-disabled="isOnUpdateEdittedData"></widget-phone-box>
                         <label ng-hide="contact.isValid">*กรุณากรอกหมายเลขโทรศัพท์ให้ถูกต้อง</label>
                     </div>
                     <div class="col col-trash" ng-hide="isOnUpdateEdittedData" ng-click="removePhone(contact)" title="ลบ"><i class="fa fa-trash-o"></i></div>
                     <div class="col col-primary" ng-hide="isOnUpdateEdittedData">
-                        <my-checkbox data-name="contact.id" data-text="'primary'" data-checked="contact.isPrimary" data-on-changed="onCheckedPrimaryPhone(e)"></my-checkbox>
+                        <widget-checkbox data-name="contact.id" data-label="Primary" data-checked="contact.isPrimary" data-on-changed="onCheckedPrimaryPhone(e)"></widget-checkbox>
                     </div>
                     <div class="clear-fix"></div>
                 </div>
@@ -24,15 +24,15 @@
             <div class="rows">
                 <div class="row editted-contact" ng-repeat="contact in edittedData.emails" ng-hide="contact.status == Enum.Status.Deleted">
                     <div class="col col-label no-padding-top no-padding-bottom">
-                        <my-text-box data-text="contact.label" data-placeholder="'อีเมล์'" data-disabled="isOnUpdateEdittedData"></my-text-box>
+                        <widget-text-box data-text="contact.label" data-placeholder="อีเมล์" data-disabled="isOnUpdateEdittedData"></widget-text-box>
                     </div>
                     <div class="col col-value">
-                        <my-text-box data-text="contact.value" data-placeholder="'Ex: email@pianoforte.com'" data-disabled="isOnUpdateEdittedData"></my-text-box>
+                        <widget-text-box data-text="contact.value" data-placeholder="Ex: email@pianoforte.com" data-disabled="isOnUpdateEdittedData"></widget-text-box>
                         <label ng-hide="contact.isValid">*กรุณากรอกอีเมล์ให้ถูกต้อง</label>
                     </div>
                     <div class="col col-trash" ng-hide="isOnUpdateEdittedData" ng-click="removeEmail(contact)" title="ลบ"><i class="fa fa-trash-o"></i></div>
                     <div class="col col-primary" ng-hide="isOnUpdateEdittedData">
-                        <my-checkbox data-name="contact.id" data-text="'primary'" data-checked="contact.isPrimary" data-on-changed="onCheckedPrimaryEmail(e)"></my-checkbox>
+                        <widget-checkbox data-name="contact.id" data-label="Primary" data-checked="contact.isPrimary" data-on-changed="onCheckedPrimaryEmail(e)"></widget-checkbox>
                     </div>
                     <div class="clear-fix"></div>
                 </div>
@@ -40,5 +40,5 @@
                 <button class="btn-add-email" ng-hide="isOnUpdateEdittedData" ng-click="addEmail()">+ add</button>
             </div>
         </div>
-    </my-dialog-box>
+    </widget-dialog-box>
 </div>

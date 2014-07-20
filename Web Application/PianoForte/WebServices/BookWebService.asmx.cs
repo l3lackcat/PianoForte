@@ -17,10 +17,12 @@ namespace PianoForte.WebServices
     [System.Web.Script.Services.ScriptService]
     public class BookWebService : System.Web.Services.WebService
     {
+        private int delay = 1500;
+
         [WebMethod]
         public List<Object> getBookList(string databaseName)
         {
-            System.Threading.Thread.Sleep(1500);
+            System.Threading.Thread.Sleep(delay);
 
             List<Object> displayedBookList = new List<Object>();
             List<Book> bookList = BookService.getBookList(databaseName);
@@ -43,7 +45,7 @@ namespace PianoForte.WebServices
         [WebMethod]
         public Object getBookById(string databaseName, int id)
         {
-            System.Threading.Thread.Sleep(1500);
+            System.Threading.Thread.Sleep(delay);
 
             Object displayedBook = null;
             Book book = BookService.getBook(databaseName, id);
@@ -65,7 +67,7 @@ namespace PianoForte.WebServices
         [WebMethod]
         public Object getBookByBarcode(string databaseName, string barcode)
         {
-            System.Threading.Thread.Sleep(1500);
+            System.Threading.Thread.Sleep(delay);
 
             Object displayedBook = null;
             Book book = BookService.getBook(databaseName, barcode);
@@ -86,16 +88,25 @@ namespace PianoForte.WebServices
         }
 
         [WebMethod]
-        public bool insertBookInfo(string databaseName, Book book)
+        public int insertBookInfo(string databaseName, Book book)
         {
-            System.Threading.Thread.Sleep(1500);
-            return BookService.insertBook(databaseName, book);
+            System.Threading.Thread.Sleep(delay);
+
+            book.Id = BookService.getNextBookId(databaseName);
+
+            bool isInsertSuccess = BookService.insertBook(databaseName, book);
+            if (isInsertSuccess == false)
+            {
+                book.Id = 0;
+            }
+
+            return book.Id;
         }
 
         [WebMethod]
         public bool updateBookInfo(string databaseName, Book book)
         {
-            System.Threading.Thread.Sleep(1500);
+            System.Threading.Thread.Sleep(delay);
             return BookService.updateBook(databaseName, book);
         }
     }

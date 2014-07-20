@@ -54,6 +54,34 @@ PianoForte.Utilities.FormatManager = function(ValidationManager) {
 
         unformatNumber: function(input) {
             return accounting.unformat(input);
+        },
+
+        toLongDateString: function(date) {            
+            var longDateString = '';
+
+            if (date !== null) {
+                var tempDate = moment(date);
+
+                tempDate.lang('th');
+                tempDate.add('years', 543);
+                longDateString = tempDate.format('D MMMM YYYY');
+            }
+
+            return longDateString;
+        },
+
+        toShortDateString: function(date) {            
+            var longDateString = '';
+
+            if (date !== null) {
+                var tempDate = moment(date);
+
+                tempDate.lang('th');
+                tempDate.add('years', 543);
+                longDateString = tempDate.format('DD/MM/YY');
+            }
+
+            return longDateString;
         }
     };
 };

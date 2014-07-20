@@ -6,10 +6,8 @@ PianoForte.Directives.Teachers.RegisterDirective = function () {
 	return {
 		restrict: 'E',
 		replace: true,
-		scope: {
-			title: '@'
-		},
-		controller: 'RegisterController',
+		scope: {},
+		controller: 'Teachers.RegisterController',
 		templateUrl: 'partials/teachers/register.htm'
 	};
 };

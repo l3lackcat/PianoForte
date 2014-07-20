@@ -2,75 +2,68 @@
 
 goog.provide('PianoForte.App');
 
-goog.require('PianoForte.Controllers.Books.BookController');
-goog.require('PianoForte.Controllers.Books.BookMainController');
-
-goog.require('PianoForte.Directives.Books.GeneralInfoEditorDirective');
+// Controllers
+goog.require('PianoForte.Controllers.Books.AboutController');
 goog.require('PianoForte.Controllers.Books.GeneralInfoEditorController');
+goog.require('PianoForte.Controllers.Books.MainController');
+goog.require('PianoForte.Controllers.Books.RegisterController');
 
-goog.require('PianoForte.Controllers.Cds.CdController');
-goog.require('PianoForte.Controllers.Cds.CdMainController');
-
-goog.require('PianoForte.Directives.Cds.GeneralInfoEditorDirective');
+goog.require('PianoForte.Controllers.Cds.AboutController');
 goog.require('PianoForte.Controllers.Cds.GeneralInfoEditorController');
+goog.require('PianoForte.Controllers.Cds.MainController');
+goog.require('PianoForte.Controllers.Cds.RegisterController');
 
-goog.require('PianoForte.Controllers.Courses.CourseController');
-goog.require('PianoForte.Controllers.Courses.CourseMainController');
+goog.require('PianoForte.Controllers.Courses.AboutController');
+goog.require('PianoForte.Controllers.Courses.MainController');
 
-goog.require('PianoForte.Controllers.Students.StudentController');
-goog.require('PianoForte.Controllers.Students.StudentMainController');
+goog.require('PianoForte.Controllers.Students.AboutController');
+goog.require('PianoForte.Controllers.Students.MainController');
 
-goog.require('PianoForte.Controllers.Teachers.TeacherController');
-goog.require('PianoForte.Controllers.Teachers.TeacherMainController');
-
-goog.require('PianoForte.Directives.Teachers.ContactInfoEditorDirective');
+goog.require('PianoForte.Controllers.Teachers.AboutController');
 goog.require('PianoForte.Controllers.Teachers.ContactInfoEditorController');
-
-goog.require('PianoForte.Directives.Teachers.GeneralInfoEditorDirective');
 goog.require('PianoForte.Controllers.Teachers.GeneralInfoEditorController');
-
-goog.require('PianoForte.Directives.Teachers.RegisterDirective');
+goog.require('PianoForte.Controllers.Teachers.MainController');
 goog.require('PianoForte.Controllers.Teachers.RegisterController');
-
-goog.require('PianoForte.Directives.Teachers.TeachedCourseInfoEditorDirective');
 goog.require('PianoForte.Controllers.Teachers.TeachedCourseInfoEditorController');
 
-goog.require('PianoForte.Directives.Widgets.MyBoxDirective');
-goog.require('PianoForte.Controllers.Widgets.MyBoxController');
+goog.require('PianoForte.Controllers.Widgets.BoxController');
+goog.require('PianoForte.Controllers.Widgets.ButtonController');
+goog.require('PianoForte.Controllers.Widgets.CheckboxController');
+goog.require('PianoForte.Controllers.Widgets.DialogBoxController');
+goog.require('PianoForte.Controllers.Widgets.DropdownMenuController');
+goog.require('PianoForte.Controllers.Widgets.LeftMenuController');
+goog.require('PianoForte.Controllers.Widgets.NumericBoxController');
+goog.require('PianoForte.Controllers.Widgets.PhoneBoxController');
+goog.require('PianoForte.Controllers.Widgets.SearchBoxController');
+goog.require('PianoForte.Controllers.Widgets.SelectController');
+goog.require('PianoForte.Controllers.Widgets.TabsController');
+goog.require('PianoForte.Controllers.Widgets.TextBoxController');
 
-goog.require('PianoForte.Directives.Widgets.MyButtonDirective');
-goog.require('PianoForte.Controllers.Widgets.MyButtonController');
+// Directives
+goog.require('PianoForte.Directives.Books.GeneralInfoEditorDirective');
+goog.require('PianoForte.Directives.Books.RegisterDirective');
 
-goog.require('PianoForte.Directives.Widgets.MyCheckboxDirective');
-goog.require('PianoForte.Controllers.Widgets.MyCheckboxController');
+goog.require('PianoForte.Directives.Cds.GeneralInfoEditorDirective');
+goog.require('PianoForte.Directives.Cds.RegisterDirective');
 
-goog.require('PianoForte.Directives.Widgets.MyDialogBoxDirective');
-goog.require('PianoForte.Controllers.Widgets.MyDialogBoxController');
+goog.require('PianoForte.Directives.Teachers.ContactInfoEditorDirective');
+goog.require('PianoForte.Directives.Teachers.GeneralInfoEditorDirective');
+goog.require('PianoForte.Directives.Teachers.RegisterDirective');
+goog.require('PianoForte.Directives.Teachers.TeachedCourseInfoEditorDirective');
 
-goog.require('PianoForte.Directives.Widgets.MyDropdownMenuDirective');
-goog.require('PianoForte.Controllers.Widgets.MyDropdownMenuController');
-
-goog.require('PianoForte.Directives.Widgets.MyLeftMenuDirective');
-goog.require('PianoForte.Controllers.Widgets.MyLeftMenuController');
-
-goog.require('PianoForte.Directives.Widgets.MyNumericBoxDirective');
-goog.require('PianoForte.Controllers.Widgets.MyNumericBoxController');
-
-goog.require('PianoForte.Directives.Widgets.MyPhoneBoxDirective');
-goog.require('PianoForte.Controllers.Widgets.MyPhoneBoxController');
-
-goog.require('PianoForte.Directives.Widgets.MySearchBoxDirective');
-goog.require('PianoForte.Controllers.Widgets.MySearchBoxController');
-
-goog.require('PianoForte.Directives.Widgets.MySelectDirective');
-goog.require('PianoForte.Controllers.Widgets.MySelectController');
-
-goog.require('PianoForte.Directives.Widgets.MyPaneDirective');
-goog.require('PianoForte.Directives.Widgets.MyTabsDirective');
-goog.require('PianoForte.Controllers.Widgets.MyTabsController');
-
-goog.require('PianoForte.Directives.Widgets.MyTextBoxDirective');
-goog.require('PianoForte.Controllers.Widgets.MyTextBoxController');
+goog.require('PianoForte.Directives.Widgets.BoxDirective');
+goog.require('PianoForte.Directives.Widgets.ButtonDirective');
+goog.require('PianoForte.Directives.Widgets.CheckboxDirective');
+goog.require('PianoForte.Directives.Widgets.DialogBoxDirective');
+goog.require('PianoForte.Directives.Widgets.DropdownMenuDirective');
+goog.require('PianoForte.Directives.Widgets.LeftMenuDirective');
+goog.require('PianoForte.Directives.Widgets.NumericBoxDirective');
+goog.require('PianoForte.Directives.Widgets.PhoneBoxDirective');
+goog.require('PianoForte.Directives.Widgets.SearchBoxDirective');
+goog.require('PianoForte.Directives.Widgets.SelectDirective');
+goog.require('PianoForte.Directives.Widgets.PaneDirective');
+goog.require('PianoForte.Directives.Widgets.TabsDirective');
+goog.require('PianoForte.Directives.Widgets.TextBoxDirective');
 
 goog.require('PianoForte.Enum');
 
@@ -82,6 +75,7 @@ goog.require('PianoForte.Services.CourseService');
 goog.require('PianoForte.Services.StudentService');
 goog.require('PianoForte.Services.TeacherService');
 
+goog.require('PianoForte.Utilities.ConvertManager');
 goog.require('PianoForte.Utilities.EnumConverter');
 goog.require('PianoForte.Utilities.FormatManager');
 goog.require('PianoForte.Utilities.LocationManager');
@@ -92,48 +86,48 @@ PianoForte.App = angular.module('PianoForteApplication', ['ngRoute']);
 PianoForte.App.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
         .when('/', {
-            controller: 'TeacherMainController',
+            controller: 'Teachers.MainController',
             templateUrl: 'partials/teachers/main.htm'
         })
         .when('/books', {
-            controller: 'BookMainController',
+            controller: 'Books.MainController',
             templateUrl: 'partials/books/main.htm'
         })
         .when('/books/:bookId', {
-            controller: 'BookController',
-            templateUrl: 'partials/books/book.htm'
+            controller: 'Books.AboutController',
+            templateUrl: 'partials/books/about.htm'
         })
         .when('/cds', {
-            controller: 'CdMainController',
+            controller: 'Cds.MainController',
             templateUrl: 'partials/cds/main.htm'
         })
         .when('/cds/:cdId', {
-            controller: 'CdController',
-            templateUrl: 'partials/cds/cd.htm'
+            controller: 'Cds.AboutController',
+            templateUrl: 'partials/cds/about.htm'
         })
         .when('/courses', {
-            controller: 'CourseMainController',
+            controller: 'Courses.MainController',
             templateUrl: 'partials/courses/main.htm'
         })
         .when('/courses', {
-            controller: 'CourseController',
-            templateUrl: 'partials/courses/course.htm'
+            controller: 'Courses.AboutController',
+            templateUrl: 'partials/courses/about.htm'
         })
         .when('/students', {
-            controller: 'StudentMainController',
+            controller: 'Students.MainController',
             templateUrl: 'partials/students/main.htm'
         })
         .when('/students/:studentId', {
-            controller: 'StudentController',
-            templateUrl: 'partials/students/student.htm'
+            controller: 'Students.AboutController',
+            templateUrl: 'partials/students/about.htm'
         })
 		.when('/teachers', {
-		    controller: 'TeacherMainController',
+		    controller: 'Teachers.MainController',
 		    templateUrl: 'partials/teachers/main.htm'
 		})            
         .when('/teachers/:teacherId', {
-            controller: 'TeacherController',
-            templateUrl: 'partials/teachers/teacher.htm'
+            controller: 'Teachers.AboutController',
+            templateUrl: 'partials/teachers/about.htm'
         })                       
         .otherwise({
             redirectTo: '/'
@@ -149,100 +143,72 @@ PianoForte.App.filter('startFrom', function() {
     }
 });
 
-// Book
-PianoForte.App.controller('BookController', ['$scope', '$rootScope', '$routeParams', 'BookService', 'Enum', 'EnumConverter', 'FormatManager', 'ValidationManager', PianoForte.Controllers.Books.BookController]);
-PianoForte.App.controller('BookMainController', ['$scope', '$rootScope', 'filterFilter', 'BookService', 'EnumConverter', 'FormatManager', PianoForte.Controllers.Books.BookMainController]);
+// Controller Injections
+PianoForte.App.controller('Books.AboutController', ['$scope', '$rootScope', '$location', '$routeParams', 'BookService', 'Enum', 'EnumConverter', 'FormatManager', 'ValidationManager', PianoForte.Controllers.Books.AboutController]);
+PianoForte.App.controller('Books.GeneralInfoEditorController', ['$scope', '$rootScope', 'BookService', 'Enum', 'EnumConverter', 'ValidationManager', PianoForte.Controllers.Books.GeneralInfoEditorController]);
+PianoForte.App.controller('Books.MainController', ['$scope', '$rootScope', 'filterFilter', 'BookService', 'EnumConverter', 'FormatManager', PianoForte.Controllers.Books.MainController]);
+PianoForte.App.controller('Books.RegisterController', ['$scope', '$rootScope', '$location', 'BookService', 'Enum', 'ValidationManager', PianoForte.Controllers.Books.RegisterController]);
 
-// BookGeneralInfoEditor
+PianoForte.App.controller('Cds.AboutController', ['$scope', '$rootScope', '$location', '$routeParams', 'CdService', 'Enum', 'EnumConverter', 'FormatManager', 'ValidationManager', PianoForte.Controllers.Cds.AboutController]);
+PianoForte.App.controller('Cds.GeneralInfoEditorController', ['$scope', '$rootScope', 'CdService', 'Enum', 'EnumConverter', 'ValidationManager', PianoForte.Controllers.Cds.GeneralInfoEditorController]);
+PianoForte.App.controller('Cds.MainController', ['$scope', '$rootScope', 'filterFilter', 'CdService', 'EnumConverter', 'FormatManager', PianoForte.Controllers.Cds.MainController]);
+PianoForte.App.controller('Cds.RegisterController', ['$scope', '$rootScope', '$location', 'CdService', 'Enum', 'ValidationManager', PianoForte.Controllers.Cds.RegisterController]);
+
+PianoForte.App.controller('Courses.AboutController', ['$scope', '$rootScope', '$routeParams', 'CourseService', 'Enum', 'EnumConverter', 'FormatManager', 'ValidationManager', PianoForte.Controllers.Courses.AboutController]);
+PianoForte.App.controller('Courses.MainController', ['$scope', '$rootScope', 'filterFilter', 'CourseService', 'EnumConverter', 'FormatManager', PianoForte.Controllers.Courses.MainController]);
+
+PianoForte.App.controller('Students.AboutController', ['$scope', '$rootScope', '$routeParams', 'StudentService', 'ConvertManager', 'Enum', 'EnumConverter', 'FormatManager', 'ValidationManager', PianoForte.Controllers.Students.AboutController]);
+PianoForte.App.controller('Students.MainController', ['$scope', '$rootScope', 'filterFilter', 'StudentService', 'EnumConverter', 'FormatManager', PianoForte.Controllers.Students.MainController]);
+
+PianoForte.App.controller('Teachers.AboutController', ['$scope', '$rootScope', '$location', '$routeParams', 'TeacherService', 'CourseService', 'Enum', 'EnumConverter', 'FormatManager', 'ValidationManager', PianoForte.Controllers.Teachers.AboutController]);
+PianoForte.App.controller('Teachers.ContactInfoEditorController', ['$scope', '$rootScope', 'TeacherService', 'Enum', 'EnumConverter', 'FormatManager', 'ValidationManager', PianoForte.Controllers.Teachers.ContactInfoEditorController]);
+PianoForte.App.controller('Teachers.GeneralInfoEditorController', ['$scope', '$rootScope', 'TeacherService', 'Enum', 'EnumConverter', 'ValidationManager', PianoForte.Controllers.Teachers.GeneralInfoEditorController]);
+PianoForte.App.controller('Teachers.MainController', ['$scope', '$rootScope', 'filterFilter', 'TeacherService', 'Enum', 'EnumConverter', 'FormatManager', PianoForte.Controllers.Teachers.MainController]);
+PianoForte.App.controller('Teachers.RegisterController', ['$scope', '$rootScope', '$location', 'TeacherService', 'Enum', 'ValidationManager', PianoForte.Controllers.Teachers.RegisterController]);
+PianoForte.App.controller('Teachers.TeachedCourseInfoEditorController', ['$scope', '$rootScope', 'TeacherService', 'Enum', 'EnumConverter', 'ValidationManager', PianoForte.Controllers.Teachers.TeachedCourseInfoEditorController]);
+
+PianoForte.App.controller('Widgets.BoxController', ['$scope', '$attrs', '$element', PianoForte.Controllers.Widgets.BoxController]);
+PianoForte.App.controller('Widgets.ButtonController', ['$scope', '$attrs', '$element', PianoForte.Controllers.Widgets.ButtonController]);
+PianoForte.App.controller('Widgets.CheckboxController', ['$scope', '$attrs', '$element', PianoForte.Controllers.Widgets.CheckboxController]);
+PianoForte.App.controller('Widgets.DialogBoxController', ['$scope', '$attrs', '$element', '$rootScope', PianoForte.Controllers.Widgets.DialogBoxController]);
+PianoForte.App.controller('Widgets.DropdownMenuController', ['$scope', '$attrs', '$element', '$document', 'filterFilter', PianoForte.Controllers.Widgets.DropdownMenuController]);
+PianoForte.App.controller('Widgets.LeftMenuController', ['$scope', '$attrs', '$element', PianoForte.Controllers.Widgets.LeftMenuController]);
+PianoForte.App.controller('Widgets.NumericBoxController', ['$scope', '$attrs', '$element', 'FormatManager', PianoForte.Controllers.Widgets.NumericBoxController]);
+PianoForte.App.controller('Widgets.PhoneBoxController', ['$scope', '$attrs', '$element', 'FormatManager', PianoForte.Controllers.Widgets.PhoneBoxController]);
+PianoForte.App.controller('Widgets.SearchBoxController', ['$scope', '$attrs', '$element', PianoForte.Controllers.Widgets.SearchBoxController]);
+PianoForte.App.controller('Widgets.SelectController', ['$scope', '$attrs', '$element', '$document', PianoForte.Controllers.Widgets.SelectController]);
+PianoForte.App.controller('Widgets.TabsController', ['$scope', '$attrs', '$element', PianoForte.Controllers.Widgets.TabsController]);
+PianoForte.App.controller('Widgets.TextBoxController', ['$scope', '$attrs', '$element', PianoForte.Controllers.Widgets.TextBoxController]);
+
+// Directive Injection
 PianoForte.App.directive('bookGeneralInfoEditor', PianoForte.Directives.Books.GeneralInfoEditorDirective);
-PianoForte.App.controller('Book.GeneralInfoEditorController', ['$scope', '$rootScope', 'BookService', 'Enum', 'EnumConverter', 'ValidationManager', PianoForte.Controllers.Books.GeneralInfoEditorController]);
+PianoForte.App.directive('bookRegister', PianoForte.Directives.Books.RegisterDirective);
 
-// Cd
-PianoForte.App.controller('CdController', ['$scope', '$rootScope', '$routeParams', 'CdService', 'Enum', 'EnumConverter', 'FormatManager', 'ValidationManager', PianoForte.Controllers.Cds.CdController]);
-PianoForte.App.controller('CdMainController', ['$scope', '$rootScope', 'filterFilter', 'CdService', 'EnumConverter', 'FormatManager', PianoForte.Controllers.Cds.CdMainController]);
-
-// CdGeneralInfoEditor
 PianoForte.App.directive('cdGeneralInfoEditor', PianoForte.Directives.Cds.GeneralInfoEditorDirective);
-PianoForte.App.controller('Cd.GeneralInfoEditorController', ['$scope', '$rootScope', 'CdService', 'Enum', 'EnumConverter', 'ValidationManager', PianoForte.Controllers.Cds.GeneralInfoEditorController]);
+PianoForte.App.directive('cdRegister', PianoForte.Directives.Cds.RegisterDirective);
 
-// Course
-PianoForte.App.controller('CourseController', ['$scope', '$rootScope', '$routeParams', 'CourseService', 'Enum', 'EnumConverter', 'FormatManager', 'ValidationManager', PianoForte.Controllers.Courses.CourseController]);
-PianoForte.App.controller('CourseMainController', ['$scope', '$rootScope', 'filterFilter', 'CourseService', 'EnumConverter', 'FormatManager', PianoForte.Controllers.Courses.CourseMainController]);
-
-// Student
-PianoForte.App.controller('StudentController', ['$scope', '$rootScope', '$routeParams', 'StudentService', 'Enum', 'EnumConverter', 'FormatManager', 'ValidationManager', PianoForte.Controllers.Students.TeacherController]);
-PianoForte.App.controller('StudentMainController', ['$scope', '$rootScope', 'filterFilter', 'StudentService', 'EnumConverter', 'FormatManager', PianoForte.Controllers.Students.StudentMainController]);
-
-// Teacher
-PianoForte.App.controller('TeacherController', ['$scope', '$rootScope', '$routeParams', 'TeacherService', 'CourseService', 'Enum', 'EnumConverter', 'FormatManager', 'ValidationManager', PianoForte.Controllers.Teachers.TeacherController]);
-PianoForte.App.controller('TeacherMainController', ['$scope', '$rootScope', '$location', 'filterFilter', 'TeacherService', 'Enum', 'EnumConverter', 'FormatManager', PianoForte.Controllers.Teachers.TeacherMainController]);
-
-// TeacherContactInfoEditor
 PianoForte.App.directive('teacherContactInfoEditor', PianoForte.Directives.Teachers.ContactInfoEditorDirective);
-PianoForte.App.controller('Teacher.ContactInfoEditorController', ['$scope', '$rootScope', 'TeacherService', 'Enum', 'EnumConverter', 'FormatManager', 'ValidationManager', PianoForte.Controllers.Teachers.ContactInfoEditorController]);
-
-// TeacherGeneralInfoEditor
 PianoForte.App.directive('teacherGeneralInfoEditor', PianoForte.Directives.Teachers.GeneralInfoEditorDirective);
-PianoForte.App.controller('Teacher.GeneralInfoEditorController', ['$scope', '$rootScope', 'TeacherService', 'Enum', 'EnumConverter', 'ValidationManager', PianoForte.Controllers.Teachers.GeneralInfoEditorController]);
-
-// TeacherRegister
 PianoForte.App.directive('teacherRegister', PianoForte.Directives.Teachers.RegisterDirective);
-PianoForte.App.controller('RegisterController', ['$scope', '$rootScope', 'TeacherService', 'ValidationManager', PianoForte.Controllers.Teachers.RegisterController]);
-
-// TeacherTeachedCourseInfoEditor
 PianoForte.App.directive('teacherTeachedCourseInfoEditor', PianoForte.Directives.Teachers.TeachedCourseInfoEditorDirective);
-PianoForte.App.controller('Teacher.TeachedCourseInfoEditorController', ['$scope', '$rootScope', 'TeacherService', 'Enum', 'EnumConverter', 'ValidationManager', PianoForte.Controllers.Teachers.TeachedCourseInfoEditorController]);
 
-// MyBox
-PianoForte.App.directive('myBox', PianoForte.Directives.Widgets.MyBoxDirective);
-PianoForte.App.controller('MyBoxController', ['$scope', PianoForte.Controllers.Widgets.MyBoxController]);
+PianoForte.App.directive('widgetBox', PianoForte.Directives.Widgets.BoxDirective);
+PianoForte.App.directive('widgetButton', PianoForte.Directives.Widgets.ButtonDirective);
+PianoForte.App.directive('widgetCheckbox', PianoForte.Directives.Widgets.CheckboxDirective);
+PianoForte.App.directive('widgetDialogBox', PianoForte.Directives.Widgets.DialogBoxDirective);
+PianoForte.App.directive('widgetDropdownMenu', PianoForte.Directives.Widgets.DropdownMenuDirective);
+PianoForte.App.directive('widgetLeftMenu', PianoForte.Directives.Widgets.LeftMenuDirective);
+PianoForte.App.directive('widgetNumericBox', PianoForte.Directives.Widgets.NumericBoxDirective);
+PianoForte.App.directive('widgetPhoneBox', PianoForte.Directives.Widgets.PhoneBoxDirective);
+PianoForte.App.directive('widgetSearchBox', PianoForte.Directives.Widgets.SearchBoxDirective);
+PianoForte.App.directive('widgetSelect', PianoForte.Directives.Widgets.SelectDirective);
+PianoForte.App.directive('widgetPane', PianoForte.Directives.Widgets.PaneDirective);
+PianoForte.App.directive('widgetTabs', PianoForte.Directives.Widgets.TabsDirective);
+PianoForte.App.directive('widgetTextBox', PianoForte.Directives.Widgets.TextBoxDirective);
 
-// MyButton
-PianoForte.App.directive('myButton', PianoForte.Directives.Widgets.MyButtonDirective);
-PianoForte.App.controller('MyButtonController', ['$scope', '$attrs', '$element', PianoForte.Controllers.Widgets.MyButtonController]);
-
-// MyCheckbox
-PianoForte.App.directive('myCheckbox', PianoForte.Directives.Widgets.MyCheckboxDirective);
-PianoForte.App.controller('MyCheckboxController', ['$scope', '$attrs', '$element', PianoForte.Controllers.Widgets.MyCheckboxController]);
-
-// MyDialogBox
-PianoForte.App.directive('myDialogBox', PianoForte.Directives.Widgets.MyDialogBoxDirective);
-PianoForte.App.controller('MyDialogBoxController', ['$scope', '$attrs', '$element', '$rootScope', PianoForte.Controllers.Widgets.MyDialogBoxController]);
-
-// MyDropdownMenu
-PianoForte.App.directive('myDropdownMenu', PianoForte.Directives.Widgets.MyDropdownMenuDirective);
-PianoForte.App.controller('MyDropdownMenuController', ['$scope', '$attrs', '$element', '$document', 'filterFilter', PianoForte.Controllers.Widgets.MyDropdownMenuController]);
-
-// MyLeftMenu
-PianoForte.App.directive('myLeftMenu', PianoForte.Directives.Widgets.MyLeftMenuDirective);
-PianoForte.App.controller('MyLeftMenuController', ['$scope', '$attrs', '$element', PianoForte.Controllers.Widgets.MyLeftMenuController]);
-
-// MyNumericBox
-PianoForte.App.directive('myNumericBox', PianoForte.Directives.Widgets.MyNumericBoxDirective);
-PianoForte.App.controller('MyNumericBoxController', ['$scope', '$attrs', '$element', 'FormatManager', PianoForte.Controllers.Widgets.MyNumericBoxController]);
-
-// MyPhoneBox
-PianoForte.App.directive('myPhoneBox', PianoForte.Directives.Widgets.MyPhoneBoxDirective);
-PianoForte.App.controller('MyPhoneBoxController', ['$scope', '$attrs', '$element', 'FormatManager', PianoForte.Controllers.Widgets.MyPhoneBoxController]);
-
-// MySearchBox
-PianoForte.App.directive('mySearchBox', PianoForte.Directives.Widgets.MySearchBoxDirective);
-PianoForte.App.controller('MySearchBoxController', ['$scope', '$attrs', '$element', PianoForte.Controllers.Widgets.MySearchBoxController]);
-
-// MySelect
-PianoForte.App.directive('mySelect', PianoForte.Directives.Widgets.MySelectDirective);
-PianoForte.App.controller('MySelectController', ['$scope', '$attrs', '$element', '$document', PianoForte.Controllers.Widgets.MySelectController]);
-
-// MyTabs
-PianoForte.App.directive('myPane', PianoForte.Directives.Widgets.MyPaneDirective);
-PianoForte.App.directive('myTabs', PianoForte.Directives.Widgets.MyTabsDirective);
-PianoForte.App.controller('MyTabsController', ['$scope', '$attrs', '$element', PianoForte.Controllers.Widgets.MyTabsController]);
-
-// MyTextBox
-PianoForte.App.directive('myTextBox', PianoForte.Directives.Widgets.MyTextBoxDirective);
-PianoForte.App.controller('MyTextBoxController', ['$scope', '$attrs', '$element', PianoForte.Controllers.Widgets.MyTextBoxController]);
 
 PianoForte.App.service('Enum', [PianoForte.Enum]);
+PianoForte.App.service('ConvertManager', [PianoForte.Utilities.ConvertManager]);
 PianoForte.App.service('EnumConverter', ['Enum', PianoForte.Utilities.EnumConverter]);
 PianoForte.App.service('FormatManager', ['ValidationManager', PianoForte.Utilities.FormatManager]);
 PianoForte.App.service('LocationManager', ['LocationDataModel', PianoForte.Utilities.LocationManager]);

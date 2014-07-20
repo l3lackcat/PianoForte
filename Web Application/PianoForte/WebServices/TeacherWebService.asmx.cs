@@ -134,7 +134,7 @@ namespace PianoForte.WebServices
         {
             System.Threading.Thread.Sleep(delay);
             
-            teacher.Id = TeacherService.generateNextTeacherId(databaseName);
+            teacher.Id = TeacherService.getNextTeacherId(databaseName);
 
             bool isInsertSuccess = TeacherService.insertTeacher(databaseName, teacher);
             if (isInsertSuccess == false)

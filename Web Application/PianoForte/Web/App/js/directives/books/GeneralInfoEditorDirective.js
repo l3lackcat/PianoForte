@@ -6,10 +6,8 @@ PianoForte.Directives.Books.GeneralInfoEditorDirective = function () {
 	return {
 		restrict: 'E',
 		replace: true,
-		scope: {
-			title: '@'
-		},
-		controller: 'Book.GeneralInfoEditorController',
+		scope: {},
+		controller: 'Books.GeneralInfoEditorController',
 		templateUrl: 'partials/books/general-info-editor.htm'
 	};
 };

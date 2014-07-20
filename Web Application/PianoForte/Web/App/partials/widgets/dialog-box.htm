@@ -1,0 +1,13 @@
+﻿<div class="widget-dialog-box overlay" ng-show="visible">
+    <div class="wrapper">
+        <div class="dialog-box-header">
+            <span>{{title}}</span>
+            <div class="dialog-close" ng-click="onCancel()" ng-hide="disabled" title="ปิด"><i class="fa fa-times"></i></div>
+        </div>
+        <div class="dialog-box-content" ng-transclude></div>
+        <div class="dialog-box-footer">
+            <widget-button data-text="Submit" data-width="'80px'" data-disabled="disabled" data-on-click="onSubmit()"></widget-button>
+            <widget-button data-text="Cancel" data-width="'80px'" data-disabled="disabled" data-on-click="onCancel()"></widget-button>
+        </div>
+    </div>
+</div>

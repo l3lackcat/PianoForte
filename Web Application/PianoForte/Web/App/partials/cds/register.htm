@@ -1,0 +1,40 @@
+﻿<div class="register theme-cd">
+	<widget-dialog-box data-title="Cd > New" data-submit="submit()" data-disabled="isOnInsertData" data-close="cancel()" data-visible="visible">
+        <div class="wrapper">
+            <div class="rows">
+                <div class="row">
+                    <div class="col col-label"><span ng-show="data.barcode.isRequired" class="required">*&nbsp;</span>บาร์โค้ด :</div>
+                    <div class="col col-value">
+                        <widget-text-box data-disabled="isOnInsertData" data-text="data.barcode.value"></widget-text-box>
+                        <label ng-hide="data.barcode.isValid">* กรุณากรอกบาร์โค้ด</label>
+                    </div>
+                    <div class="clear-fix"></div>
+                </div>
+                <div class="row">
+                    <div class="col col-label"><span ng-show="data.name.isRequired" class="required">*&nbsp;</span>ชื่อซีดี :</div>
+                    <div class="col col-value">
+                        <widget-text-box data-disabled="isOnInsertData" data-text="data.name.value"></widget-text-box>
+                        <label ng-hide="data.name.isValid">* กรุณากรอกชื่อซีดี</label>
+                    </div>
+                    <div class="clear-fix"></div>
+                </div>
+                <div class="row">
+                    <div class="col col-label"><span ng-show="data.unitPrice.isRequired" class="required">*&nbsp;</span>ราคา (บาท) :</div>
+                    <div class="col col-value">
+                        <widget-numeric-box data-disabled="isOnInsertData" data-text="data.unitPrice.value" data-width="125"></widget-numeric-box>
+                        <label ng-hide="data.unitPrice.isValid">* กรุณากรอกราคาซีดี</label>
+                    </div>
+                    <div class="clear-fix"></div>
+                </div>
+                <div class="row">
+                    <div class="col col-label"><span ng-show="data.quantity.isRequired" class="required">*&nbsp;</span>คงเหลือ (เล่ม) :</div>
+                    <div class="col col-value">
+                        <widget-numeric-box data-disabled="isOnInsertData" data-text="data.quantity.value" data-width="125"></widget-numeric-box>
+                        <label ng-hide="data.quantity.isValid">* กรุณากรอกราคาซีดี</label>
+                    </div>
+                    <div class="clear-fix"></div>
+                </div>
+            </div>
+        </div>
+    </widget-dialog-box>
+</div>

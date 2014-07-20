@@ -13,7 +13,7 @@ namespace PianoForte.Services
     {
         private static BookDao bookDao = DaoFactory.getDaoFactory(DaoFactory.FactoryType.MYSQL).getBookDao();
 
-        public static int getNewBookId(string databaseName)
+        public static int getNextBookId(string databaseName)
         {
             int newBookId = 0;
 

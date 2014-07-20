@@ -32,6 +32,22 @@ PianoForte.Services.BookService = function($http, FormatManager) {
             $http.post('/WebServices/BookWebService.asmx/getBookByBarcode', data).success(onSuccess).error(onError);
         },
 
+        insertBookInfo: function (book, onSuccess, onError) {
+            var data = {
+                databaseName: databaseName,
+                book: {
+                    Id: book.id.value,
+                    Barcode: book.barcode.value,
+                    Name: book.name.value,
+                    UnitPrice: FormatManager.unformatNumber(book.unitPrice.value),
+                    Quantity: FormatManager.unformatNumber(book.quantity.value),
+                    Status: book.status.value
+                }
+            };
+
+            $http.post('/WebServices/BookWebService.asmx/insertBookInfo', data).success(onSuccess).error(onError);
+        },
+
         updateBookInfo: function (book, onSuccess, onError) {
             var data = {
                 databaseName: databaseName,
@@ -46,6 +62,6 @@ PianoForte.Services.BookService = function($http, FormatManager) {
             };
 
             $http.post('/WebServices/BookWebService.asmx/updateBookInfo', data).success(onSuccess).error(onError);
-        },
+        }
     }
 };

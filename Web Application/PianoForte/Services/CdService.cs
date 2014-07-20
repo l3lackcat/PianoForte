@@ -12,7 +12,7 @@ namespace PianoForte.Services
     {
         private static CdDao cdDao = DaoFactory.getDaoFactory(DaoFactory.FactoryType.MYSQL).getCdDao();
 
-        public static int getNewCdId(string databaseName)
+        public static int getNextCdId(string databaseName)
         {
             int newCdId = 0;
 

@@ -17,6 +17,8 @@ namespace PianoForte.WebServices
     [System.Web.Script.Services.ScriptService]
     public class StudentWebService : System.Web.Services.WebService
     {
+        private int delay = 1500;
+
         [WebMethod]
         public int getStudentListSize(string databaseName)
         {
@@ -27,7 +29,7 @@ namespace PianoForte.WebServices
         [WebMethod]
         public List<Object> getStudentList(string databaseName, int startIndex, int offset)
         {
-            System.Threading.Thread.Sleep(1500);
+            System.Threading.Thread.Sleep(delay);
 
             List<Object> displayedStudentList = new List<Object>();
             List<Student> studentList = StudentService.getStudentList(databaseName, startIndex, offset);
@@ -66,6 +68,63 @@ namespace PianoForte.WebServices
             }
 
             return displayedStudentList;
+        }
+
+        [WebMethod]
+        public Object getStudentById(string databaseName, int id)
+        {
+            System.Threading.Thread.Sleep(delay);
+
+            Object student = null;
+            List<Object> phoneList = new List<Object>();
+            List<Object> emailList = new List<Object>();
+
+            Student tempStudent = StudentService.getStudent(databaseName, id);
+            if (tempStudent != null)
+            {
+                //Contact list
+                tempStudent.ContactList = StudentContactService.getStudentContactList(databaseName, tempStudent.Id, Status.ACTIVE);
+                foreach (StudentContact contact in tempStudent.ContactList)
+                {
+                    if (contact.Type == ContactType.PHONE)
+                    {
+                        phoneList.Add(new
+                        {
+                            id = contact.Id,
+                            label = contact.Label,
+                            value = contact.Content,
+                            status = contact.Status,
+                            isPrimary = contact.IsPrimary
+                        });
+                    }
+                    else if (contact.Type == ContactType.EMAIL)
+                    {
+                        emailList.Add(new
+                        {
+                            id = contact.Id,
+                            label = contact.Label,
+                            value = contact.Content,
+                            status = contact.Status,
+                            isPrimary = contact.IsPrimary
+                        });
+                    }
+                }
+
+                student = new
+                {
+                    id = tempStudent.Id,
+                    firstname = tempStudent.Firstname,
+                    lastname = tempStudent.Lastname,
+                    nickname = tempStudent.Nickname,
+                    birthDate = tempStudent.BirthDate,
+                    registeredDate = tempStudent.RegisteredDate,
+                    status = tempStudent.Status,
+                    phoneList = phoneList,
+                    emailList = emailList
+                };
+            }
+
+            return student;
         }
     }
 }

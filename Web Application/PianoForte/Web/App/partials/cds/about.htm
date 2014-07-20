@@ -1,0 +1,65 @@
+<div id="cd" class="layout-about" ng-controller="Cds.AboutController" ng-init="initialize()">
+    <widget-tabs ng-show="!isReady">
+        <widget-pane data-title="Loading">
+            Now Loading...
+        </widget-pane>
+    </widget-tabs>
+    <widget-tabs ng-show="isReady">
+        <widget-pane data-title="about">
+            <div class="tube width-100-percent no-margin-bottom">
+                <div class="tube width-85-percent">
+                    <widget-box class="no-margin-bottom">                    
+                        <ul class="widget-breadcrumb">
+                            <li><a href="#/cds">CDs</a></li>
+                            <li class="seperator">&gt;</li>
+                            <li>{{cd.name}}</li>
+                        </ul>
+                    </widget-box>
+                </div>
+                <div class="tube width-15-percent">
+                    <widget-button data-text="Back" data-on-click="returnToMain()"></widget-button>
+                </div>
+            </div>
+            <div class="tube width-100-percent no-margin-bottom">
+                <div class="tube width-85-percent no-margin-left">
+                    <widget-box data-title="ข้อมูลซีดี" data-editable="true" data-edit="onEditCdInfo()">
+                        <div class="rows">
+                            <div class="row">
+                                <div class="col col-label">รหัสซีดี :</div>
+                                <div class="col col-value">{{cd.id}}</div>
+                                <div class="clear-fix"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col col-label">บาร์โค้ด :</div>
+                                <div class="col col-value">{{cd.barcode}}</div>
+                                <div class="clear-fix"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col col-label">ชื่อซีดี :</div>
+                                <div class="col col-value">{{cd.name}}</div>
+                                <div class="clear-fix"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col col-label">ราคา (บาท) :</div>
+                                <div class="col col-value">{{FormatManager.formatNumber(cd.unitPrice)}}</div>
+                                <div class="clear-fix"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col col-label">คงเหลือ (เล่ม) :</div>
+                                <div class="col col-value">{{FormatManager.formatNumber(cd.quantity)}}</div>
+                                <div class="clear-fix"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col col-label">สถานะ :</div>
+                                <div class="col col-value">{{EnumConverter.Status.toString(cd.status)}}</div>
+                                <div class="clear-fix"></div>
+                            </div>
+                        </div>
+                    </widget-box>
+                </div>
+            </div>                
+        </widget-pane>
+    </widget-tabs>
+
+    <cd-general-info-editor></cd-general-info-editor>
+</div>

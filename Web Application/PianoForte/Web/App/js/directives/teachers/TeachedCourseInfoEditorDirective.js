@@ -6,10 +6,8 @@ PianoForte.Directives.Teachers.TeachedCourseInfoEditorDirective = function () {
 	return {
 		restrict: 'E',
 		replace: true,
-		scope: {
-			title: '@'
-		},
-		controller: 'Teacher.TeachedCourseInfoEditorController',
+		scope: {},
+		controller: 'Teachers.TeachedCourseInfoEditorController',
 		templateUrl: 'partials/teachers/teached-course-info-editor.htm'
 	};
 };

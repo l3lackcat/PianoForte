@@ -1,0 +1,12 @@
+﻿<div class="widget-select">
+    <div class="btn-toggle" ng-click="toggleDropdownMenu()">
+    	<div class="text" ng-show="selectedItem != null">{{selectedItem.text}}</div>
+        <div class="text placeholder" ng-show="selectedItem == null">
+            <span ng-show="placeholder != undefined">{{placeholder}}</span>
+            <span ng-show="placeholder == undefined">Please select...</span>
+        </div>
+    	<div class="caret" ng-hide="disabled">&#9660;</div>
+    	<div class="clear-fix"></div>
+        <widget-dropdown-menu data-visible="isDropdownMenuVisible"></widget-dropdown-menu>
+    </div>    
+</div>

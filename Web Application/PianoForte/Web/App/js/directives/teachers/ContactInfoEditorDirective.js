@@ -6,10 +6,8 @@ PianoForte.Directives.Teachers.ContactInfoEditorDirective = function () {
 	return {
 		restrict: 'E',
 		replace: true,
-		scope: {
-			title: '@'
-		},
-		controller: 'Teacher.ContactInfoEditorController',
+		scope: {},
+		controller: 'Teachers.ContactInfoEditorController',
 		templateUrl: 'partials/teachers/contact-info-editor.htm'
 	};
 };

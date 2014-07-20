@@ -17,10 +17,12 @@ namespace PianoForte.WebServices
     [System.Web.Script.Services.ScriptService]
     public class CdWebService : System.Web.Services.WebService
     {
+        private int delay = 1500;
+
         [WebMethod]
         public List<Object> getCdList(string databaseName)
         {
-            System.Threading.Thread.Sleep(1500);
+            System.Threading.Thread.Sleep(delay);
 
             List<Object> displayedCdList = new List<Object>();
             List<Cd> cdList = CdService.getCdList(databaseName);
@@ -43,7 +45,7 @@ namespace PianoForte.WebServices
         [WebMethod]
         public Object getCdById(string databaseName, int id)
         {
-            System.Threading.Thread.Sleep(1500);
+            System.Threading.Thread.Sleep(delay);
 
             Object displayedCd = null;
             Cd cd = CdService.getCd(databaseName, id);
@@ -66,7 +68,7 @@ namespace PianoForte.WebServices
         [WebMethod]
         public Object getCdByBarcode(string databaseName, string barcode)
         {
-            System.Threading.Thread.Sleep(1500);
+            System.Threading.Thread.Sleep(delay);
 
             Object displayedCd = null;
             Cd cd = CdService.getCd(databaseName, barcode);
@@ -87,16 +89,25 @@ namespace PianoForte.WebServices
         }
 
         [WebMethod]
-        public bool insertCdInfo(string databaseName, Cd cd)
+        public int insertCdInfo(string databaseName, Cd cd)
         {
-            System.Threading.Thread.Sleep(1500);
-            return CdService.insertCd(databaseName, cd);
+            System.Threading.Thread.Sleep(delay);
+
+            cd.Id = CdService.getNextCdId(databaseName);
+
+            bool isInsertSuccess = CdService.insertCd(databaseName, cd);
+            if (isInsertSuccess == false)
+            {
+                cd.Id = 0;
+            }
+
+            return cd.Id;
         }
 
         [WebMethod]
         public bool updateCdInfo(string databaseName, Cd cd)
         {
-            System.Threading.Thread.Sleep(1500);
+            System.Threading.Thread.Sleep(delay);
             return CdService.updateCd(databaseName, cd);
         }
     }

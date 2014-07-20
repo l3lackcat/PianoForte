@@ -32,6 +32,22 @@ PianoForte.Services.CdService = function($http, FormatManager) {
             $http.post('/WebServices/CdWebService.asmx/getCdByBarcode', data).success(onSuccess).error(onError);
         },
 
+        insertCdInfo: function (cd, onSuccess, onError) {
+            var data = {
+                databaseName: databaseName,
+                cd: {
+                    Id: cd.id.value,
+                    Barcode: cd.barcode.value,
+                    Name: cd.name.value,
+                    UnitPrice: FormatManager.unformatNumber(cd.unitPrice.value),
+                    Quantity: FormatManager.unformatNumber(cd.quantity.value),
+                    Status: cd.status.value
+                }
+            };
+
+            $http.post('/WebServices/CdWebService.asmx/insertCdInfo', data).success(onSuccess).error(onError);
+        },
+
         updateCdInfo: function (cd, onSuccess, onError) {
             var data = {
                 databaseName: databaseName,
@@ -46,6 +62,6 @@ PianoForte.Services.CdService = function($http, FormatManager) {
             };
 
             $http.post('/WebServices/CdWebService.asmx/updateCdInfo', data).success(onSuccess).error(onError);
-        },
+        }
     }
 };

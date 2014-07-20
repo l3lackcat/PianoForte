@@ -1,56 +1,56 @@
-﻿<div id="cds" class="dashboard" ng-controller="CdMainController" ng-init="initialize()">
-    <my-tabs>
-        <my-pane data-title="dashboard">
+﻿<div id="cds" class="layout-main" ng-controller="Cds.MainController" ng-init="initialize()">
+    <widget-tabs>
+        <widget-pane data-title="Main">
         	<div class="tube width-100-percent no-margin-bottom">
         		<div class="tube width-25-percent">
-	                <my-box class="no-margin-bottom">                    
+	                <widget-box class="no-margin-bottom">                    
 	                    <ul class="widget-breadcrumb">
 	                        <li>CDs</li>
 	                        <li class="seperator">&gt;</li>
-	                        <li>Dashboard</li>
+	                        <li>Main</li>
 	                    </ul>
-	                </my-box>
+	                </widget-box>
 	            </div>
 	            <div class="tube width-75-percent">
 	                <div class="tube width-25-percent">
-	                    <my-select 
+	                    <widget-select 
 	                        data-items="filter.dropdownList" 
 	                        data-selected-item-id="filter.dropdownSelectedId"
 	                        data-show-max-items="5"
-	                        data-placeholder="'Please select...'"
-	                        data-theme="'theme-cd'"></my-select>
+	                        data-placeholder="Please select..."
+	                        data-theme="'theme-cd'"></widget-select>
 	                </div>
 	                <div class="tube width-30-percent">
-	                    <my-search-box data-is-filter-box="true" data-text="filter.text" data-placeholder="'ค้นหา...'"></my-search-box>
+	                    <widget-search-box data-is-filter-box="true" data-text="filter.text" data-placeholder="ค้นหา..."></widget-search-box>
 	                </div>
 	                <div class="tube width-20-percent">
-	                    <my-button data-text="'Stock'" data-disabled="true"></my-button>
+	                    <widget-button data-text="Stock" data-disabled="true"></widget-button>
 	                </div>
 	                <div class="tube width-25-percent">
-	                    <my-button data-text="'เพิ่มซีดี'"></my-button>
+	                    <widget-button data-text="Add" data-on-click="onInsertNewCd()"></widget-button>
 	                </div>
 	            </div>
         	</div>	            
             <div class="clear-fix"></div>
             <div class="tube width-100-percent no-margin-bottom">
-                <my-box class="header no-padding-right no-padding-left">
+                <widget-box class="header no-padding-right no-padding-left">
                     <div class="rows">
                         <div class="row">
-                        	<div class="col col-barcode">หมายเลขบาร์โค้ด</div>
-                            <div class="col col-name align-center">ชื่อซีดี</div>
-                            <div class="col col-unitprice align-center">ราคา</div>
-                            <div class="col col-quantity align-center">คงเหลือ</div>
+                        	<div class="col col-barcode">Barcode</div>
+                            <div class="col col-name">Name</div>
+                            <div class="col col-unitprice align-center">Price</div>
+                            <div class="col col-quantity align-center">Quantity</div>
                             <div class="col col-status">&nbsp;</div>
                             <div class="col col-view">&nbsp;</div>
                             <div class="col col-upd-stock">&nbsp;</div>
                             <div class="clear-fix"></div>
                         </div>
                     </div>
-                </my-box>
+                </widget-box>
             </div> 
             <div class="clear-fix"></div>
             <div class="tube width-100-percent no-margin-bottom fix-height">
-                <my-box class="content no-margin-bottom no-padding-top no-padding-bottom no-padding-right no-padding-left">
+                <widget-box class="content no-margin-bottom no-padding-top no-padding-bottom no-padding-right no-padding-left">
                     <div class="rows">
                         <div class="row" ng-repeat="cd in filter.result | orderBy:'id' | startFrom:(currentPage-1)*showPerPage | limitTo:showPerPage">
                             <div class="col col-barcode">{{cd.barcode}}</div>
@@ -77,8 +77,10 @@
 	                        </li>
 	                    </ul>
 	                </div>                      
-                </my-box>
+                </widget-box>
             </div>
-        </my-pane>
-    </my-tabs>
+        </widget-pane>
+    </widget-tabs>
+
+    <cd-register></cd-register>
 </div>
