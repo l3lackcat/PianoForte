@@ -1,8 +1,10 @@
 ﻿'use strict';
 
-goog.provide('PianoForte.Controllers.Teachers.GeneralInfoEditorController');
+goog.provide('PianoForte.Controllers.Students.GeneralInfoEditorController');
 
-PianoForte.Controllers.Teachers.GeneralInfoEditorController = function ($scope, $rootScope, TeacherService, Enum, EnumConverter, FormatManager, ValidationManager) {    
+PianoForte.Controllers.Students.GeneralInfoEditorController = function ($scope, $rootScope, StudentService, Enum, EnumConverter, FormatManager, ValidationManager) {    
+    $scope['FormatManager'] = FormatManager;
+
     $scope['edittedData'] = null;
     $scope['visible'] = false;
     $scope['isOnUpdateEdittedData'] = false;
@@ -14,33 +16,48 @@ PianoForte.Controllers.Teachers.GeneralInfoEditorController = function ($scope, 
 
     var _generalInfo = null;
 
-    $scope.$on('EditTeacherGeneralInfo', function (scope, teacher) {
+    $scope.$on('EditStudentGeneralInfo', function (scope, student) {
         initStatusList();
 
-        _generalInfo = teacher;
+        _generalInfo = student;
         $scope['edittedData'] = {
             'id': {
-                'value': teacher.id,
+                'value': student.id,
                 'isRequired': false,
                 'isValid': true
             },
             'firstname': {
-                'value': teacher.firstname,
+                'value': student.firstname,
                 'isRequired': true,
                 'isValid': true
             },
             'lastname': {
-                'value': teacher.lastname,
+                'value': student.lastname,
                 'isRequired': true,
                 'isValid': true
             },
             'nickname': {
-                'value': teacher.nickname,
+                'value': student.nickname,
+                'isRequired': true,
+                'isValid': true
+            },
+            'birthDate': {
+                'value': student.birthDate,
+                'isRequired': true,
+                'isValid': true
+            },
+            'registeredDate': {
+                'value': student.registeredDate,
+                'isRequired': true,
+                'isValid': true
+            },
+            'lastDateOfClass': {
+                'value': student.lastDateOfClass,
                 'isRequired': true,
                 'isValid': true
             },
             'status': {
-                'value': teacher.status,
+                'value': student.status,
                 'isRequired': false,
                 'isValid': true
             }
@@ -54,7 +71,7 @@ PianoForte.Controllers.Teachers.GeneralInfoEditorController = function ($scope, 
             var isDifferent = compare(_generalInfo, $scope['edittedData']);
             if (isDifferent === true) {
                 $scope['isOnUpdateEdittedData'] = true;
-                TeacherService.updateTeacherGeneralInfo($scope['edittedData'], onSuccessUpdateEdittedData, onErrorUpdateEdittedData);
+                StudentService.updateStudentGeneralInfo($scope['edittedData'], onSuccessUpdateEdittedData, onErrorUpdateEdittedData);
             } else {
                 hideDialogBox();
             }
@@ -65,7 +82,7 @@ PianoForte.Controllers.Teachers.GeneralInfoEditorController = function ($scope, 
         hideDialogBox();
     };    
 
-    function initStatusList() {
+    function initStatusList () {
         for(var i = $scope['statusList'].length - 1; i >= 0; i--) {
             var status = $scope['statusList'][i];
 
@@ -73,7 +90,7 @@ PianoForte.Controllers.Teachers.GeneralInfoEditorController = function ($scope, 
         }
     };
 
-    function hideDialogBox() {        
+    function hideDialogBox () {        
         $scope['edittedData'] = null;
         $scope['visible'] = false;
         $scope['isOnUpdateEdittedData'] = false;
@@ -116,7 +133,7 @@ PianoForte.Controllers.Teachers.GeneralInfoEditorController = function ($scope, 
             _generalInfo.nickname = $scope['edittedData']['nickname']['value'];
             _generalInfo.status = $scope['edittedData']['status']['value'];
 
-            $rootScope.$broadcast('UpdateTeacherGeneralInfo', _generalInfo);
+            $rootScope.$broadcast('UpdateStudentGeneralInfo', _generalInfo);
 
             hideDialogBox();
         } else {

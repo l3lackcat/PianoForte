@@ -55,8 +55,8 @@
                                 <div class="clear-fix"></div>
                             </div>
                             <div class="row">
-                                <div class="col col-label">สิ้นสุดหลักสูตร :</div>
-                                <div class="col col-value">{{student.lastDateOfClass}}</div>
+                                <div class="col col-label">วันสิ้นสุดหลักสูตร :</div>
+                                <div class="col col-value">{{FormatManager.toLongDateString(student.lastDateOfClass)}}</div>
                                 <div class="clear-fix"></div>
                             </div>
                             <div class="row">
@@ -121,8 +121,12 @@
                         </div>
                     </widget-box>
                 </div>
+                <div class="tube width-50-percent"></div>
             </div>                
         </widget-pane>
         <widget-pane data-title="calendar"></widget-pane>
-    </widget-tabs> 
+    </widget-tabs>
+
+    <student-general-info-editor></student-general-info-editor>
+    <student-contact-info-editor></student-contact-info-editor>
 </div>

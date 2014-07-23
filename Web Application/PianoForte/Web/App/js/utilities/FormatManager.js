@@ -64,7 +64,7 @@ PianoForte.Utilities.FormatManager = function(ValidationManager) {
 
                 tempDate.lang('th');
                 tempDate.add('years', 543);
-                longDateString = tempDate.format('D MMMM YYYY');
+                longDateString = tempDate.format('DD MMMM YYYY');
             }
 
             return longDateString;
