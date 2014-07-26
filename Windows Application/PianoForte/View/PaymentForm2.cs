@@ -784,6 +784,8 @@ namespace PianoForte.View
 
         private void RadioButton_Cash_CheckedChanged(object sender, EventArgs e)
         {
+            this.updateButtonPay();
+
             this.TextBox_CreditCardNumber1.Text = "";
             this.TextBox_CreditCardNumber2.Text = "";
             this.TextBox_CreditCardNumber3.Text = "";
@@ -797,6 +799,8 @@ namespace PianoForte.View
 
         private void RadioButton_CreditCard_CheckedChanged(object sender, EventArgs e)
         {
+            this.updateButtonPay();
+
             this.TextBox_CreditCardNumber1.Enabled = true;
             this.TextBox_CreditCardNumber2.Enabled = true;
             this.TextBox_CreditCardNumber3.Enabled = true;
@@ -821,6 +825,8 @@ namespace PianoForte.View
             {
                 this.TextBox_CreditCardNumber2.Focus();
             }
+
+            this.updateButtonPay();
         }
 
         private void TextBox_CreditCardNumber2_KeyDown(object sender, KeyEventArgs e)
@@ -839,6 +845,8 @@ namespace PianoForte.View
             {
                 this.TextBox_CreditCardNumber3.Focus();
             }
+
+            this.updateButtonPay();
         }
 
         private void TextBox_CreditCardNumber3_KeyDown(object sender, KeyEventArgs e)
@@ -857,6 +865,8 @@ namespace PianoForte.View
             {
                 this.TextBox_CreditCardNumber4.Focus();
             }
+
+            this.updateButtonPay();
         }
 
         private void TextBox_CreditCardNumber4_KeyDown(object sender, KeyEventArgs e)
@@ -875,6 +885,8 @@ namespace PianoForte.View
             {
                 this.Button_Pay.Focus();
             }
+
+            this.updateButtonPay();
         }
 
         private void Button_Pay_Click(object sender, EventArgs e)
