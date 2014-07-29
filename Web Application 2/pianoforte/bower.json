@@ -1,0 +1,11 @@
+{
+  "name": "pianoforte",
+  "description": "PianoForte",
+  "version": "0.0.1",
+  "devDependencies": {
+    "angular": "~1.2.10",
+    "accounting": "~0.3.2",
+    "momentjs": "~2.6.0",
+    "underscore": "~1.6.0"
+  }
+}
