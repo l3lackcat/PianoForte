@@ -1,0 +1,277 @@
+<!doctype html>
+<html ng-app="curve-builder">
+<head>
+  <title>Curve Builder</title>
+</head>
+<body>
+
+  <!-- pre.css -->
+  <script src="bower_components/novakit-component/component/loading-screen/novaloadingscreen2.js" data-build="prejs"></script>
+
+  <script>
+    NovaLoadingScreen.init('Curve Builder', 81);
+  </script>
+
+  <div class="ng-cloak" app>
+  </div>
+
+  <!-- templates -->
+  <!-- TODO: move these to another files -->
+
+  <!-- TODO: TO BE MOVED TO CALNG -->
+  <script type="text/ng-template" id="template/popover/popover.html">
+    <div class="popover {{placement}} {{$parent.popoverStyle}}" ng-class="{ in: isOpen(), fade: animation() }">
+      <div class="arrow"></div>
+      <div class="popover-inner">
+        <h3 class="popover-title" ng-bind="title" ng-show="title"></h3>
+        <div class="popover-content" ng-bind="content"></div>
+      </div>
+    </div>
+  </script>
+
+  <!-- TODO: TO BE MOVED TO CALNG -->
+  <script type="text/ng-template" id="template/tooltip/tooltip-popup.html">
+    <div class="tooltip {{placement}} {{$parent.tooltipStyle}}" ng-class="{ in: isOpen(), fade: animation() }">
+      <div class="tooltip-arrow"></div>
+      <div class="tooltip-inner" ng-bind="content"></div>
+    </div>
+  </script>
+
+  <!-- HACK FIX for issue that post-render tab does not render heading -->
+  <script type="text/ng-template" id="tab-heading">
+    <div class="tab-caption" ng-init="curve = $parent.$parent.curve" ng-bind="curve.name" tooltip="{{curve.name}}" tooltip-placement="bottom" tooltip-append-to-body="true" tooltip-animation="false"></div>
+  </script>
+
+  <!-- UPDATE: it seems to work without this... -->
+  <!-- checkbox cell template broke selectWithCheckboxOnly... -->
+  <!-- <script type="text/ng-template" id="checkbox-cell-template">
+    <div class="checkable ngSelectionCell" style="margin-top: 6px;">
+      <input tabindex="-1" class="ngSelectionCheckbox" type="checkbox" ng-checked="row.selected">
+    </div>
+  </script> -->
+
+  <script type="text/ng-template" id="radio-cell-template">
+    <div class="checkable ngSelectionCell">
+      <input tabindex="-1" class="ngSelectionCheckbox" type="radio" ng-checked="row.selected">
+    </div>
+  </script>
+
+  <script type="text/ng-template" id="checkbox-header-template">
+    <input class="checkable ngSelectionHeader" type="checkbox" style="margin-top: -12px;" ng-show="multiSelect" ng-model="allSelected" ng-change="toggleSelectAll(allSelected)">
+  </script>
+
+  <script type="text/ng-template" id="common-header-cell-template">
+    <div class="ngHeaderSortColumn {{col.headerClass}}" ng-style="{cursor: col.cursor}" ng-class="{ngSorted: !col.noSortVisible()}">
+      <div ng-click="col.sort($event)" ng-class="'colt' + col.index" class="ngHeaderText" ng-bind="col.displayName | translate"></div>
+      <div class="ngSortButtonDown" ng-show="col.showSortButtonDown()"></div>
+      <div class="ngSortButtonUp" ng-show="col.showSortButtonUp()"></div>
+      <div class="ngSortPriority" ng-bind="col.sortPriority"></div>
+      <div ng-class="{ ngPinnedIcon: col.pinned, ngUnPinnedIcon: !col.pinned }" ng-click="togglePin(col)" ng-show="col.pinnable"></div>
+    </div>
+    <div ng-show="col.resizable" class="ngHeaderGrip" ng-click="col.gripClick($event)" ng-mousedown="col.gripOnMouseDown($event)"></div>
+  </script>
+
+  <script type="text/ng-template" id="bmk-header-cell-template">
+    <div class="btn-group dropdown-block" dropdown ng-init="bmkDropdownOpen = false" is-open="bmkDropdownOpen">
+      <button type="button" class="btn btn-default btn-header dropdown-toggle">
+        <span class="dropdown-text" ng-bind="getScope().spreadType.label | translate"></span>
+        <span class="dropdown-caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li ng-repeat="spread in SpreadType">
+          <a href role="menuitem" ng-click="getScope().spreadType = spread; $parent.bmkDropdownOpen = false;" ng-bind="spread.label | translate"></a>
+        </li>
+      </ul>
+    </div>
+    <div ng-show="col.resizable" class="ngHeaderGrip" ng-click="col.gripClick($event)" ng-mousedown="col.gripOnMouseDown($event)"></div>
+  </script>
+
+  <script type="text/ng-template" id="yield-type-header-cell-template">
+    <div class="btn-group dropdown-block" dropdown ng-init="yieldTypeDropdownOpen = false" is-open="yieldTypeDropdownOpen">
+      <button type="button" class="btn btn-default btn-header dropdown-toggle">
+        <span class="dropdown-text" ng-bind="getScope().yieldType.label | translate"></span>
+        <span class="dropdown-caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li ng-repeat="yield in YieldType">
+          <a href role="menuitem" ng-click="getScope().yieldType = yield; $parent.yieldTypeDropdownOpen = false;" ng-bind="yield.label | translate"></a>
+        </li>
+      </ul>
+    </div>
+    <div ng-show="col.resizable" class="ngHeaderGrip" ng-click="col.gripClick($event)" ng-mousedown="col.gripOnMouseDown($event)"></div>
+  </script>
+
+  <script type="text/ng-template" id="source-of-spline-header-cell-template">
+    <div class="btn-group dropdown-block" dropdown ng-init="sourceOfSplineDropdownOpen = false" is-open="sourceOfSplineDropdownOpen">
+      <button type="button" class="btn btn-default btn-header dropdown-toggle">
+        <span class="dropdown-text" ng-bind="getScope().sourceOfSpline.label | translate"></span>
+        <span class="dropdown-caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li ng-repeat="source in SourceOfSpline">
+          <a href role="menuitem" ng-click="getScope().sourceOfSpline = source; $parent.sourceOfSplineDropdownOpen = false;" ng-bind="source.label | translate"></a>
+        </li>
+      </ul>
+    </div>
+    <div ng-show="col.resizable" class="ngHeaderGrip" ng-click="col.gripClick($event)" ng-mousedown="col.gripOnMouseDown($event)"></div>
+  </script>
+
+  <script type="text/ng-template" id="center-cell-template">
+    <div class="ngCellText text-center" ng-class="col.colIndex()" ng-bind="row.entity[col.field]"></div>
+  </script>
+
+  <script type="text/ng-template" id="translate-cell-template">
+    <div class="ngCellText" ng-class="col.colIndex()" ng-bind="row.entity[col.field] | translate"></div>
+  </script>
+
+  <script type="text/ng-template" id="numeric-cell-template">
+    <div class="ngCellText text-right monospace" ng-class="col.colIndex()" ng-bind="row.entity[col.field] | number:4"></div>
+  </script>
+
+  <script type="text/ng-template" id="numeric-input-cell-template">
+    <div class="input-cell">
+      <input type="text" class="form-control text-right monospace" calc-control calc-getter="$value | number:4" calc-auto-state="false" ng-model="COL_FIELD">
+    </div>
+  </script>
+
+  <script type="text/ng-template" id="date-cell-template">
+    <div class="ngCellText text-center" ng-class="col.colIndex()" ng-bind="row.entity[col.field] ? (row.entity[col.field] | datetime:'DD MMMM YYYY') : ''"></div>
+  </script>
+
+  <script type="text/ng-template" id="date-tenor-picker-cell-template">
+    <div class="dropdown input-cell ngCellText" ng-class="col.colIndex()" calc-control-group>
+      <div class="input-group">
+        <input type="text" class="form-control text-right" ng-model="row.entity[col.field]" calc-control calc-getter="$value | tenor:'DD/MMM/YYYY'">
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default dropdown-toggle"><i class="glyphicon glyphicon-calendar"></i></button>
+        </span>
+      </div>
+      <ul class="dropdown-menu" role="menu">
+        <datepicker tenorpicker calc-control-trigger="watch:ngModel" show-weeks="false" ng-model="row.entity[col.field]"></datepicker>
+      </ul>
+    </div>
+  </script>
+
+  <script type="text/ng-template" id="timeago-cell-template">
+    <div class="ngCellText text-center" ng-class="col.colIndex()" ng-bind="row.entity[col.field] ? (row.entity[col.field] | timeago:true:'DD MMMM YYYY') : ''"></div>
+  </script>
+
+  <script type="text/ng-template" id="delete-cell-template">
+    <div class="icon-cell" ng-class="col.colIndex()">
+      <a href class="icon" ng-click="$parent.getScope().removeEntity(row.entity)"><i class="glyphicon glyphicon-trash"></i></a>
+    </div>
+  </script>
+
+  <script type="text/ng-template" id="autosuggest-cell-template">
+    <div class="input-cell">
+      <input class="form-control" type="text" placeholder="{{'ENTER_CURVE_NAME' | translate}}" calc-control calc-auto-state="false" calc-typeahead="suggest for suggest in getScope().getSuggestion($viewValue)" typeahead-template-url="template/calctypeahead/autosuggest.html" typeahead-input-formatter="$model | safefield:'cmd'" typeahead-group="$parent.getScope().group($value)" ng-model="COL_FIELD">
+    </div>
+  </script>
+
+  <script type="text/ng-template" id="data-row-template">
+    <div ng-style="{ 'cursor': row.cursor }" ng-repeat="col in renderedColumns" class="ngCell {{col.cellClass}} {{col.colIndex()}}">
+      <div class="ngVerticalBar" ng-style="{height: rowHeight}" ng-class="{ ngVerticalBarVisible: !$last }">&nbsp;</div>
+      <div ng-class="{'data-loaded': row.entity.loaded, 'data-loading': !row.entity.loaded}" ng-cell></div>
+    </div>
+  </script>
+
+  <!-- end of templates -->
+
+  <script src="/Apps/JET/1.4.2/Web/JET.js" onload="NovaLoadingScreen.incr(1)"></script>
+
+  <!-- lib.css -->
+  <link rel="stylesheet" href="bower_components/animate.css/animate.css" data-build="libcss" onload="NovaLoadingScreen.incr(1)">
+  <link rel="stylesheet" href="bower_components/ng-grid/ng-grid.css" data-build="libcss" onload="NovaLoadingScreen.incr(1)">
+  <link rel="stylesheet" href="bower_components/nprogress/nprogress.css" data-build="libcss" onload="NovaLoadingScreen.incr(1)">
+
+  <!-- app.css -->
+  <link rel="stylesheet" href="app.css" data-build="remove" onload="NovaLoadingScreen.incr(1)">
+
+  <!-- lib.js -->
+  <script src="bower_components/nprogress/nprogress.js" data-build="libjs" data-test="libjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="bower_components/jquery/dist/jquery.js" data-build="libjs" data-test="libjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="bower_components/angular/angular.js" data-build="libjs" data-test="libjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="bower_components/angular-animate/angular-animate.js" data-build="libjs" data-test="libjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.js" data-build="libjs" data-test="libjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js" data-build="libjs" data-test="libjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js" data-build="libjs" data-test="libjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="bower_components/angular-translate/angular-translate.js" data-build="libjs" data-test="libjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js" data-build="libjs" data-test="libjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="bower_components/angular-ui-tree/dist/angular-ui-tree.js" data-build="libjs" data-test="libjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="bower_components/momentjs/min/moment-with-langs.js" data-build="libjs" data-test="libjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="bower_components/ng-context-menu/dist/ng-context-menu.js" data-build="libjs" data-test="libjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="bower_components/ng-grid/build/ng-grid.js" data-build="libjs" data-test="libjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="bower_components/calculatorng/calc-tpls.js" data-build="libjs" data-test="libjs" onload="NovaLoadingScreen.incr(1)"></script>
+
+  <!-- app.js -->
+  <script src="app-tpls.js" data-build="remove" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="app.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="directive/app/app.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="directive/basis-spline-curve/basis-spline-curve.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="directive/bond-curve/bond-curve.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="directive/bond-curve-constituents/bond-curve-constituents.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="directive/calculated-curve/calculated-curve.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="directive/forward-curve/forward-curve.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="directive/forward-rate/forward-rate.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="directive/multi-curve-display/multi-curve-display.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="directive/rich-cheap-analysis/rich-cheap-analysis.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="directive/shift-scenario/shift-scenario.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="directive/zero-swap-curve/zero-swap-curve.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="directive/zero-swap-curve-constituents/zero-swap-curve-constituents.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="directive/criteria-search/criteria-search.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="directive/curve-search/curve-search.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="directive/list-search/list-search.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="directive/excel-import/excel-import.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="directive/tab-extension/tab-extension.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="directive/popover/popover.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="directive/tooltip/tooltip.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="directive/ng-right-click/ng-right-click.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="directive/ng-enter/ng-enter.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="directive/disable-animate/disable-animate.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="directive/tenorpicker/tenorpicker.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+
+  <script src="filter/timeago/timeago.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="filter/tenor/tenor.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+
+  <script src="factory/bond-curve/bond-curve.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="factory/zero-swap-curve/zero-swap-curve.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="factory/bond/bond.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="factory/localization/localization.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="factory/utility/utility.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="factory/ng-grid-layout/ng-grid-layout.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="factory/tr-curve/tr-curve.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="factory/compare-operator/compare-operator.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="factory/rating/rating.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="factory/criteria-search/criteria-search.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="factory/curve-search/curve-search.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="factory/bond-search/bond-search.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="factory/user-search/user-search.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="factory/excel-import/excel-import.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="factory/debounce/debounce.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="factory/app-constant/app-constant.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="factory/bond-grade/bond-grade.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="factory/price-quality/price-quality.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="factory/yield-type/yield-type.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="factory/spread-type/spread-type.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="factory/source-of-spline/source-of-spline.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="factory/calculation-mode/calculation-mode.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="factory/b-spline-model/b-spline-model.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="factory/price-type/price-type.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="factory/search-mode/search-mode.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+
+  <script src="factory/calculated-curve/calculated-curve.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="factory/notification-bar/notification-bar.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="factory/http-interceptor/http-interceptor.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="factory/exception-handler/exception-handler.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="factory/nprogress/nprogress.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="factory/user/user.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+
+  <script src="factory/auto-suggest-service/auto-suggest-service.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="factory/curve-service/curve-service.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="factory/search-service/search-service.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="factory/calculation-service/calculation-service.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+  <script src="factory/client-service/client-service.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+
+  <script src="factory/random/random.js" data-build="appjs" data-test="appjs" onload="NovaLoadingScreen.incr(1)"></script>
+</body>
+</html>
