@@ -1,0 +1,159 @@
+﻿#teachers {			
+	widget-box {
+		.widget-box {
+			.box-content {
+				.rows {
+					.row {	
+						.col {
+							&.col-id { width: 80px;; }
+
+							&.col-name { width: calc(~'100% - 400px'); }
+
+							&.col-nickname { width: 125px; }
+
+							&.col-phone { width: 95px; }
+
+							&.col-status { width: 25px; }
+
+							&.col-view { width: 25px; }
+
+							&.col-view-calendar { width: 25px; display: none; }
+
+							&:nth-child(6) { margin-right: 0px; }							
+						}	
+					}										
+				}							
+
+				.pagination {
+					ul {
+						li {
+							span {
+								&.btn-prev, 
+								&.btn-next {
+									color: @teacherThemeColor;
+
+									&:hover { color: @teacherThemeColor; }
+								}
+
+								&.seperator {
+									color: @teacherThemeColor;
+
+									&:hover { color: @teacherThemeColor; }
+								}
+							}											
+						}
+					}
+				}
+			}
+		}		
+
+		&.header {
+			font-weight: bold;
+		}
+
+		&.content {
+			.box-content {
+				.rows {
+					.row {
+						.col {
+							&.col-status { 
+								&.status-1 { color: #C2E3A0; }
+								&.status-2 { color: #C8C8C8; }
+								&.status-4 { color: #EAA079; }
+							}
+
+							&.col-view,
+							&.col-view > a,
+							&.col-view-calendar { 
+								color: @teacherThemeColor;
+
+								i:hover { 
+									color: @teacherThemeColor2;
+									cursor: pointer; 
+								} 
+						 	}
+						}
+
+						&:hover { background-color: #ECF5F4; }
+					}
+				}
+			}
+		}
+	}
+
+	widget-dialog-box {
+		.widget-dialog-box {
+			.dialog-box-content {												
+				> .wrapper {
+					margin: 0 auto;
+					width: 460px;				
+
+					> h4 {
+						color: @teacherThemeColor;
+						font-family: inherit;
+						font-size: @fontSizeL;
+						margin: 10px 0;
+
+						&:first-child {
+							margin-top: 0;
+						}
+
+						&:hover {
+							cursor: default;
+						}
+					}
+
+					.rows {
+						color: #636363;
+						font-family: inherit;
+						width: inherit;
+																	
+						.row {
+							color: inherit;
+							font-family: inherit;
+							font-size: inherit;
+							margin-bottom: 5px;
+							width: inherit;							
+
+							.col {
+								color: inherit;
+								float: left;
+								font-family: inherit;
+								font-size: inherit;
+								width: inherit;
+
+								&.col-label {									
+									margin-right: 20px;
+									padding: 10px 0;
+									text-align: right;
+									width: 100px;
+
+									.required {
+										color: @teacherThemeColor;
+									}									
+								}
+
+								&.col-value {
+									width: calc(~'100% - 146px');
+
+									label {
+										display: block;
+										color: @teacherThemeColor;
+										font-size: @fontSizeS;
+										font-style: italic;
+										margin: 7px 0;
+										padding: 0;
+									}
+								}
+							}
+
+							&:last-child {
+								margin-bottom: 0;	
+							}
+						}
+					}					
+				}					
+			}
+		}
+	}
+}

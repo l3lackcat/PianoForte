@@ -1,21 +1,37 @@
 <!doctype html>
 <html ng-app="pianoforte">
 <head>
-  <title>PianoForte</title>
+	<title>PianoForte</title>
 </head>
 <body>
-  <div>Hello World - Golffyyyyyy</div>
+	<div id="container">
+			<div id="header">
+				<div class="logo"></div>
+			</div>
+			<div id="content">
+				<div id="left-col">
+					<input type="text" id="txt-search-all" placeholder="search here..." />
+					<widget-left-menu data-default-menu="teachers"></widget-left-menu>  
+				</div>
+				<div id="content-col">
+					<div class="wrapper" ng-view></div>
+				</div>
+				<div class="clear-fix"></div>
+			</div>
+	</div>
 
-  <!-- app.css -->
-  <link rel="stylesheet" href="app.css" data-build="remove">
+	<!-- app.css -->
+	<link rel="stylesheet" href="app.css" data-build="remove">
 
-  <!-- lib.js -->
-  <script src="bower_components/accounting/accounting.js" data-build="libjs"></script>
-  <script src="bower_components/angular/angular.js" data-build="libjs"></script>
-  <script src="bower_components/momentjs/moment.js" data-build="libjs"></script>
-  <script src="bower_components/underscore/underscore.js" data-build="libjs"></script>
+	<!-- lib.js -->
+	<script src="bower_components/accounting/accounting.js" data-build="libjs"></script>
+	<script src="bower_components/angular/angular.js" data-build="libjs"></script>
+	<script src="bower_components/angular-route/angular-route.js" data-build="libjs"></script>
+	<script src="bower_components/momentjs/moment.js" data-build="libjs"></script>
+	<script src="bower_components/underscore/underscore.js" data-build="libjs"></script>
 
-  <!-- app.js -->
-  <script src="app.js" data-build="appjs"></script>
+	<!-- app.js -->
+	<script src="app.js" data-build="appjs"></script>
+	<script src="directives/left-nav/left-nav.js" data-build="appjs"></script>
 </body>
 </html>

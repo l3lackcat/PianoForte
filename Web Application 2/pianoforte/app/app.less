@@ -1,3 +1,28 @@
-body {
-	background-color: #f00;
+@import 'directives/left-nav/left-nav.less';
+
+@import 'less/config.less';
+@import 'less/font.less';
+@import 'less/mixins.less';
+@import 'less/reset.less';
+
+@import 'less/layouts/about.less';
+@import 'less/layouts/content.less';
+@import 'less/layouts/content-col.less';
+@import 'less/layouts/header.less';
+@import 'less/layouts/left-col.less';
+@import 'less/layouts/main.less';
+
+@import 'less/teachers/main.less';
+
+body, html {
+	height: 100%;
+	font-family: @baseFontFamily;
+}
+
+#container {
+	width: @containerWidth;
+	height: 100%;
+	margin: 0 auto;	
+	background-color: #4E4C48;	
+	font-family: inherit;	
 }

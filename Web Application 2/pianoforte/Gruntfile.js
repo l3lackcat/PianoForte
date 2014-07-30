@@ -65,7 +65,7 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            src: ['<%= meta.app %>/**', '!<%= meta.bower_components %>/**', 'app.json'],
+            src: ['<%= meta.app %>/**', '!<%= meta.bower_components %>/**'],
             dest: '<%= meta.dist %>/',
             filter: 'isFile'
           }, {
@@ -91,20 +91,19 @@ module.exports = function(grunt) {
         ]
       },
       dist: {
-        files: [
+        files: [ 
           {
-            src: 'app.json',
-            dest: '<%= meta.dist %>/app.json'
-          }, {
             expand: true,
             cwd: '<%= meta.server %>/',
             src: ['**', '!server.js'],
             dest: '<%= meta.dist %>/',
             filter: 'isFile'
-          }, {
+          }, 
+          {
             src: ['<%= meta.server %>/server.js'],
             dest: '<%= meta.dist %>/app.js'
-          }, {
+          }, 
+          {
             expand: true,
             src: '<%= meta.staticfolders %>',
             dest: '<%= meta.dist %>/'
@@ -200,14 +199,20 @@ module.exports = function(grunt) {
     	}
     },
 
-    watch: {
+    watch: {        
       css: {
         files: ['<%= meta.app %>/**/*.less'],
-        tasks: ['buildcss']
+        tasks: ['buildcss'],
+        options: {
+          livereload: true,
+        }
       },
       other: {
         files: ['<%= meta.app %>/**', '<%= meta.server %>/**', '!<%= meta.app %>/**/*.less'],
-        tasks: ['check', 'copy:dev']
+        tasks: ['copy:dev'],
+        options: {
+          livereload: true,
+        }
       }
     }
   });

@@ -1,0 +1,59 @@
+//
+// Mixins
+// --------------------------------------------------
+
+.user-select(@properties) {
+  -webkit-user-select: @properties;
+   -khtml-user-select: @properties;
+     -moz-user-select: @properties;
+       -o-user-select: @properties;
+          user-select: @properties;
+}
+
+.border-radius(@radius) {
+  -webkit-border-radius: @radius;
+     -moz-border-radius: @radius;
+          border-radius: @radius;
+}
+
+.border-top-left-radius(@radius) {
+  -webkit-border-top-left-radius: @radius;
+     -moz-border-top-left-radius: @radius;
+          border-top-left-radius: @radius;
+}
+
+.border-top-right-radius(@radius) {
+  -webkit-border-top-right-radius: @radius;
+     -moz-border-top-right-radius: @radius;
+          border-top-right-radius: @radius;
+}
+
+.box-shadow(@properties) {
+  -webkit-box-shadow: @properties;
+     -moz-box-shadow: @properties;
+          box-shadow: @properties;
+}
+
+.transition(@properties) {
+  -webkit-transition: @properties;
+     -moz-transition: @properties;
+       -o-transition: @properties;
+          transition: @properties;
+  -webkit-backface-visibility: hidden;
+}
+
+.display() {
+	display: -moz-box;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+}
+
+.box-align(@properties) {
+  -webkit-box-align: @properties;
+     -moz-box-align: @properties;          
+	 -ms-flex-align: @properties;
+-webkit-align-items: @properties;
+        align-items: @properties;
+}

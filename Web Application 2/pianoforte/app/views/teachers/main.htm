@@ -1,0 +1,82 @@
+﻿<div id="teachers" class="layout-main" ng-controller="Teachers.MainController" ng-init="initialize()">
+    <widget-tabs>        
+        <widget-pane data-title="Main">
+            <div class="tube width-100-percent no-margin-bottom">
+                <div class="tube width-40-percent">
+                    <widget-box class="no-margin-bottom">                    
+                        <ul class="widget-breadcrumb">
+                            <li>Teachers</li>
+                            <li class="seperator">&gt;</li>
+                            <li>Main</li>
+                        </ul>
+                    </widget-box>
+                </div>
+                <div class="tube width-60-percent">
+                    <div class="tube width-30-percent">
+                        <widget-select 
+                            data-items="filter.dropdownList"                        
+                            data-selected-item-id="filter.dropdownSelectedId"
+                            data-show-max-items="5"
+                            data-placeholder="Please select..."
+                            data-theme="theme-teacher"></widget-select>
+                    </div>
+                    <div class="tube width-40-percent">
+                        <widget-search-box data-is-filter-box="true" data-text="filter.text" data-placeholder="Search..."></widget-search-box>
+                    </div>
+                    <div class="tube width-30-percent">
+                        <widget-button data-text="Add" data-on-click="onInsertNewTeacher()"></widget-button>
+                    </div>
+                </div>
+            </div>
+            <div class="clear-fix"></div>
+            <div class="tube width-100-percent no-margin-bottom">
+                <widget-box class="header no-padding-right no-padding-left">
+                    <div class="rows">
+                        <div class="row">
+                            <div class="col col-id align-center">ID</div>
+                            <div class="col col-name">Name</div>
+                            <div class="col col-nickname align-center">Nickname</div>
+                            <div class="col col-phone">Tel.</div>
+                            <div class="col col-status">&nbsp;</div>
+                            <div class="col col-view">&nbsp;</div>
+                            <div class="col col-view-calendar">&nbsp;</div>
+                            <div class="clear-fix"></div>
+                        </div>
+                    </div>
+                </widget-box>
+            </div> 
+            <div class="tube width-100-percent no-margin-bottom fix-height">
+                <widget-box class="content no-margin-bottom no-padding-top no-padding-bottom no-padding-right no-padding-left">
+                    <div class="rows">
+                        <div class="row" ng-repeat="teacher in filter.result | orderBy:'id' | startFrom:(currentPage-1)*showPerPage | limitTo:showPerPage">
+                            <div class="col col-id align-center">{{teacher.id}}</div>
+                            <div class="col col-name">{{teacher.name}}</div>
+                            <div class="col col-nickname align-center">{{teacher.nickname}}</div>
+                            <div class="col col-phone">{{FormatManager.formatPhoneNumber(teacher.phoneNumber)}}</div>
+                            <div class="col col-status align-center status-{{teacher.status}}" title="{{EnumConverter.Status.toString(teacher.status)}}"><i class="fa fa-circle"></i></div>
+                            <div class="col col-view align-center" title="View"><a href="#/teachers/{{teacher.id}}"><i class="fa fa-th-list"></i></a></div>
+                            <div class="col col-view-calendar align-center" title="Calendar"><i class="fa fa-calendar"></i></div>
+                            <div class="clear-fix"></div>
+                        </div>
+                    </div> 
+                    <div class="pagination">
+                        <ul>
+                            <li ng-show="pageNumbers.length > 1">
+                                <span class="btn-prev" ng-click="goToPrevPage(pageNumber)" title="Previous">&#9664;</span>
+                            </li>
+                            <li ng-repeat="pageNumber in pageNumbers" ng-switch on="!$last">
+                                <span class="{{pageNumber.className}}" ng-click="goToPage(pageNumber.index)">{{pageNumber.index}}</span>
+                                <span class="seperator" ng-switch-when="true">.</span>
+                            </li>
+                            <li ng-show="pageNumbers.length > 1">
+                                <span class="btn-next" ng-click="goToNextPage(pageNumber)" title="Next">&#9654;</span>
+                            </li>
+                        </ul>
+                    </div>                      
+                </widget-box>
+            </div>            
+        </widget-pane>
+    </widget-tabs>
+
+    <teacher-register></teacher-register>    
+</div>

@@ -1,0 +1,12 @@
+﻿<div class="widget-left-nav">
+	<ul class="nav">
+		<li ng-repeat="item in menuItems" class="menu-item {{item.className}}">
+			<a href="{{item.link}}" ng-click="select(item.name)">
+				<div>
+					<div class="icon"></div>
+					<div class="text">{{item.text}}</div>
+				</div>
+			</a>
+		</li>
+	</ul>
+</div>

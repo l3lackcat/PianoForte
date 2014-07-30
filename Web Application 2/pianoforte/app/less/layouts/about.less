@@ -1,0 +1,110 @@
+﻿.layout-about {
+	font-size: @fontSizeM;
+	height: inherit;
+
+	widget-tabs {
+		height: inherit;
+	}
+
+	.tube {
+		float: left;
+		font-family: inherit;
+		margin: 0 6px 12px 6px;
+
+		.widget-button {
+			font-family: @baseFontFamily;
+			font-size: inherit;
+		}
+
+		.widget-select {
+			color: #636363;
+			font-size: inherit;
+		}
+
+		.widget-search-box {
+			color: #636363;
+			font-size: inherit;
+		}
+
+		&.width-15-percent { 			
+			width: calc(~'15% - 12px'); 
+
+			&:first-child { width: calc(~'15% - 6px'); }
+			&:last-child { width: calc(~'15% - 6px'); }
+		}
+
+		&.width-50-percent {
+			width: calc(~'50% - 12px');						
+
+			&:first-child { width: calc(~'50% - 6px'); }
+			&:last-child { width: calc(~'50% - 6px'); }			
+		}
+
+		&.width-85-percent { 
+			width: calc(~'85% - 12px'); 
+
+			&:first-child { width: calc(~'85% - 6px'); }
+			&:last-child { width: calc(~'85% - 6px'); }
+		}
+
+		&:first-child { margin: 0 6px 12px 0; }
+		&:last-child { margin: 0 0 0 6px; }
+
+		&.width-100-percent { 
+			width: 100%;
+			margin-left: 0;
+			margin-right: 0; 
+		}
+
+		&.no-margin-top { margin-top: 0; }
+		&.no-margin-left { margin-left: 0; }
+		&.no-margin-right { margin-right: 0; }
+		&.no-margin-bottom { margin-bottom: 0; }	
+	}
+
+	widget-box {
+		.widget-box {
+			margin-bottom: 12px;
+
+			.box-header {
+				color: #636363;
+			}
+
+			.box-content {
+				.rows {
+					color: #636363;
+					font-family: inherit;
+
+					.row {
+						color: inherit;
+						font-family: inherit;
+						font-size: inherit;
+						padding: 10px 0;					
+
+						.col {							
+							float: left;													
+
+							&.col-label {									
+								margin-right: 5px;
+								text-align: right;
+								width: 125px;
+							}
+
+							&.col-value {
+								width: calc(~'100% - 130px');
+							}
+						}
+
+						&.no-data { 
+							text-align: center; 
+						}
+
+						&:last-child {
+							margin-bottom: 0;	
+						}
+					}
+				}
+			}
+		}			
+	}
+}
