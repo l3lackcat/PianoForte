@@ -4,11 +4,11 @@
 	'$scope',
 	'$rootScope',
 	'filterFilter',
-	'TeacherService',
+	// 'TeacherService',
 	'Enum',
 	'EnumConverter',
 	'FormatManager',
-	function ($scope, $rootScope, filterFilter, TeacherService, Enum, EnumConverter, FormatManager) {
+	function ($scope, $rootScope, filterFilter, Enum, EnumConverter, FormatManager) {
 		$scope.enumConverter = EnumConverter;
 		$scope.formatManager = FormatManager;
 
@@ -30,7 +30,7 @@
 		$scope.initialize = function () {
 			$rootScope.$broadcast('SelectMenuItem', 'teachers');
 
-			TeacherService.getTeacherList(onSuccessReceiveTeacherList, onErrorReceiveTeacherList);
+			// TeacherService.getTeacherList(onSuccessReceiveTeacherList, onErrorReceiveTeacherList);
 		};
 
 		$scope.goToPage = function (pageNumbers) {

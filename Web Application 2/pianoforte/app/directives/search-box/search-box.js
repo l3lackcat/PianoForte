@@ -29,7 +29,7 @@
 
                 var searchIconElement = $element[0].children[0].children[2];
                 if (searchIconElement !== undefined) {
-                    searchIconElement.style.top = ((inputElement.clientHeight - searchIconElement.clientHeight) / 2) + 'px';    
+                    searchIconElement.style.top = ((inputElement.clientHeight - searchIconElement.clientHeight) / 2) + 'px';
                 }
             }
         };
@@ -45,11 +45,11 @@
         scope: {
             disabled: '=',
             isFilterBox: '=',
-            placeholder: '@'
+            placeholder: '@',
             text: '=',
             width: '='
         },
-        link: function (scope) {
+        link: function (scope, element, attrs) {
             scope.initialize();
         }
     };

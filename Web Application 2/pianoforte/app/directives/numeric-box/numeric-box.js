@@ -3,7 +3,7 @@
 .controller('Widgets.NumericBoxController', [
     '$scope',
     '$element',
-    'FormatManager' 
+    'FormatManager',
     function ($scope, $element, FormatManager) {
         var hasSetFirstText = false;
 
@@ -91,7 +91,7 @@
     }
 ])
 
-.directive('widgetBox', function () {
+.directive('widgetNumericBox', function () {
     return {
         restrict: 'E',
         controller: 'Widgets.NumericBoxController',
@@ -104,7 +104,7 @@
             text: '=',
             width: '='
         },
-        link: function (scope) {
+        link: function (scope, element, attrs) {
             scope.initialize();
         }       
     };

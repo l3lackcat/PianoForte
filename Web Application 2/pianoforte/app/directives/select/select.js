@@ -61,7 +61,7 @@
         };
 
         $scope.hideDropdown = function () {
-            var dropdown = $scope['dropdown'];
+            var dropdown = $scope.dropdown;
             if (dropdown !== null) {
                 if (dropdown.visible === true) {
                     dropdown.visible = false;
@@ -100,16 +100,15 @@
         });
 
         this.setDropdown = function(dropdown) {
-            var dropdown = $scope['dropdown'];
-            if (dropdown === null) {
-                dropdown = dropdown;
-                dropdown.filterable = $scope.filterable;
-                dropdown.items = $scope.items;
-                dropdown.maximumDisplayedItems = $scope.maximumDisplayedItems;
-                dropdown.visible = false;
+            if ($scope.dropdown === null) {
+                $scope.dropdown = dropdown;
+                $scope.dropdown.filterable = $scope.filterable;
+                $scope.dropdown.items = $scope.items;
+                $scope.dropdown.maximumDisplayedItems = $scope.maximumDisplayedItems;
+                $scope.dropdown.visible = false;
 
-                dropdown.setTheme($scope.theme);
-                dropdown.updateHeight();          
+                $scope.dropdown.setTheme($scope.theme);
+                $scope.dropdown.updateHeight();          
             }
         };
 
@@ -173,7 +172,7 @@
     }
 ])
 
-.directive('widgetBox', function () {
+.directive('widgetSelect', function () {
     return {
         restrict: 'E',
         controller: 'Widgets.SelectController',
@@ -190,7 +189,7 @@
             theme: '@',
             width: '='
         },
-        link: function (scope) {
+        link: function (scope, element, attrs) {
             scope.initialize();
         }
     };

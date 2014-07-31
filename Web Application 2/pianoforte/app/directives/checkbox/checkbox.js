@@ -34,11 +34,11 @@
     }
 ])
 
-.directive('widgetBox', function () {
+.directive('widgetCheckbox', function () {
     return {
         restrict: 'E',
         controller: 'Widgets.CheckboxController',
-        templateUrl: 'directives/box/box.htm',
+        templateUrl: 'directives/checkbox/checkbox.htm',
         replace: true,
         scope: {
             checked: '=',
@@ -46,7 +46,7 @@
             onChanged: '&',
             label: '@'
         },
-        link: function (scope) {
+        link: function (scope, element, attrs) {
             scope.initialize();
         }
     };

@@ -31,7 +31,7 @@
     }
 ])
 
-.directive('widgetBox', function () {
+.directive('widgetTextBox', function () {
     return {
         restrict: 'E',
         controller: 'Widgets.TextBoxController',
@@ -43,7 +43,7 @@
             text: '=',
             width: '='
         },
-        link: function (scope) {
+        link: function (scope, element, attrs) {
             scope.initialize();
         }
     };

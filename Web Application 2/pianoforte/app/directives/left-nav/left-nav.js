@@ -67,7 +67,7 @@
 	}
 ])
 
-.directive('widgetLeftMenu', function () {
+.directive('widgetLeftNav', function () {
 	return {
 		restrict: 'E',
 		controller: 'Widgets.LeftMenuController',
@@ -76,7 +76,7 @@
 		scope: {
 			defaultMenu: '@'
 		},
-		link: function (scope) {
+		link: function (scope, element, attrs) {
 			scope.initialize();
 		}		
 	};

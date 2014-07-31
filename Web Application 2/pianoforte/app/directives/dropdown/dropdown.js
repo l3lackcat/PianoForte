@@ -73,8 +73,8 @@
         templateUrl: 'directives/dropdown/dropdown.htm',
         replace: true,
         scope: {},
-        link: function (scope) {
-            scope.initialize();
+        link: function (scope, element, attrs, selectCtrl) {
+            scope.initialize(selectCtrl);
         }
     };
 });

@@ -2,7 +2,7 @@
 
 .controller('Widgets.BoxController', [
     '$scope',
-    function () {
+    function ($scope) {
         $scope.getHeaderVisibility = function () {
             var isVisible = true;
 
@@ -25,13 +25,11 @@
         controller: 'Widgets.BoxController',
         templateUrl: 'directives/box/box.htm',
         replace: true,
+        transclude: true,
         scope: {
             title: '@',
             editable: '=',
             edit: '&'
-        },
-        link: function (scope) {
-            scope.initialize();
         }
     };
 });

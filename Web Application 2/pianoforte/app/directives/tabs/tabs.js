@@ -32,4 +32,20 @@
         transclude: true,
         scope: {}
     };
+})
+
+.directive('widgetPane', function () {
+    return {
+        require: '^widgetTabs',
+        restrict: 'E',        
+        // replace: true,
+        transclude: true,
+        scope: {
+            title: '@'
+        },
+        link: function (scope, element, attrs, tabsCtrl) {
+            tabsCtrl.addPane(scope);
+        },
+        templateUrl: 'directives/tabs/pane.htm'
+    };
 });

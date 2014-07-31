@@ -33,7 +33,7 @@
             type: '=',
             width: '='
         },
-        link: function (scope) {
+        link: function (scope, element, attrs) {
             scope.initialize();
         }       
     };

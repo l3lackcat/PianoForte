@@ -44,7 +44,7 @@
     }
 ])
 
-.directive('widgetBox', function () {
+.directive('widgetDialogBox', function () {
     return {
         restrict: 'E',
         controller: 'Widgets.DialogBoxController',
@@ -59,7 +59,7 @@
             close: '&',
             visible: '='
         },
-        link: function (scope) {
+        link: function (scope, element, attrs) {
             scope.initialize();
         }
     };
