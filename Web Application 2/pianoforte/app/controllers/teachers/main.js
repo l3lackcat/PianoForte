@@ -105,4 +105,5 @@
 		var onErrorReceiveTeacherList = function (data, status, headers, config) {
 			console.log('onErrorReceiveTeacherList');
 		};
-	}]);
+	}
+]);

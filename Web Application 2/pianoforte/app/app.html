@@ -5,19 +5,19 @@
 </head>
 <body>
 	<div id="container">
-			<div id="header">
-				<div class="logo"></div>
+		<div id="header">
+			<div class="logo"></div>
+		</div>
+		<div id="content">
+			<div id="left-col">
+				<input type="text" id="txt-search-all" placeholder="search here..." />
+				<widget-left-menu data-default-menu="teachers"></widget-left-menu>  
 			</div>
-			<div id="content">
-				<div id="left-col">
-					<input type="text" id="txt-search-all" placeholder="search here..." />
-					<widget-left-menu data-default-menu="teachers"></widget-left-menu>  
-				</div>
-				<div id="content-col">
-					<div class="wrapper" ng-view></div>
-				</div>
-				<div class="clear-fix"></div>
+			<div id="content-col">
+				<div class="wrapper" ng-view></div>
 			</div>
+			<div class="clear-fix"></div>
+		</div>
 	</div>
 
 	<!-- app.css -->
@@ -32,6 +32,28 @@
 
 	<!-- app.js -->
 	<script src="app.js" data-build="appjs"></script>
+
+	<script src="controllers/teachers/main.js" data-build="appjs"></script>
+
+	<script src="directives/box/box.js" data-build="appjs"></script>
+	<script src="directives/button/button.js" data-build="appjs"></script>
+	<script src="directives/checkbox/checkbox.js" data-build="appjs"></script>
+	<script src="directives/dialog-box/dialog-box.js" data-build="appjs"></script>
+	<script src="directives/dropdown/dropdown.js" data-build="appjs"></script>
 	<script src="directives/left-nav/left-nav.js" data-build="appjs"></script>
+	<script src="directives/numeric-box/numeric-box.js" data-build="appjs"></script>
+	<script src="directives/pane/pane.js" data-build="appjs"></script>
+	<script src="directives/phone-box/phone-box.js" data-build="appjs"></script>	
+	<script src="directives/search-box/search-box.js" data-build="appjs"></script>	
+	<script src="directives/select/select.js" data-build="appjs"></script>	
+	<script src="directives/tabs/tabs.js" data-build="appjs"></script>	
+	<script src="directives/text-box/text-box.js" data-build="appjs"></script>	
+
+	<script src="factory/convert-manager.js" data-build="appjs"></script>
+	<script src="factory/enum.js" data-build="appjs"></script>
+	<script src="factory/enum-converter.js" data-build="appjs"></script>
+	<script src="factory/format-manager.js" data-build="appjs"></script>
+	<script src="factory/location-manager.js" data-build="appjs"></script>
+	<script src="factory/validation-manager.js" data-build="appjs"></script>
 </body>
 </html>

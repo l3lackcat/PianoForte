@@ -1,0 +1,102 @@
+﻿.widget-select {
+	position: relative;
+	width: 100%;
+
+	.btn-toggle {
+		background-color: #FFF;
+		border: 0;
+		color: inherit;
+		font-family: inherit;
+		font-size: inherit;
+		margin: 0;
+		padding: 8px 5px;
+		width: calc(~'100% - 10px');
+
+		.text {
+			background-color: transparent;	
+			display: inline-block;
+			float: left;
+			overflow: hidden;
+			padding: 2px 0;
+			text-align: left;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+
+			&.placeholder {
+				color: #A9A9A9;
+				font-style: italic;
+			}
+		}
+
+		.caret {
+			background-color: transparent;
+			display: inline-block;
+			float: right;
+			padding: 2px 0 2px 5px;		
+		}
+
+		&:hover {
+			cursor: pointer;
+		}
+
+		&.disabled {
+			background-color: transparent;
+			cursor: default;
+		}
+	}
+}
+
+#book,
+#books {
+	.widget-select {
+		> .btn-toggle {
+			.caret {
+				color: @bookThemeColor;
+			}	
+		}
+	}
+}
+
+#cd,
+#cds {
+	.widget-select {
+		> .btn-toggle {
+			.caret {
+				color: @cdThemeColor;
+			}	
+		}
+	}
+}
+
+#course,
+#courses {
+	.widget-select {
+		> .btn-toggle {
+			.caret {
+				color: @courseThemeColor;
+			}	
+		}
+	}
+}
+
+#student,
+#students {
+	.widget-select {
+		> .btn-toggle {
+			.caret {
+				color: @studentThemeColor;
+			}	
+		}
+	}
+}
+
+#teacher,
+#teachers {
+	.widget-select {
+		> .btn-toggle {
+			.caret {
+				color: @teacherThemeColor;
+			}	
+		}
+	}
+}

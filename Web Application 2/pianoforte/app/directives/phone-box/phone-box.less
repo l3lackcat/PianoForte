@@ -1,0 +1,138 @@
+﻿.widget-phone-box {
+	> .wrapper {
+		font-family: inherit;
+		font-size: inherit;
+		position: relative;
+
+		> input[type="text"] {
+			background-color: #FFF;
+			border: 0;
+			border-bottom: 1px solid transparent;
+			color: inherit;
+			font-family: inherit;
+			font-size: inherit;
+			margin: 0;
+			padding: 9px 20px 8px 5px;
+			width: calc(~'100% - 25px');
+				
+			&::-webkit-input-placeholder {
+				font-style: italic;
+			}
+										
+			&:disabled { 
+				background-color: transparent; 
+			}
+		}
+
+		> .btn-reset-text {	
+			background-color: transparent;
+			border: 0;
+			display: inline-block;
+			height: 14px;
+			margin: 0;
+			padding: 0;
+			position: absolute;
+			right: 5px;
+			width: 11px;
+
+			&:hover {
+				cursor: pointer;
+			}
+		}
+	}	
+}
+
+#book,
+#books {
+	.widget-phone-box {
+		> .wrapper {
+			> input[type="text"] {
+				&:focus { border-bottom-color: @bookThemeColor; }
+				&:hover { border-bottom-color: @bookThemeColor; }
+				&:disabled { border-bottom-color: transparent; }
+			}
+
+			> .btn-reset-text {
+				color: @bookThemeColor;
+
+				&:hover { color: @bookThemeColor2; }
+			}	
+		}
+	}
+} 
+
+#cd,
+#cds {
+	.widget-phone-box {
+		> .wrapper {
+			> input[type="text"] {
+				&:focus { border-bottom-color: @cdThemeColor; }
+				&:hover { border-bottom-color: @cdThemeColor; }
+				&:disabled { border-bottom-color: transparent; }
+			}
+
+			> .btn-reset-text {
+				color: @cdThemeColor;
+
+				&:hover { color: @cdThemeColor2; }
+			}	
+		}
+	}
+} 
+
+#course,
+#courses {
+	.widget-phone-box {
+		> .wrapper {
+			> input[type="text"] {
+				&:focus { border-bottom-color: @courseThemeColor; }
+				&:hover { border-bottom-color: @courseThemeColor; }
+				&:disabled { border-bottom-color: transparent; }
+			}
+
+			> .btn-reset-text {
+				color: @courseThemeColor;
+
+				&:hover { color: @courseThemeColor2; }
+			}	
+		}
+	}
+} 
+
+#student,
+#students {
+	.widget-phone-box {
+		> .wrapper {
+			> input[type="text"] {
+				&:focus { border-bottom-color: @studentThemeColor; }
+				&:hover { border-bottom-color: @studentThemeColor; }
+				&:disabled { border-bottom-color: transparent; }
+			}
+
+			> .btn-reset-text {
+				color: @studentThemeColor;
+
+				&:hover { color: @studentThemeColor2; }
+			}	
+		}
+	}
+}
+
+#teacher,
+#teachers {
+	.widget-phone-box {
+		> .wrapper {
+			> input[type="text"] {
+				&:focus { border-bottom-color: @teacherThemeColor; }
+				&:hover { border-bottom-color: @teacherThemeColor; }
+				&:disabled { border-bottom-color: transparent; }
+			}
+
+			> .btn-reset-text {
+				color: @teacherThemeColor;
+
+				&:hover { color: @teacherThemeColor2; }
+			}	
+		}
+	}
+} 

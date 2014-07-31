@@ -1,0 +1,87 @@
+﻿.widget-dialog-box {
+	> .wrapper {
+		font-family: inherit;
+		width: 620px;
+		position: relative;
+		margin: 160px auto auto auto;
+		padding: 0;
+		background-color: #EBEAE8;
+
+		.dialog-box-header {
+			color: #EDECEA;
+			font-family: inherit;
+			font-size: @fontSizeL;
+			padding: 25px;
+
+			span {
+				&:hover {
+					cursor: default;
+				}
+			}
+
+			.dialog-close {
+				background-color: transparent;
+				border: 0;
+				color: #D9E2DF;
+				height: 14px;
+				margin: 0;
+				position: absolute;
+				right: 15px;
+				top: 10px;
+				width: 11px;
+
+				&:hover {
+					cursor: pointer;
+				}
+			}
+		}
+
+		.dialog-box-content {
+			font-family: inherit;
+			padding: 25px 25px 0 25px;
+			overflow-y: auto;
+			// To be fixed
+		}
+
+		.dialog-box-footer {
+			font-family: inherit;
+			padding: 20px 25px 25px 25px;
+			text-align: right;
+		}
+	}
+}
+
+#book,
+#books {
+	.widget-dialog-box {
+		.dialog-box-header { background-color: @bookThemeColor; }
+	}
+}
+
+#cd,
+#cds {
+	.widget-dialog-box {
+		.dialog-box-header { background-color: @cdThemeColor; }
+	}
+}
+
+#course,
+#courses {
+	.widget-dialog-box {
+		.dialog-box-header { background-color: @courseThemeColor; }
+	}
+}
+
+#student,
+#students {
+	.widget-dialog-box {
+		.dialog-box-header { background-color: @studentThemeColor; }
+	}
+}
+
+#teacher,
+#teachers {
+	.widget-dialog-box {
+		.dialog-box-header { background-color: @teacherThemeColor; }
+	}
+}

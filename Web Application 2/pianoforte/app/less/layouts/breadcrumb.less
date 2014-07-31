@@ -1,0 +1,64 @@
+﻿.widget-breadcrumb {
+	font-family: inherit;
+
+	li { 
+		display: inline-block;
+		font-family: inherit;
+
+		a {
+			font-family: inherit;
+			text-decoration: none;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	&:hover { cursor: default; }
+}
+
+#book,
+#books {
+	.widget-breadcrumb li { 
+		color: @bookThemeColor; 
+
+		a { color: @bookThemeColor; }
+	}
+}
+
+#cd,
+#cds {
+	.widget-breadcrumb li { 
+		color: @cdThemeColor; 
+
+		a { color: @cdThemeColor; }
+	}
+}
+
+#course,
+#courses {
+	.widget-breadcrumb li { 
+		color: @courseThemeColor; 
+
+		a { color: @courseThemeColor; }
+	}
+}
+
+#student,
+#students {
+	.widget-breadcrumb li { 
+		color: @studentThemeColor; 
+
+		a { color: @studentThemeColor; }
+	}
+}
+
+#teacher,
+#teachers {
+	.widget-breadcrumb li { 
+		color: @teacherThemeColor;
+
+		a { color: @teacherThemeColor; }
+	}
+}

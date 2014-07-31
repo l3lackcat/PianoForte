@@ -1,0 +1,117 @@
+﻿.widget-box {
+	font-family: inherit;
+	padding-left: 17px;
+	width: calc(~'100% - 17px');
+
+	.wrapper {
+		font-family: inherit;				
+		width: auto;
+
+		.box-header {
+			background-color: #FFF;
+			font-family: inherit;
+			font-size: @fontSizeL;
+			margin-bottom: 2px;
+			padding: 10px;
+			position: relative;
+			width: auto;
+
+			button {
+				border: 0;
+				color: #FEFEFE;
+				font-family: inherit;
+				font-size: @fontSizeS;
+				margin: 0;
+				padding: 3px 5px;
+
+				&:hover {
+					cursor: pointer;
+				}
+
+				&.btn-edit {
+					bottom: 0;
+					position: absolute;
+					right: 5px;
+					.border-top-left-radius(3px);
+					.border-top-right-radius(3px);
+				}
+			}
+
+			&:hover {
+				cursor: default;
+			}
+		}
+
+		.box-content {
+			background-color: #FFF;
+			font-family: inherit;
+			padding: 10px;
+			width: auto;
+		}
+	}
+}
+
+#book,
+#books {
+	.widget-box {
+		background-color: @bookThemeColor;
+
+		.box-header {
+			button {
+				background-color: @bookThemeColor;
+			}
+		}
+	}
+}
+
+#cd,
+#cds {
+	.widget-box {
+		background-color: @cdThemeColor;
+
+		.box-header {
+			button {
+				background-color: @cdThemeColor;
+			}
+		}
+	}
+}
+
+#course,
+#courses {
+	.widget-box {
+		background-color: @courseThemeColor;
+
+		.box-header {
+			button {
+				background-color: @courseThemeColor;
+			}
+		}
+	}
+}
+
+#student,
+#students {
+	.widget-box {
+		background-color: @studentThemeColor;
+
+		.box-header {
+			button {
+				background-color: @studentThemeColor;
+			}
+		}
+	}
+}
+
+#teacher,
+#teachers {
+	.widget-box {
+		background-color: @teacherThemeColor;
+
+		.box-header {
+			button {
+				background-color: @teacherThemeColor;
+			}
+		}
+	}
+}
