@@ -1,0 +1,172 @@
+﻿.general-info-editor {
+	.dialog-box-content {												
+		> .wrapper {
+			margin: 0 auto;
+			width: 460px;				
+
+			> h4 {
+				font-family: inherit;
+				font-size: @fontSizeL;
+				margin: 10px 0;
+
+				&:first-child { margin-top: 0; }
+
+				&:hover { cursor: default; }
+			}
+
+			.rows {
+				color: #636363;
+				font-family: inherit;
+				width: inherit;
+															
+				.row {
+					color: inherit;
+					font-family: inherit;
+					font-size: inherit;
+					margin-bottom: 5px;
+					width: inherit;							
+
+					.col {
+						color: inherit;
+						float: left;
+						font-family: inherit;
+						font-size: inherit;
+						width: inherit;
+
+						&.col-label {									
+							margin-right: 20px;
+							padding: 10px 0;
+							text-align: right;
+							width: 125px;									
+						}
+
+						&.col-value {
+							width: calc(~'100% - 171px');
+
+							label {
+								display: block;
+								font-size: @fontSizeS;
+								font-style: italic;
+								margin: 7px 0;
+								padding: 0;
+							}
+						}
+					}
+
+					&:last-child { margin-bottom: 0; }
+				}
+			}					
+		}					
+	}
+
+	&.theme-book {
+		.dialog-box-content {
+			> .wrapper {
+				> h4 { color: @bookThemeColor; }
+
+				.rows {
+					.row {
+						.col {
+							&.col-label {									
+								.required { color: @bookThemeColor; }
+							}
+
+							&.col-value {
+								label { color: @bookThemeColor; }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	&.theme-cd {
+		.dialog-box-content {
+			> .wrapper {
+				> h4 { color: @cdThemeColor; }
+
+				.rows {
+					.row {
+						.col {
+							&.col-label {									
+								.required { color: @cdThemeColor; }
+							}
+
+							&.col-value {
+								label { color: @cdThemeColor; }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	&.theme-course {
+		.dialog-box-content {
+			> .wrapper {
+				> h4 { color: @courseThemeColor; }
+
+				.rows {
+					.row {
+						.col {
+							&.col-label {									
+								.required { color: @courseThemeColor; }
+							}
+
+							&.col-value {
+								label { color: @courseThemeColor; }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	&.theme-student {
+		.dialog-box-content {
+			> .wrapper {
+				> h4 { color: @studentThemeColor; }
+
+				.rows {
+					.row {
+						.col {
+							&.col-label {									
+								.required { color: @studentThemeColor; }
+							}
+
+							&.col-value {
+								label { color: @studentThemeColor; }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	&.theme-teacher {
+		.dialog-box-content {
+			> .wrapper {
+				> h4 { color: @teacherThemeColor; }
+
+				.rows {
+					.row {
+						.col {
+							&.col-label {									
+								.required { color: @teacherThemeColor; }
+							}
+
+							&.col-value {
+								label { color: @teacherThemeColor; }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+

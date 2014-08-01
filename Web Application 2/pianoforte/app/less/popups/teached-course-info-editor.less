@@ -1,0 +1,88 @@
+﻿.teached-course-info-editor {
+	.dialog-box-content {												
+		> .wrapper {
+			margin: 0 auto;
+			width: 460px;				
+
+			> h4 {
+				font-family: inherit;
+				font-size: @fontSizeL;
+				margin: 10px 0;
+
+				&:first-child { margin-top: 0; }
+
+				&:hover { cursor: default; }
+			}
+
+			.rows {
+				color: #636363;
+				font-family: inherit;
+				width: inherit;
+															
+				.row {
+					color: inherit;
+					font-family: inherit;
+					font-size: inherit;
+					margin-bottom: 5px;
+					width: inherit;							
+
+					.col {
+						color: inherit;
+						float: left;
+						font-family: inherit;
+						font-size: inherit;
+						width: inherit;
+
+						&.col-span {
+							&.label-value {
+								width: calc(~'100% - 26px');
+							}
+						}
+
+						&.col-trash {
+							background-color: transparent;
+							line-height: 34px;
+							margin: 0 6px;
+							width: 14px;
+
+							&:hover {
+								cursor: pointer;
+							}
+						}
+					}
+
+					&:last-child { margin-bottom: 0; }
+				}
+
+				.btn-add-course {
+					background-color: transparent;
+					border: 0;
+					font-family: inherit;
+					font-size: @fontSizeM;
+					margin: 0 0 1px 0;
+					padding: 0;
+
+					&:hover {
+						cursor: pointer;
+						text-decoration: underline;
+					}
+				}
+			}					
+		}					
+	}
+
+	&.theme-teacher {
+		.dialog-box-content {
+			> .wrapper {
+				> h4 { color: @teacherThemeColor; }
+
+				.rows {
+					.btn-add-course {
+						color: @teacherThemeColor;
+					}
+				}
+			}
+		}
+	}
+}
+

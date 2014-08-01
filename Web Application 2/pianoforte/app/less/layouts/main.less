@@ -110,73 +110,69 @@
 		&.fix-height { height: calc(~'100% - 92px'); }	
 	}			
 
-	widget-box {
-		height: inherit;
-				
-		.widget-box {
-			height: 100%;
-			margin-bottom: 12px;
+	.widget-box {
+		height: 100%;
+		margin-bottom: 12px;
 
-			.box-content {
-				color: #636363;
-				// height: calc(~'100% - 20px');
+		.box-content {
+			color: #636363;
+			// height: calc(~'100% - 20px');
 
-				.rows {
-					height: calc(~'100% - 46px');
+			.rows {
+				height: calc(~'100% - 46px');
 
-					.row {	
-						padding: 10px;						
-																	
-						.col {
-							float: left;
-							margin-right: 5px;
-						}	
-					}										
-				}							
+				.row {	
+					padding: 10px;						
+																
+					.col {
+						float: left;
+						margin-right: 5px;
+					}	
+				}										
+			}							
 
-				.pagination {
-					padding: 4px 0 10px 0;
-					.user-select(none);
+			.pagination {
+				padding: 4px 0 10px 0;
+				.user-select(none);
 
-					ul {
-						text-align: center;
-						
-						li {
-							color: #CCCBC9;
+				ul {
+					text-align: center;
+					
+					li {
+						color: #CCCBC9;
+						display: inline-block;
+						font-size: @fontSizeS;
+						margin-right: 5px;
+
+						span {
 							display: inline-block;
-							font-size: @fontSizeS;
-							margin-right: 5px;
+							padding: 0 2px;
 
-							span {
-								display: inline-block;
-								padding: 0 2px;
+							&.active { color: #989898; }
 
-								&.active { color: #989898; }
+							&:hover {
+								color: #989898;
+								cursor: pointer;
+							}
+
+							&.btn-prev, &.btn-next {
+								padding: 0;
+							}
+
+							&.seperator {
+								font-size: 22px;
 
 								&:hover {
-									color: #989898;
-									cursor: pointer;
+									cursor: default;
 								}
-
-								&.btn-prev, &.btn-next {
-									padding: 0;
-								}
-
-								&.seperator {
-									font-size: 22px;
-
-									&:hover {
-										cursor: default;
-									}
-								}
-							}											
-						}
-
-						&:hover { cursor: default; }
+							}
+						}											
 					}
+
+					&:hover { cursor: default; }
 				}
 			}
-		}		
+		}
 
 		&.header {
 			.box-content {
@@ -236,40 +232,30 @@
 		}
 
 		&.no-margin-bottom {
-			.widget-box {
-				margin-bottom: 0px;
-			}
+			margin-bottom: 0px;
 		}
 
 		&.no-padding-top {
-			.widget-box {
-				.box-content {
-					padding-top: 0px;
-				}
+			.box-content {
+				padding-top: 0px;
 			}
 		}
 
 		&.no-padding-bottom {
-			.widget-box {
-				.box-content {
-					padding-bottom: 0px;
-				}
+			.box-content {
+				padding-bottom: 0px;
 			}
 		}
 
 		&.no-padding-left {
-			.widget-box {
-				.box-content {
-					padding-right: 0px;
-				}
+			.box-content {
+				padding-right: 0px;
 			}
 		}
 
 		&.no-padding-right {
-			.widget-box {
-				.box-content {
-					padding-left: 0px;
-				}
+			.box-content {
+				padding-left: 0px;
 			}
 		}
 	}

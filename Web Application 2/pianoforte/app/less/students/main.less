@@ -1,0 +1,77 @@
+﻿#students {			
+	.widget-box {
+		.box-content {
+			.rows {
+				.row {	
+					.col {
+						&.col-id { width: 120px;; }
+
+						&.col-name { width: calc(~'100% - 440px'); }
+
+						&.col-nickname { width: 125px; }
+
+						&.col-phone { width: 95px; }
+
+						&.col-status { width: 25px; }
+
+						&.col-view { width: 25px; }
+
+						&.col-view-calendar { width: 25px; display: none; }
+
+						&:nth-child(6) { margin-right: 0px; }							
+					}	
+				}										
+			}							
+
+			.pagination {
+				ul {
+					li {
+						span {
+							&.btn-prev, 
+							&.btn-next {
+								color: @studentThemeColor;
+
+								&:hover { color: @studentThemeColor; }
+							}
+
+							&.seperator {
+								color: @studentThemeColor;
+
+								&:hover { color: @studentThemeColor; }
+							}
+						}											
+					}
+				}
+			}
+		}
+	}		
+
+	&.content {
+		.box-content {
+			.rows {
+				.row {
+					.col {
+						&.col-status { 
+							&.status-1 { color: #C2E3A0; }
+							&.status-2 { color: #C8C8C8; }
+							&.status-4 { color: #EAA079; }
+						}
+
+						&.col-view,
+						&.col-view > a,
+						&.col-view-calendar { 
+							color: @studentThemeColor;
+
+							i:hover { 
+								color: @studentThemeColor2;
+								cursor: pointer; 
+							} 
+					 	}
+					}
+
+					&:hover { background-color: #ECF5F4; }
+				}
+			}
+		}
+	}
+}
