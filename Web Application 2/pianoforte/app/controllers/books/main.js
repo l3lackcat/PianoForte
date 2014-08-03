@@ -11,7 +11,7 @@
         $scope.enumConverter = EnumConverter;
         $scope.formatManager = FormatManager;
 
-        $scope.isReady = false;.isReady
+        $scope.isReady = false;
         $scope.bookList = [];
         $scope.pageNumbers = [];
         $scope.currentPage = 1;

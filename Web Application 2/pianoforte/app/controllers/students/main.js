@@ -29,7 +29,7 @@
         $scope.initialize = function () {
             $rootScope.$broadcast('SelectMenuItem', 'students');
 
-            StudentService.getStudentListSize(onSuccessReceiveStudentListSize, onErrorReceiveStudentListSize);
+            // StudentService.getStudentListSize(onSuccessReceiveStudentListSize, onErrorReceiveStudentListSize);
         };
 
         $scope.goToPage = function (pageNumbers) {

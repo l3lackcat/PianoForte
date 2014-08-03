@@ -4,7 +4,10 @@ angular.module('pianoforte', [
 
 .config([
 	'$routeProvider',
-	function ($routeProvider) {
+	'$locationProvider',
+	function ($routeProvider, $locationProvider) {	
+		$locationProvider.html5Mode(true);
+			
 		$routeProvider
 			.when('/', {
 				controller: 'Teachers.MainController',
@@ -30,7 +33,7 @@ angular.module('pianoforte', [
 				controller: 'Courses.MainController',
 				templateUrl: 'views/courses/main.htm'
 			})
-			.when('/courses', {
+			.when('/courses:courseId', {
 				controller: 'Courses.AboutController',
 				templateUrl: 'views/courses/about.htm'
 			})
@@ -52,6 +55,6 @@ angular.module('pianoforte', [
 			})
 			.otherwise({
 				redirectTo: '/'
-			});
+			});		
 	}
 ]);

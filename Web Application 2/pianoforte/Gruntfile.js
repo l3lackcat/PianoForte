@@ -5,10 +5,11 @@ module.exports = function(grunt) {
 
 	grunt.initConfig({
 		meta: {
-			app: 'app',
-			dist: 'dist',
+			app: 'app',			
 			server: 'server',
-			distapp: '<%= meta.dist %>/<%= meta.app %>',
+      dist: 'dist',
+      distapp: '<%= meta.dist %>/<%= meta.app %>',
+			distserver: '<%= meta.dist %>/<%= meta.server %>',
       bower_components: '<%= meta.app %>/bower_components',
 			pkg: grunt.file.readJSON('package.json'),
       banner: ['/*',
@@ -44,22 +45,6 @@ module.exports = function(grunt) {
       }
     },
 
-    connect: {   
-      options: {
-        port: 9000,
-        livereload: 35729,
-        hostname: 'localhost'
-      },
-      dev: {
-        options: {
-          open: {
-            target: 'http://localhost:9000/app.html'
-          },
-          base: 'dist/app'
-        }
-      }
-    },
-
     copy: {
       dev: {
         files: [
@@ -68,15 +53,12 @@ module.exports = function(grunt) {
             src: ['<%= meta.app %>/**', '!<%= meta.bower_components %>/**'],
             dest: '<%= meta.dist %>/',
             filter: 'isFile'
-          }, {
+          },
+          {
             expand: true,
-            cwd: '<%= meta.server %>/',
-            src: ['**', '!server.js'],
+            src: ['<%= meta.server %>/**'],
             dest: '<%= meta.dist %>/',
             filter: 'isFile'
-          }, {
-            src: ['<%= meta.server %>/server.js'],
-            dest: '<%= meta.dist %>/app.js'
           }
         ]
       },
@@ -87,26 +69,6 @@ module.exports = function(grunt) {
             src: ['<%= meta.bower_components %>/**'],
             dest: '<%= meta.dist %>/',
             filter: 'isFile'
-          }
-        ]
-      },
-      dist: {
-        files: [ 
-          {
-            expand: true,
-            cwd: '<%= meta.server %>/',
-            src: ['**', '!server.js'],
-            dest: '<%= meta.dist %>/',
-            filter: 'isFile'
-          }, 
-          {
-            src: ['<%= meta.server %>/server.js'],
-            dest: '<%= meta.dist %>/app.js'
-          }, 
-          {
-            expand: true,
-            src: '<%= meta.staticfolders %>',
-            dest: '<%= meta.dist %>/'
           }
         ]
       }
@@ -164,42 +126,38 @@ module.exports = function(grunt) {
       }
     },
 
-		jscs: {
+    express: {
       options: {
-        config: '.jscsrc'
+        port: process.env.PORT || 9000
       },
-      app: {
-        src: ['<%= meta.app %>/**/*.js', '!<%= meta.app %>/**/*.html.js', '!<%= meta.bower_components %>/**']
-      },
-      server: {
-        src: ['<%= meta.server %>/**/*.js']
-      }
-    },
-
-    jshint: {
-      app: {
+      dev: {
         options: {
-          jshintrc: '<%= meta.app %>/.jshintrc'
-        },
-        src: ['<%= meta.app %>/**/*.js', '!<%= meta.app %>/**/*.html.js', '!<%= meta.bower_components %>/**']
+          script: '<%= meta.server %>/server.js',
+          debug: true
+        }
       },
-      server: {
+      prod: {
         options: {
-          jshintrc: '<%= meta.server %>/.jshintrc'
-        },
-        src: ['<%= meta.server %>/**/*.js']
+          script: '<%= meta.distserver %>/server.js'
+        }
       }
     },
 
     less: {
     	dist: {
     		files: {
-    			'<%= meta.distapp %>/app.css': '<%= meta.app %>/app.less'
+          '<%= meta.distapp %>/app.css': '<%= meta.app %>/app.less'
     		}
     	}
     },
 
-    watch: {        
+    open: {
+      server: {
+        path : 'http://localhost:9000'
+      }
+    },
+
+    watch: {
       css: {
         files: ['<%= meta.app %>/**/*.less'],
         tasks: ['buildcss'],
@@ -219,7 +177,15 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('buildcss', ['less', 'cssmin']);
 	grunt.registerTask('buildjs', ['test', 'dom_munger:dist', 'html2js:dist', 'concat', 'uglify']);
-	grunt.registerTask('check', ['jshint', 'jscs']);
+	// grunt.registerTask('check', ['jshint', 'jscs']);
 
-  grunt.registerTask('dev', ['clean:common', 'copy:dev', 'copy:bower', 'buildcss', 'connect', 'watch']);
+  grunt.registerTask('dev', [
+    'clean:common',
+    'copy:dev',
+    'copy:bower',
+    'buildcss',
+    // 'express:dev',
+    'open',
+    'watch'
+  ]);
 }
