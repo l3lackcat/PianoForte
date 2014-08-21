@@ -12,8 +12,8 @@ namespace PianoForte.Constant
         public static string STARTUP_PATH;
                        
         public static string RECEIPT_PRINTER_LOCAL = "EPSON LQ-300+ /II ESC/P 2".ToLower();
-        public static string RECEIPT_PRINTER_NETWORK1 = "\\\\Pianoforte1\\epson lq-300+ /ii esc/p 2".ToLower();
-        public static string RECEIPT_PRINTER_NETWORK2 = "\\\\Pianoforte1\\EPSON LQ-300+ /II ESC/P 2".ToLower();
+        public static string RECEIPT_PRINTER_NETWORK1 = "\\\\Pianoforte01\\epson lq-300+ /ii esc/p 2".ToLower();
+        public static string RECEIPT_PRINTER_NETWORK2 = "\\\\Pianoforte01\\EPSON LQ-300+ /II ESC/P 2".ToLower();
 
         public static string NORMAL_PRINTER = "EPSON Stylus Photo R230 Series";
 

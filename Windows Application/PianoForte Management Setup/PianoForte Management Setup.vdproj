@@ -69,18 +69,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_0F65A1A5F5D6DF73BD8A58D85F459E62"
-        "OwnerKey" = "8:_70E1C30E9B70497F8E740C1A39EF0841"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_0F65A1A5F5D6DF73BD8A58D85F459E62"
-        "OwnerKey" = "8:_28823B5D0DB229D4CF71310842C318BB"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_1073125E9E8E474FBBB3518E37D51A04"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -143,12 +131,6 @@
         {
         "MsmKey" = "8:_232B42B4C0E44207BC94EB946C200E74"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_28823B5D0DB229D4CF71310842C318BB"
-        "OwnerKey" = "8:_70E1C30E9B70497F8E740C1A39EF0841"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -435,6 +417,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_9F045830854E0459DD9CD95F0E2292BA"
+        "OwnerKey" = "8:_70E1C30E9B70497F8E740C1A39EF0841"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9F045830854E0459DD9CD95F0E2292BA"
+        "OwnerKey" = "8:_D82E45E3AA7004930FC22EDB5F473CFE"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_9F134E4A2571441CB43FF3F0865FCEA8"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -597,6 +591,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_D82E45E3AA7004930FC22EDB5F473CFE"
+        "OwnerKey" = "8:_70E1C30E9B70497F8E740C1A39EF0841"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_D9CB57E8A6DF4962A76CBFF5D0B749B0"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -730,13 +730,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_28823B5D0DB229D4CF71310842C318BB"
+        "OwnerKey" = "8:_D82E45E3AA7004930FC22EDB5F473CFE"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_0F65A1A5F5D6DF73BD8A58D85F459E62"
+        "OwnerKey" = "8:_9F045830854E0459DD9CD95F0E2292BA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1018,37 +1018,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0F65A1A5F5D6DF73BD8A58D85F459E62"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_0F65A1A5F5D6DF73BD8A58D85F459E62"
-                    {
-                    "Name" = "8:MySql.Data.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:MySql.Data.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_48DC1FD09F0B4B018E0F7BF9162E7901"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1073125E9E8E474FBBB3518E37D51A04"
             {
             "SourcePath" = "8:..\\PianoForte\\bin\\Debug\\Images\\Teacher\\Original\\T1020_Normal.png"
@@ -1267,37 +1236,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_28823B5D0DB229D4CF71310842C318BB"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:MySqlBackup, Version=2.0.4.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_28823B5D0DB229D4CF71310842C318BB"
-                    {
-                    "Name" = "8:MySqlBackup.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:MySqlBackup.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_48DC1FD09F0B4B018E0F7BF9162E7901"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_30566D38AA7541D4BD2FEAFDBB5459A4"
@@ -2220,6 +2158,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9F045830854E0459DD9CD95F0E2292BA"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_9F045830854E0459DD9CD95F0E2292BA"
+                    {
+                    "Name" = "8:MySql.Data.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:MySql.Data.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_48DC1FD09F0B4B018E0F7BF9162E7901"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9F134E4A2571441CB43FF3F0865FCEA8"
             {
             "SourcePath" = "8:..\\PianoForte\\bin\\Debug\\Images\\Teacher\\Resized\\T1020_Normal.png"
@@ -2769,6 +2738,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D82E45E3AA7004930FC22EDB5F473CFE"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:MySqlBackup, Version=2.0.4.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_D82E45E3AA7004930FC22EDB5F473CFE"
+                    {
+                    "Name" = "8:MySqlBackup.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:MySqlBackup.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_48DC1FD09F0B4B018E0F7BF9162E7901"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D9CB57E8A6DF4962A76CBFF5D0B749B0"
@@ -3348,14 +3348,14 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:PianoForte Management Setup"
-        "ProductCode" = "8:{0C192DE9-5BF5-42AA-9045-2FF7B172B887}"
-        "PackageCode" = "8:{2BF5FA8A-8E6D-40F3-AC3B-855D0539DC9E}"
+        "ProductCode" = "8:{84C09DF1-B69A-4CBA-894A-99AD5ED9DE13}"
+        "PackageCode" = "8:{25AFC4A5-6254-44A3-A270-6BB68292F893}"
         "UpgradeCode" = "8:{BE54E5C5-65ED-4053-9D7F-D65C5813931C}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:2.0.28"
+        "ProductVersion" = "8:2.0.29"
         "Manufacturer" = "8:PianoForte"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -3897,7 +3897,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_70E1C30E9B70497F8E740C1A39EF0841"
             {
-            "SourcePath" = "8:..\\PianoForte\\obj\\Debug\\PianoForte.exe"
+            "SourcePath" = "8:..\\PianoForte\\obj\\Release\\PianoForte.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_48DC1FD09F0B4B018E0F7BF9162E7901"
