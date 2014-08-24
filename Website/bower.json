@@ -1,0 +1,9 @@
+{
+  "name": "pianoforte",
+  "description": "PianoForte Website",
+  "version": "0.0.1",
+  "devDependencies": {
+    "angular": "~1.2.10",
+    "angular-route": "~1.3.0"
+  }
+}

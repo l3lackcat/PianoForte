@@ -33,7 +33,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.CheckBox_generate_printed_payments = new System.Windows.Forms.CheckBox();
             this.CheckBox_generate_payment_types = new System.Windows.Forms.CheckBox();
-            this.Button_start_generate = new System.Windows.Forms.Button();
+            this.Button_Generate_MySql = new System.Windows.Forms.Button();
             this.CheckBox_generate_product_price_history = new System.Windows.Forms.CheckBox();
             this.CheckBox_generate_teached_courses = new System.Windows.Forms.CheckBox();
             this.CheckBox_generate_classroom_detail = new System.Windows.Forms.CheckBox();
@@ -49,13 +49,10 @@
             this.CheckBox_generate_users = new System.Windows.Forms.CheckBox();
             this.CheckBox_generate_teachers = new System.Windows.Forms.CheckBox();
             this.CheckBox_generate_students = new System.Windows.Forms.CheckBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.CheckBox_update_students = new System.Windows.Forms.CheckBox();
-            this.Button_start_update = new System.Windows.Forms.Button();
+            this.Button_Generate_Json = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -69,7 +66,6 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -81,9 +77,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.Button_Generate_Json);
             this.groupBox1.Controls.Add(this.CheckBox_generate_printed_payments);
             this.groupBox1.Controls.Add(this.CheckBox_generate_payment_types);
-            this.groupBox1.Controls.Add(this.Button_start_generate);
+            this.groupBox1.Controls.Add(this.Button_Generate_MySql);
             this.groupBox1.Controls.Add(this.CheckBox_generate_product_price_history);
             this.groupBox1.Controls.Add(this.CheckBox_generate_teached_courses);
             this.groupBox1.Controls.Add(this.CheckBox_generate_classroom_detail);
@@ -126,15 +123,15 @@
             this.CheckBox_generate_payment_types.Text = "payment_types";
             this.CheckBox_generate_payment_types.UseVisualStyleBackColor = true;
             // 
-            // Button_start_generate
+            // Button_Generate_MySql
             // 
-            this.Button_start_generate.Location = new System.Drawing.Point(659, 151);
-            this.Button_start_generate.Name = "Button_start_generate";
-            this.Button_start_generate.Size = new System.Drawing.Size(75, 23);
-            this.Button_start_generate.TabIndex = 15;
-            this.Button_start_generate.Text = "Start";
-            this.Button_start_generate.UseVisualStyleBackColor = true;
-            this.Button_start_generate.Click += new System.EventHandler(this.Button_start_Click);
+            this.Button_Generate_MySql.Location = new System.Drawing.Point(659, 151);
+            this.Button_Generate_MySql.Name = "Button_Generate_MySql";
+            this.Button_Generate_MySql.Size = new System.Drawing.Size(75, 23);
+            this.Button_Generate_MySql.TabIndex = 15;
+            this.Button_Generate_MySql.Text = "MySql";
+            this.Button_Generate_MySql.UseVisualStyleBackColor = true;
+            this.Button_Generate_MySql.Click += new System.EventHandler(this.Button_start_Click);
             // 
             // CheckBox_generate_product_price_history
             // 
@@ -286,36 +283,15 @@
             this.CheckBox_generate_students.Text = "students";
             this.CheckBox_generate_students.UseVisualStyleBackColor = true;
             // 
-            // groupBox2
+            // Button_Generate_Json
             // 
-            this.groupBox2.Controls.Add(this.Button_start_update);
-            this.groupBox2.Controls.Add(this.CheckBox_update_students);
-            this.groupBox2.Location = new System.Drawing.Point(6, 192);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(740, 180);
-            this.groupBox2.TabIndex = 16;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
-            // 
-            // CheckBox_update_students
-            // 
-            this.CheckBox_update_students.AutoSize = true;
-            this.CheckBox_update_students.Location = new System.Drawing.Point(6, 19);
-            this.CheckBox_update_students.Name = "CheckBox_update_students";
-            this.CheckBox_update_students.Size = new System.Drawing.Size(66, 17);
-            this.CheckBox_update_students.TabIndex = 0;
-            this.CheckBox_update_students.Text = "students";
-            this.CheckBox_update_students.UseVisualStyleBackColor = true;
-            // 
-            // Button_start_update
-            // 
-            this.Button_start_update.Location = new System.Drawing.Point(659, 151);
-            this.Button_start_update.Name = "Button_start_update";
-            this.Button_start_update.Size = new System.Drawing.Size(75, 23);
-            this.Button_start_update.TabIndex = 1;
-            this.Button_start_update.Text = "Start";
-            this.Button_start_update.UseVisualStyleBackColor = true;
-            this.Button_start_update.Click += new System.EventHandler(this.Button_start_update_Click);
+            this.Button_Generate_Json.Location = new System.Drawing.Point(659, 122);
+            this.Button_Generate_Json.Name = "Button_Generate_Json";
+            this.Button_Generate_Json.Size = new System.Drawing.Size(75, 23);
+            this.Button_Generate_Json.TabIndex = 18;
+            this.Button_Generate_Json.Text = "Json";
+            this.Button_Generate_Json.UseVisualStyleBackColor = true;
+            this.Button_Generate_Json.Click += new System.EventHandler(this.Button_Generate_Json_Click);
             // 
             // HiddenForm
             // 
@@ -329,8 +305,6 @@
             this.tabPage1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -354,12 +328,10 @@
         private System.Windows.Forms.CheckBox CheckBox_generate_payments;
         private System.Windows.Forms.CheckBox CheckBox_generate_teached_courses;
         private System.Windows.Forms.CheckBox CheckBox_generate_classroom_detail;
-        private System.Windows.Forms.Button Button_start_generate;
+        private System.Windows.Forms.Button Button_Generate_MySql;
         private System.Windows.Forms.CheckBox CheckBox_generate_product_price_history;
         private System.Windows.Forms.CheckBox CheckBox_generate_printed_payments;
         private System.Windows.Forms.CheckBox CheckBox_generate_payment_types;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.CheckBox CheckBox_update_students;
-        private System.Windows.Forms.Button Button_start_update;
+        private System.Windows.Forms.Button Button_Generate_Json;
     }
 }

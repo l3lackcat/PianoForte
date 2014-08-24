@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using PianoForte.Model;
 using PianoForte.Manager;
+using Newtonsoft.Json;
 
 namespace PianoForte.View
 {
@@ -987,14 +988,146 @@ namespace PianoForte.View
             }
         }
 
-        private void Button_start_update_Click(object sender, EventArgs e)
+        private void Button_Generate_Json_Click(object sender, EventArgs e)
         {
-            if (this.CheckBox_update_students.Checked)
+            if (this.CheckBox_generate_teachers.Checked)
             {
-                this.updateStudent();
+                this.generateTeacherJson();
+            }
+        }
+
+        private void generateTeacherJson()
+        {
+            List<Teacher> teacherList = TeacherManager.findAllTeacher();
+            List<Object> newTeacherList = new List<Object>();
+
+            foreach (Teacher teacher in teacherList)
+            {
+                int status = 0;
+                if (teacher.Status == Teacher.TeacherStatus.ACTIVE.ToString())
+                {
+                    status = 1;
+                }
+                else if (teacher.Status == "QUITED")
+                {
+                    status = 4;
+                }
+
+                List<Object> phones = new List<Object>();
+                List<Object> emails = new List<Object>();
+
+                Object phone1 = null;
+                if (teacher.Phone1 != "")
+                {
+                    string label = "เบอร์บ้าน";
+                    string value = teacher.Phone1.Replace("-", "");
+
+                    string phonePrefix = teacher.Phone1.Substring(0, 2);
+                    if ((phonePrefix == "08") || (phonePrefix == "09"))
+                    {
+                        label = "เบอร์มือถือ";
+                    }
+
+                    phone1 = new
+                    {
+                        label = label,
+                        value = value,
+                        isPrimary = false
+                    };
+                }
+
+                Object phone2 = null;
+                if (teacher.Phone2 != "")
+                {
+                    string label = "เบอร์บ้าน";
+                    string value = teacher.Phone2.Replace("-", "");
+
+                    string phonePrefix = teacher.Phone2.Substring(0, 2);
+                    if ((phonePrefix == "08") || (phonePrefix == "09"))
+                    {
+                        label = "เบอร์มือถือ";
+                    }
+
+                    phone2 = new
+                    {
+                        label = label,
+                        value = value,
+                        isPrimary = false
+                    };
+                }
+
+                Object phone3 = null;
+                if (teacher.Phone3 != "")
+                {
+                    string label = "เบอร์บ้าน";
+                    string value = teacher.Phone3.Replace("-", "");
+
+                    string phonePrefix = teacher.Phone3.Substring(0, 2);
+                    if ((phonePrefix == "08") || (phonePrefix == "09"))
+                    {
+                        label = "เบอร์มือถือ";
+                    }
+
+                    phone3 = new
+                    {
+                        label = label,
+                        value = value,
+                        isPrimary = false
+                    };
+                }
+
+                if (phone1 != null)
+                {
+                    phones.Add(phone1);
+                }
+
+                if (phone2 != null)
+                {
+                    phones.Add(phone2);
+                }
+
+                if (phone3 != null)
+                {
+                    phones.Add(phone3);
+                }
+
+                Object email = null;
+                if (teacher.Email != "")
+                {
+                    string label = "อีเมล์";
+                    string value = teacher.Email;
+
+                    email = new
+                    {
+                        label = label,
+                        value = value,
+                        isPrimary = false
+                    };
+                }
+
+                if (email != null)
+                {
+                    emails.Add(email);
+                }
+
+                Object newTeacher = new
+                {
+                    branchId = 1,
+                    id = teacher.Id,
+                    firstname = this.removeApostrophe(teacher.Firstname),
+                    lastname = this.removeApostrophe(teacher.Lastname),
+                    nickname = this.removeApostrophe(teacher.Nickname),
+                    phones = phones,
+                    emails = emails,
+                    // teachedCourseList = tempTeacher.TeachedCourseList,
+                    status = status
+                };
+
+                newTeacherList.Add(newTeacher);
             }
 
-            MessageBox.Show("Done!");
+            string json = JsonConvert.SerializeObject(newTeacherList);
+            System.IO.File.WriteAllText(PianoForte.Constant.Constant.STARTUP_PATH + "\\json\\teachers.json", json);
         }
     }
 }

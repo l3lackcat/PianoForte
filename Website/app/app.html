@@ -1,0 +1,23 @@
+<!doctype html>
+<html ng-app="pianoforte">
+<head>
+	<title>PianoForte</title>
+</head>
+<body>
+	<div class="wrapper">
+		<div ng-include="'components/header/header.htm'"></div>
+		<div ng-include="'components/top-banner/top-banner.htm'"></div>
+		<div id="main-content" ng-view></div>
+	</div>
+
+	<!-- app.css -->
+	<link rel="stylesheet" href="app.css" data-build="remove">
+
+	<!-- lib.js -->
+	<script src="bower_components/angular/angular.js" data-build="libjs"></script>
+	<script src="bower_components/angular-route/angular-route.js" data-build="libjs"></script>
+
+	<!-- app.js -->
+	<script src="app.js" data-build="appjs"></script>
+</body>
+</html>

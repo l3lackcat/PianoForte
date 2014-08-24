@@ -1,0 +1,92 @@
+header {
+    width: 100%;
+
+    .container {
+        background-image: url('assets/images/top_bg.gif');
+        background-repeat: repeat-x;
+        border-bottom: 2px solid #0693b9;
+        height: 89px;
+        margin: 0 auto;
+        padding: 10px;
+        width: 1226px;
+
+        .row {
+            height: 100%;
+            margin: 0;
+            width: 100%;
+
+            .col {
+                float: left;
+                height: 100%;
+
+                &.logo-container {
+                    width: 240px;
+
+                    a {
+                        background-image: url('assets/images/logo.gif');
+                        background-position: center center;
+                        background-repeat: no-repeat;
+                        display: block;
+                        height: 81px;
+                        margin-left: 65px;
+                        margin-top: 4px;
+                        width: 165px;
+
+                        span { display: none; }
+                    }
+                }
+
+                &.main-menu-container {
+                    width: calc(~'100% - 240px');
+
+                    .sub-nav {
+                        height: 27px;
+                        text-align: right;
+                        width: 100%;
+
+                        a {
+                            display: inline-block;
+                            height: 27px;
+                            width: 27px;
+
+                            &.sub-nav-email { background-image: url('assets/images/subnav_email.gif'); }
+                            &.sub-nav-fb { background-image: url('assets/images/subnav_fb.gif'); }
+                        }
+                    }
+
+                    .main-nav {
+                        margin-top: 32px; 
+                        text-align: right;
+
+                        ul {
+                            margin: 0;
+
+                            li {
+                                border-right: 1px solid #D0D6DB;
+                                display: inline-block;
+                                font-size: 17px;
+                                font-weight: bold;
+                                padding: 0 20px;
+                                text-align: center;
+
+                                &:last-child {
+                                    border-right: 1px solid transparent;
+                                    padding-right: 0px;
+                                }
+
+                                a {
+                                    color: #999999;
+                                    text-decoration: none;
+
+                                    &:hover {
+                                        color: #FFA800;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
