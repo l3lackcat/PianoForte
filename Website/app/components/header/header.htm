@@ -1,4 +1,4 @@
-<header>
+<header ng-controller="HeaderCtrl">
     <div class="container">
         <div class="row">
             <div class="col logo-container">
@@ -14,11 +14,11 @@
                 </div>
                 <div class="main-nav">
                     <ul>
-                        <li><a href="">Home</a></li>
-                        <li><a href="">Our School</a></li>
-                        <li><a href="">Our Course</a></li>
-                        <li><a href="">Contact Us</a></li>
-                        <li><a href="">English Page</a></li>
+                        <li ng-class="{ active: isActive('/') || isActive('/home') }"><a href="/home">Home</a></li>
+                        <li ng-class="{ active: isActive('/our-school') }"><a href="/our-school">Our School</a></li>
+                        <li ng-class="{ active: isActive('/our-course') }"><a href="/our-course">Our Course</a></li>
+                        <li ng-class="{ active: isActive('/contact-us') }"><a href="/contact-us">Contact Us</a></li>
+                        <li ng-class="{ active: isActive('/english-page') }"><a href="/english-page">English Page</a></li>
                     </ul>
                 </div>
             </div>
