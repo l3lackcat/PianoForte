@@ -50,6 +50,37 @@ namespace PianoForte.View
             this.DateTimePicker_Daily_Income_Date.Value = DateTime.Today;
         }
 
+        public void loadUnpaidPayments()
+        {
+            List<Payment> unpaidPaymentList = PaymentManager.findAllPayment(Payment.PaymentStatus.NOT_PAID);
+            int numberOfUnpaidPayment = unpaidPaymentList.Count;
+
+            if (numberOfUnpaidPayment > 0)
+            {
+                this.DataGridView_UnpaidPaymentInfo.Rows.Clear();
+
+                for (int i = 0; i < numberOfUnpaidPayment; i++)
+                {
+                    Student student = StudentManager.findStudent(unpaidPaymentList[i].StudentId);
+                    User receiver = UserManager.findUser(unpaidPaymentList[i].ReceiverId);
+
+                    if ((student != null) && (receiver != null))
+                    {
+                        string studentName = student.Firstname + " " + student.Lastname + " (" + student.Nickname + ")";
+                        int n = this.DataGridView_UnpaidPaymentInfo.Rows.Add();
+
+                        this.DataGridView_UnpaidPaymentInfo.Rows[n].Cells["PaymentId"].Value = unpaidPaymentList[i].Id;
+                        this.DataGridView_UnpaidPaymentInfo.Rows[n].Cells["StudentName"].Value = studentName;
+                        this.DataGridView_UnpaidPaymentInfo.Rows[n].Cells["TransactionDate"].Value = unpaidPaymentList[i].PaymentDate;
+                        this.DataGridView_UnpaidPaymentInfo.Rows[n].Cells["TotalPrice"].Value = unpaidPaymentList[i].TotalPrice;
+                        this.DataGridView_UnpaidPaymentInfo.Rows[n].Cells["ReceiverName"].Value = receiver.DisplayName;
+                    }
+                }
+
+                this.DataGridView_UnpaidPaymentInfo.ClearSelection();
+            }
+        }
+
         public void init(int userRole)
         {
             if (userRole == (int)User.UserRole.ADMIN)
@@ -58,7 +89,7 @@ namespace PianoForte.View
             }
             else
             {
-                this.tabControl1.TabPages[1].Enabled = false;
+                this.tabControl1.TabPages[2].Enabled = false;
             }
         }
 
@@ -320,6 +351,56 @@ namespace PianoForte.View
         }
 
         private void totalIncomeSummary_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            ProgressBarManager.showProgressBar(false);
+        }
+
+        private void button_Export_UnpaidPayment_Excel_Click(object sender, EventArgs e)
+        {
+            string filename = InputDialogBox.show("กรุณาตั้งชื่อไฟล์");
+            if (filename != "")
+            {
+                unpaidPaymentSummary.RunWorkerAsync(filename);
+                ProgressBarManager.showProgressBar(true);
+            }
+        }
+
+        private void unpaidPaymentSummary_DoWork(object sender, DoWorkEventArgs e)
+        {
+            List<DisplayPayment> unpaidPaymentList = new List<DisplayPayment>();
+            int numberOfRow = this.DataGridView_UnpaidPaymentInfo.Rows.Count;
+
+            for (int i = 0; i < numberOfRow; i++)
+            {
+                DisplayPayment displayPayment = new DisplayPayment();
+
+                displayPayment.Id = Convert.ToInt32(this.DataGridView_UnpaidPaymentInfo.Rows[i].Cells["PaymentId"].Value.ToString());
+                displayPayment.StudentName = this.DataGridView_UnpaidPaymentInfo.Rows[i].Cells["StudentName"].Value.ToString();
+                displayPayment.PaymentDate = Convert.ToDateTime(this.DataGridView_UnpaidPaymentInfo.Rows[i].Cells["TransactionDate"].Value.ToString());
+                displayPayment.TotalPrice = Convert.ToDouble(this.DataGridView_UnpaidPaymentInfo.Rows[i].Cells["TotalPrice"].Value.ToString());
+                displayPayment.ReceiverName = this.DataGridView_UnpaidPaymentInfo.Rows[i].Cells["ReceiverName"].Value.ToString();
+
+                unpaidPaymentList.Add(displayPayment);
+            }
+
+            if (unpaidPaymentList.Count > 0)
+            {
+                ExportManager exportManager = new ExportManager();
+                if (exportManager.createUnpaidPaymentSummary(e.Argument as string, unpaidPaymentList))
+                {
+                    unpaidPaymentSummary.ReportProgress(100, ProgressBarManager.ProgressBarState.CREATE_FILE);
+                    MessageBox.Show("สร้างไฟล์เรียบร้อยแล้ว");
+                }
+            }
+        }
+
+        private void unpaidPaymentSummary_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            ProgressBarManager.ProgressBarState progressBarState = (ProgressBarManager.ProgressBarState)e.UserState;
+            ProgressBarManager.updateProgressBar(e.ProgressPercentage, progressBarState); 
+        }
+
+        private void unpaidPaymentSummary_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             ProgressBarManager.showProgressBar(false);
         }                  

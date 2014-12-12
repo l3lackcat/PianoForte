@@ -59,6 +59,7 @@ namespace PianoForte.View
             this.ComboBox_Status.Items.Add(Payment.PaymentStatus.ALL.ToString());
             this.ComboBox_Status.Items.Add(Payment.PaymentStatus.PAID.ToString());
             this.ComboBox_Status.Items.Add(Payment.PaymentStatus.CANCELED.ToString());
+            this.ComboBox_Status.Items.Add(Payment.PaymentStatus.NOT_PAID.ToString());
 
             this.DataGridView_PaymentInfo.AutoGenerateColumns = false;            
 
@@ -149,7 +150,8 @@ namespace PianoForte.View
             {
                 int n = this.DataGridView_PaymentInfo.Rows.Add();
 
-                if (this.paymentList1[i].Status == Payment.PaymentStatus.CANCELED.ToString())
+                if ((this.paymentList1[i].Status == Payment.PaymentStatus.CANCELED.ToString()) ||
+                    (this.paymentList1[i].Status == Payment.PaymentStatus.NOT_PAID.ToString()))
                 {
                     ((DataGridViewImageCell)this.DataGridView_PaymentInfo.Rows[n].Cells["DeleteButton"]).Value = new Bitmap(20, 16);
                 }

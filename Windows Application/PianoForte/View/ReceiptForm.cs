@@ -73,6 +73,25 @@ namespace PianoForte.View
 
                 this.Button_Print.Enabled = false;
             }
+            else if (paymentStatus == Payment.PaymentStatus.NOT_PAID.ToString())
+            {
+                ReceiptViewUnpaid receiptViewUnpaid = new ReceiptViewUnpaid();
+                receiptViewUnpaid.Database.Tables[Payment.tableName].SetDataSource(dataSet.Tables[Payment.tableName]);
+                receiptViewUnpaid.Database.Tables[PaymentDetail.tableName].SetDataSource(dataSet.Tables[PaymentDetail.tableName]);
+                receiptViewUnpaid.Database.Tables[Student.tableName].SetDataSource(dataSet.Tables[Student.tableName]);
+                receiptViewUnpaid.Database.Tables[User.tableName].SetDataSource(dataSet.Tables[User.tableName]);
+                if (dataSet.Tables.Count > 4)
+                {
+                    if (dataSet.Tables[ReceiptFooter.tableName].Rows.Count > 0)
+                    {
+                        receiptViewUnpaid.Database.Tables[ReceiptFooter.tableName].SetDataSource(dataSet.Tables[ReceiptFooter.tableName]);
+                    }
+                }
+
+                crystalReportViewer1.ReportSource = receiptViewUnpaid;
+
+                this.Button_Print.Enabled = false;
+            }
 
             this.ShowDialog();
         }     

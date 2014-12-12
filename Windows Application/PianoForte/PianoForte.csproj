@@ -238,6 +238,12 @@
       <DependentUpon>ClassLearningProfile.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Report\ReceiptViewUnpaid.cs">
+      <DependentUpon>ReceiptViewUnpaid.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Report\ReceiptViewCancel.cs">
       <DependentUpon>ReceiptViewCancel.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -338,6 +344,10 @@
     <EmbeddedResource Include="Report\ClassLearningProfile.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ClassLearningProfile.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReceiptViewUnpaid.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReceiptViewUnpaid.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\ReceiptViewCancel.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

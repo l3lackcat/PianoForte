@@ -364,7 +364,7 @@ namespace PianoForte.View
             string creditCardNumber = this.TextBox_CreditCardNumber.Text;
             double totalPrice = Convert.ToDouble(this.TextBox_GrandTotal.Text);
 
-            Payment newPayment = PaymentManager.processPayment(this.student.Id, receiverId, creditCardNumber, totalPrice);
+            Payment newPayment = PaymentManager.processPayment(this.student.Id, receiverId, creditCardNumber, totalPrice, Payment.PaymentStatus.PAID);
             if (newPayment != null)
             {
                 if (this.processPaymentDetail(newPayment.Id))

@@ -202,6 +202,7 @@ namespace PianoForte.View
         private void ToolStripButton_DailyPaymentReport_Click(object sender, EventArgs e)
         {
             dailyPaymentReportForm.reset();
+            dailyPaymentReportForm.loadUnpaidPayments();
             this.switchForm(dailyPaymentReportForm);
         }
 

@@ -993,6 +993,43 @@ namespace PianoForte.View
             if (this.CheckBox_generate_teachers.Checked)
             {
                 this.generateTeacherJson();
+                Console.WriteLine("generateTeacherJson done.");
+            }
+
+            if (this.CheckBox_generate_students.Checked)
+            {
+                this.generateStudentJson();
+                Console.WriteLine("generateStudentJson done.");
+            }
+
+            if (this.CheckBox_generate_books.Checked)
+            {
+                this.generateBookJson();
+                Console.WriteLine("generateBookJson done.");
+            }
+
+            if (this.CheckBox_generate_cds.Checked)
+            {
+                this.generateCdJson();
+                Console.WriteLine("generatecdJson done.");
+            }
+
+            if (this.CheckBox_generate_course_categories.Checked)
+            {
+                this.generatCourseCategoryJson();
+                Console.WriteLine("generatCourseCategoryJson done.");
+            }
+
+            if (this.CheckBox_generate_courses.Checked)
+            {
+                this.generatCourseJson();
+                Console.WriteLine("generatCourseJson done.");
+            }
+
+            if (this.CheckBox_generate_other_products.Checked)
+            {
+                this.generateOtherItemJson();
+                Console.WriteLine("generateOtherItemJson done.");
             }
         }
 
@@ -1019,60 +1056,60 @@ namespace PianoForte.View
                 Object phone1 = null;
                 if (teacher.Phone1 != "")
                 {
-                    string label = "เบอร์บ้าน";
+                    string label = "เบอร์โทร";
                     string value = teacher.Phone1.Replace("-", "");
 
                     string phonePrefix = teacher.Phone1.Substring(0, 2);
                     if ((phonePrefix == "08") || (phonePrefix == "09"))
                     {
-                        label = "เบอร์มือถือ";
+                        label = "เบอร์โทร";
                     }
 
                     phone1 = new
                     {
                         label = label,
                         value = value,
-                        isPrimary = false
+                        primary = false
                     };
                 }
 
                 Object phone2 = null;
                 if (teacher.Phone2 != "")
                 {
-                    string label = "เบอร์บ้าน";
+                    string label = "เบอร์โทร";
                     string value = teacher.Phone2.Replace("-", "");
 
                     string phonePrefix = teacher.Phone2.Substring(0, 2);
                     if ((phonePrefix == "08") || (phonePrefix == "09"))
                     {
-                        label = "เบอร์มือถือ";
+                        label = "เบอร์โทร";
                     }
 
                     phone2 = new
                     {
                         label = label,
                         value = value,
-                        isPrimary = false
+                        primary = false
                     };
                 }
 
                 Object phone3 = null;
                 if (teacher.Phone3 != "")
                 {
-                    string label = "เบอร์บ้าน";
+                    string label = "เบอร์โทร";
                     string value = teacher.Phone3.Replace("-", "");
 
                     string phonePrefix = teacher.Phone3.Substring(0, 2);
                     if ((phonePrefix == "08") || (phonePrefix == "09"))
                     {
-                        label = "เบอร์มือถือ";
+                        label = "เบอร์โทร";
                     }
 
                     phone3 = new
                     {
                         label = label,
                         value = value,
-                        isPrimary = false
+                        primary = false
                     };
                 }
 
@@ -1101,7 +1138,7 @@ namespace PianoForte.View
                     {
                         label = label,
                         value = value,
-                        isPrimary = false
+                        primary = false
                     };
                 }
 
@@ -1110,17 +1147,38 @@ namespace PianoForte.View
                     emails.Add(email);
                 }
 
-                Object newTeacher = new
+                teacher.TeachingCourseIdList = TeachingCourseManager.getCourseIdByTeacherId(teacher.Id);
+
+                List<int> properties = new List<int>();
+                if (teacher.Settings == Teacher.TeacherSettings.TEACHES_45_MIN)
                 {
+                    properties.Add(1);
+                }
+
+                Object newTeacher = new {
                     branchId = 1,
                     id = teacher.Id,
                     firstname = this.removeApostrophe(teacher.Firstname),
                     lastname = this.removeApostrophe(teacher.Lastname),
                     nickname = this.removeApostrophe(teacher.Nickname),
-                    phones = phones,
-                    emails = emails,
-                    // teachedCourseList = tempTeacher.TeachedCourseList,
-                    status = status
+                    birthDate = "",
+                    registeredDate = "",
+                    resignedDate = "",
+                    status = status,
+                    contacts = new {
+                        phones = phones,
+                        emails = emails
+                    },
+                    address = new {
+                        buildingName = "",
+                        streetAddress = "",
+                        subDistrict = "",
+                        district = "",
+                        province = "",
+                        zipCode = ""
+                    },
+                    teachingCourses = teacher.TeachingCourseIdList,
+                    properties = properties
                 };
 
                 newTeacherList.Add(newTeacher);
@@ -1128,6 +1186,345 @@ namespace PianoForte.View
 
             string json = JsonConvert.SerializeObject(newTeacherList);
             System.IO.File.WriteAllText(PianoForte.Constant.Constant.STARTUP_PATH + "\\json\\teachers.json", json);
+        }
+
+        private void generateStudentJson()
+        {
+            List<Student> studentList = StudentManager.findAllStudent();
+            List<Object> newStudentList = new List<Object>();
+            int currentYear = 0;
+            int count = 0;
+
+            foreach (Student student in studentList)
+            {
+                if (currentYear != student.RegisteredDate.Year)
+                {
+                    currentYear = student.RegisteredDate.Year;
+                    count = 0;
+                }
+
+                int registeredYear = (currentYear + 543) - 2500;
+                int studentId = (registeredYear * 1000000) + 200000 + (1 * 1000) + (++count);
+
+                int status = 0;
+                if (student.Status == Student.StudentStatus.ACTIVE.ToString())
+                {
+                    status = 1;
+                }
+                else if (student.Status == Student.StudentStatus.INACTIVE.ToString())
+                {
+                    status = 2;
+                }
+                else if (student.Status == Student.StudentStatus.DROPPED.ToString())
+                {
+                    status = 3;
+                }
+
+                List<Object> phones = new List<Object>();
+                List<Object> emails = new List<Object>();
+
+                Object phone1 = null;
+                if (student.Phone1 != "")
+                {
+                    string label = "เบอร์บ้าน";
+                    string value = student.Phone1.Replace("-", "");
+
+                    string phonePrefix = student.Phone1.Substring(0, 2);
+                    if ((phonePrefix == "08") || (phonePrefix == "09"))
+                    {
+                        label = "เบอร์มือถือ";
+                    }
+
+                    phone1 = new
+                    {
+                        label = label,
+                        value = value,
+                        primary = false
+                    };
+                }
+
+                Object phone2 = null;
+                if (student.Phone2 != "")
+                {
+                    string label = "เบอร์บ้าน";
+                    string value = student.Phone2.Replace("-", "");
+
+                    string phonePrefix = student.Phone2.Substring(0, 2);
+                    if ((phonePrefix == "08") || (phonePrefix == "09"))
+                    {
+                        label = "เบอร์มือถือ";
+                    }
+
+                    phone2 = new
+                    {
+                        label = label,
+                        value = value,
+                        primary = false
+                    };
+                }
+
+                Object phone3 = null;
+                if (student.Phone3 != "")
+                {
+                    string label = "เบอร์บ้าน";
+                    string value = student.Phone3.Replace("-", "");
+
+                    string phonePrefix = student.Phone3.Substring(0, 2);
+                    if ((phonePrefix == "08") || (phonePrefix == "09"))
+                    {
+                        label = "เบอร์มือถือ";
+                    }
+
+                    phone3 = new
+                    {
+                        label = label,
+                        value = value,
+                        primary = false
+                    };
+                }
+
+                if (phone1 != null)
+                {
+                    phones.Add(phone1);
+                }
+
+                if (phone2 != null)
+                {
+                    phones.Add(phone2);
+                }
+
+                if (phone3 != null)
+                {
+                    phones.Add(phone3);
+                }
+
+                Object email = null;
+                if (student.Email != "")
+                {
+                    string label = "อีเมล์";
+                    string value = student.Email;
+
+                    email = new
+                    {
+                        label = label,
+                        value = value,
+                        primary = false
+                    };
+                }
+
+                if (email != null)
+                {
+                    emails.Add(email);
+                }
+
+                Object newStudent = new
+                {
+                    branchId = 1,
+                    id = studentId,
+                    firstname = this.removeApostrophe(student.Firstname),
+                    lastname = this.removeApostrophe(student.Lastname),
+                    nickname = this.removeApostrophe(student.Nickname),
+                    birthDate = student.Birthday.ToString("yyyy-MM-dd"),
+                    registeredDate = student.RegisteredDate.ToString("yyyy-MM-dd"),
+                    lastClassDate = "",
+                    status = status,
+                    contacts = new {
+                        phones = phones,
+                        emails = emails
+                    },
+                    address = new {
+                        buildingName = student.Address.Address1,
+                        streetAddress = student.Address.Address2,
+                        subDistrict = "",
+                        district = "",
+                        province = "",
+                        zipCode = student.Address.PostCode
+                    },
+                };
+
+                newStudentList.Add(newStudent);
+            }
+
+            string json = JsonConvert.SerializeObject(newStudentList);
+            System.IO.File.WriteAllText(PianoForte.Constant.Constant.STARTUP_PATH + "\\json\\students.json", json);
+        }
+
+        private void generateBookJson()
+        {
+            List<Book> bookList = BookManager.findAllBook();
+            List<Object> newBookList = new List<Object>();
+
+            foreach (Book book in bookList)
+            {
+                int status = 0;
+                if (book.Status == Book.BookStatus.AVAILABLE.ToString())
+                {
+                    status = 5;
+                }
+                else if (book.Status == Book.BookStatus.EMPTY.ToString())
+                {
+                    status = 6;
+                }
+                else if (book.Status == Book.BookStatus.CANCELED.ToString())
+                {
+                    status = 7;
+                }
+
+                Object newBook = new
+                {
+                    branchId = 1,
+                    id = book.Id,
+                    barcode = book.Barcode,
+                    name = book.Name,
+                    price = book.Price,
+                    quantity = book.Quantity,
+                    status = status,
+                    keywords = new List<String>(),
+                    activityLog = new List<Object>()
+                };
+
+                newBookList.Add(newBook);
+            }
+
+            string json = JsonConvert.SerializeObject(newBookList);
+            System.IO.File.WriteAllText(PianoForte.Constant.Constant.STARTUP_PATH + "\\json\\books.json", json);
+        }
+
+        private void generateCdJson()
+        {
+            List<Cd> cdList = CdManager.findAllCd();
+            List<Object> newCdList = new List<Object>();
+
+            foreach (Cd cd in cdList)
+            {
+                int status = 0;
+                if (cd.Status == Cd.CdStatus.AVAILABLE.ToString())
+                {
+                    status = 5;
+                }
+                else if (cd.Status == Cd.CdStatus.EMPTY.ToString())
+                {
+                    status = 6;
+                }
+                else if (cd.Status == Cd.CdStatus.CANCELED.ToString())
+                {
+                    status = 7;
+                }
+
+                Object newCd = new
+                {
+                    branchId = 1,
+                    id = cd.Id,
+                    barcode = cd.Barcode,
+                    name = cd.Name,
+                    price = cd.Price,
+                    quantity = cd.Quantity,
+                    status = status,
+                    keywords = new List<String>(),
+                    activityLog = new List<Object>()
+                };
+
+                newCdList.Add(newCd);
+            }
+
+            string json = JsonConvert.SerializeObject(newCdList);
+            System.IO.File.WriteAllText(PianoForte.Constant.Constant.STARTUP_PATH + "\\json\\cds.json", json);
+        }
+
+        private void generatCourseCategoryJson()
+        {
+            List<CourseCategory> courseCategoryList = CourseCategoryManager.findAllCourseCategory();
+            List<Object> newCourseCategoryList = new List<Object>();
+
+            foreach (CourseCategory courseCategory in courseCategoryList)
+            {
+                int status = 0;
+                if (courseCategory.Status == CourseCategory.CourseCategoryStatus.ACTIVE.ToString())
+                {
+                    status = 1;
+                }
+                else if (courseCategory.Status == CourseCategory.CourseCategoryStatus.INACTIVE.ToString())
+                {
+                    status = 7;
+                }
+
+                Object newCourseCategory = new
+                {
+                    branchId = 1,
+                    id = courseCategory.Id,
+                    name = courseCategory.Name,
+                    status = status
+                };
+
+                newCourseCategoryList.Add(newCourseCategory);
+            }
+
+            string json = JsonConvert.SerializeObject(newCourseCategoryList);
+            System.IO.File.WriteAllText(PianoForte.Constant.Constant.STARTUP_PATH + "\\json\\course_categories.json", json);
+        }
+
+        private void generatCourseJson()
+        {
+            List<Course> courseList = CourseManager.findAllCourse();
+            List<Object> newCourseList = new List<Object>();
+
+            foreach (Course course in courseList)
+            {
+                int status = 0;
+                if (course.Status == Course.CourseStatus.ACTIVE.ToString())
+                {
+                    status = 1;
+                }
+                else if (course.Status == Course.CourseStatus.INACTIVE.ToString())
+                {
+                    status = 7;
+                }
+
+                Object newCourse = new
+                {
+                    branchId = 1,
+                    id = course.Id,
+                    couseCategoryId = course.CourseCategoryId,
+                    name = course.Name,
+                    level = course.Level,
+                    fee = course.Price,
+                    classroom = new {
+                        count = course.NumberOfClassroom,
+                        minutes = course.ClassroomDuration,
+                        students = course.StudentPerClassroom
+                    },
+                    status = status,
+                    keywords = new List<String>(),
+                    activityLog = new List<Object>()
+                };
+
+                newCourseList.Add(newCourse);
+            }
+
+            string json = JsonConvert.SerializeObject(newCourseList);
+            System.IO.File.WriteAllText(PianoForte.Constant.Constant.STARTUP_PATH + "\\json\\course.json", json);
+        }
+
+        private void generateOtherItemJson()
+        {
+            List<OtherCost> otherCostList = OtherCostManager.findAllOtherCost();
+            List<Object> newOtherItemList = new List<Object>();
+
+            foreach (OtherCost otherItem in otherCostList)
+            {
+                Object newOtherCost = new
+                {
+                    branchId = 1,
+                    id = otherItem.Id,
+                    name = otherItem.Name,
+                    price = otherItem.Price
+                };
+
+                newOtherItemList.Add(newOtherCost);
+            }
+
+            string json = JsonConvert.SerializeObject(newOtherItemList);
+            System.IO.File.WriteAllText(PianoForte.Constant.Constant.STARTUP_PATH + "\\json\\other_items.json", json);
         }
     }
 }

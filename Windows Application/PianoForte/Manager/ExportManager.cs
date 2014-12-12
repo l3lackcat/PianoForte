@@ -545,6 +545,63 @@ namespace PianoForte.Manager
             }
         }
 
+        public bool createUnpaidPaymentSummary(string filename, List<DisplayPayment> unpaidPaymentList)
+        {
+            Excel.Application excelApplication;
+            Excel.Workbook excelWorkBook;
+            Excel.Worksheet excelWorkSheet;
+            object missingValue = System.Reflection.Missing.Value;
+
+            excelApplication = new Excel.ApplicationClass();
+            excelWorkBook = excelApplication.Workbooks.Add(missingValue);
+
+            excelWorkSheet = (Excel.Worksheet)excelWorkBook.Worksheets.get_Item(1);
+            this.createUnpaidPaymentHeader(excelWorkSheet);
+            this.createUnpaidPaymentDetail(excelWorkSheet, unpaidPaymentList);
+            string savePathName = PianoForte.Constant.Constant.STARTUP_PATH + "\\Account\\" + filename + ".xls";
+
+            excelWorkBook.SaveAs(savePathName, Excel.XlFileFormat.xlWorkbookNormal, missingValue, missingValue, missingValue, missingValue, Excel.XlSaveAsAccessMode.xlExclusive, missingValue, missingValue, missingValue, missingValue, missingValue);
+            excelWorkBook.Close(true, missingValue, missingValue);
+            excelApplication.Quit();
+
+            this.releaseObject(excelWorkSheet);
+            this.releaseObject(excelWorkBook);
+            this.releaseObject(excelApplication);
+
+            return true;
+        }
+
+        private void createUnpaidPaymentHeader(Excel.Worksheet excelWorkSheet)
+        {
+            this.addCellHeader(excelWorkSheet, "A1", "A1", 15, "เลขที่ใบเสร็จ");
+            this.addCellHeader(excelWorkSheet, "B1", "B1", 30, "ชื่อนักเรียน");
+            this.addCellHeader(excelWorkSheet, "C1", "C1", 15, "วันที่ค้างชำระ");
+            this.addCellHeader(excelWorkSheet, "D1", "D1", 15, "ยอดรวม");
+            this.addCellHeader(excelWorkSheet, "E1", "E1", 15, "ชื่อผู้รับเงิน");
+        }
+
+        private void createUnpaidPaymentDetail(Excel.Worksheet excelWorkSheet, List<DisplayPayment> unpaidPaymentList)
+        {
+            int index = 0;
+
+            foreach (DisplayPayment unpaidPayment in unpaidPaymentList)
+            {
+                bool isLastRow = false;
+                if (index == (unpaidPaymentList.Count - 1))
+                {
+                    isLastRow = true;
+                }
+
+                this.addCellData(excelWorkSheet, "A" + (index + 2).ToString(), "A" + (index + 2).ToString(), Excel.XlHAlign.xlHAlignCenter, unpaidPayment.Id.ToString(), false, false, isLastRow, true, true);
+                this.addCellData(excelWorkSheet, "B" + (index + 2).ToString(), "B" + (index + 2).ToString(), Excel.XlHAlign.xlHAlignLeft, unpaidPayment.StudentName, false, false, isLastRow, false, true);
+                this.addCellData(excelWorkSheet, "C" + (index + 2).ToString(), "C" + (index + 2).ToString(), Excel.XlHAlign.xlHAlignCenter, unpaidPayment.PaymentDate.ToShortDateString(), "DD/MM/YYYY", false, false, isLastRow, false, true);
+                this.addCellData(excelWorkSheet, "D" + (index + 2).ToString(), "D" + (index + 2).ToString(), Excel.XlHAlign.xlHAlignRight, unpaidPayment.TotalPrice.ToString(), "#,##0", false, false, isLastRow, false, true);
+                this.addCellData(excelWorkSheet, "E" + (index + 2).ToString(), "E" + (index + 2).ToString(), Excel.XlHAlign.xlHAlignCenter, unpaidPayment.ReceiverName, false, false, isLastRow, false, true);
+
+                index++;
+            }
+        }
+
         private void addCellHeader(Excel.Worksheet excelWorkSheet, string topLeft, string bottomRight, int columnWidth, string text)
         {
             Excel.Range chartRange;

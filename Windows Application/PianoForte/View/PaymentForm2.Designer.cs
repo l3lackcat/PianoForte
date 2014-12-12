@@ -73,6 +73,9 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.ComboBox_Unpaid_Payment = new System.Windows.Forms.ComboBox();
             this.panel11 = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
             this.panel20 = new System.Windows.Forms.Panel();
@@ -122,6 +125,7 @@
             this.Button_SelectBook = new System.Windows.Forms.Button();
             this.Button_SelectCourse = new System.Windows.Forms.Button();
             this.CheckBox_AddFirstRegisterCost = new System.Windows.Forms.CheckBox();
+            this.Button_Save = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView_PaymentDetail_Summary)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -132,6 +136,7 @@
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel9.SuspendLayout();
+            this.panel10.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel12.SuspendLayout();
             this.panel19.SuspendLayout();
@@ -600,10 +605,49 @@
             // panel10
             // 
             this.panel10.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel10.Controls.Add(this.label27);
+            this.panel10.Controls.Add(this.label26);
+            this.panel10.Controls.Add(this.ComboBox_Unpaid_Payment);
             this.panel10.Location = new System.Drawing.Point(289, 1);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(136, 40);
             this.panel10.TabIndex = 34;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.label27.Location = new System.Drawing.Point(3, 20);
+            this.label27.Margin = new System.Windows.Forms.Padding(3);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(27, 14);
+            this.label27.TabIndex = 6;
+            this.label27.Text = "No.";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.label26.Location = new System.Drawing.Point(3, 6);
+            this.label26.Margin = new System.Windows.Forms.Padding(3);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(36, 14);
+            this.label26.TabIndex = 6;
+            this.label26.Text = "เลขที่";
+            // 
+            // ComboBox_Unpaid_Payment
+            // 
+            this.ComboBox_Unpaid_Payment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_Unpaid_Payment.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.ComboBox_Unpaid_Payment.FormattingEnabled = true;
+            this.ComboBox_Unpaid_Payment.Location = new System.Drawing.Point(45, 7);
+            this.ComboBox_Unpaid_Payment.Name = "ComboBox_Unpaid_Payment";
+            this.ComboBox_Unpaid_Payment.Size = new System.Drawing.Size(84, 27);
+            this.ComboBox_Unpaid_Payment.TabIndex = 50;
+            this.ComboBox_Unpaid_Payment.Visible = false;
+            this.ComboBox_Unpaid_Payment.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Unpaid_Payment_SelectedIndexChanged);
             // 
             // panel11
             // 
@@ -1175,12 +1219,25 @@
             this.CheckBox_AddFirstRegisterCost.UseVisualStyleBackColor = true;
             this.CheckBox_AddFirstRegisterCost.CheckedChanged += new System.EventHandler(this.CheckBox_AddFirstRegisterCost_CheckedChanged);
             // 
+            // Button_Save
+            // 
+            this.Button_Save.Enabled = false;
+            this.Button_Save.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.Button_Save.Location = new System.Drawing.Point(12, 543);
+            this.Button_Save.Name = "Button_Save";
+            this.Button_Save.Size = new System.Drawing.Size(75, 23);
+            this.Button_Save.TabIndex = 50;
+            this.Button_Save.Text = "บันทึก";
+            this.Button_Save.UseVisualStyleBackColor = true;
+            this.Button_Save.Click += new System.EventHandler(this.Button_Save_Click);
+            // 
             // PaymentForm2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1016, 600);
+            this.Controls.Add(this.Button_Save);
             this.Controls.Add(this.CheckBox_AddFirstRegisterCost);
             this.Controls.Add(this.Button_Reset);
             this.Controls.Add(this.Button_Pay);
@@ -1217,6 +1274,8 @@
             this.panel7.PerformLayout();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
             this.panel11.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
             this.panel19.ResumeLayout(false);
@@ -1333,5 +1392,9 @@
         private System.Windows.Forms.Button Button_Reset;
         private System.Windows.Forms.Button Button_Pay;
         private System.Windows.Forms.CheckBox CheckBox_AddFirstRegisterCost;
+        private System.Windows.Forms.ComboBox ComboBox_Unpaid_Payment;
+        private System.Windows.Forms.Button Button_Save;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label27;
     }
 }

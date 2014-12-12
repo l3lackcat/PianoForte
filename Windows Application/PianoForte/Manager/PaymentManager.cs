@@ -463,7 +463,7 @@ namespace PianoForte.Manager
         //    return paymentDao.findAllPayment(studentId, creditCardNumber, status, startDate, endDate, startIndex, offset);
         //}
         
-        public static Payment processPayment(int studentId, int receiverId, string creditCardNumber, double totalPrice)
+        public static Payment processPayment(int studentId, int receiverId, string creditCardNumber, double totalPrice, Payment.PaymentStatus paymentStatus)
         {
             Payment payment = new Payment();
             payment.StudentId = studentId;
@@ -472,7 +472,7 @@ namespace PianoForte.Manager
             payment.TotalPrice = totalPrice;
             payment.TotalPriceText = ConvertManager.toBahtText(totalPrice);
             payment.PaymentDate = DateTime.Today;
-            payment.Status = Payment.PaymentStatus.PAID.ToString();
+            payment.Status = paymentStatus.ToString();
 
             return PaymentManager.insertPayment(payment);
         }

@@ -203,10 +203,11 @@ namespace PianoForte.View
                 this.DatagridView_CurrentCourse.Rows[n].Cells["CurrentCourse_Status"].Value = this.currentEnrolledCourseList[i].Status;
 
                 this.DatagridView_CurrentCourse.Rows[n].Cells["CurrentCourse_TransactionButton"].Value = new Bitmap(20, 16);
-                if (this.currentEnrolledCourseList[i].Status != Enrollment.EnrollmentStatus.NOT_PAID.ToString())
-                {                                        
-                    this.DatagridView_CurrentCourse.Rows[n].Cells["CurrentCourse_DeleteButton"].Value = new Bitmap(20, 16);
-                }
+                this.DatagridView_CurrentCourse.Rows[n].Cells["CurrentCourse_DeleteButton"].Value = new Bitmap(20, 16);
+                //if (this.currentEnrolledCourseList[i].Status != Enrollment.EnrollmentStatus.NOT_PAID.ToString())
+                //{                                        
+                //    this.DatagridView_CurrentCourse.Rows[n].Cells["CurrentCourse_DeleteButton"].Value = new Bitmap(20, 16);
+                //}
             }
 
             this.DatagridView_CurrentCourse.ClearSelection();
@@ -367,24 +368,24 @@ namespace PianoForte.View
                         break;
                     case 6:
                         {
-                            if (this.currentEnrolledCourseList[e.RowIndex].Status == Enrollment.EnrollmentStatus.NOT_PAID.ToString())
-                            {
-                                if (ConfirmDialogBox.show("คุณต้องการยกเลิกการลงทะเบียนรหัส " + this.currentEnrolledCourseList[e.RowIndex].Id.ToString() + " ใช่หรือไม่?"))
-                                {
-                                    if (EnrollmentManager.cancelEnrollment(EnrollmentManager.getEnrollment(this.currentEnrolledCourseList[e.RowIndex].Id)))
-                                    {
-                                        this.initEnrolledCourse();
-                                        this.initClassroomDetailList(0);
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show(PianoForte.Constant.DatabaseConstant.DELETE_DATA_FAIL);
-                                    }
-                                } 
-                            }
+                            //if (this.currentEnrolledCourseList[e.RowIndex].Status == Enrollment.EnrollmentStatus.NOT_PAID.ToString())
+                            //{
+                            //    if (ConfirmDialogBox.show("คุณต้องการยกเลิกการลงทะเบียนรหัส " + this.currentEnrolledCourseList[e.RowIndex].Id.ToString() + " ใช่หรือไม่?"))
+                            //    {
+                            //        if (EnrollmentManager.cancelEnrollment(EnrollmentManager.getEnrollment(this.currentEnrolledCourseList[e.RowIndex].Id)))
+                            //        {
+                            //            this.initEnrolledCourse();
+                            //            this.initClassroomDetailList(0);
+                            //        }
+                            //        else
+                            //        {
+                            //            MessageBox.Show(PianoForte.Constant.DatabaseConstant.DELETE_DATA_FAIL);
+                            //        }
+                            //    } 
+                            //}
                         }
                         break;
-                    default :
+                    default:
                         {
                             this.selectedEnrolledCourseName = this.DatagridView_CurrentCourse.Rows[e.RowIndex].Cells["CurrentCourse_CourseName"].Value.ToString();
                             this.selectedEnrolledCourseLevel = this.DatagridView_CurrentCourse.Rows[e.RowIndex].Cells["CurrentCourse_CourseLevel"].Value.ToString();
@@ -399,30 +400,30 @@ namespace PianoForte.View
 
         private void DatagridView_CurrentCourse_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
-            {
-                switch (e.ColumnIndex)
-                {
-                    case 4:
-                        {                            
-                            if (this.currentEnrolledCourseList[e.RowIndex].Status == Enrollment.EnrollmentStatus.NOT_PAID.ToString())
-                            {
-                                //this.Cursor = Cursors.Hand;
-                                //this.DatagridView_CurrentCourse.Rows[e.RowIndex].Cells[e.ColumnIndex].ToolTipText = "";
-                            }
-                        }
-                        break;
-                    case 5:
-                        {
-                            if (this.currentEnrolledCourseList[e.RowIndex].Status == Enrollment.EnrollmentStatus.NOT_PAID.ToString())
-                            {
-                                this.Cursor = Cursors.Hand;
-                                this.DatagridView_CurrentCourse.Rows[e.RowIndex].Cells[e.ColumnIndex].ToolTipText = "Delete";
-                            }                            
-                        }
-                        break;
-                }
-            }
+            //if (e.RowIndex >= 0)
+            //{
+            //    switch (e.ColumnIndex)
+            //    {
+            //        case 4:
+            //            {
+            //                if (this.currentEnrolledCourseList[e.RowIndex].Status == Enrollment.EnrollmentStatus.NOT_PAID.ToString())
+            //                {
+            //                    //this.Cursor = Cursors.Hand;
+            //                    //this.DatagridView_CurrentCourse.Rows[e.RowIndex].Cells[e.ColumnIndex].ToolTipText = "";
+            //                }
+            //            }
+            //            break;
+            //        case 5:
+            //            {
+            //                if (this.currentEnrolledCourseList[e.RowIndex].Status == Enrollment.EnrollmentStatus.NOT_PAID.ToString())
+            //                {
+            //                    //this.Cursor = Cursors.Hand;
+            //                    //this.DatagridView_CurrentCourse.Rows[e.RowIndex].Cells[e.ColumnIndex].ToolTipText = "Delete";
+            //                }
+            //            }
+            //            break;
+            //    }
+            //}
         }
 
         private void DatagridView_CurrentCourse_CellMouseLeave(object sender, DataGridViewCellEventArgs e)

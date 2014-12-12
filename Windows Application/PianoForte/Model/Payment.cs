@@ -22,7 +22,8 @@ namespace PianoForte.Model
         {
             ALL,
             PAID,
-            CANCELED
+            CANCELED,
+            NOT_PAID
         }
 
         protected int id;

@@ -731,6 +731,7 @@
             this.Button_Add_Enrollment.TabIndex = 4;
             this.Button_Add_Enrollment.Text = "เพิ่ม";
             this.Button_Add_Enrollment.UseVisualStyleBackColor = true;
+            this.Button_Add_Enrollment.Visible = false;
             this.Button_Add_Enrollment.Click += new System.EventHandler(this.Button_Add_Enrollment_Click);
             // 
             // DatagridView_CurrentCourse

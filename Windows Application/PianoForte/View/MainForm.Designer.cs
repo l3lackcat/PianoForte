@@ -207,7 +207,7 @@
             this.ToolStripButton_DailyPaymentReport.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ToolStripButton_DailyPaymentReport.Name = "ToolStripButton_DailyPaymentReport";
             this.ToolStripButton_DailyPaymentReport.Size = new System.Drawing.Size(85, 60);
-            this.ToolStripButton_DailyPaymentReport.Text = "สรุปรายรับ";
+            this.ToolStripButton_DailyPaymentReport.Text = "สรุปยอด";
             this.ToolStripButton_DailyPaymentReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.ToolStripButton_DailyPaymentReport.Click += new System.EventHandler(this.ToolStripButton_DailyPaymentReport_Click);
             // 
