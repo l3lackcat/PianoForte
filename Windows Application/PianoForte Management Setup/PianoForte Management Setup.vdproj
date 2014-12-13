@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_006DE8701FD60F046C482FBB97FEED3B"
+        "OwnerKey" = "8:_70E1C30E9B70497F8E740C1A39EF0841"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_0250EEE19A0B4ED002F38CADC650C935"
         "OwnerKey" = "8:_E11E18CFF315078CC7EB1B37816680D0"
         "MsmSig" = "8:_UNDEFINED"
@@ -742,6 +748,12 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_006DE8701FD60F046C482FBB97FEED3B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_D13AFA54BD4AEFDF8841F7CF2DA31448"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -867,6 +879,37 @@
         }
         "File"
         {
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_006DE8701FD60F046C482FBB97FEED3B"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_006DE8701FD60F046C482FBB97FEED3B"
+                    {
+                    "Name" = "8:Newtonsoft.Json.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Newtonsoft.Json.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_48DC1FD09F0B4B018E0F7BF9162E7901"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0250EEE19A0B4ED002F38CADC650C935"
             {
             "AssemblyRegister" = "3:1"
@@ -3348,14 +3391,14 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:PianoForte Management Setup"
-        "ProductCode" = "8:{84C09DF1-B69A-4CBA-894A-99AD5ED9DE13}"
-        "PackageCode" = "8:{25AFC4A5-6254-44A3-A270-6BB68292F893}"
+        "ProductCode" = "8:{B6BBC335-D61A-472B-9EEB-93A74B600E09}"
+        "PackageCode" = "8:{A407AB5E-9E77-4526-A4EE-56429F00F4CA}"
         "UpgradeCode" = "8:{BE54E5C5-65ED-4053-9D7F-D65C5813931C}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:2.0.29"
+        "ProductVersion" = "8:2.0.30"
         "Manufacturer" = "8:PianoForte"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
